@@ -1,0 +1,18 @@
+workload:
+  model:
+    name: retinanet
+    type: cnn
+  framework: pytorch
+  workflow:
+    generate_data: true
+    train: false
+    checkpoint: false
+  dataset:
+    data_folder: /mnt/nvme/retina-dataset/retinanet
+    format: jpeg
+    num_files_train: 6500000
+    num_samples_per_file: 1
+    record_length_bytes: 322957
+    num_subfolders_train: 650
+    skip_listing: true
+    listing_validation_interval: 1000

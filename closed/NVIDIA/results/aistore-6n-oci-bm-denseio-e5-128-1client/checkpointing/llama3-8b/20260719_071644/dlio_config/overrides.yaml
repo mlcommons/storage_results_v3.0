@@ -1,0 +1,9 @@
+- workload=llama3_8b
+- ++workload.storage.storage_type=s3
+- ++workload.storage.storage_root=mlp-ckpt
+- ++workload.storage.storage_options.storage_library=s3dlio
+- ++workload.storage.storage_options.uri_scheme=s3
+- ++workload.storage.s3_force_path_style=true
+- ++workload.checkpoint.num_checkpoints_read=0
+- ++workload.checkpoint.num_checkpoints_write=10
+- ++workload.checkpoint.checkpoint_folder=mlp-ckpt/llama3-8b/llama3-8b

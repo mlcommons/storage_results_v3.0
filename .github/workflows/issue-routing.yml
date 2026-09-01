@@ -1,0 +1,125 @@
+name: Route peer-review issues
+
+# Issues filed with the Question / Flaw forms carry the From and To answers as
+# form sections in the issue body. This applies the matching "From <party>" and
+# "To <party>" labels, and notifies the party an issue is addressed to.
+#
+# A label on its own notifies nobody, so notification is a comment mentioning
+# the handles listed for that party in .github/issue-notify-roster.json. A
+# party with no handles listed is labeled but not mentioned — add handles to
+# that file to switch notification on, no change to this workflow needed.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  route:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply From/To labels and notify
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // The issue body is untrusted input. It is read from the event
+            // payload inside this script, never through a workflow expression
+            // (see SECURITY note in the PR) — interpolating it would let a
+            // crafted issue run code on the runner.
+            const body = context.payload.issue.body || '';
+
+            // Read the roster over the API rather than checking the repo out:
+            // this repository is ~730 MB across 128k files, and a checkout
+            // would transfer all of it on every issue event to read one small
+            // JSON file.
+            const rosterFile = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: '.github/issue-notify-roster.json',
+              ref: context.payload.repository.default_branch,
+            });
+            const roster = JSON.parse(
+              Buffer.from(rosterFile.data.content, 'base64').toString('utf8')
+            ).parties;
+
+            // Issue forms render each answer as "### <field label>" followed
+            // by the value. Split on the headings and index by heading text.
+            const sections = {};
+            for (const part of body.split(/^###\s+/m).slice(1)) {
+              const nl = part.indexOf('\n');
+              const heading = (nl === -1 ? part : part.slice(0, nl)).trim();
+              const value = (nl === -1 ? '' : part.slice(nl + 1)).trim();
+              sections[heading] = value;
+            }
+            const answerFor = (suffix) => {
+              const key = Object.keys(sections).find((k) => k.endsWith(suffix));
+              return key ? sections[key] : null;
+            };
+
+            const from = answerFor('(From)');
+            const to = answerFor('(To)');
+            if (from === null && to === null) {
+              core.info('No From/To sections — not a peer-review form issue.');
+              return;
+            }
+
+            // Only values present in the roster become labels. addLabels
+            // creates a label that does not exist yet, so an unrecognized
+            // answer must never reach it or a stray label gets invented.
+            const known = (v) => v !== null && Object.hasOwn(roster, v);
+            const labels = [];
+            if (known(from)) labels.push(`From ${from}`);
+            if (known(to)) labels.push(`To ${to}`);
+
+            for (const [field, value] of [['From', from], ['To', to]]) {
+              if (value !== null && !known(value)) {
+                core.warning(
+                  `${field} answer ${JSON.stringify(value)} is not a known ` +
+                  'party in .github/issue-notify-roster.json; no label applied.'
+                );
+              }
+            }
+
+            const issue = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+            };
+
+            if (labels.length) {
+              await github.rest.issues.addLabels({ ...issue, labels });
+              core.info(`Applied: ${labels.join(', ')}`);
+            }
+
+            // Notify the party the issue is addressed to. Nobody is notified
+            // for an issue a party filed themselves.
+            if (!known(to)) return;
+            const handles = roster[to] || [];
+            if (!handles.length) {
+              core.info(`No handles listed for ${to}; labeled only.`);
+              return;
+            }
+
+            // Re-runs (issue edited more than once) must not notify again. A
+            // hidden marker in the comment body is the idempotency record.
+            const MARKER = '<!-- issue-routing-notify -->';
+            const comments = await github.paginate(
+              github.rest.issues.listComments, { ...issue, per_page: 100 }
+            );
+            if (comments.some((c) => (c.body || '').includes(MARKER))) {
+              core.info('Already notified on this issue; skipping.');
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              ...issue,
+              body: [
+                MARKER,
+                `${handles.map((h) => '@' + h).join(' ')} — this issue is `
+                  + `addressed to **${to}**.`,
+              ].join('\n'),
+            });
+            core.info(`Notified ${to}: ${handles.join(', ')}`);

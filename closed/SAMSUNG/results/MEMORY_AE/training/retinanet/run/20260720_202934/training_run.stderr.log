@@ -1,0 +1,131 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/mlps_nvme/training/retinanet'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 8511360
+[OUTPUT]   record_length  = 322957
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 8
+[OUTPUT]   batch_size     = 24
+[OUTPUT] 2026-07-20T20:29:45.764705 Running DLIO [Training] with 40 process(es)
+[OUTPUT] 2026-07-20T20:29:46.288179 skip_listing [train]: validating 8,513 of 8,511,360 files (first, last, every 1,000) via HEAD requests ...
+[OUTPUT] 2026-07-20T20:29:46.294935 skip_listing [train]:   500/8,513 checked (6%)  —  75551 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.302189 skip_listing [train]:   1,000/8,513 checked (12%)  —  72088 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.309282 skip_listing [train]:   1,500/8,513 checked (18%)  —  71543 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.315489 skip_listing [train]:   2,000/8,513 checked (23%)  —  73598 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.321374 skip_listing [train]:   2,500/8,513 checked (29%)  —  75619 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.326845 skip_listing [train]:   3,000/8,513 checked (35%)  —  77856 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.332211 skip_listing [train]:   3,500/8,513 checked (41%)  —  79731 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.337469 skip_listing [train]:   4,000/8,513 checked (47%)  —  81374 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.342589 skip_listing [train]:   4,500/8,513 checked (53%)  —  82908 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.347644 skip_listing [train]:   5,000/8,513 checked (59%)  —  84272 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.352743 skip_listing [train]:   5,500/8,513 checked (65%)  —  85363 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.357798 skip_listing [train]:   6,000/8,513 checked (70%)  —  86350 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.362815 skip_listing [train]:   6,500/8,513 checked (76%)  —  87246 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.367825 skip_listing [train]:   7,000/8,513 checked (82%)  —  88037 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.372890 skip_listing [train]:   7,500/8,513 checked (88%)  —  88676 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.377791 skip_listing [train]:   8,000/8,513 checked (94%)  —  89407 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.382804 skip_listing [train]:   8,500/8,513 checked (100%)  —  89955 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-20T20:29:46.382975 skip_listing [train]: validation complete — all 8,513 samples exist (0.1s, 89930 checks/s); 212,784 URIs ready for rank 0 (8,511,360 total across all ranks)
+[OUTPUT] 2026-07-20T20:29:46.387100 File listing [train]: 8511360 files discovered, 212784 assigned to rank 0, completed in 0.59s
+[OUTPUT] 2026-07-20T20:29:46.387160 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-20T20:29:46.387182 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-20T20:29:46.387201 Streamed file sharding: 8511360 train files across 40 ranks via round-robin (rank 0 shard: 212784 files)
+[OUTPUT] 2026-07-20T20:30:16.427733 Max steps per epoch per rank: 354640 = 1 * 8511360 / 24 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-20T20:30:16.705944 Reshard for epoch 1: 212784 train files, 0 eval files redistributed via alltoall in 0.28s
+[OUTPUT] 2026-07-20T20:30:17.974034 Worker pre-warm complete (4 workers spawned)
+[OUTPUT] 2026-07-20T20:30:39.362438 Starting epoch 1: 8866 steps expected
+[OUTPUT] 2026-07-20T20:30:39.362782 Starting block 1
+[OUTPUT] 2026-07-20T20:39:05.497077 Ending block 1 - 8866 steps completed in 506.13 s
+[OUTPUT] 2026-07-20T20:39:05.501767 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 83.5994
+[OUTPUT] 2026-07-20T20:39:05.501842 Epoch 1 - Block 1 [Training] Throughput (samples/second): 16831.3122
+[OUTPUT] 2026-07-20T20:39:05.502913 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0006 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T20:39:05.601080 Ending epoch 1 - 8866 steps completed in 506.24 s
+[OUTPUT] 2026-07-20T20:39:05.871490 Reshard for epoch 2: 212784 train files, 0 eval files redistributed via alltoall in 0.27s
+[OUTPUT] 2026-07-20T20:39:07.244784 Worker pre-warm complete for epoch 2 (4 workers spawned)
+[WARNING] Page cache flush did not finish within 30s (epoch 2). The next epoch will retry. If this recurs, raise the ceiling with DLIO_DROP_CACHES_TIMEOUT=<seconds> (e.g. 300).
+[OUTPUT] 2026-07-20T20:39:37.278348 Starting epoch 2: 8866 steps expected
+[OUTPUT] 2026-07-20T20:39:37.278767 Starting block 1
+[OUTPUT] 2026-07-20T20:47:57.472033 Ending block 1 - 8866 steps completed in 500.19 s
+[OUTPUT] 2026-07-20T20:47:57.478466 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 84.5668
+[OUTPUT] 2026-07-20T20:47:57.478672 Epoch 2 - Block 1 [Training] Throughput (samples/second): 17035.2316
+[OUTPUT] 2026-07-20T20:47:57.480304 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0002 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T20:47:57.507546 Ending epoch 2 - 8866 steps completed in 500.23 s
+[OUTPUT] 2026-07-20T20:47:57.902766 Reshard for epoch 3: 212784 train files, 0 eval files redistributed via alltoall in 0.39s
+[OUTPUT] 2026-07-20T20:47:59.106725 Worker pre-warm complete for epoch 3 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 3); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T20:48:29.139537 Starting epoch 3: 8866 steps expected
+[OUTPUT] 2026-07-20T20:48:29.139770 Starting block 1
+[OUTPUT] 2026-07-20T20:56:24.278616 Ending block 1 - 8866 steps completed in 475.14 s
+[OUTPUT] 2026-07-20T20:56:24.282227 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 89.0293
+[OUTPUT] 2026-07-20T20:56:24.282297 Epoch 3 - Block 1 [Training] Throughput (samples/second): 17931.3946
+[OUTPUT] 2026-07-20T20:56:24.283426 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0002 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T20:56:24.321809 Ending epoch 3 - 8866 steps completed in 475.18 s
+[OUTPUT] 2026-07-20T20:56:24.619747 Reshard for epoch 4: 212784 train files, 0 eval files redistributed via alltoall in 0.30s
+[OUTPUT] 2026-07-20T20:56:25.736444 Worker pre-warm complete for epoch 4 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 4); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T20:56:55.769921 Starting epoch 4: 8866 steps expected
+[OUTPUT] 2026-07-20T20:56:55.770218 Starting block 1
+[OUTPUT] 2026-07-20T21:04:56.163267 Ending block 1 - 8866 steps completed in 480.39 s
+[OUTPUT] 2026-07-20T21:04:56.165120 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 88.0330
+[OUTPUT] 2026-07-20T21:04:56.165179 Epoch 4 - Block 1 [Training] Throughput (samples/second): 17732.5775
+[OUTPUT] 2026-07-20T21:04:56.165885 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T21:04:56.171716 Ending epoch 4 - 8866 steps completed in 480.40 s
+[OUTPUT] 2026-07-20T21:04:56.480969 Reshard for epoch 5: 212784 train files, 0 eval files redistributed via alltoall in 0.31s
+[OUTPUT] 2026-07-20T21:04:57.615658 Worker pre-warm complete for epoch 5 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 5); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T21:05:27.648408 Starting epoch 5: 8866 steps expected
+[OUTPUT] 2026-07-20T21:05:27.648680 Starting block 1
+[OUTPUT] 2026-07-20T21:13:42.933417 Ending block 1 - 8866 steps completed in 495.28 s
+[OUTPUT] 2026-07-20T21:13:42.935522 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.3823
+[OUTPUT] 2026-07-20T21:13:42.935576 Epoch 5 - Block 1 [Training] Throughput (samples/second): 17197.5436
+[OUTPUT] 2026-07-20T21:13:42.936723 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0002 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T21:13:42.946597 Ending epoch 5 - 8866 steps completed in 495.30 s
+[OUTPUT] 2026-07-20T21:13:43.247231 Reshard for epoch 6: 212784 train files, 0 eval files redistributed via alltoall in 0.30s
+[OUTPUT] 2026-07-20T21:13:44.391089 Worker pre-warm complete for epoch 6 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 6); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T21:14:14.423620 Starting epoch 6: 8866 steps expected
+[OUTPUT] 2026-07-20T21:14:14.423880 Starting block 1
+[OUTPUT] 2026-07-20T21:22:12.526491 Ending block 1 - 8866 steps completed in 478.10 s
+[OUTPUT] 2026-07-20T21:22:12.528874 Epoch 6 - Block 1 [Training] Accelerator Utilization [AU] (%): 88.4840
+[OUTPUT] 2026-07-20T21:22:12.528938 Epoch 6 - Block 1 [Training] Throughput (samples/second): 17823.4526
+[OUTPUT] 2026-07-20T21:22:12.530028 Epoch 6 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T21:22:12.554397 Ending epoch 6 - 8866 steps completed in 478.13 s
+[OUTPUT] 2026-07-20T21:22:12.867891 Reshard for epoch 7: 212784 train files, 0 eval files redistributed via alltoall in 0.31s
+[OUTPUT] 2026-07-20T21:22:14.114443 Worker pre-warm complete for epoch 7 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 7); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T21:22:44.147946 Starting epoch 7: 8866 steps expected
+[OUTPUT] 2026-07-20T21:22:44.148176 Starting block 1
+[OUTPUT] 2026-07-20T21:30:41.273993 Ending block 1 - 8866 steps completed in 477.13 s
+[OUTPUT] 2026-07-20T21:30:41.276171 Epoch 7 - Block 1 [Training] Accelerator Utilization [AU] (%): 88.6431
+[OUTPUT] 2026-07-20T21:30:41.276253 Epoch 7 - Block 1 [Training] Throughput (samples/second): 17856.1708
+[OUTPUT] 2026-07-20T21:30:41.276994 Epoch 7 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T21:30:41.282099 Ending epoch 7 - 8866 steps completed in 477.13 s
+[OUTPUT] 2026-07-20T21:30:41.622710 Reshard for epoch 8: 212784 train files, 0 eval files redistributed via alltoall in 0.34s
+[OUTPUT] 2026-07-20T21:30:42.812654 Worker pre-warm complete for epoch 8 (4 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 8); see earlier warning for remediation.
+[OUTPUT] 2026-07-20T21:31:12.845517 Starting epoch 8: 8866 steps expected
+[OUTPUT] 2026-07-20T21:31:12.845781 Starting block 1
+[OUTPUT] 2026-07-20T21:39:11.397560 Ending block 1 - 8866 steps completed in 478.55 s
+[OUTPUT] 2026-07-20T21:39:11.400327 Epoch 8 - Block 1 [Training] Accelerator Utilization [AU] (%): 88.3914
+[OUTPUT] 2026-07-20T21:39:11.400404 Epoch 8 - Block 1 [Training] Throughput (samples/second): 17804.7567
+[OUTPUT] 2026-07-20T21:39:11.401515 Epoch 8 - Block 1 [Training] Computation time per step (second): 0.0477+/-0.0002 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-20T21:39:11.405258 Ending epoch 8 - 8866 steps completed in 478.56 s
+[OUTPUT] 2026-07-20T21:39:11.781332 Reshard for epoch 9: 212784 train files, 0 eval files redistributed via alltoall in 0.37s
+[OUTPUT] 2026-07-20T21:39:12.973739 Worker pre-warm complete for epoch 9 (4 workers spawned)
+[WARNING] Page cache flush timed out in 7 of 8 epochs. Reads in those epochs may have been served from the OS buffer cache; consider raising DLIO_DROP_CACHES_TIMEOUT for future runs.
+[OUTPUT] 2026-07-20T21:39:13.045772 Saved outputs in /tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/retinanet/run/20260720_202934
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 40 
+[METRIC] Training Accelerator Utilization [AU] (%): 87.0409 (1.9839)
+[METRIC] Training Throughput (samples/second): 17529.3160 (404.1221)
+[METRIC] Training I/O Throughput (MiB/second): 5398.9556 (124.4679)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-20T21:39:13.212568 outputs saved in RANKID_output.json

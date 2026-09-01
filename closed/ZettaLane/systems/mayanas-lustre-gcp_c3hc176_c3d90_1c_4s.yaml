@@ -1,0 +1,67 @@
+system_under_test:
+  solution:
+    submission_name: mayanas-lustre-gcp_c3hc176_c3d90_1c_4s
+    friendly_description: 'MayaNAS shared parallel Lustre filesystem on GCP, backed by Google Cloud Storage:
+      four active-active HA storage nodes (GCP c3d-standard-90), each presenting 1 Lustre OST on an OpenZFS
+      zpool object-backed via objbacker.io to 12 Standard regional GCS buckets. A single GCP c3-highcpu-176
+      client mounts the Lustre filesystem (O_DIRECT reads) for the MLPerf Storage UNet3D workload simulating
+      3 NVIDIA B200 accelerators (na=3). It is deployable from the Google Cloud Marketplace portal or
+      as Terraform modules (github.com/zettalane-systems/zettalane-terraform); contact info@zettalane.com.'
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_footprint: open_source
+      client_installation: in_box
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 46
+    availability: available
+  deployment: cloud
+  product_nodes:
+  - friendly_description: 'MayaNAS storage node (GCP c3d-standard-90): Lustre OSS presenting 1 OST, a
+      dataset on an OpenZFS zpool whose data vdev is 12 Standard regional Google Cloud Storage buckets
+      via objbacker.io; the MDT is on a pd-ssd and the pool has a ZFS special vdev. The MGS runs on node
+      1''s VIP. Because the buckets are regional, on node failover the surviving node imports the partner''s
+      zpool (serving 2 zpools x 12 buckets).'
+    quantity: 4
+    chassis:
+      model_name: Google Compute Engine c3d-standard-90
+      cpu_model: AMD EPYC 9B14
+      cpu_qty: 1
+      cpu_cores: 45
+      memory_capacity: 354
+    operating_system:
+      name: Rocky Linux
+      version: '9.7'
+    networking:
+    - unit_count: 1
+      type: ethernet
+      state: up
+      speed: 100
+      traffic:
+      - data
+      - backend
+  clients:
+  - friendly_description: GCP c3-highcpu-176 MLPerf Storage benchmark client (UNet3D, 3 simulated NVIDIA
+      B200 accelerators, na=3); Lustre client with reader.odirect=true and read_threads=128.
+    quantity: 1
+    chassis:
+      model_name: Google Compute Engine c3-highcpu-176
+      cpu_model: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+      cpu_qty: 2
+      cpu_cores: 44
+      memory_capacity: 346
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    networking:
+    - unit_count: 1
+      type: ethernet
+      state: up
+      speed: 200
+      traffic:
+      - data

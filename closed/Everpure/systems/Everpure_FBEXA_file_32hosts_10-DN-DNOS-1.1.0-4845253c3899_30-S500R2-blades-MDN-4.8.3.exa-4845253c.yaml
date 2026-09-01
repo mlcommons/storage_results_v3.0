@@ -1,0 +1,196 @@
+---
+system_under_test:
+  solution:
+    submission_name: Everpure_FBEXA_file_32hosts_10-DN-DNOS-1.1.0-4845253c3899_30-S500R2-blades-MDN-4.8.3.exa-4845253c
+    friendly_description: Everpure FBEXA file storage configuration for 32 Supermicro
+      SYS-621C-TN12R checkpointing worker hosts
+    usable_capacity_tib: 262.67
+    availability: available
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_installation: n/a
+      client_footprint: n/a
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+  deployment: onprem
+  total_rack_units: 27
+  product_nodes:
+    - friendly_description: FlashBlade//EXA MDN XFM
+      quantity: 2
+      chassis:
+        model_name: XFM-8400
+        rack_units: 1
+        # Intentionally null: XFM-8400 is a custom-designed fabric module,
+        # not an industry-standard server; the schema cannot describe it.
+        # Validator errors on these fields are expected (review chairs,
+        # 2026-08-14: test-design limitation, not a submission defect).
+        cpu_model: null
+        cpu_qty: null
+        cpu_cores: null
+        memory_capacity: null  # GiB
+        power:
+          min_psus_active: 1
+          psus_configured:
+            - unit_count: 2
+              inlet_voltage: 240
+              nameplate_power_watts: 1500
+              efficiency: Platinum
+      operating_system:
+        name: Purity//FB 4.8.3.exa
+        version: "4845253c"
+    - friendly_description: FlashBlade//EXA MDN chassis
+      quantity: 3
+      chassis:
+        model_name: CH-FB-II
+        rack_units: 5
+        # Intentionally null: CH-FB-II is a custom blade enclosure (10x
+        # FB-S500R2 blades over proprietary interconnect); the schema
+        # cannot describe it. Validator errors expected (see XFM note).
+        cpu_model: null
+        cpu_qty: null
+        cpu_cores: null
+        memory_capacity: null  # GiB
+        power:
+          min_psus_active: 2
+          psus_configured:
+            - unit_count: 4
+              inlet_voltage: 240
+              # PSU model CSU2400AP-3-400, P/N 80-1250-XX; 2+2 redundancy.
+              # 2400 W/PSU nameplate confirmed by Everpure 2026-08-14.
+              nameplate_power_watts: 2400
+              efficiency: Platinum
+      operating_system:
+        name: Purity//FB 4.8.3.exa
+        version: "4845253c"
+    - friendly_description: FlashBlade//EXA data node
+      quantity: 10
+      chassis:
+        model_name: Supermicro ASG-1115S-NE316R
+        rack_units: 1
+        cpu_model: AMD EPYC 9355P
+        cpu_qty: 1
+        cpu_cores: 32
+        memory_capacity: 192  # GiB
+        power:
+          min_psus_active: 1
+          psus_configured:
+            - unit_count: 2
+              inlet_voltage: 240
+              nameplate_power_watts: 1600
+              efficiency: Titanium
+      operating_system:
+        name: Purity//DN 1.1.0
+        version: "4845253c3899"
+  # Test-infrastructure network (documented, NOT part of the storage
+  # solution): 8x NVIDIA SN5600 (2 spine + 6 leaf, 800GbE, Cumulus 5.9.1,
+  # 2U and 2x 3000 W PSUs each) forming a dedicated, isolated data network
+  # shared by the client host initiators, the MDN, and the data nodes.
+  # Everpure confirmed 2026-08-14 that clients attach to this fabric, so
+  # per the review-chairs switch rule (a switch counts as part of the
+  # storage solution only if it talks exclusively to storage-solution
+  # nodes) it is excluded from product_switches, total_rack_units, and
+  # the derived Provisioned Power column.
+  clients:
+  - friendly_description: 19 x Supermicro SYS-621C-TN12R checkpointing worker nodes
+      (Micron_5400_MTFD boot drive)
+    chassis:
+      model_name: SYS-621C-TN12R
+      rack_units: 2
+      cpu_model: INTEL(R) XEON(R) SILVER 4516Y+
+      cpu_qty: 2
+      cpu_cores: 48
+      memory_capacity: 1024
+      power:
+        min_psus_active: 1
+        psus_configured:
+        - efficiency: Titanium
+          inlet_voltage: 240
+          nameplate_power_watts: 1200
+          unit_count: 2
+    networking:
+    - state: down
+      type: ethernet
+      unit_count: 3
+    - speed: 1
+      state: up
+      traffic:
+      - management
+      type: ethernet
+      unit_count: 1
+    - speed: 100
+      state: up
+      traffic:
+      - backend
+      type: ethernet
+      unit_count: 2
+    - speed: 400
+      state: up
+      traffic:
+      - data
+      type: ethernet
+      unit_count: 2
+    drives:
+    - capacity_in_GB: 240
+      interface: sata
+      media_type: TLC
+      model_name: Micron_5400_MTFD
+      unit_count: 1
+      vendor_name: Micron
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 19
+  - friendly_description: 13 x Supermicro SYS-621C-TN12R checkpointing worker nodes
+      (Micron_5400_MTFDDAK240TGA boot drive)
+    chassis:
+      model_name: SYS-621C-TN12R
+      rack_units: 2
+      cpu_model: INTEL(R) XEON(R) SILVER 4516Y+
+      cpu_qty: 2
+      cpu_cores: 48
+      memory_capacity: 1024
+      power:
+        min_psus_active: 1
+        psus_configured:
+        - efficiency: Titanium
+          inlet_voltage: 240
+          nameplate_power_watts: 1200
+          unit_count: 2
+    networking:
+    - state: down
+      type: ethernet
+      unit_count: 3
+    - speed: 1
+      state: up
+      traffic:
+      - management
+      type: ethernet
+      unit_count: 1
+    - speed: 100
+      state: up
+      traffic:
+      - backend
+      type: ethernet
+      unit_count: 2
+    - speed: 400
+      state: up
+      traffic:
+      - data
+      type: ethernet
+      unit_count: 2
+    drives:
+    - capacity_in_GB: 240
+      interface: sata
+      media_type: TLC
+      model_name: Micron_5400_MTFDDAK240TGA
+      unit_count: 1
+      vendor_name: Micron
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 13

@@ -1,0 +1,90 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260628_155406",
+  "num_processes": 48,
+  "accelerator": null,
+  "result_dir": "/home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/retinanet/training/retinanet/datagen/20260628_155406",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/mlperf-block/retinanet",
+      "format": "jpeg",
+      "num_files_train": "4710038",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "num_subfolders_train": "425",
+      "skip_listing": "True",
+      "listing_validation_interval": "1000"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "4710038",
+    "dataset.num_subfolders_train": "425",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1000",
+    "dataset.data_folder": "/mnt/mlperf-block/retinanet"
+  },
+  "system_info": null,
+  "runtime": 471.7731146812439,
+  "verification": null,
+  "executed_command": "mpirun -n 48 -host 127.0.0.1:48 --bind-to none --map-by socket /home/mayascale/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/retinanet/training/retinanet/datagen/20260628_155406 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=4710038 ++workload.dataset.num_subfolders_train=425 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mnt/mlperf-block/retinanet --config-dir=/home/mayascale/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 48 -host 127.0.0.1:48 --bind-to none --map-by socket /home/mayascale/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/retinanet/training/retinanet/datagen/20260628_155406 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=4710038 ++workload.dataset.num_subfolders_train=425 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mnt/mlperf-block/retinanet --config-dir=/home/mayascale/storage/configs/dlio",
+      "stdout": "/home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/retinanet/training/retinanet/datagen/20260628_155406/training_datagen.stdout.log",
+      "stderr": "/home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/retinanet/training/retinanet/datagen/20260628_155406/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 48,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/mlperf-block/retinanet",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=4710038",
+      "dataset.num_subfolders_train=425"
+    ],
+    "results_dir": "/home/mayascale/mlperf-runs/retinanet-1cluster",
+    "systemname": "retinanet",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "ZettaLane",
+    "num_client_hosts": 1,
+    "_validated_orgname": "ZettaLane",
+    "_validated_systemname": null
+  }
+}

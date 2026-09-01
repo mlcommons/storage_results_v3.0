@@ -1,0 +1,96 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260713_083225",
+  "num_processes": 20,
+  "accelerator": null,
+  "result_dir": "/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader/closed/holmesai_limited/results/StorMeshAI/training/retinanet/datagen/20260713_083225",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/mlp/retinanet_data/retinanet",
+      "format": "jpeg",
+      "num_files_train": "17023000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "skip_listing": "True",
+      "listing_validation_interval": "1000",
+      "num_subfolders_train": "1702"
+    }
+  },
+  "override_parameters": {
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1000",
+    "dataset.num_files_train": "17023000",
+    "dataset.num_subfolders_train": "1702",
+    "dataset.data_folder": "/mnt/mlp/retinanet_data/retinanet"
+  },
+  "system_info": null,
+  "runtime": 2115.368055343628,
+  "invocation_start_time": "2026-07-13T08:32:25.882615",
+  "verification": null,
+  "executed_command": "mpirun -n 20 -host 127.0.0.1:20 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_ALLOW_DATAGEN_OVERWRITE -x MLPS_SKIP_DATAGEN_EXEC /root/mlp/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader/closed/holmesai_limited/results/StorMeshAI/training/retinanet/datagen/20260713_083225 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.num_files_train=17023000 ++workload.dataset.num_subfolders_train=1702 ++workload.dataset.data_folder=/mnt/mlp/retinanet_data/retinanet --config-dir=/root/mlp/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 20 -host 127.0.0.1:20 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_ALLOW_DATAGEN_OVERWRITE -x MLPS_SKIP_DATAGEN_EXEC /root/mlp/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader/closed/holmesai_limited/results/StorMeshAI/training/retinanet/datagen/20260713_083225 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.num_files_train=17023000 ++workload.dataset.num_subfolders_train=1702 ++workload.dataset.data_folder=/mnt/mlp/retinanet_data/retinanet --config-dir=/root/mlp/storage/configs/dlio",
+      "stdout": "/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader/closed/holmesai_limited/results/StorMeshAI/training/retinanet/datagen/20260713_083225/training_datagen.stdout.log",
+      "stderr": "/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader/closed/holmesai_limited/results/StorMeshAI/training/retinanet/datagen/20260713_083225/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 20,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/mlp/retinanet_data",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=1000",
+      "dataset.num_files_train=17023000",
+      "dataset.num_subfolders_train=1702"
+    ],
+    "results_dir": "/tmp/mlperf_storage_results_retinanet_b200_1t_20acc_15reader",
+    "systemname": "StorMeshAI",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "holmesai_limited",
+    "num_client_hosts": 1,
+    "_validated_orgname": "holmesai_limited",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "d8b126b5a33de216f8d98aa0dbe3a46c"
+  }
+}

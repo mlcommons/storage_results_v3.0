@@ -1,0 +1,197 @@
+system_under_test:
+  solution:
+    submission_name: nebius-s3-unet3d-21n
+    friendly_description: Nebius managed S3 object storage via s3dlio - UNet3D training
+      (21 clients x 1 emulated b200 accelerator)
+    architecture:
+      storage_location: remote
+      benchmark_API: object
+      product_API: object
+      client_footprint: open_source
+      client_installation: in_box
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 250
+    availability: available
+  deployment: cloud
+  clients:
+  - friendly_description: 'Nebius CPU client running MLPerf Storage emulated accelerators;
+      NIC: NVIDIA ConnectX-8, 400 Gb/s ethernet, shared among VMs on the host'
+    chassis:
+      model_name: cpu-d3
+      cpu_model: AMD EPYC-Genoa Processor
+      cpu_qty: 1
+      cpu_cores: 32
+      memory_capacity: 29
+    networking:
+    - type: ethernet
+      state: up
+      unit_count: 1
+      speed: 400
+      traffic:
+      - data
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '236661'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '239779'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '212992'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '212992'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '10'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '20'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '67584'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '60'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    environment:
+    - name: AWS_ACCESS_KEY_ID
+      value: NAKI****9TD4
+    - name: AWS_ENDPOINT_URL
+      value: https://storage.uk-south1.nebius.cloud
+    - name: AWS_REGION
+      value: uk-south1
+    - name: AWS_SECRET_ACCESS_KEY
+      value: '[SET — 40 chars]'
+    - name: BUCKET
+      value: mlc-s3
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '21'
+    - name: OMPI_COMMAND
+      value: python3
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '21'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '21'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '21'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_plm_slurm_args
+      value: --external-launcher
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '1344'
+    - name: STORAGE_LIBRARY
+      value: s3dlio
+    - name: STORAGE_URI_SCHEME
+      value: s3
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 21

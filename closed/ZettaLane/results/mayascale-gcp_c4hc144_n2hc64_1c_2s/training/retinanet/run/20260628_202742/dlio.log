@@ -1,0 +1,196 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/mlperf-block/retinanet'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 4710038
+[OUTPUT]   record_length  = 322957
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 8
+[OUTPUT]   batch_size     = 24
+[OUTPUT] 2026-06-28T20:27:55.832107 Running DLIO [Training] with 72 process(es)
+[OUTPUT] 2026-06-28T20:27:55.994374 skip_listing [train]: validating 4,712 of 4,710,038 files (first, last, every 1,000) via HEAD requests ...
+[OUTPUT] 2026-06-28T20:27:56.414970 skip_listing [train]:   471/4,712 checked (10%)  —  1120 checks/s  —  ETA 4s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:56.715795 skip_listing [train]:   942/4,712 checked (20%)  —  1306 checks/s  —  ETA 3s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:57.005888 skip_listing [train]:   1,413/4,712 checked (30%)  —  1397 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:57.295951 skip_listing [train]:   1,884/4,712 checked (40%)  —  1448 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:57.591144 skip_listing [train]:   2,355/4,712 checked (50%)  —  1475 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:57.877796 skip_listing [train]:   2,826/4,712 checked (60%)  —  1501 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:58.172303 skip_listing [train]:   3,297/4,712 checked (70%)  —  1514 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:58.469513 skip_listing [train]:   3,768/4,712 checked (80%)  —  1522 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:58.760044 skip_listing [train]:   4,239/4,712 checked (90%)  —  1533 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:59.040340 skip_listing [train]:   4,710/4,712 checked (100%)  —  1546 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-06-28T20:27:59.042864 skip_listing [train]: validation complete — all 4,712 samples exist (3.0s, 1546 checks/s); 65,418 URIs ready for rank 0 (4,710,038 total across all ranks)
+[OUTPUT] 2026-06-28T20:27:59.043963 File listing [train]: 4710038 files discovered, 65417 assigned to rank 0, completed in 3.20s
+[OUTPUT] 2026-06-28T20:27:59.044094 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-06-28T20:27:59.044128 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-06-28T20:27:59.044152 Streamed file sharding: 4710038 train files across 72 ranks via round-robin (rank 0 shard: 65417 files)
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host retina-net1.c.mayanas-testing.internal: reader.read_threads=6 x local_ranks=72 = 432 workers, estimated ~216 GB — exceeds 50% of available RAM on this node (255 GB). Consider reducing read_threads to avoid OOM.
+[OUTPUT] 2026-06-28T20:27:59.047864 Max steps per epoch per rank: 196251 = 1 * 4710038 / 24 (samples per file * local files / batch size)
+[OUTPUT] 2026-06-28T20:27:59.120194 Reshard for epoch 1: 65417 train files, 0 eval files redistributed via alltoall in 0.07s
+[OUTPUT] 2026-06-28T20:27:59.816946 Worker pre-warm complete (6 workers spawned)
+[OUTPUT] 2026-06-28T20:28:00.303296 Starting epoch 1: 2725 steps expected
+[OUTPUT] 2026-06-28T20:28:00.303730 Starting block 1
+[OUTPUT] 2026-06-28T20:30:29.911658 Ending block 1 - 2725 steps completed in 149.61 s
+[OUTPUT] 2026-06-28T20:30:29.917070 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 87.0230
+[OUTPUT] 2026-06-28T20:30:29.917168 Epoch 1 - Block 1 [Training] Throughput (samples/second): 31562.2503
+[OUTPUT] 2026-06-28T20:30:29.918723 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:30:29.925372 Ending epoch 1 - 2725 steps completed in 149.62 s
+[OUTPUT] 2026-06-28T20:30:29.998103 Reshard for epoch 2: 65417 train files, 0 eval files redistributed via alltoall in 0.07s
+[OUTPUT] 2026-06-28T20:30:30.609418 Worker pre-warm complete for epoch 2 (6 workers spawned)
+[WARNING] Page cache flush did not finish within 30s (epoch 2). The next epoch will retry. If this recurs, raise the ceiling with DLIO_DROP_CACHES_TIMEOUT=<seconds> (e.g. 300).
+[OUTPUT] 2026-06-28T20:31:00.643082 Starting epoch 2: 2725 steps expected
+[OUTPUT] 2026-06-28T20:31:00.644697 Starting block 1
+[OUTPUT] 2026-06-28T20:33:30.692830 Ending block 1 - 2725 steps completed in 150.05 s
+[OUTPUT] 2026-06-28T20:33:30.698443 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.7728
+[OUTPUT] 2026-06-28T20:33:30.698540 Epoch 2 - Block 1 [Training] Throughput (samples/second): 31471.6144
+[OUTPUT] 2026-06-28T20:33:30.698851 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:33:30.715517 Ending epoch 2 - 2725 steps completed in 150.07 s
+[OUTPUT] 2026-06-28T20:33:30.793695 Reshard for epoch 3: 65417 train files, 0 eval files redistributed via alltoall in 0.08s
+[OUTPUT] 2026-06-28T20:33:31.467204 Worker pre-warm complete for epoch 3 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 3); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:34:01.504325 Starting epoch 3: 2725 steps expected
+[OUTPUT] 2026-06-28T20:34:01.504718 Starting block 1
+[OUTPUT] 2026-06-28T20:36:31.427741 Ending block 1 - 2725 steps completed in 149.92 s
+[OUTPUT] 2026-06-28T20:36:31.431663 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.8052
+[OUTPUT] 2026-06-28T20:36:31.431714 Epoch 3 - Block 1 [Training] Throughput (samples/second): 31482.5860
+[OUTPUT] 2026-06-28T20:36:31.432051 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:36:31.482463 Ending epoch 3 - 2725 steps completed in 149.98 s
+[OUTPUT] 2026-06-28T20:36:31.580877 Reshard for epoch 4: 65417 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-06-28T20:36:32.226777 Worker pre-warm complete for epoch 4 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 4); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:37:02.262084 Starting epoch 4: 2725 steps expected
+[OUTPUT] 2026-06-28T20:37:02.262438 Starting block 1
+[OUTPUT] 2026-06-28T20:39:32.074988 Ending block 1 - 2725 steps completed in 149.81 s
+[OUTPUT] 2026-06-28T20:39:32.083286 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.8411
+[OUTPUT] 2026-06-28T20:39:32.083401 Epoch 4 - Block 1 [Training] Throughput (samples/second): 31495.7000
+[OUTPUT] 2026-06-28T20:39:32.083734 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:39:32.186738 Ending epoch 4 - 2725 steps completed in 149.92 s
+[OUTPUT] 2026-06-28T20:39:32.273942 Reshard for epoch 5: 65417 train files, 0 eval files redistributed via alltoall in 0.09s
+[OUTPUT] 2026-06-28T20:39:32.890469 Worker pre-warm complete for epoch 5 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 5); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:40:02.929597 Starting epoch 5: 2725 steps expected
+[OUTPUT] 2026-06-28T20:40:02.929949 Starting block 1
+[OUTPUT] 2026-06-28T20:42:33.068022 Ending block 1 - 2725 steps completed in 150.14 s
+[OUTPUT] 2026-06-28T20:42:33.071518 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.6495
+[OUTPUT] 2026-06-28T20:42:33.071574 Epoch 5 - Block 1 [Training] Throughput (samples/second): 31425.6007
+[OUTPUT] 2026-06-28T20:42:33.071847 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:42:33.077175 Ending epoch 5 - 2725 steps completed in 150.15 s
+[OUTPUT] 2026-06-28T20:42:33.149758 Reshard for epoch 6: 65417 train files, 0 eval files redistributed via alltoall in 0.07s
+[OUTPUT] 2026-06-28T20:42:33.524878 Worker pre-warm complete for epoch 6 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 6); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:43:03.558033 Starting epoch 6: 2725 steps expected
+[OUTPUT] 2026-06-28T20:43:03.558397 Starting block 1
+[OUTPUT] 2026-06-28T20:45:34.000949 Ending block 1 - 2725 steps completed in 150.44 s
+[OUTPUT] 2026-06-28T20:45:34.008693 Epoch 6 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.5944
+[OUTPUT] 2026-06-28T20:45:34.008785 Epoch 6 - Block 1 [Training] Throughput (samples/second): 31406.7419
+[OUTPUT] 2026-06-28T20:45:34.009135 Epoch 6 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:45:34.047831 Ending epoch 6 - 2725 steps completed in 150.49 s
+[OUTPUT] 2026-06-28T20:45:34.123993 Reshard for epoch 7: 65417 train files, 0 eval files redistributed via alltoall in 0.07s
+[OUTPUT] 2026-06-28T20:45:34.704081 Worker pre-warm complete for epoch 7 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 7); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:46:04.743188 Starting epoch 7: 2725 steps expected
+[OUTPUT] 2026-06-28T20:46:04.743540 Starting block 1
+[OUTPUT] 2026-06-28T20:48:34.887883 Ending block 1 - 2725 steps completed in 150.14 s
+[OUTPUT] 2026-06-28T20:48:34.893494 Epoch 7 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.6877
+[OUTPUT] 2026-06-28T20:48:34.893601 Epoch 7 - Block 1 [Training] Throughput (samples/second): 31438.3988
+[OUTPUT] 2026-06-28T20:48:34.893939 Epoch 7 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:48:34.949536 Ending epoch 7 - 2725 steps completed in 150.21 s
+[OUTPUT] 2026-06-28T20:48:35.027419 Reshard for epoch 8: 65417 train files, 0 eval files redistributed via alltoall in 0.08s
+[OUTPUT] 2026-06-28T20:48:35.699825 Worker pre-warm complete for epoch 8 (6 workers spawned)
+[WARNING] Page cache flush timed out again at 30s (epoch 8); see earlier warning for remediation.
+[OUTPUT] 2026-06-28T20:49:05.736937 Starting epoch 8: 2725 steps expected
+[OUTPUT] 2026-06-28T20:49:05.737297 Starting block 1
+[OUTPUT] 2026-06-28T20:51:36.391562 Ending block 1 - 2725 steps completed in 150.65 s
+[OUTPUT] 2026-06-28T20:51:36.396103 Epoch 8 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.3704
+[OUTPUT] 2026-06-28T20:51:36.396215 Epoch 8 - Block 1 [Training] Throughput (samples/second): 31325.2972
+[OUTPUT] 2026-06-28T20:51:36.396599 Epoch 8 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-06-28T20:51:36.447794 Ending epoch 8 - 2725 steps completed in 150.71 s
+[OUTPUT] 2026-06-28T20:51:36.525242 Reshard for epoch 9: 65417 train files, 0 eval files redistributed via alltoall in 0.08s
+[OUTPUT] 2026-06-28T20:51:37.233590 Worker pre-warm complete for epoch 9 (6 workers spawned)
+[WARNING] Page cache flush timed out in 7 of 8 epochs. Reads in those epochs may have been served from the OS buffer cache; consider raising DLIO_DROP_CACHES_TIMEOUT for future runs.
+[OUTPUT] 2026-06-28T20:51:37.280598 Saved outputs in /home/mayascale/mlperf-runs/retinanet-1cluster/closed/ZettaLane/results/mayascale-gcp_c4hc144_n2hc64_1c_2s/training/retinanet/run/20260628_202742
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 72 
+[METRIC] Training Accelerator Utilization [AU] (%): 86.7102 (0.1901)
+[METRIC] Training Throughput (samples/second): 31447.3386 (69.3188)
+[METRIC] Training I/O Throughput (MiB/second): 9685.6481 (21.3499)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-06-28T20:51:37.351803 outputs saved in RANKID_output.json

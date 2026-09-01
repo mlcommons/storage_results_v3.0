@@ -1,0 +1,99 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260722_051214",
+  "num_processes": 480,
+  "accelerator": null,
+  "result_dir": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6/training/unet3d/datagen/20260722_051214",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mlperf-storage/mlpstorage_run/unet3d_data/unet3d",
+      "format": "npz",
+      "num_files_train": "450002",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "100"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "450002",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "100",
+    "dataset.data_folder": "/mlperf-storage/mlpstorage_run/unet3d_data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 1547.00403881073,
+  "invocation_start_time": "2026-07-22T05:12:14.162519",
+  "invocation_end_time": "2026-07-22T05:38:32.977913",
+  "verification": null,
+  "executed_command": "mpirun -n 480 -host ccw-mlperf-hpc-1:96,ccw-mlperf-hpc-2:96,ccw-mlperf-hpc-3:96,ccw-mlperf-hpc-4:96,ccw-mlperf-hpc-5:96 --bind-to none --map-by node -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_SYSTEMNAME /shared/apps/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6/training/unet3d/datagen/20260722_051214 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=450002 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mlperf-storage/mlpstorage_run/unet3d_data/unet3d --config-dir=/shared/apps/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 480 -host ccw-mlperf-hpc-1:96,ccw-mlperf-hpc-2:96,ccw-mlperf-hpc-3:96,ccw-mlperf-hpc-4:96,ccw-mlperf-hpc-5:96 --bind-to none --map-by node -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_SYSTEMNAME /shared/apps/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6/training/unet3d/datagen/20260722_051214 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=450002 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mlperf-storage/mlpstorage_run/unet3d_data/unet3d --config-dir=/shared/apps/storage/configs/dlio",
+      "stdout": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6/training/unet3d/datagen/20260722_051214/training_datagen.stdout.log",
+      "stderr": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6/training/unet3d/datagen/20260722_051214/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "ccw-mlperf-hpc-1",
+      "ccw-mlperf-hpc-2",
+      "ccw-mlperf-hpc-3",
+      "ccw-mlperf-hpc-4",
+      "ccw-mlperf-hpc-5"
+    ],
+    "num_processes": 480,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mlperf-storage/mlpstorage_run/unet3d_data",
+    "dlio_bin_path": "/shared/apps/storage/.venv/bin/dlio_benchmark",
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=450002"
+    ],
+    "results_dir": "/submission/submission_Microsoft_training",
+    "systemname": "AMLFS-Durable-Premium-20-4800TiB-16-Standard_D192ds_v6",
+    "config_file": null,
+    "debug": false,
+    "verbose": true,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Microsoft",
+    "num_client_hosts": 5,
+    "_validated_orgname": "Microsoft",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "4023b6bc596d39887664f8a819ff692b"
+  }
+}

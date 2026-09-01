@@ -1,0 +1,11 @@
+- workload=unet3d_datagen
+- ++workload.dataset.num_files_train=73500
+- ++workload.dataset.num_subfolders_train=294
+- ++workload.dataset.skip_listing=True
+- ++workload.storage.storage_type=s3
+- ++workload.storage.storage_root=mlc-s3
+- ++workload.storage.storage_options.storage_library=s3dlio
+- ++workload.storage.storage_options.uri_scheme=s3
+- ++workload.storage.s3_force_path_style=true
+- ++workload.dataset.listing_validation_interval=10
+- ++workload.dataset.data_folder=s3://mlc-s3/unet3d/submission/data_21n/unet3d

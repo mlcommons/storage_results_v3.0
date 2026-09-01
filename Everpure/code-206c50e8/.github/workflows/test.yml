@@ -1,0 +1,77 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.12']
+        # Two parallel groups sized for GitHub's 2-vcpu runners:
+        #   - kvcache runs alone (its suite dominates wallclock)
+        #   - the other three run sequentially in the second group
+        group:
+          - name: kvcache
+            commands: |
+              uv run pytest kv_cache_benchmark/tests
+          - name: others
+            commands: |
+              uv run pytest tests
+              uv run pytest mlpstorage_py/tests
+              uv run pytest vdb_benchmark/tests
+    name: test (${{ matrix.python-version }}, ${{ matrix.group.name }})
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # 1. Environment Setup
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        version: "latest" # Resolves to the latest stable version automatically
+
+#    # 2. Fast Lint Check (Fails fast if code style is wrong)
+#    - name: Install lint dependencies
+#      run: uv pip install --system ruff
+#
+#    - name: Run ruff check
+#      run: ruff check
+#
+#    - name: Run ruff format check
+#      run: ruff format --check
+
+    # 3. System and Test Dependencies
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libopenmpi-dev openmpi-common openmpi-bin 
+
+    - name: Install package and test dependencies
+      run: uv sync --extra test
+
+    - name: Install subpackages (vdb_benchmark, kv_cache_benchmark)
+      # These have their own pyproject.toml and tests; install editable so
+      # their imports resolve and their `test` extras are available.
+      run: |
+        uv pip install -e ./vdb_benchmark
+        uv pip install -e ./kv_cache_benchmark
+
+    # 4. Run this group's test suites.
+    # We can't collect all suites together: `tests/` and `vdb_benchmark/tests/`
+    # both have a top-level package named `tests` whose conftest.py modules
+    # collide under pytest's rootdir-relative import (ImportPathMismatchError).
+    # Each suite's pyproject defines its own `slow` marker and `-m 'not slow'`
+    # default, so subprocess-level invocation is correct.
+    - name: Run ${{ matrix.group.name }} test suite(s)
+      run: ${{ matrix.group.commands }}

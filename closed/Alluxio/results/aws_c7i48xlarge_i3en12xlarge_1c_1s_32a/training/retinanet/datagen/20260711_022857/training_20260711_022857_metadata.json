@@ -1,0 +1,92 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260711_022857",
+  "num_processes": 24,
+  "accelerator": null,
+  "result_dir": "/home/ubuntu/mlps-datagen/closed/Alluxio/results/aws_c7i48xlarge_i3en12xlarge_1c_1s_8a/training/retinanet/datagen/20260711_022857",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/nvme/retina-dataset/retinanet",
+      "format": "jpeg",
+      "num_files_train": "6500000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "num_subfolders_train": "650",
+      "skip_listing": "True",
+      "listing_validation_interval": "1000"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "6500000",
+    "dataset.num_subfolders_train": "650",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1000",
+    "dataset.data_folder": "/mnt/nvme/retina-dataset/retinanet"
+  },
+  "system_info": null,
+  "runtime": 2253.5011596679688,
+  "invocation_start_time": "2026-07-11T02:28:56.311656",
+  "verification": null,
+  "executed_command": "mpirun -n 24 -host 127.0.0.1:24 --bind-to none --map-by socket --mca btl tcp,self /home/ubuntu/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/ubuntu/mlps-datagen/closed/Alluxio/results/aws_c7i48xlarge_i3en12xlarge_1c_1s_8a/training/retinanet/datagen/20260711_022857 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=6500000 ++workload.dataset.num_subfolders_train=650 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mnt/nvme/retina-dataset/retinanet --config-dir=/home/ubuntu/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 24 -host 127.0.0.1:24 --bind-to none --map-by socket --mca btl tcp,self /home/ubuntu/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/ubuntu/mlps-datagen/closed/Alluxio/results/aws_c7i48xlarge_i3en12xlarge_1c_1s_8a/training/retinanet/datagen/20260711_022857 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=6500000 ++workload.dataset.num_subfolders_train=650 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mnt/nvme/retina-dataset/retinanet --config-dir=/home/ubuntu/storage/configs/dlio",
+      "stdout": "/home/ubuntu/mlps-datagen/closed/Alluxio/results/aws_c7i48xlarge_i3en12xlarge_1c_1s_8a/training/retinanet/datagen/20260711_022857/training_datagen.stdout.log",
+      "stderr": "/home/ubuntu/mlps-datagen/closed/Alluxio/results/aws_c7i48xlarge_i3en12xlarge_1c_1s_8a/training/retinanet/datagen/20260711_022857/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 24,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "tcp",
+    "mpi_params": null,
+    "data_dir": "/mnt/nvme/retina-dataset",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=6500000",
+      "dataset.num_subfolders_train=650"
+    ],
+    "results_dir": "/home/ubuntu/mlps-datagen",
+    "systemname": "aws_c7i48xlarge_i3en12xlarge_1c_1s_8a",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Alluxio",
+    "num_client_hosts": 1,
+    "_validated_orgname": "Alluxio",
+    "_validated_systemname": null
+  }
+}

@@ -1,0 +1,88 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mlperf-storage/mlpstorage_run/unet3d_data/unet3d'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 1968762
+[OUTPUT]   record_length  = 146600628
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 5
+[OUTPUT]   batch_size     = 7
+[OUTPUT] 2026-07-23T03:27:20.865648 Running DLIO [Training] with 70 process(es)
+[OUTPUT] 2026-07-23T03:27:21.037831 skip_listing [train]: validating 1,970 of 1,968,762 files (first, last, every 1,000) via HEAD requests ...
+[OUTPUT] 2026-07-23T03:27:21.456968 skip_listing [train]:   197/1,970 checked (10%)  —  470 checks/s  —  ETA 4s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:21.830835 skip_listing [train]:   394/1,970 checked (20%)  —  497 checks/s  —  ETA 3s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:22.203641 skip_listing [train]:   591/1,970 checked (30%)  —  507 checks/s  —  ETA 3s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:22.575963 skip_listing [train]:   788/1,970 checked (40%)  —  512 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:22.949488 skip_listing [train]:   985/1,970 checked (50%)  —  515 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:23.329705 skip_listing [train]:   1,182/1,970 checked (60%)  —  516 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:23.710058 skip_listing [train]:   1,379/1,970 checked (70%)  —  516 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:24.095403 skip_listing [train]:   1,576/1,970 checked (80%)  —  515 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:24.484808 skip_listing [train]:   1,773/1,970 checked (90%)  —  514 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T03:27:24.865874 skip_listing [train]: validation complete — all 1,970 samples exist (3.8s, 515 checks/s); 28,126 URIs ready for rank 0 (1,968,762 total across all ranks)
+[OUTPUT] 2026-07-23T03:27:24.866312 File listing [train]: 1968762 files discovered, 28125 assigned to rank 0, completed in 3.88s
+[OUTPUT] 2026-07-23T03:27:24.866391 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-23T03:27:24.866431 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-23T03:27:24.866461 Streamed file sharding: 1968762 train files across 70 ranks via round-robin (rank 0 shard: 28125 files)
+[OUTPUT] 2026-07-23T03:27:26.020212 Max steps per epoch per rank: 281251 = 1 * 1968762 / 7 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-23T03:27:26.402060 Reshard for epoch 1: 28125 train files, 0 eval files redistributed via alltoall in 0.38s
+[OUTPUT] 2026-07-23T03:27:43.311647 Worker pre-warm complete (96 workers spawned)
+[OUTPUT] 2026-07-23T03:27:43.936876 Starting epoch 1: 4017 steps expected
+[OUTPUT] 2026-07-23T03:27:43.937172 Starting block 1
+[OUTPUT] 2026-07-23T03:39:43.267196 Ending block 1 - 4017 steps completed in 719.33 s
+[OUTPUT] 2026-07-23T03:39:43.292932 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 92.4750
+[OUTPUT] 2026-07-23T03:39:43.292984 Epoch 1 - Block 1 [Training] Throughput (samples/second): 2795.1476
+[OUTPUT] 2026-07-23T03:39:43.294997 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T03:39:43.296296 Ending epoch 1 - 4017 steps completed in 719.36 s
+[OUTPUT] 2026-07-23T03:39:43.330767 Reshard for epoch 2: 28125 train files, 0 eval files redistributed via alltoall in 0.03s
+[OUTPUT] 2026-07-23T03:39:58.989436 Worker pre-warm complete for epoch 2 (96 workers spawned)
+[OUTPUT] 2026-07-23T03:40:07.892413 Starting epoch 2: 4017 steps expected
+[OUTPUT] 2026-07-23T03:40:07.892861 Starting block 1
+[OUTPUT] 2026-07-23T03:52:04.682263 Ending block 1 - 4017 steps completed in 716.79 s
+[OUTPUT] 2026-07-23T03:52:04.687503 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 92.4312
+[OUTPUT] 2026-07-23T03:52:04.687564 Epoch 2 - Block 1 [Training] Throughput (samples/second): 2793.8109
+[OUTPUT] 2026-07-23T03:52:04.687994 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T03:52:04.784049 Ending epoch 2 - 4017 steps completed in 716.89 s
+[OUTPUT] 2026-07-23T03:52:04.824416 Reshard for epoch 3: 28125 train files, 0 eval files redistributed via alltoall in 0.04s
+[OUTPUT] 2026-07-23T03:52:20.341043 Worker pre-warm complete for epoch 3 (96 workers spawned)
+[OUTPUT] 2026-07-23T03:52:29.374374 Starting epoch 3: 4017 steps expected
+[OUTPUT] 2026-07-23T03:52:29.374764 Starting block 1
+[OUTPUT] 2026-07-23T04:04:31.866655 Ending block 1 - 4017 steps completed in 722.49 s
+[OUTPUT] 2026-07-23T04:04:31.871779 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 91.9999
+[OUTPUT] 2026-07-23T04:04:31.871846 Epoch 3 - Block 1 [Training] Throughput (samples/second): 2780.7975
+[OUTPUT] 2026-07-23T04:04:31.872266 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T04:04:31.873572 Ending epoch 3 - 4017 steps completed in 722.50 s
+[OUTPUT] 2026-07-23T04:04:31.912986 Reshard for epoch 4: 28125 train files, 0 eval files redistributed via alltoall in 0.04s
+[OUTPUT] 2026-07-23T04:04:46.923696 Worker pre-warm complete for epoch 4 (96 workers spawned)
+[OUTPUT] 2026-07-23T04:04:55.816761 Starting epoch 4: 4017 steps expected
+[OUTPUT] 2026-07-23T04:04:55.817104 Starting block 1
+[OUTPUT] 2026-07-23T04:16:56.284146 Ending block 1 - 4017 steps completed in 720.47 s
+[OUTPUT] 2026-07-23T04:16:56.288776 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 91.7670
+[OUTPUT] 2026-07-23T04:16:56.288848 Epoch 4 - Block 1 [Training] Throughput (samples/second): 2773.7175
+[OUTPUT] 2026-07-23T04:16:56.289312 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T04:16:56.306784 Ending epoch 4 - 4017 steps completed in 720.49 s
+[OUTPUT] 2026-07-23T04:16:56.349229 Reshard for epoch 5: 28125 train files, 0 eval files redistributed via alltoall in 0.04s
+[OUTPUT] 2026-07-23T04:17:11.667816 Worker pre-warm complete for epoch 5 (96 workers spawned)
+[OUTPUT] 2026-07-23T04:17:20.540741 Starting epoch 5: 4017 steps expected
+[OUTPUT] 2026-07-23T04:17:20.541089 Starting block 1
+[OUTPUT] 2026-07-23T04:29:21.475249 Ending block 1 - 4017 steps completed in 720.93 s
+[OUTPUT] 2026-07-23T04:29:21.479947 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 91.8607
+[OUTPUT] 2026-07-23T04:29:21.480023 Epoch 5 - Block 1 [Training] Throughput (samples/second): 2776.5749
+[OUTPUT] 2026-07-23T04:29:21.480468 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T04:29:21.503648 Ending epoch 5 - 4017 steps completed in 720.96 s
+[OUTPUT] 2026-07-23T04:29:21.545075 Reshard for epoch 6: 28125 train files, 0 eval files redistributed via alltoall in 0.04s
+[OUTPUT] 2026-07-23T04:29:37.179433 Worker pre-warm complete for epoch 6 (96 workers spawned)
+[OUTPUT] 2026-07-23T04:29:37.988516 Saved outputs in /submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-4096TiB-70-Standard_D192ds_v6/training/unet3d/run/20260723_032605
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 70 
+[METRIC] Training Accelerator Utilization [AU] (%): 92.1043 (0.2559)
+[METRIC] Training Throughput (samples/second): 2783.8212 (7.7515)
+[METRIC] Training I/O Throughput (MiB/second): 389203.9712 (1083.7359)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-23T04:29:38.606461 outputs saved in RANKID_output.json

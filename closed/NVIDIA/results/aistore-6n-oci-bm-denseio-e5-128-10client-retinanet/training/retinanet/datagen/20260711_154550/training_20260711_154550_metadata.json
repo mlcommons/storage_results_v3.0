@@ -1,0 +1,152 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260711_154550",
+  "num_processes": 120,
+  "accelerator": null,
+  "result_dir": "/home/opc/mlps-6n10-retinanet-submission/closed/nvidia/results/aistore-6n-oci-bm-denseio-e5-128-10client/training/retinanet/datagen/20260711_154550",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "data/r10-6n/retinanet",
+      "format": "jpeg",
+      "num_files_train": "252000000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "num_subfolders_train": "25200",
+      "skip_listing": "True",
+      "listing_validation_interval": "10000"
+    },
+    "storage": {
+      "storage_type": "s3",
+      "storage_root": "mlp-retinanet",
+      "storage_options": {
+        "storage_library": "s3dlio",
+        "uri_scheme": "s3"
+      },
+      "s3_force_path_style": "true"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "252000000",
+    "dataset.num_subfolders_train": "25200",
+    "storage.storage_type": "s3",
+    "storage.storage_root": "mlp-retinanet",
+    "storage.storage_options.storage_library": "s3dlio",
+    "storage.storage_options.uri_scheme": "s3",
+    "storage.s3_force_path_style": "true",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10000",
+    "dataset.data_folder": "data/r10-6n/retinanet"
+  },
+  "system_info": null,
+  "runtime": 2620.968109369278,
+  "invocation_start_time": "2026-07-11T15:45:50.662160",
+  "verification": null,
+  "executed_command": "mpirun -n 120 -host 10.49.42.72:12,10.49.42.45:12,10.49.42.53:12,10.49.42.122:12,10.49.42.14:12,10.49.42.59:12,10.49.42.111:12,10.49.42.35:12,10.49.42.23:12,10.49.42.55:12 --bind-to none --map-by node -x AWS_ENDPOINT_URL -x AWS_ACCESS_KEY_ID -x AWS_SECRET_ACCESS_KEY -x AWS_REGION -x BUCKET -x STORAGE_LIBRARY -x S3_ENDPOINT_URIS -x S3_LOAD_BALANCE_STRATEGY -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_RANGE_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_MULTIPART_THRESHOLD_MB -x AWS_MAX_ATTEMPTS -x AWS_RETRY_MODE -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_MAX_ATTEMPTS -x AWS_REGION -x AWS_RETRY_MODE -x AWS_SECRET_ACCESS_KEY -x BUCKET -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_RANGE_THRESHOLD_MB -x STORAGE_LIBRARY /home/opc/mlps-6n/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/opc/mlps-6n10-retinanet-submission/closed/nvidia/results/aistore-6n-oci-bm-denseio-e5-128-10client/training/retinanet/datagen/20260711_154550 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=252000000 ++workload.dataset.num_subfolders_train=25200 ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlp-retinanet ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=data/r10-6n/retinanet --config-dir=/home/opc/mlps-6n/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 120 -host 10.49.42.72:12,10.49.42.45:12,10.49.42.53:12,10.49.42.122:12,10.49.42.14:12,10.49.42.59:12,10.49.42.111:12,10.49.42.35:12,10.49.42.23:12,10.49.42.55:12 --bind-to none --map-by node -x AWS_ENDPOINT_URL -x AWS_ACCESS_KEY_ID -x AWS_SECRET_ACCESS_KEY -x AWS_REGION -x BUCKET -x STORAGE_LIBRARY -x S3_ENDPOINT_URIS -x S3_LOAD_BALANCE_STRATEGY -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_RANGE_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_MULTIPART_THRESHOLD_MB -x AWS_MAX_ATTEMPTS -x AWS_RETRY_MODE -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_MAX_ATTEMPTS -x AWS_REGION -x AWS_RETRY_MODE -x AWS_SECRET_ACCESS_KEY -x BUCKET -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_RANGE_THRESHOLD_MB -x STORAGE_LIBRARY /home/opc/mlps-6n/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/home/opc/mlps-6n10-retinanet-submission/closed/nvidia/results/aistore-6n-oci-bm-denseio-e5-128-10client/training/retinanet/datagen/20260711_154550 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=252000000 ++workload.dataset.num_subfolders_train=25200 ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlp-retinanet ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=data/r10-6n/retinanet --config-dir=/home/opc/mlps-6n/configs/dlio",
+      "stdout": "/home/opc/mlps-6n10-retinanet-submission/closed/nvidia/results/aistore-6n-oci-bm-denseio-e5-128-10client/training/retinanet/datagen/20260711_154550/training_datagen.stdout.log",
+      "stderr": "/home/opc/mlps-6n10-retinanet-submission/closed/nvidia/results/aistore-6n-oci-bm-denseio-e5-128-10client/training/retinanet/datagen/20260711_154550/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "10.49.42.72",
+      "10.49.42.45",
+      "10.49.42.53",
+      "10.49.42.122",
+      "10.49.42.14",
+      "10.49.42.59",
+      "10.49.42.111",
+      "10.49.42.35",
+      "10.49.42.23",
+      "10.49.42.55"
+    ],
+    "num_processes": 120,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": [
+      "-x",
+      "AWS_ENDPOINT_URL",
+      "-x",
+      "AWS_ACCESS_KEY_ID",
+      "-x",
+      "AWS_SECRET_ACCESS_KEY",
+      "-x",
+      "AWS_REGION",
+      "-x",
+      "BUCKET",
+      "-x",
+      "STORAGE_LIBRARY",
+      "-x",
+      "S3_ENDPOINT_URIS",
+      "-x",
+      "S3_LOAD_BALANCE_STRATEGY",
+      "-x",
+      "S3DLIO_FOLLOW_REDIRECTS",
+      "-x",
+      "S3DLIO_RANGE_THRESHOLD_MB",
+      "-x",
+      "S3DLIO_OPERATION_TIMEOUT_SECS",
+      "-x",
+      "S3DLIO_CONNECT_TIMEOUT_SECS",
+      "-x",
+      "S3DLIO_MAX_RETRY_ATTEMPTS",
+      "-x",
+      "S3DLIO_POOL_MAX_IDLE_PER_HOST",
+      "-x",
+      "S3DLIO_MULTIPART_THRESHOLD_MB",
+      "-x",
+      "AWS_MAX_ATTEMPTS",
+      "-x",
+      "AWS_RETRY_MODE"
+    ],
+    "data_dir": "data/r10-6n",
+    "dlio_bin_path": "/home/opc/mlps-6n/.venv/bin",
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=252000000",
+      "dataset.num_subfolders_train=25200"
+    ],
+    "results_dir": "/home/opc/mlps-6n10-retinanet-submission",
+    "systemname": "aistore-6n-oci-bm-denseio-e5-128-10client",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": "/home/opc/mlps-6n/uv.lock",
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "object",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "nvidia",
+    "num_client_hosts": 10,
+    "_validated_orgname": "nvidia",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "48676b4ff9c4e269d66ca7bc36e16b8e"
+  }
+}

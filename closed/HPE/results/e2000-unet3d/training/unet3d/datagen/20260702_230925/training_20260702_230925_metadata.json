@@ -1,0 +1,107 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260702_230925",
+  "num_processes": 15,
+  "accelerator": null,
+  "result_dir": "/mnt/e2kp5/mlperf/training/unet3d/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/datagen/20260702_230925",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/e2kp5/mlperf/training/unet3d/data/unet3d",
+      "format": "npz",
+      "num_files_train": "105000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "10",
+      "skip_listing": "True",
+      "listing_validation_interval": "100"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "105000",
+    "dataset.num_subfolders_train": "10",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "100",
+    "dataset.data_folder": "/mnt/e2kp5/mlperf/training/unet3d/data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 183.55171918869019,
+  "verification": null,
+  "executed_command": "mpirun -n 15 -host c-ftc0001:1,c-ftc0002:1,c-ftc0003:1,c-ftc0004:1,c-ftc0005:1,c-ftc0006:1,c-ftc0007:1,c-ftc0009:1,c-ftc0010:1,c-ftc0011:1,c-ftc0012:1,c-ftc0013:1,c-ftc0014:1,c-ftc0015:1,c-ftc0017:1 --bind-to none --map-by node /home/mirajeev/mlperf_2026/mlperf-storage-v3/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/e2kp5/mlperf/training/unet3d/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/datagen/20260702_230925 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=105000 ++workload.dataset.num_subfolders_train=10 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mnt/e2kp5/mlperf/training/unet3d/data/unet3d --config-dir=/home/mirajeev/mlperf_2026/mlperf-storage-v3/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 15 -host c-ftc0001:1,c-ftc0002:1,c-ftc0003:1,c-ftc0004:1,c-ftc0005:1,c-ftc0006:1,c-ftc0007:1,c-ftc0009:1,c-ftc0010:1,c-ftc0011:1,c-ftc0012:1,c-ftc0013:1,c-ftc0014:1,c-ftc0015:1,c-ftc0017:1 --bind-to none --map-by node /home/mirajeev/mlperf_2026/mlperf-storage-v3/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/e2kp5/mlperf/training/unet3d/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/datagen/20260702_230925 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=105000 ++workload.dataset.num_subfolders_train=10 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mnt/e2kp5/mlperf/training/unet3d/data/unet3d --config-dir=/home/mirajeev/mlperf_2026/mlperf-storage-v3/configs/dlio",
+      "stdout": "/mnt/e2kp5/mlperf/training/unet3d/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/datagen/20260702_230925/training_datagen.stdout.log",
+      "stderr": "/mnt/e2kp5/mlperf/training/unet3d/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/datagen/20260702_230925/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "c-ftc0001",
+      "c-ftc0002",
+      "c-ftc0003",
+      "c-ftc0004",
+      "c-ftc0005",
+      "c-ftc0006",
+      "c-ftc0007",
+      "c-ftc0009",
+      "c-ftc0010",
+      "c-ftc0011",
+      "c-ftc0012",
+      "c-ftc0013",
+      "c-ftc0014",
+      "c-ftc0015",
+      "c-ftc0017"
+    ],
+    "num_processes": 15,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/e2kp5/mlperf/training/unet3d/data",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=105000",
+      "dataset.num_subfolders_train=10"
+    ],
+    "results_dir": "/mnt/e2kp5/mlperf/training/unet3d/finalrun_results",
+    "systemname": "my-lustre-system",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "HPE",
+    "num_client_hosts": 15,
+    "_validated_orgname": "HPE",
+    "_validated_systemname": null
+  }
+}

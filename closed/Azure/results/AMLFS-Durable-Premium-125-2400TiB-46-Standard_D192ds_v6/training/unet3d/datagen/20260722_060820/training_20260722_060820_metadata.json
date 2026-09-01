@@ -1,0 +1,114 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260722_060820",
+  "num_processes": 1920,
+  "accelerator": null,
+  "result_dir": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6/training/unet3d/datagen/20260722_060820",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mlperf-storage/mlpstorage_run/unet3d_data/unet3d",
+      "format": "npz",
+      "num_files_train": "1293758",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "1000"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "1293758",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1000",
+    "dataset.data_folder": "/mlperf-storage/mlpstorage_run/unet3d_data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 1300.4508216381073,
+  "invocation_start_time": "2026-07-22T06:08:20.303914",
+  "invocation_end_time": "2026-07-22T06:30:25.103460",
+  "verification": null,
+  "executed_command": "mpirun -n 1920 -host ccw-mlperf-westus3-hpc-1:96,ccw-mlperf-westus3-hpc-2:96,ccw-mlperf-westus3-hpc-3:96,ccw-mlperf-westus3-hpc-4:96,ccw-mlperf-westus3-hpc-5:96,ccw-mlperf-westus3-hpc-6:96,ccw-mlperf-westus3-hpc-7:96,ccw-mlperf-westus3-hpc-8:96,ccw-mlperf-westus3-hpc-9:96,ccw-mlperf-westus3-hpc-10:96,ccw-mlperf-westus3-hpc-11:96,ccw-mlperf-westus3-hpc-12:96,ccw-mlperf-westus3-hpc-13:96,ccw-mlperf-westus3-hpc-14:96,ccw-mlperf-westus3-hpc-15:96,ccw-mlperf-westus3-hpc-16:96,ccw-mlperf-westus3-hpc-17:96,ccw-mlperf-westus3-hpc-18:96,ccw-mlperf-westus3-hpc-19:96,ccw-mlperf-westus3-hpc-20:96 --bind-to none --map-by node -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_SYSTEMNAME /shared/apps/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6/training/unet3d/datagen/20260722_060820 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=1293758 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mlperf-storage/mlpstorage_run/unet3d_data/unet3d --config-dir=/shared/apps/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 1920 -host ccw-mlperf-westus3-hpc-1:96,ccw-mlperf-westus3-hpc-2:96,ccw-mlperf-westus3-hpc-3:96,ccw-mlperf-westus3-hpc-4:96,ccw-mlperf-westus3-hpc-5:96,ccw-mlperf-westus3-hpc-6:96,ccw-mlperf-westus3-hpc-7:96,ccw-mlperf-westus3-hpc-8:96,ccw-mlperf-westus3-hpc-9:96,ccw-mlperf-westus3-hpc-10:96,ccw-mlperf-westus3-hpc-11:96,ccw-mlperf-westus3-hpc-12:96,ccw-mlperf-westus3-hpc-13:96,ccw-mlperf-westus3-hpc-14:96,ccw-mlperf-westus3-hpc-15:96,ccw-mlperf-westus3-hpc-16:96,ccw-mlperf-westus3-hpc-17:96,ccw-mlperf-westus3-hpc-18:96,ccw-mlperf-westus3-hpc-19:96,ccw-mlperf-westus3-hpc-20:96 --bind-to none --map-by node -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_SYSTEMNAME /shared/apps/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6/training/unet3d/datagen/20260722_060820 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=1293758 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.data_folder=/mlperf-storage/mlpstorage_run/unet3d_data/unet3d --config-dir=/shared/apps/storage/configs/dlio",
+      "stdout": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6/training/unet3d/datagen/20260722_060820/training_datagen.stdout.log",
+      "stderr": "/submission/submission_Microsoft_training/closed/Microsoft/results/AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6/training/unet3d/datagen/20260722_060820/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "ccw-mlperf-westus3-hpc-1",
+      "ccw-mlperf-westus3-hpc-2",
+      "ccw-mlperf-westus3-hpc-3",
+      "ccw-mlperf-westus3-hpc-4",
+      "ccw-mlperf-westus3-hpc-5",
+      "ccw-mlperf-westus3-hpc-6",
+      "ccw-mlperf-westus3-hpc-7",
+      "ccw-mlperf-westus3-hpc-8",
+      "ccw-mlperf-westus3-hpc-9",
+      "ccw-mlperf-westus3-hpc-10",
+      "ccw-mlperf-westus3-hpc-11",
+      "ccw-mlperf-westus3-hpc-12",
+      "ccw-mlperf-westus3-hpc-13",
+      "ccw-mlperf-westus3-hpc-14",
+      "ccw-mlperf-westus3-hpc-15",
+      "ccw-mlperf-westus3-hpc-16",
+      "ccw-mlperf-westus3-hpc-17",
+      "ccw-mlperf-westus3-hpc-18",
+      "ccw-mlperf-westus3-hpc-19",
+      "ccw-mlperf-westus3-hpc-20"
+    ],
+    "num_processes": 1920,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mlperf-storage/mlpstorage_run/unet3d_data",
+    "dlio_bin_path": "/shared/apps/storage/.venv/bin/dlio_benchmark",
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=1293758"
+    ],
+    "results_dir": "/submission/submission_Microsoft_training",
+    "systemname": "AMLFS-Durable-Premium-125-2400TiB-46-Standard_D192ds_v6",
+    "config_file": null,
+    "debug": false,
+    "verbose": true,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Microsoft",
+    "num_client_hosts": 20,
+    "_validated_orgname": "Microsoft",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "4023b6bc596d39887664f8a819ff692b"
+  }
+}

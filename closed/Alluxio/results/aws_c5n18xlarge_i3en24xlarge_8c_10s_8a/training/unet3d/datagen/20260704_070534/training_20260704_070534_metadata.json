@@ -1,0 +1,96 @@
+{
+ "benchmark_type": "training",
+ "model": "unet3d",
+ "command": "datagen",
+ "run_datetime": "20260704_070534",
+ "num_processes": 16,
+ "accelerator": null,
+ "result_dir": "/home/ubuntu/mlps_na8/closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a/training/unet3d/datagen/20260704_070534",
+ "parameters": {
+  "model": {
+   "name": "unet3d",
+   "type": "cnn",
+   "model_size": 499153191
+  },
+  "framework": "pytorch",
+  "workflow": {
+   "generate_data": true,
+   "train": false,
+   "checkpoint": false
+  },
+  "dataset": {
+   "data_folder": "/mnt/alluxio/mlperf/unet3d",
+   "format": "npz",
+   "num_files_train": 55500,
+   "num_samples_per_file": 1,
+   "record_length_bytes": 146600628,
+   "record_length_bytes_stdev": 68341808,
+   "record_length_bytes_resize": 2097152,
+   "skip_listing": "True",
+   "listing_validation_interval": "1",
+   "num_subfolders_train": 0
+  }
+ },
+ "override_parameters": {
+  "dataset.skip_listing": "True",
+  "dataset.listing_validation_interval": "1",
+  "dataset.num_files_train": "55500",
+  "dataset.num_subfolders_train": "0",
+  "dataset.data_folder": "/mnt/alluxio/mlperf/unet3d"
+ },
+ "system_info": null,
+ "runtime": 2228.8618507385254,
+ "verification": null,
+ "executed_command": "mpirun -n 16 -host 127.0.0.1:16 --bind-to none --map-by socket --mca btl tcp,self /home/ubuntu/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/ubuntu/mlps_na8/closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a/training/unet3d/datagen/20260704_070534 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=55500 ++workload.dataset.num_subfolders_train=0 ++workload.dataset.data_folder=/mnt/alluxio/mlperf/unet3d --config-dir=/home/ubuntu/storage/configs/dlio",
+ "command_output_files": [
+  {
+   "command": "mpirun -n 16 -host 127.0.0.1:16 --bind-to none --map-by socket --mca btl tcp,self /home/ubuntu/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/ubuntu/mlps_na8/closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a/training/unet3d/datagen/20260704_070534 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=55500 ++workload.dataset.num_subfolders_train=0 ++workload.dataset.data_folder=/mnt/alluxio/mlperf/unet3d --config-dir=/home/ubuntu/storage/configs/dlio",
+   "stdout": "/home/ubuntu/mlps_na8/closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a/training/unet3d/datagen/20260704_070534/training_datagen.stdout.log",
+   "stderr": "/home/ubuntu/mlps_na8/closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a/training/unet3d/datagen/20260704_070534/training_datagen.stderr.log"
+  }
+ ],
+ "args": {
+  "mode": "closed",
+  "benchmark": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "hosts": [
+   "127.0.0.1"
+  ],
+  "num_processes": 16,
+  "exec_type": "mpi",
+  "mpi_bin": "mpirun",
+  "oversubscribe": false,
+  "allow_run_as_root": false,
+  "mpi_btl": "tcp",
+  "mpi_params": null,
+  "data_dir": "/mnt/alluxio/mlperf",
+  "dlio_bin_path": null,
+  "o_direct": false,
+  "params": [
+   "dataset.skip_listing=True",
+   "dataset.listing_validation_interval=1",
+   "dataset.num_files_train=55500",
+   "dataset.num_subfolders_train=0"
+  ],
+  "results_dir": "/home/ubuntu/mlps_na8",
+  "systemname": "aws_c5n18xlarge_i3en24xlarge_8c_10s_8a",
+  "config_file": null,
+  "debug": false,
+  "verbose": false,
+  "stream_log_level": "INFO",
+  "quiet": false,
+  "dry_run": false,
+  "verify_lockfile": null,
+  "skip_validation": false,
+  "skip_fs_separation_gate": false,
+  "data_access_protocol": "file",
+  "loops": 1,
+  "allow_invalid_params": false,
+  "_mlps_req_systemname": true,
+  "orgname": "Alluxio",
+  "num_client_hosts": 1,
+  "_validated_orgname": "Alluxio",
+  "_validated_systemname": null
+ }
+}

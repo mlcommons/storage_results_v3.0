@@ -1,0 +1,76 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/e2kp5/mlperf/training/unet3d/data/unet3d'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 105000
+[OUTPUT]   record_length  = 146600628
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 5
+[OUTPUT]   batch_size     = 7
+[OUTPUT] 2026-07-06T15:24:42.201835 Running DLIO [Training] with 30 process(es)
+[OUTPUT] 2026-07-06T15:24:42.812826 File listing [train]: 105000 files discovered, 3500 assigned to rank 0, completed in 0.58s
+[OUTPUT] 2026-07-06T15:24:42.814140 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-06T15:24:42.814236 Streamed file sharding: 105000 train files across 30 ranks via round-robin (rank 0 shard: 3500 files)
+[OUTPUT] 2026-07-06T15:24:42.830106 Max steps per epoch per rank: 15000 = 1 * 105000 / 7 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-06T15:24:42.843263 Reshard for epoch 1: 3500 train files, 0 eval files redistributed via alltoall in 0.01s
+[OUTPUT] 2026-07-06T15:24:47.967132 Worker pre-warm complete (18 workers spawned)
+[OUTPUT] 2026-07-06T15:25:03.325499 Starting epoch 1: 500 steps expected
+[OUTPUT] 2026-07-06T15:25:03.326953 Starting block 1
+[OUTPUT] 2026-07-06T15:26:31.027398 Ending block 1 - 500 steps completed in 87.70 s
+[OUTPUT] 2026-07-06T15:26:31.040009 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 95.9530
+[OUTPUT] 2026-07-06T15:26:31.040079 Epoch 1 - Block 1 [Training] Throughput (samples/second): 1243.1687
+[OUTPUT] 2026-07-06T15:26:31.041980 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-06T15:26:31.174751 Ending epoch 1 - 500 steps completed in 87.85 s
+[OUTPUT] 2026-07-06T15:26:31.191577 Reshard for epoch 2: 3500 train files, 0 eval files redistributed via alltoall in 0.02s
+[OUTPUT] 2026-07-06T15:26:36.727343 Worker pre-warm complete for epoch 2 (18 workers spawned)
+[OUTPUT] 2026-07-06T15:26:51.075060 Starting epoch 2: 500 steps expected
+[OUTPUT] 2026-07-06T15:26:51.076035 Starting block 1
+[OUTPUT] 2026-07-06T15:28:18.556479 Ending block 1 - 500 steps completed in 87.48 s
+[OUTPUT] 2026-07-06T15:28:18.558884 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 96.0582
+[OUTPUT] 2026-07-06T15:28:18.558947 Epoch 2 - Block 1 [Training] Throughput (samples/second): 1244.5380
+[OUTPUT] 2026-07-06T15:28:18.559169 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-06T15:28:18.843907 Ending epoch 2 - 500 steps completed in 87.77 s
+[OUTPUT] 2026-07-06T15:28:18.861863 Reshard for epoch 3: 3500 train files, 0 eval files redistributed via alltoall in 0.02s
+[OUTPUT] 2026-07-06T15:28:24.076235 Worker pre-warm complete for epoch 3 (18 workers spawned)
+[OUTPUT] 2026-07-06T15:28:38.581600 Starting epoch 3: 500 steps expected
+[OUTPUT] 2026-07-06T15:28:38.582610 Starting block 1
+[OUTPUT] 2026-07-06T15:30:08.437931 Ending block 1 - 500 steps completed in 89.86 s
+[OUTPUT] 2026-07-06T15:30:08.439815 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 93.6172
+[OUTPUT] 2026-07-06T15:30:08.439874 Epoch 3 - Block 1 [Training] Throughput (samples/second): 1212.9089
+[OUTPUT] 2026-07-06T15:30:08.440051 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-06T15:30:08.716545 Ending epoch 3 - 500 steps completed in 90.13 s
+[OUTPUT] 2026-07-06T15:30:08.735048 Reshard for epoch 4: 3500 train files, 0 eval files redistributed via alltoall in 0.02s
+[OUTPUT] 2026-07-06T15:30:14.170577 Worker pre-warm complete for epoch 4 (18 workers spawned)
+[OUTPUT] 2026-07-06T15:30:28.644835 Starting epoch 4: 500 steps expected
+[OUTPUT] 2026-07-06T15:30:28.645793 Starting block 1
+[OUTPUT] 2026-07-06T15:31:56.427569 Ending block 1 - 500 steps completed in 87.78 s
+[OUTPUT] 2026-07-06T15:31:56.429885 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 95.8706
+[OUTPUT] 2026-07-06T15:31:56.429948 Epoch 4 - Block 1 [Training] Throughput (samples/second): 1242.0957
+[OUTPUT] 2026-07-06T15:31:56.430150 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-06T15:31:56.707299 Ending epoch 4 - 500 steps completed in 88.06 s
+[OUTPUT] 2026-07-06T15:31:56.726425 Reshard for epoch 5: 3500 train files, 0 eval files redistributed via alltoall in 0.02s
+[OUTPUT] 2026-07-06T15:32:02.007576 Worker pre-warm complete for epoch 5 (18 workers spawned)
+[OUTPUT] 2026-07-06T15:32:16.530963 Starting epoch 5: 500 steps expected
+[OUTPUT] 2026-07-06T15:32:16.531938 Starting block 1
+[OUTPUT] 2026-07-06T15:33:44.386758 Ending block 1 - 500 steps completed in 87.85 s
+[OUTPUT] 2026-07-06T15:33:44.388778 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 95.9596
+[OUTPUT] 2026-07-06T15:33:44.388838 Epoch 5 - Block 1 [Training] Throughput (samples/second): 1243.2461
+[OUTPUT] 2026-07-06T15:33:44.389036 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-06T15:33:44.563304 Ending epoch 5 - 500 steps completed in 88.03 s
+[OUTPUT] 2026-07-06T15:33:44.581160 Reshard for epoch 6: 3500 train files, 0 eval files redistributed via alltoall in 0.02s
+[OUTPUT] 2026-07-06T15:33:49.487610 Worker pre-warm complete for epoch 6 (18 workers spawned)
+[OUTPUT] 2026-07-06T15:33:50.481089 Saved outputs in /mnt/e2kp8/mlperf_2026_result_dir_for_run/finalrun_results/closed/HPE/results/my-lustre-system/training/unet3d/run/20260706_152407
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 30 
+[METRIC] Training Accelerator Utilization [AU] (%): 94.6730 (0.2813)
+[METRIC] Training Throughput (samples/second): 1226.5634 (3.6452)
+[METRIC] Training I/O Throughput (MiB/second): 171484.9155 (509.6319)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-06T15:33:50.492225 outputs saved in RANKID_output.json

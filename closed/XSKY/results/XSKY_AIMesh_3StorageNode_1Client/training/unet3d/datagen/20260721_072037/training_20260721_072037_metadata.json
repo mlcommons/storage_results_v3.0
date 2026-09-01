@@ -1,0 +1,103 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260721_072037",
+  "num_processes": 12,
+  "accelerator": null,
+  "result_dir": "/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032/closed/XSKY/results/XSKY_AIMesh_3StorageNode_8Client/training/unet3d/datagen/20260721_072037",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/xpc/mlperf/data/formal/unet3d_closed/unet3d",
+      "format": "npz",
+      "num_files_train": "42000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "4",
+      "total_disk_bytes": "6157226376000",
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "42000",
+    "dataset.num_subfolders_train": "4",
+    "dataset.total_disk_bytes": "6157226376000",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "/mnt/xpc/mlperf/data/formal/unet3d_closed/unet3d"
+  },
+  "system_info": null,
+  "runtime": 112.50586986541748,
+  "invocation_start_time": "2026-07-21T07:20:37.588803",
+  "invocation_end_time": "2026-07-21T07:22:31.390224",
+  "verification": null,
+  "executed_command": "mpirun -n 12 -host 192.168.2.28:12 --bind-to none --map-by socket --allow-run-as-root -x MLPSTORAGE_HOME -x MLPSTORAGE_RESULTS_DIR /root/mlperf-storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032/closed/XSKY/results/XSKY_AIMesh_3StorageNode_8Client/training/unet3d/datagen/20260721_072037 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=42000 ++workload.dataset.num_subfolders_train=4 ++workload.dataset.total_disk_bytes=6157226376000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/xpc/mlperf/data/formal/unet3d_closed/unet3d --config-dir=/root/mlperf-storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 12 -host 192.168.2.28:12 --bind-to none --map-by socket --allow-run-as-root -x MLPSTORAGE_HOME -x MLPSTORAGE_RESULTS_DIR /root/mlperf-storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032/closed/XSKY/results/XSKY_AIMesh_3StorageNode_8Client/training/unet3d/datagen/20260721_072037 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=42000 ++workload.dataset.num_subfolders_train=4 ++workload.dataset.total_disk_bytes=6157226376000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/xpc/mlperf/data/formal/unet3d_closed/unet3d --config-dir=/root/mlperf-storage/configs/dlio",
+      "stdout": "/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032/closed/XSKY/results/XSKY_AIMesh_3StorageNode_8Client/training/unet3d/datagen/20260721_072037/training_datagen.stdout.log",
+      "stderr": "/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032/closed/XSKY/results/XSKY_AIMesh_3StorageNode_8Client/training/unet3d/datagen/20260721_072037/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "192.168.2.28"
+    ],
+    "num_processes": 12,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/xpc/mlperf/data/formal/unet3d_closed",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=42000",
+      "dataset.num_subfolders_train=4",
+      "dataset.total_disk_bytes=6157226376000",
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=10"
+    ],
+    "results_dir": "/root/mlps-results-training-unet3d-client8-a12-closed-20260721_072032",
+    "systemname": "XSKY_AIMesh_3StorageNode_8Client",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "XSKY",
+    "num_client_hosts": 1,
+    "_validated_orgname": "XSKY",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "4e4e4e667bbf3fdc38735de981f4a638"
+  }
+}

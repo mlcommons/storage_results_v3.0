@@ -1,0 +1,101 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260709_191329",
+  "num_processes": 160,
+  "accelerator": null,
+  "result_dir": "/root/results/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-4Tier0/training/unet3d/datagen/20260709_191329",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/glfs/GalaxSphere-4Tier0/training/unet3d",
+      "format": "npz",
+      "num_files_train": "280000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "1",
+      "num_subfolders_train": "28"
+    }
+  },
+  "override_parameters": {
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1",
+    "dataset.num_files_train": "280000",
+    "dataset.num_subfolders_train": "28",
+    "dataset.data_folder": "/mnt/glfs/GalaxSphere-4Tier0/training/unet3d"
+  },
+  "system_info": null,
+  "runtime": 3556.3895440101624,
+  "invocation_start_time": "2026-07-09T19:13:29.675541",
+  "verification": null,
+  "executed_command": "mpirun -n 160 -host 172.16.1.25:40,172.16.1.26:40,172.16.1.27:40,172.16.1.28:40 --bind-to none --map-by node --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_CAP02_TIMEOUT_SECONDS -x MLPS_CHECKPOINT_MP_START_METHOD /root/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/root/results/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-4Tier0/training/unet3d/datagen/20260709_191329 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=280000 ++workload.dataset.num_subfolders_train=28 ++workload.dataset.data_folder=/mnt/glfs/GalaxSphere-4Tier0/training/unet3d --config-dir=/root/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 160 -host 172.16.1.25:40,172.16.1.26:40,172.16.1.27:40,172.16.1.28:40 --bind-to none --map-by node --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_CAP02_TIMEOUT_SECONDS -x MLPS_CHECKPOINT_MP_START_METHOD /root/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/root/results/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-4Tier0/training/unet3d/datagen/20260709_191329 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=280000 ++workload.dataset.num_subfolders_train=28 ++workload.dataset.data_folder=/mnt/glfs/GalaxSphere-4Tier0/training/unet3d --config-dir=/root/storage/configs/dlio",
+      "stdout": "/root/results/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-4Tier0/training/unet3d/datagen/20260709_191329/training_datagen.stdout.log",
+      "stderr": "/root/results/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-4Tier0/training/unet3d/datagen/20260709_191329/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "172.16.1.25",
+      "172.16.1.26",
+      "172.16.1.27",
+      "172.16.1.28"
+    ],
+    "num_processes": 160,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/glfs/GalaxSphere-4Tier0/training/unet3d",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=1",
+      "dataset.num_files_train=280000",
+      "dataset.num_subfolders_train=28"
+    ],
+    "results_dir": "/root/results",
+    "systemname": "GalaxSphere-4Tier0",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Suzhou_Zishan_Longlin",
+    "num_client_hosts": 4,
+    "_validated_orgname": "Suzhou_Zishan_Longlin",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "eca3469487fff78c635953fb78671708"
+  }
+}

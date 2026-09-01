@@ -1,0 +1,1302 @@
+import abc
+import os
+import os.path
+import pprint
+import sys
+from typing import Optional
+from urllib.parse import urlparse
+
+from mlpstorage_py.benchmarks.base import Benchmark
+from mlpstorage_py.checkpointing.storage_writers import CHECKPOINT_URI_SCHEME_ENV
+from mlpstorage_py.config import (CONFIGS_ROOT_DIR, BENCHMARK_TYPES, EXEC_TYPE, MPIRUN, MLPSTORAGE_BIN_NAME,
+                               LLM_ALLOWED_VALUES, LLM_SUBSET_PROCS, EXIT_CODE, MODELS, HYDRA_OUTPUT_SUBDIR,
+                               LLM_SIZE_BY_RANK)
+from mlpstorage_py.dependency_check import validate_benchmark_dependencies
+from mlpstorage_py.errors import ConfigurationError, ErrorCode
+from mlpstorage_py.rules import calculate_training_data_size, HostInfo, HostMemoryInfo, HostCPUInfo, ClusterInformation
+from mlpstorage_py.rules.datagen_hierarchy import (
+    assert_data_dir_hierarchy_absent,
+    validate_checkpoint_leaf,
+    validate_datagen_leaf,
+    validate_run_leaf,
+    validate_supported_model,
+    write_datagen_manifest,
+)
+from mlpstorage_py.utils import (read_config_from_file, create_nested_dict, update_nested_dict, generate_mpi_prefix_cmd)
+from mlpstorage_py.storage_config import resolve_object_storage_config
+
+
+class DLIOBenchmark(Benchmark, abc.ABC):
+
+    DLIO_CONFIG_PATH = "dlio"
+    BENCHMARK_TYPE = None
+
+    def __init__(self, args, **kwargs):
+        super().__init__(args, **kwargs)
+        self._config_name = None
+        self.base_command = "dlio_benchmark"
+        if args.dlio_bin_path:
+            self.base_path = args.dlio_bin_path
+        else:
+            self.base_path = os.path.dirname(sys.argv[0])
+        self.base_command_path = os.path.join(self.base_path, self.base_command)
+
+        # This is the path that DLIO needs. The files are in this self.config_path/workload
+        self.config_path = os.path.join(CONFIGS_ROOT_DIR, self.DLIO_CONFIG_PATH)
+
+        self.per_host_mem_kB = None
+        self.total_mem_kB = None
+
+        # Fail-fast dependency validation (skip for dry-run/what-if mode)
+        if not getattr(args, 'dry_run', False) and not getattr(args, 'what_if', False):
+            self._validate_dependencies(args)
+
+        if args.command != "datagen":
+            self.cluster_information = self.accumulate_host_info(args)
+
+    def _validate_dependencies(self, args):
+        """Validate required external dependencies before benchmark execution.
+
+        Performs fail-fast checks for MPI and DLIO to provide clear error
+        messages early rather than failing during benchmark execution.
+
+        Args:
+            args: Parsed command-line arguments.
+
+        Raises:
+            DependencyError: If required dependencies are not available.
+        """
+        requires_mpi = getattr(args, 'exec_type', None) == EXEC_TYPE.MPI
+        mpi_bin = getattr(args, 'mpi_bin', 'mpirun')
+        dlio_bin_path = getattr(args, 'dlio_bin_path', None)
+
+        mpi_path, dlio_path = validate_benchmark_dependencies(
+            requires_mpi=requires_mpi,
+            requires_dlio=True,
+            mpi_bin=mpi_bin,
+            dlio_bin_path=dlio_bin_path,
+            logger=self.logger
+        )
+
+        # Update base_command_path if DLIO was found in a different location
+        if dlio_path:
+            self.base_command_path = dlio_path
+
+    def accumulate_host_info(self, args):
+        """Collect cluster information from all hosts.
+
+        This method first attempts to collect detailed system information via MPI.
+        If MPI collection fails or is not available, it falls back to using the
+        CLI argument `client_host_memory_in_gb` applied uniformly to all hosts.
+
+        Args:
+            args: Parsed command-line arguments.
+
+        Returns:
+            ClusterInformation instance with host details.
+        """
+        # Try MPI-based collection first
+        cluster_info = self._collect_cluster_information()
+        if cluster_info is not None:
+            self.logger.verbose(
+                f'Using MPI-collected cluster info: {cluster_info.num_hosts} hosts, '
+                f'{cluster_info.total_memory_bytes / (1024**3):.1f}GiB total memory'
+            )
+            return cluster_info
+
+        # Fall back to CLI args-based collection
+        self.logger.debug('Using CLI args for cluster info (MPI collection not available)')
+        host_info_list = []
+        per_host_mem = args.client_host_memory_in_gb
+        for host in args.hosts:
+            host_info = HostInfo(
+                hostname=host,
+                cpu=None,
+                memory=HostMemoryInfo.from_total_mem_int(per_host_mem * 1024 * 1024 * 1024)
+            )
+            host_info_list.append(host_info)
+
+        cluster_info = ClusterInformation(host_info_list=host_info_list, logger=self.logger)
+        cluster_info.collection_method = "args"
+        return cluster_info
+
+    @property
+    def config_name(self):
+        if self._config_name is None:
+            self.logger.error("This subclass doesn't appropriately set config name. self.config_name should be set in __init__")
+            raise ValueError("config_name not set")
+        return self._config_name
+
+    @config_name.setter
+    def config_name(self, config_name):
+        self._config_name = config_name
+
+    def _apply_object_storage_params(self):
+        """When --object is used, load .env and inject required DLIO storage params.
+
+        The following params are injected into self.params_dict (only if not already
+        set by the user via --params):
+          storage.storage_type          = 's3'
+          storage.storage_root          = $BUCKET
+          storage.storage_options.storage_library = $STORAGE_LIBRARY
+          storage.s3_force_path_style   = 'true'  (when AWS_ENDPOINT_URL is set)
+
+        Credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) and the endpoint
+        (AWS_ENDPOINT_URL) are read directly from the environment by obj_store_lib.py
+        and do not need to be passed as DLIO params.  We load .env here so that
+        the parent process environment is populated before mpirun spawns workers.
+        """
+        protocol = getattr(self.args, 'data_access_protocol', None)
+        if protocol is None or protocol == 'file':
+            return  # file mode or flag not supplied: nothing to do
+
+        # Load .env into the process environment.  Values already set in the shell
+        # take priority (override=False is the default).
+        try:
+            from dotenv import load_dotenv
+
+            # Locate the .env file: CWD first, then relative to the script directory.
+            env_file_cwd = os.path.abspath('.env')
+            env_file_script = os.path.normpath(
+                os.path.join(os.path.dirname(sys.argv[0]), '..', '.env')
+            )
+
+            if os.path.exists(env_file_cwd):
+                self.logger.info(f'--object mode: loading credentials from {env_file_cwd}')
+                load_dotenv(env_file_cwd)
+            elif os.path.exists(env_file_script):
+                self.logger.info(f'--object mode: loading credentials from {env_file_script}')
+                load_dotenv(env_file_script)
+            else:
+                # Try dotenv's own upward search as a last resort
+                found = load_dotenv()  # returns True if a file was found and loaded
+                if found:
+                    self.logger.info(
+                        '--object mode: loaded credentials from .env file found by directory search'
+                    )
+                else:
+                    raise FileNotFoundError(
+                        '--object mode requires a .env file with object storage credentials, '
+                        'but no .env file was found in the current directory '
+                        f'({os.getcwd()}) or the script directory. '
+                        'Create a .env file (see .env.example) or export the required '
+                        'environment variables (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, '
+                        'AWS_ENDPOINT_URL, BUCKET, STORAGE_LIBRARY) before running.'
+                    )
+        except ImportError:
+            self.logger.warning(
+                'python-dotenv not installed; .env file will not be loaded automatically. '
+                'Ensure AWS_ENDPOINT_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, '
+                'BUCKET, and STORAGE_LIBRARY are set in the environment.'
+            )
+
+        _s3cfg = resolve_object_storage_config()
+        bucket = _s3cfg['bucket']
+        storage_library = _s3cfg['storage_library']
+        # STORAGE_URI_SCHEME controls the URI prefix used by s3dlio:
+        #   s3     — standard S3 (requires endpoint + credentials)
+        #   direct — O_DIRECT filesystem via s3dlio (BUCKET is the base path, no HTTP)
+        #   file   — buffered filesystem via s3dlio (BUCKET is the base path, no HTTP)
+        uri_scheme = _s3cfg['uri_scheme']
+        endpoint_url, _src = _s3cfg['endpoint']
+        endpoint_url = endpoint_url or ''  # preserve empty-string semantics downstream
+
+        if not bucket:
+            raise ValueError(
+                'BUCKET environment variable is required for --object mode. '
+                'Set it in .env or export it before running mlpstorage.'
+            )
+
+        # Inject params; respect any value the user already supplied via --params
+        if 'storage.storage_type' not in self.params_dict:
+            self.params_dict['storage.storage_type'] = 's3'
+        if 'storage.storage_root' not in self.params_dict:
+            self.params_dict['storage.storage_root'] = bucket
+        if 'storage.storage_options.storage_library' not in self.params_dict:
+            self.params_dict['storage.storage_options.storage_library'] = storage_library
+        if 'storage.storage_options.uri_scheme' not in self.params_dict:
+            self.params_dict['storage.storage_options.uri_scheme'] = uri_scheme
+        # Force path-style addressing for non-AWS S3 endpoints (MinIO, s3-ultra, VAST, Ceph…)
+        # Not applicable for direct:// or file:// — those don't use HTTP at all.
+        is_http_scheme = uri_scheme not in ('direct', 'file')
+        if is_http_scheme and endpoint_url and 'storage.s3_force_path_style' not in self.params_dict:
+            self.params_dict['storage.s3_force_path_style'] = 'true'
+
+        self.logger.info(
+            f'--object mode: injected storage params '
+            f'(storage_type=s3, storage_root={bucket}, library={storage_library}, '
+            f'uri_scheme={uri_scheme}, force_path_style={is_http_scheme and bool(endpoint_url)})'
+        )
+
+    def _apply_odirect_params(self, storage_root=None):
+        """When --o-direct is used, route I/O through s3dlio's O_DIRECT local filesystem mode.
+
+        Configures DLIO to use the direct:// URI scheme so s3dlio opens every
+        file with O_DIRECT, bypassing the OS page cache.  Works for ALL training
+        and checkpointing workloads regardless of data format — this is distinct
+        from reader.odirect which is the legacy NPY/NPZ-only path.
+
+        storage_root is the filesystem directory that becomes the s3dlio "bucket"
+        root.  For training it is --data-dir; for checkpointing it is
+        --checkpoint-folder.  The full URI of a file is:
+            direct://<storage_root>/<relative-path>
+            e.g. direct:///mnt/data/unet3d/train/img_000000_of_007200.npz
+
+        This method is a no-op when --o-direct was not passed.  Incompatibility
+        with --object is enforced at CLI-validation time, not here.
+        See mlcommons/storage#507.
+        """
+        if not getattr(self.args, 'o_direct', False):
+            return
+        # storage_type=direct_fs — NOT s3.  direct_fs means "local filesystem via
+        # s3dlio's direct:// URI scheme".  It is 100% mutually exclusive with s3:
+        # s3 always refers to an S3 bucket; direct_fs always refers to a local path.
+        if 'storage.storage_type' not in self.params_dict:
+            self.params_dict['storage.storage_type'] = 'direct_fs'
+        if 'storage.storage_options.storage_library' not in self.params_dict:
+            self.params_dict['storage.storage_options.storage_library'] = 's3dlio'
+        if 'storage.storage_options.uri_scheme' not in self.params_dict:
+            self.params_dict['storage.storage_options.uri_scheme'] = 'direct'
+        if storage_root is not None and 'storage.storage_root' not in self.params_dict:
+            self.params_dict['storage.storage_root'] = storage_root.rstrip('/')
+        self.logger.info(
+            '--o-direct: routing I/O through s3dlio direct:// (O_DIRECT, bypasses page cache); '
+            f'storage_root={storage_root!r}'
+        )
+
+    @staticmethod
+    def _compute_validation_interval(num_files: int) -> int:
+        """Return a validation-sample interval scaled to dataset size.
+
+        Smaller datasets are checked exhaustively; larger datasets are sampled
+        geometrically so startup HEAD-check time stays bounded at any scale.
+
+            < 10,000 files  → interval 1       (every file)
+             10,000 files   → interval 10
+            100,000 files   → interval 100
+          1,000,000 files   → interval 1,000
+         10,000,000+ files  → interval 10,000
+        """
+        if num_files < 10_000:
+            return 1
+        if num_files < 100_000:
+            return 10
+        if num_files < 1_000_000:
+            return 100
+        if num_files < 10_000_000:
+            return 1_000
+        return 10_000
+
+    def _apply_skip_listing_params(self):
+        """Inject skip_listing=True and an adaptive listing_validation_interval.
+
+        Applies to both file and object storage.  skip_listing is safe whenever
+        data was generated by DLIO, which always uses the standard naming
+        convention: {prefix}_{idx:0N}_of_{total}.{format}.  Each MPI rank
+        independently reconstructs its own shard — zero storage API calls,
+        zero MPI communication, and no process ever holds the full file list.
+
+        The validation interval is derived from num_files_train so that small
+        datasets are validated exhaustively (every file) while large datasets
+        are sampled geometrically — keeping HEAD-check overhead bounded to
+        ~100 s even at 50 M files.
+
+        Both params respect user --params overrides.
+        """
+        if 'dataset.skip_listing' not in self.params_dict:
+            self.params_dict['dataset.skip_listing'] = 'True'
+
+        if 'dataset.listing_validation_interval' not in self.params_dict:
+            raw = (self.combined_params or {}).get('dataset', {}).get('num_files_train', 0)
+            try:
+                num_files = int(raw)
+            except (ValueError, TypeError):
+                num_files = 0
+            interval = self._compute_validation_interval(num_files)
+            self.params_dict['dataset.listing_validation_interval'] = str(interval)
+            checks = (num_files // interval) + 2 if interval > 0 and num_files > 0 else num_files
+            self.logger.info(
+                f'skip_listing enabled: {num_files:,} train files → '
+                f'validation_interval={interval:,} '
+                f'(~{checks:,} HEAD checks at startup)'
+            )
+
+    @staticmethod
+    def _strip_uri_scheme(value):
+        # DLIO obj_store_lib treats storage_root as a bare bucket/prefix and
+        # unconditionally prepends a scheme when constructing object URIs.
+        # Strip any leading <scheme>:// so DLIO doesn't produce s3://s3://...
+        # See issue #392.
+        if '://' not in value:
+            return value
+        parsed = urlparse(value)
+        if not parsed.scheme:
+            return value
+        normalized = (parsed.netloc + parsed.path).rstrip('/')
+        return normalized or parsed.netloc
+
+    def _raise_unsupported_workload(self, workload_abs):
+        """Raise ConfigurationError when the resolved workload YAML does not exist.
+
+        The DLIO workload YAML name is derived from CLI args
+        (``<model>_<accelerator>.yaml`` for training, ``<model>.yaml`` for
+        checkpointing). When the file is absent the user has chosen a
+        combination we have no workload definition for — surface this with
+        an explicit "not supported" message and (for training) point at
+        the v3.0 submittable combinations.
+        """
+        model = getattr(self.args, 'model', None)
+        accel = getattr(self.args, 'accelerator_type', None)
+
+        if self.BENCHMARK_TYPE == BENCHMARK_TYPES.training:
+            message = (
+                f"The combination --model={model} --accelerator-type={accel} "
+                f"is not supported."
+            )
+            suggestion = (
+                f"Missing workload definition: {workload_abs}\n"
+                "  v3.0 submittable combinations (CLOSED or OPEN):\n"
+                "    --model unet3d    --accelerator-type b200\n"
+                "    --model retinanet --accelerator-type b200\n"
+                "    --model retinanet --accelerator-type mi355\n"
+                "  Other (model, accelerator) pairs work under `whatif` if a "
+                "workload definition file exists for them; this combination "
+                "has none."
+            )
+            parameter = "model+accelerator-type"
+            actual = f"{model} + {accel}"
+        else:
+            message = f"The model --model={model} is not supported."
+            suggestion = (
+                f"Missing workload definition: {workload_abs}\n"
+                "  Pass a --model value that has a matching "
+                "configs/dlio/workload/<model>.yaml file."
+            )
+            parameter = "model"
+            actual = str(model)
+
+        raise ConfigurationError(
+            message=message,
+            parameter=parameter,
+            actual=actual,
+            suggestion=suggestion,
+            code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+        )
+
+    # ── Issue #538: scheme-mismatch guardrail ────────────────────────────
+    # Recognized schemes. "Object" = anything DLIO routes through
+    # ObjStoreLibStorage; "local" = anything that resolves to a POSIX path.
+    _OBJECT_STORAGE_TYPES = frozenset({'s3', 's3_torch'})
+    _OBJECT_URI_SCHEMES = frozenset({'s3', 's3a', 'az', 'gs'})
+    _LOCAL_URI_SCHEMES = frozenset({'file', 'direct'})
+
+    def _is_object_storage(self) -> bool:
+        """True when ``storage.storage_type`` resolves to an object backend.
+
+        Reads the same signal as ``_check_storage_scheme_consistency`` —
+        what we actually told DLIO to use after ``_apply_object_storage_params``
+        has run — rather than the ``data_access_protocol`` CLI positional
+        (``file|object``). That makes the check robust to the
+        ``--params storage.storage_type=s3`` path where an advanced user
+        wires up object storage manually under the ``file`` positional
+        instead of using the ``object`` positional. ``direct_fs`` (the
+        ``--o-direct`` mode) is NOT object storage — it still resolves
+        to a local path and statvfs works.
+        """
+        storage_type = (
+            self.params_dict.get('storage.storage_type')
+            or (self.combined_params or {}).get('storage', {}).get('storage_type')
+            or 'local'
+        )
+        return storage_type in self._OBJECT_STORAGE_TYPES
+
+    def _check_storage_scheme_consistency(self):
+        """Fail fast on storage.storage_type vs data/checkpoint folder mismatch.
+
+        Issue #538: when ``storage.storage_type`` disagrees on scheme with
+        ``dataset.data_folder`` or ``checkpoint.checkpoint_folder``, DLIO's
+        ``StorageFactory.get_storage`` still picks the backend off the
+        global ``storage_type`` (not off the per-folder URI scheme) and
+        runs ``ObjStoreLibStorage._preflight()`` against the unrelated
+        folder. All MPI ranks then die at startup inside s3dlio with
+        either:
+
+            cannot reach bucket '/mnt/.../retinanet_checkpoints' via s3dlio
+            Bucket name cannot be empty in URI: s3://file:///mnt/.../...
+
+        The same failure shape exists for both the dataset path
+        (``datagen``/``run``) and the checkpoint path (any benchmark with
+        checkpointing enabled). The real fix lives in DLIO — parse each
+        folder's scheme in ``StorageFactory.get_storage`` rather than
+        routing off the global storage_type. Until that lands, refuse
+        mismatched combinations here so a 32-rank job doesn't spend a
+        minute spinning up only to crash in the preflight.
+
+        The check is intentionally narrow: bare relative prefixes (the
+        workload-YAML default, e.g. ``checkpoints/llama_8b``) are valid
+        under both backends and pass through.
+        """
+        command = getattr(self.args, 'command', None)
+        if command not in ('datagen', 'run', 'configview'):
+            return
+
+        storage_type = (
+            self.params_dict.get('storage.storage_type')
+            or (self.combined_params or {}).get('storage', {}).get('storage_type')
+            or 'local'
+        )
+        is_object_storage = storage_type in self._OBJECT_STORAGE_TYPES
+
+        # Always inspect the dataset path — DLIO's data StorageFactory is
+        # constructed for every command that touches data.
+        self._enforce_scheme_match(
+            param_key='dataset.data_folder',
+            yaml_path=('dataset', 'data_folder'),
+            storage_type=storage_type,
+            is_object_storage=is_object_storage,
+        )
+
+        # Inspect the checkpoint path only when checkpointing actually runs.
+        # CheckpointingBenchmark is always-on; TrainingBenchmark honors
+        # workflow.checkpoint (datagen never checkpoints).
+        if command == 'datagen':
+            return
+        checkpoint_on = self.BENCHMARK_TYPE == BENCHMARK_TYPES.checkpointing
+        if not checkpoint_on:
+            workflow = (self.combined_params or {}).get('workflow') or {}
+            checkpoint_on = bool(workflow.get('checkpoint', False))
+        if checkpoint_on:
+            self._enforce_scheme_match(
+                param_key='checkpoint.checkpoint_folder',
+                yaml_path=('checkpoint', 'checkpoint_folder'),
+                storage_type=storage_type,
+                is_object_storage=is_object_storage,
+            )
+
+    def _enforce_scheme_match(self, *, param_key, yaml_path, storage_type,
+                              is_object_storage):
+        """Raise if the resolved folder's scheme contradicts storage_type."""
+        folder = self.params_dict.get(param_key)
+        if folder is None:
+            node = self.combined_params or {}
+            for k in yaml_path:
+                node = (node or {}).get(k)
+                if node is None:
+                    break
+            folder = node
+        if not folder:
+            return
+        folder_str = str(folder).strip()
+        if not folder_str:
+            return
+
+        scheme = ''
+        if '://' in folder_str:
+            scheme = folder_str.split('://', 1)[0].lower()
+
+        looks_local = (
+            scheme in self._LOCAL_URI_SCHEMES
+            or (not scheme and folder_str.startswith('/'))
+        )
+        looks_object = scheme in self._OBJECT_URI_SCHEMES
+
+        if is_object_storage and looks_local:
+            detail = (
+                f"storage.storage_type={storage_type!r} selects object storage, "
+                f"but {param_key}={folder_str!r} is a local filesystem path or "
+                "file:// URI."
+            )
+            fix = (
+                f"  - point {param_key} at the object store "
+                "(e.g. s3://<bucket>/<prefix>), or\n"
+                "  - drop storage.storage_type=s3 / --object so data and "
+                "checkpoints use a local filesystem backend."
+            )
+        elif (not is_object_storage) and looks_object:
+            detail = (
+                f"storage.storage_type={storage_type!r} selects local storage, "
+                f"but {param_key}={folder_str!r} is an object-store URI."
+            )
+            fix = (
+                "  - set storage.storage_type=s3 (and the matching "
+                "storage_options) to target object storage, or\n"
+                f"  - point {param_key} at a local path."
+            )
+        else:
+            return
+
+        raise ValueError(
+            "Inconsistent storage configuration: " + detail + "\n"
+            "DLIO picks the storage backend from the global "
+            "storage.storage_type, then runs the obj_store_lib preflight "
+            f"against {param_key} using that backend. A mismatched scheme "
+            "crashes every MPI rank inside s3dlio at startup (see "
+            "mlcommons/storage#538). Either:\n" + fix
+        )
+
+    def process_dlio_params(self, config_file):
+        params_dict = dict() if not self.args.params else {k: v for k, v in (item.split("=") for item in self.args.params)}
+
+        storage_root = params_dict.get('storage.storage_root')
+        if storage_root:
+            normalized = DLIOBenchmark._strip_uri_scheme(storage_root)
+            if normalized != storage_root:
+                self.logger.debug(
+                    f"Normalized storage.storage_root: {storage_root!r} -> {normalized!r} "
+                    f"(scheme stripped to avoid DLIO double-prefix bug, issue #392)"
+                )
+                params_dict['storage.storage_root'] = normalized
+
+        workload_rel = os.path.join(self.DLIO_CONFIG_PATH, "workload", config_file)
+        workload_abs = os.path.join(CONFIGS_ROOT_DIR, workload_rel)
+        if not os.path.isfile(workload_abs):
+            self._raise_unsupported_workload(workload_abs)
+        yaml_params = read_config_from_file(workload_rel)
+        combined_params = update_nested_dict(yaml_params, create_nested_dict(params_dict))
+
+        self.logger.debug(f'yaml params: \n{pprint.pformat(yaml_params)}')
+        self.logger.debug(f'combined params: \n{pprint.pformat(combined_params)}')
+        self.logger.debug(f'Instance params: \n{pprint.pformat(self.__dict__)}')
+
+        return params_dict, yaml_params, combined_params
+
+    @abc.abstractmethod
+    def _run(self):
+        """
+        This method needs to call execute_command method to run the benchmark
+        :return:
+        """
+        raise NotImplementedError("Subclasses must implement this method")
+
+    def execute_command(self):
+        cmd = self.generate_dlio_command()
+        self.logger.status(f'Running benchmark command:: {cmd}')
+        output_file_prefix = f"{self.BENCHMARK_TYPE.value}"
+        if hasattr(self.args, "command"):
+            output_file_prefix += f"_{self.args.command}"
+
+        # Capture the DLIO exit status so _run() can gate side-effects
+        # (notably the datagen manifest write) on real success. Prior
+        # to storage#744, the rc was discarded and a failed DLIO/MPI
+        # datagen still produced a success-looking manifest.
+        _stdout, _stderr, rc = self._execute_command(
+            cmd, output_file_prefix=output_file_prefix
+        )
+        self._last_command_rc = rc
+
+    @abc.abstractmethod
+    def add_workflow_to_cmd(self, cmd) -> str:
+        raise NotImplementedError("Subclasses must implement this method")
+
+    def generate_dlio_command(self):
+        self.logger.verboser(f'Generating DLIO command for benchmark {self.BENCHMARK_TYPE.value}')
+        cmd = ""
+        cmd = f"{self.base_command_path}"
+        cmd += f" workload={self.config_name}"
+
+        # Run directory for Hydra to output log files
+        cmd += f" ++hydra.run.dir={self.run_result_output}"
+        cmd += f" ++hydra.output_subdir={HYDRA_OUTPUT_SUBDIR}"
+
+        cmd = self.add_workflow_to_cmd(cmd)
+
+        if self.params_dict:
+            for key, value in self.params_dict.items():
+                cmd += f" ++workload.{key}={value}"
+
+        cmd += f" --config-dir={self.config_path}"
+
+        if self.args.exec_type == EXEC_TYPE.MPI:
+            self.logger.debug(f'Generating MPI Command with binary "{self.args.mpi_bin}"')
+            mpi_prefix = generate_mpi_prefix_cmd(self.args.mpi_bin, self.args.hosts, self.args.num_processes,
+                                                 self.args.oversubscribe, self.args.allow_run_as_root,
+                                                 self.args.mpi_params, self.logger,
+                                                 mpi_btl=getattr(self.args, 'mpi_btl', 'auto'))
+            # Forward env vars to ranks — OpenMPI does not propagate arbitrary
+            # env vars to remote hosts by default; -x VAR opts each one in.
+            # (HPE Cray PALS mpiexec propagates env by default and takes the
+            # PALS-native branch in generate_mpi_prefix_cmd, so it doesn't
+            # need this list.)
+            if 'DLIO_DROP_CACHES_TIMEOUT' in os.environ:
+                mpi_prefix += " -x DLIO_DROP_CACHES_TIMEOUT"
+            # S3/object-storage vars required for multi-host runs (storage #592).
+            # MLPS_/MLPSTORAGE_ vars required for multi-host checkpointing —
+            # notably MLPSTORAGE_CHECKPOINT_URI_SCHEME (storage #712 / #583),
+            # without which remote-rank object-store writes fail with
+            # "Unsupported URI scheme" once the model-parallel shards land off
+            # the head node.
+            for _v in sorted(os.environ):
+                if (_v.startswith('AWS_') or _v.startswith('S3DLIO_')
+                        or _v.startswith('MLPS_') or _v.startswith('MLPSTORAGE_')
+                        or _v in ('STORAGE_LIBRARY', 'BUCKET')):
+                    mpi_prefix += f" -x {_v}"
+            cmd = f"{mpi_prefix} {cmd}"
+
+        return cmd
+
+    def generate_command(self, command: str) -> str:
+        return self.generate_dlio_command()
+
+
+class TrainingBenchmark(DLIOBenchmark):
+
+    BENCHMARK_TYPE = BENCHMARK_TYPES.training
+
+    def __init__(self, args, **kwargs):
+        super().__init__(args, **kwargs)
+
+        # Plumb --drop-caches-timeout-seconds into DLIO via env var
+        # (mlcommons/storage #487).  Only the `run` subcommand registers the
+        # flag, so this is a no-op for datasize/datagen/configview.
+        timeout = getattr(args, 'drop_caches_timeout_seconds', None)
+        if timeout is not None:
+            os.environ['DLIO_DROP_CACHES_TIMEOUT'] = str(timeout)
+
+        # This allows each command to map to a specific wrapper method. When methods are created, replace the default
+        # 'self.execute_command' with the command-specific method (like "self._datasize()")
+        self.command_method_map = dict(
+            datasize=self.datasize,
+            datagen=self.execute_command,
+            run=self.execute_command,
+            configview=self.execute_command,
+            reportgen=self.execute_command)
+        config_suffix = "datagen" if args.command == "datagen" else args.accelerator_type
+        under_model = args.model.replace("-", "_")
+        self.config_file = f"{under_model}_{config_suffix}.yaml"
+        self.config_name = f"{under_model}_{config_suffix}"
+
+        self.params_dict, self.yaml_params, self.combined_params = self.process_dlio_params(self.config_file)
+
+        # Inject object storage params before add_datadir_param (which reads storage_type
+        # from params_dict to decide whether to create local directories).
+        self._apply_object_storage_params()
+        # For --o-direct: switch to s3dlio direct:// mode after object-storage check
+        # (object-storage already sets storage_type=s3; the two are mutually exclusive
+        # and rejected at CLI-validation time, so only one branch can be active here).
+        self._apply_odirect_params(storage_root=getattr(self.args, 'data_dir', None))
+        # Enable skip_listing for all storage types (file and object).  Must be
+        # called after _apply_object_storage_params so combined_params is final.
+        self._apply_skip_listing_params()
+
+        if self.args.command not in ("datagen", "datasize"):
+            self.verify_benchmark()
+
+        if self.args.command != "datasize" and self.args.data_dir:
+            # Pre-datagen guards: fire BEFORE add_datadir_param so no
+            # directories are created if we abort. Whatif skips both
+            # guards (matches D-29 reportgen policy and the "no
+            # significant validation" direction for whatif).
+            # The refuse-to-overwrite helper detects object-storage
+            # URIs via scheme and dispatches to s3dlio internally, so
+            # no storage_type gate is needed here.
+            if self.args.command == "datagen" and self.args.mode != "whatif":
+                validate_supported_model(self.args.model, self.args.mode)
+                assert_data_dir_hierarchy_absent(
+                    self.args.data_dir, self.args.model
+                )
+            # The datasize command uses --data-dir and needs to generate a command that also calls --data-dir
+            # The add_datadir_param would convert --data-dir to --dataset.data_folder which is invalid to
+            # mlpstorage.
+            self.add_datadir_param()
+        self._check_storage_scheme_consistency()
+        self.logger.verboser(f'Instantiated the Training Benchmark...')
+
+    def add_datadir_param(self):
+        # Detect storage mode set by _apply_object_storage_params or _apply_odirect_params.
+        storage_type = self.params_dict.get('storage.storage_type', 'local')
+        is_object_storage = storage_type != 'local'
+
+        # For --o-direct: storage_root is already set to data_dir; data_folder must
+        # be the model-relative path so URIs don't double-include data_dir.
+        # URI = direct://<storage_root>/<data_folder>/train/<file>
+        #       = direct:///<data_dir>/<model>/train/<file>
+        if getattr(self.args, 'o_direct', False) and is_object_storage:
+            if any(self.args.data_dir.rstrip('/').endswith(m) for m in MODELS):
+                # data_dir already includes the model name; data_folder is empty (root of storage_root)
+                self.params_dict['dataset.data_folder'] = ''
+            else:
+                self.params_dict['dataset.data_folder'] = self.args.model
+            self.logger.debug(
+                f'--o-direct: dataset.data_folder={self.params_dict["dataset.data_folder"]!r} '
+                f'(relative to storage_root={self.params_dict.get("storage.storage_root")!r})'
+            )
+            return
+
+        self.params_dict['dataset.data_folder'] = self.args.data_dir
+        if not any([self.args.data_dir.endswith(m) for m in MODELS]):
+            # Append the model name to the data dir path
+            self.params_dict['dataset.data_folder'] = os.path.join(self.args.data_dir, self.args.model)
+            if not is_object_storage and not os.path.exists(self.params_dict['dataset.data_folder']):
+                self.logger.info(f'Creating data directory: {self.params_dict["dataset.data_folder"]}...')
+                os.makedirs(self.params_dict['dataset.data_folder'])
+
+        if not is_object_storage:
+            # For local storage only: ensure train/valid/test sub-directories exist on disk
+            for folder in ["train", "valid", "test"]:
+                folder_path = os.path.join(self.params_dict['dataset.data_folder'], folder)
+                if not os.path.exists(folder_path):
+                    self.logger.info(f'Creating directory: {folder_path}...')
+                    os.makedirs(folder_path)
+        else:
+            self.logger.debug(
+                f'Object storage ({storage_type}): skipping local directory creation for '
+                f'{self.params_dict["dataset.data_folder"]} — path is an S3 key prefix, not a filesystem path.'
+            )
+
+    def add_workflow_to_cmd(self, cmd) -> str:
+        # # Configure the workflow depending on command
+        # if self.args.command == "datagen":
+        #     cmd += " ++workload.workflow.generate_data=True ++workload.workflow.train=False"
+        # elif self.args.command == "run_benchmark":
+        #     cmd += " ++workload.workflow.generate_data=False ++workload.workflow.train=True"
+        #
+        # # Training doesn't do checkpoints
+        # cmd += " ++workload.workflow.checkpoint=False"
+        # We're now using the workflow defined in the yaml file only
+        return cmd
+
+    def generate_datagen_benchmark_command(self, num_files_train, num_subfolders_train):
+        """
+        Build the mlpstorage datagen command that mirrors this datasize run.
+
+        The emitted string must round-trip through `parse_arguments()` — see
+        the unit test in tests/unit/test_datagen_command_generation.py. The
+        shape is:
+
+            mlpstorage <mode> training <model> datagen <file|object> \\
+                --hosts=... --exec-type=... \\
+                --num-processes=... --results-dir=... --data-dir=... \\
+                --params key1=val1 key2=val2 ...
+
+        All dotted-key DLIO parameter overrides funnel through --params;
+        they are not real CLI flags individually. The storage-protocol
+        positional defaults to 'file' since datasize does not collect one.
+        """
+        params_kv = dict(self.params_dict) if self.params_dict else {}
+        if num_files_train:
+            params_kv['dataset.num_files_train'] = num_files_train
+        if num_subfolders_train:
+            params_kv['dataset.num_subfolders_train'] = num_subfolders_train
+
+        # datasize does not collect a storage protocol; default to 'file' for the hint.
+        storage_protocol = "file"
+
+        parts = [
+            MLPSTORAGE_BIN_NAME,
+            self.args.mode,
+            "training",
+            self.args.model,
+            "datagen",
+            storage_protocol,
+        ]
+
+        if self.args.hosts:
+            # --hosts uses nargs='+'; emit as separate tokens so the parser sees
+            # a real list. Comma-joining produces a single-element list on parse.
+            parts.append("--hosts")
+            parts.extend(self.args.hosts)
+        parts.append(f"--exec-type={self.args.exec_type}")
+        # During datasize, num_processes is populated from max_accelerators.
+        parts.append(f"--num-processes={self.args.num_processes}")
+        parts.append(f"--results-dir={self.args.results_dir}")
+        if self.args.data_dir:
+            parts.append(f"--data-dir={self.args.data_dir}")
+        else:
+            parts.append("--data-dir=<INSERT_DATA_DIR>")
+        # --systemname is required on emitting subcommands (LAY-04); propagate
+        # the datasize-side value so the emitted datagen string round-trips
+        # through parse_arguments() without --systemname-required rejection.
+        systemname = getattr(self.args, "systemname", None)
+        if systemname:
+            parts.append(f"--systemname={systemname}")
+        else:
+            parts.append("--systemname=<INSERT_SYSTEMNAME>")
+
+        if params_kv:
+            params_str = " ".join(f"{k}={v}" for k, v in params_kv.items())
+            parts.append(f"--params {params_str}")
+
+        return " ".join(parts)
+
+
+    # ------------------------------------------------------------------
+    # CAP-01 capacity-gate hooks (Phase 5 / Plan 05-03)
+    # ------------------------------------------------------------------
+
+    def required_bytes_for_capacity_gate(self) -> int:
+        """Return total bytes needed for the training dataset (CAP-01).
+
+        Delegates to ``calculate_training_data_size`` and returns the
+        ``total_disk_bytes`` element of the (num_files_train,
+        num_subfolders_train, total_disk_bytes) tuple — the same value
+        ``TrainingBenchmark.datasize`` reports on the result line at
+        ``dlio.py:515``. SC#6 silence is preserved by routing the helper's
+        logger output to a NullHandler logger so the happy-path emits
+        nothing user-visible (the size calc's own .result/.warning calls
+        are deliberately suppressed at the gate site; the user-facing
+        path in ``datasize`` still gets the real logger).
+
+        Issue #627: on ``args.command == 'run'`` the dataset is a read
+        source, not a write destination — a prior ``datagen`` populated
+        it. Requiring an additional full-dataset worth of free space on
+        top of the already-occupied capacity is a false positive that
+        blocks valid runs on filesystems provisioned to just fit the
+        dataset. Return 0 in that case so ``check_capacity_4field``
+        trivially passes. CAP-02 shared-FS verification still fires
+        from ``_pre_execution_gate`` — the skip is scoped to the byte
+        budget, not the entire gate.
+        """
+        if getattr(self.args, 'command', None) == 'run':
+            return 0
+        import logging as _logging
+        _silent = _logging.getLogger("mlpstorage_py.capacity_gate.silent")
+        if not _silent.handlers:
+            _silent.addHandler(_logging.NullHandler())
+        _silent.setLevel(_logging.CRITICAL + 1)
+        _silent.propagate = False
+        # Lazy-collect cluster_information for the datagen/configview paths,
+        # where Benchmark._collect_cluster_start short-circuits but
+        # Benchmark.run() still fires _pre_execution_gate (Phase 5 wiring).
+        # The run-command path pre-collects via _collect_cluster_start, so the
+        # attribute is already set and we leave it alone — never double-collect.
+        # If neither MPI collection nor the CLI-args fallback can produce a
+        # cluster_info (e.g. datagen CLI doesn't expose --client-host-memory-in-gb
+        # and the dev box lacks psutil/mpi4py), degrade gracefully: log an
+        # operator-visible deferral notice and return 0 so the CAP-01 gate
+        # becomes a no-op. This parallels the A8 escape hatch in VectorDB.
+        cluster_info = getattr(self, "cluster_information", None)
+        if cluster_info is None:
+            try:
+                cluster_info = self.accumulate_host_info(self.args)
+                self.cluster_information = cluster_info
+            except AttributeError as exc:
+                # The --client-host-memory-in-gb flag is intentionally NOT
+                # registered for datagen (see cli/training_args.py around
+                # the "Memory argument — not for datagen" comment), so don't
+                # tell datagen users to "re-run with" a flag the parser will
+                # reject. See issue #575 (and the earlier confusion in #578).
+                command = getattr(self.args, 'command', None)
+                if command == 'datagen':
+                    self.logger.info(
+                        "CAP-01 skipped for datagen: the disk-capacity gate "
+                        "needs --client-host-memory-in-gb, which datagen does "
+                        "not accept by design. This notice is informational; "
+                        "the run will proceed."
+                    )
+                else:
+                    self.logger.info(
+                        "CAP-01 deferred: unable to determine system memory "
+                        f"({exc}). Re-run with --client-host-memory-in-gb to "
+                        "enable the disk-capacity check."
+                    )
+                return 0
+        _, _, total_disk_bytes = calculate_training_data_size(
+            self.args,
+            cluster_info,
+            self.combined_params['dataset'],
+            self.combined_params['reader'],
+            _silent,
+        )
+        return int(total_disk_bytes)
+
+    def _capacity_gate_destination(self) -> Optional[str]:
+        """Return ``args.data_dir`` — the training dataset destination per
+        REQUIREMENTS.md CAP-01.
+
+        Object-storage runs have no local filesystem to statvfs; the URI
+        parent-walk in ``check_capacity_4field`` exhausts and aborts with
+        ``[E401] CAP-01: no valid parent for s3://…``. Return ``None`` to
+        fire the A8 remote-backend escape hatch in
+        ``_pre_execution_gate``. See issue #568.
+        """
+        if self._is_object_storage():
+            return None
+        return self.args.data_dir
+
+    def _fs_separation_paths(self) -> Optional[tuple]:
+        """Return ``(data_dir, results_dir)`` for CAP-03 (issue #601).
+
+        Object-storage runs skip the probe via the same A8 escape hatch
+        as CAP-01 — the dataset side is an s3:// URI with no local FS
+        identity to probe against the local results_dir.
+        """
+        if self._is_object_storage():
+            return None
+        data_dir = getattr(self.args, "data_dir", None)
+        results_dir = getattr(self.args, "results_dir", None)
+        if not data_dir or not results_dir:
+            return None
+        return (data_dir, results_dir)
+
+    def datasize(self):
+        # CAP-01: fail fast BEFORE the size calc prints its results so a
+        # starved disk surfaces with the locked four-field message rather
+        # than after the user has scrolled past the size summary.
+        self._pre_execution_gate()
+        num_files_train, num_subfolders_train, total_disk_bytes = calculate_training_data_size(
+            self.args, self.cluster_information, self.combined_params['dataset'], self.combined_params['reader'], self.logger
+        )
+
+        # Persist calculated sizing into params_dict so the values flow into the
+        # written metadata file via the dotted-key override mechanism in
+        # Benchmark.metadata (#208). Without this, the metadata reflects only
+        # the YAML defaults and downstream automation cannot read back the
+        # num_files_train that datasize reported on stderr.
+        self.params_dict['dataset.num_files_train'] = num_files_train
+        self.params_dict['dataset.num_subfolders_train'] = num_subfolders_train
+        # Persist the total-bytes output alongside the file/subfolder outputs
+        # so a manual reviewer (or future run-checker cross-check against
+        # datagen actual bytes) can read the datasize sentinel end-to-end
+        # from datasize/<ts>/*_metadata.json. See Rules.md §3.3.1.
+        self.params_dict['dataset.total_disk_bytes'] = int(total_disk_bytes)
+
+        self.logger.result(f'Number of training files: {num_files_train}')
+        self.logger.result(f'Number of training subfolders: {num_subfolders_train}')
+        self.logger.result(f'Total disk space required for training: {total_disk_bytes / 1024**3:.2f}GiB')
+
+        if num_files_train > 10000:
+            self.logger.warning(
+                f'The number of files required may be excessive for some filesystems. You can use the num_subfolders_train parameter to shard the dataset. To keep near 10,000 files per folder use "{int(num_files_train / 10000)}x" subfolders by adding "--params dataset.num_subfolders_train={int(num_files_train / 10000)}"')
+
+        cmd = self.generate_datagen_benchmark_command(num_files_train, num_subfolders_train)
+        self.logger.result(f'Run the following command to generate data: \n{cmd}')
+        self.logger.warning(f'The parameter for --num-processes is the same as --max-accelerators. Adjust the value '
+                       f'according to your system.')
+
+    def _run(self):
+        try:
+            self.command_method_map[self.args.command]()
+        except Exception as e:
+            self.logger.error(f'Error occurred while executing command: {str(e)}')
+            return EXIT_CODE.FAILURE
+        # Post-datagen actions: leaf completeness check + self-describing
+        # manifest write. Runs only after DLIO's datagen command returned
+        # success and only outside whatif (whatif is simulation and skips
+        # per D-29 policy). storage#744: gate on the DLIO exit code and
+        # on required-leaf presence — a success-looking manifest written
+        # after a failed run lets downstream steps treat an incomplete
+        # dataset as valid.
+        if self.args.command == "datagen" and self.args.mode != "whatif":
+            rc = getattr(self, '_last_command_rc', 0)
+            if rc != 0:
+                self.logger.error(
+                    f'DLIO datagen command exited with non-zero status '
+                    f'({rc}); skipping datagen manifest write. The dataset '
+                    f'under "{self.args.data_dir}" is incomplete and must '
+                    f'be regenerated.'
+                )
+                return EXIT_CODE.FAILURE
+            try:
+                if not self._post_datagen_actions():
+                    return EXIT_CODE.FAILURE
+            except ConfigurationError as e:
+                # A workload YAML that lacks the three DLIO fields is
+                # a real bug — surface loudly rather than write a
+                # silently-broken manifest.
+                self.logger.error(
+                    f'Post-datagen validation failed: {e}'
+                )
+                return EXIT_CODE.FAILURE
+        # Post-run loud-fail (storage#761). Mirrors the datagen block:
+        # storage#744 landed rc + leaf checks for datagen but not for
+        # run, so a DLIO training-run subprocess that died silently
+        # (crashed, killed, wrote no outputs) was reported as SUCCESS
+        # here and only surfaced later when ``mlpstorage validate``
+        # rejected the missing files. mlpstorage owns the verdict; the
+        # operator should not have to grep stdout logs to know whether
+        # their run produced valid artifacts.
+        if self.args.command == "run" and self.args.mode != "whatif":
+            rc = getattr(self, '_last_command_rc', 0)
+            if rc != 0:
+                self.logger.error(
+                    f'DLIO training-run command exited with non-zero '
+                    f'status ({rc}). Inspect the stdout/stderr logs '
+                    f'under "{self.run_result_output}" for the '
+                    f'underlying failure; this run\'s artifacts are '
+                    f'incomplete and must be re-run.'
+                )
+                return EXIT_CODE.FAILURE
+            missing = validate_run_leaf(self.run_result_output)
+            if missing:
+                for item in missing:
+                    self.logger.error(f'Training-run output leaf incomplete: {item}')
+                self.logger.error(
+                    f'Training-run leaf under "{self.run_result_output}" '
+                    f'is missing {len(missing)} required artifact(s) '
+                    f'despite a zero exit code. This run cannot be '
+                    f'submitted; re-run and inspect the DLIO stdout/'
+                    f'stderr logs for the underlying failure.'
+                )
+                return EXIT_CODE.FAILURE
+        return EXIT_CODE.SUCCESS
+
+    def _post_datagen_actions(self) -> bool:
+        """Verify the datagen leaf, then write the manifest.
+
+        Returns ``True`` on success (manifest written), ``False`` when a
+        required leaf artifact is missing and the manifest was skipped.
+        Prior to storage#744 the leaf-presence check only WARNed and the
+        manifest was written unconditionally; a partial DLIO run left
+        behind a success-looking marker. The manifest writer detects
+        object-storage URIs via ``--data-dir``'s scheme and dispatches
+        to s3dlio internally, so this method is backend-agnostic.
+        """
+        missing = validate_datagen_leaf(self.run_result_output)
+        if missing:
+            for item in missing:
+                self.logger.error(
+                    f'Datagen output leaf incomplete: {item}'
+                )
+            self.logger.error(
+                f'Datagen leaf under "{self.run_result_output}" is missing '
+                f'{len(missing)} required artifact(s); skipping datagen '
+                f'manifest write. The dataset under "{self.args.data_dir}" '
+                f'is incomplete and must be regenerated.'
+            )
+            return False
+
+        dataset_params = (self.combined_params or {}).get("dataset", {})
+        manifest_path = write_datagen_manifest(
+            data_dir=self.args.data_dir,
+            model=self.args.model,
+            dataset_params=dataset_params,
+            source_datagen_result_dir=self.run_result_output,
+        )
+        self.logger.info(f'Datagen manifest written: {manifest_path}')
+        return True
+
+
+class CheckpointingBenchmark(DLIOBenchmark):
+
+    BENCHMARK_TYPE = BENCHMARK_TYPES.checkpointing
+
+    def __init__(self, args, **kwargs):
+        super().__init__(args, **kwargs)
+
+        self.config_name = f'{args.model.replace("-", "_")}'
+        self.config_file = f'{self.config_name}.yaml'
+        self.params_dict, self.yaml_params, self.combined_params = self.process_dlio_params(self.config_file)
+        self._apply_object_storage_params()
+        # For --o-direct: checkpoint_folder is the s3dlio "bucket" root.
+        self._apply_odirect_params(storage_root=getattr(self.args, 'checkpoint_folder', None))
+        self.verify_benchmark()
+        self.add_checkpoint_params()
+        self._check_storage_scheme_consistency()
+        self.logger.status(f'Instantiated the Checkpointing Benchmark...')
+
+    def add_checkpoint_params(self):
+        min_procs, zero_level, GPUpDP, ClosedGPUs = LLM_ALLOWED_VALUES.get(self.args.model)
+        configured_data_parallelism = int(ClosedGPUs / GPUpDP)
+
+        # We only need the param "model.parallelism.data" if we are not using default checkpoint_mode
+        if self.args.num_processes < ClosedGPUs:
+            self.params_dict['checkpoint.mode'] = "subset"
+            self.params_dict['model.parallelism.data'] = configured_data_parallelism
+
+        self.params_dict['checkpoint.num_checkpoints_read'] = self.args.num_checkpoints_read
+        self.params_dict['checkpoint.num_checkpoints_write'] = self.args.num_checkpoints_write
+        if self.args.checkpoint_folder:
+            # DLIO instantiates a separate storage backend for checkpointing using
+            # checkpoint_folder as that backend's namespace (storage_factory.get_storage).
+            # For direct:// / file:// schemes, ObjStoreLibStorage._preflight validates
+            # that namespace as a local directory — so it must be an absolute path,
+            # not relative to storage.storage_root. See issue #536.
+            folder = self.args.checkpoint_folder
+            storage_type = self.params_dict.get('storage.storage_type', 'local')
+            if storage_type in DLIOBenchmark._OBJECT_STORAGE_TYPES:
+                # Issue #583: mirror the #459 storage_root fix — DLIO's
+                # ObjStoreLibStorage._preflight prepends the scheme itself,
+                # so feeding it s3://bucket/... produces s3://s3://bucket/...
+                # Strip the scheme and stash it in an env var so the
+                # streaming-checkpoint writer (forked from DLIO, inherits
+                # env) can reconstruct the qualified URI at dispatch time.
+                normalized = DLIOBenchmark._strip_uri_scheme(folder)
+                if normalized != folder:
+                    scheme = urlparse(folder).scheme
+                    os.environ[CHECKPOINT_URI_SCHEME_ENV] = scheme
+                    self.logger.debug(
+                        f'Normalized checkpoint_folder: {folder!r} -> {normalized!r}; '
+                        f'set {CHECKPOINT_URI_SCHEME_ENV}={scheme!r} for the '
+                        'streaming-writer subprocess (issue #583).'
+                    )
+                folder = normalized
+            self.params_dict['checkpoint.checkpoint_folder'] = os.path.join(folder, self.args.model)
+
+
+    def add_workflow_to_cmd(self, cmd) -> str:
+        # cmd += " ++workload.workflow.generate_data=False ++workload.workflow.train=False"
+        # cmd += " ++workload.workflow.checkpoint=True"
+        # We're now using the workflow defined in the yaml file only
+        return cmd
+
+    def _run_configview(self):
+        """Display the final DLIO config without executing."""
+        cmd = self.generate_dlio_command()
+        self.logger.status(f"Configuration view:\n{cmd}")
+        print(cmd)
+        return EXIT_CODE.SUCCESS
+
+    def _run(self):
+        try:
+            if self.args.command == "run":
+                self.execute_command()
+            elif self.args.command == "datasize":
+                self.datasize()
+            elif self.args.command == "configview":
+                return self._run_configview()
+            else:
+                self.logger.error(f'Invalid command: {self.args.command}')
+                return EXIT_CODE.INVALID_ARGUMENTS
+        except Exception as e:
+            return EXIT_CODE.FAILURE
+        # Post-run loud-fail (storage#761 sibling). Same silent-success
+        # gap as TrainingBenchmark's run branch: execute_command captures
+        # the DLIO rc into self._last_command_rc but the checkpointing
+        # _run returned SUCCESS regardless. A DLIO checkpointing run
+        # that dies without writing summary.json / dlio.log now surfaces
+        # as ERROR here instead of only at ``mlpstorage validate`` time.
+        if self.args.command == "run" and getattr(self.args, 'mode', None) != "whatif":
+            rc = getattr(self, '_last_command_rc', 0)
+            if rc != 0:
+                self.logger.error(
+                    f'DLIO checkpointing-run command exited with non-zero '
+                    f'status ({rc}). Inspect the stdout/stderr logs '
+                    f'under "{self.run_result_output}" for the '
+                    f'underlying failure; this run\'s artifacts are '
+                    f'incomplete and must be re-run.'
+                )
+                return EXIT_CODE.FAILURE
+            missing = validate_checkpoint_leaf(self.run_result_output)
+            if missing:
+                for item in missing:
+                    self.logger.error(f'Checkpointing-run output leaf incomplete: {item}')
+                self.logger.error(
+                    f'Checkpointing-run leaf under "{self.run_result_output}" '
+                    f'is missing {len(missing)} required artifact(s) '
+                    f'despite a zero exit code. This run cannot be '
+                    f'submitted; re-run and inspect the DLIO stdout/'
+                    f'stderr logs for the underlying failure.'
+                )
+                return EXIT_CODE.FAILURE
+        return EXIT_CODE.SUCCESS
+
+    # ------------------------------------------------------------------
+    # CAP-01 capacity-gate hooks (Phase 5 / Plan 05-03)
+    # ------------------------------------------------------------------
+
+    def _checkpoint_gb_per_rank(self) -> list:
+        """Return per-rank checkpoint size in GiB for one checkpoint.
+
+        Single source of truth for CAP-01's ``required_bytes_for_capacity_gate``
+        AND ``datasize``'s per-rank printout. Both callers previously
+        duplicated this math (the retired "A7 lock" discipline), and
+        both were subtly wrong for subset mode:
+
+        Issue #644 — the denominator must be the FULL-run rank count
+        (``ClosedGPUs`` for zero_level=3; ``ClosedGPUs`` for the
+        optimizer term and ``GPUpDP`` for the model term in
+        zero_level=1), not ``self.args.num_processes``. In subset mode
+        each rank owns the same slice it would own in the full run —
+        the total scales linearly with ``num_processes`` because fewer
+        representative ranks are writing, not because the per-rank
+        share shrinks. The old ``/ num_processes`` formula collapsed
+        for zero_level=3 to ``model + optimizer`` regardless of
+        ``num_processes``, blocking legitimate subset runs at CAP-01
+        with the full-mode required-bytes total.
+
+        Full CLOSED runs (``num_processes == ClosedGPUs``) are
+        unchanged because the two denominators are equal there.
+        """
+        min_procs, zero_level, GPUpDP, ClosedGPUs = LLM_ALLOWED_VALUES.get(self.args.model)
+        model_gb, optimizer_gb = LLM_SIZE_BY_RANK.get(self.args.model)
+        rank_gb = []
+        for rank in range(self.args.num_processes):
+            if zero_level == 1:
+                # Optimizer sharded across all ClosedGPUs ranks; each
+                # subset rank writes its own 1/ClosedGPUs share.
+                share = optimizer_gb / ClosedGPUs
+                # Model written only by the first DP instance (first
+                # GPUpDP ranks). In subset mode num_processes < GPUpDP
+                # so every subset rank is a first-DP rank.
+                if rank < GPUpDP:
+                    share += model_gb / GPUpDP
+                rank_gb.append(share)
+            elif zero_level == 3:
+                # Model + optimizer fully sharded across all ClosedGPUs
+                # ranks; each subset rank writes its own share.
+                rank_gb.append((model_gb + optimizer_gb) / ClosedGPUs)
+            else:
+                raise ValueError(f"Invalid zero_level: {zero_level}")
+        return rank_gb
+
+    def required_bytes_for_capacity_gate(self) -> int:
+        """Return total bytes needed for the checkpoint dataset (CAP-01).
+
+        Sums ``_checkpoint_gb_per_rank`` and multiplies by
+        ``num_checkpoints_write`` because each checkpoint is written in
+        full to the destination. Silent on the happy path per SC#6 —
+        the shared helper does no logging.
+        """
+        rank_gb = self._checkpoint_gb_per_rank()
+        return int(sum(rank_gb) * 1024**3 * self.args.num_checkpoints_write)
+
+    def _capacity_gate_destination(self):
+        """Return the checkpoint destination as
+        ``os.path.join(args.checkpoint_folder, args.model)`` — mirrors
+        the join in ``add_checkpoint_params`` where DLIO is told to
+        write. Kept in step by convention; a future refactor could
+        share a helper if a third caller appears.
+
+        If ``args.checkpoint_folder`` is None or empty, returns ``None`` so
+        the ``_pre_execution_gate`` A8 escape hatch fires cleanly. The
+        upstream CLI validation already requires checkpoint_folder for
+        real runs; this is defensive.
+        """
+        # Object-storage runs target an s3:// URI; statvfs walks to root
+        # and aborts with [E401] CAP-01: no valid parent. A8 escape hatch —
+        # see issue #568.
+        if self._is_object_storage():
+            return None
+        cf = getattr(self.args, "checkpoint_folder", None)
+        if not cf:
+            return None
+        return os.path.join(cf, self.args.model)
+
+    def _fs_separation_paths(self) -> Optional[tuple]:
+        """Return ``(checkpoint_folder, results_dir)`` for CAP-03 (issue #601).
+
+        For checkpointing the dataset analog is the checkpoint_folder —
+        rule 4.4.2 verifies checkpoint_folder vs results_dir live on
+        different filesystems. Object-storage runs skip via A8.
+        """
+        if self._is_object_storage():
+            return None
+        cf = getattr(self.args, "checkpoint_folder", None)
+        results_dir = getattr(self.args, "results_dir", None)
+        if not cf or not results_dir:
+            return None
+        return (cf, results_dir)
+
+    def datasize(self):
+        # CAP-01: fail fast BEFORE the rank-by-rank size table prints.
+        self._pre_execution_gate()
+        self.logger.verbose(f'Running datasize for {self.args.model}...')
+        model_gb, optimizer_gb = LLM_SIZE_BY_RANK.get(self.args.model)
+        self.logger.verbose(
+            f'Model & optimizer size: {model_gb:.2f}GiB, {optimizer_gb:.2f}GiB'
+        )
+        # Per-rank size math lives in _checkpoint_gb_per_rank (single
+        # source of truth shared with required_bytes_for_capacity_gate;
+        # subset-mode fix is in #644).
+        rank_gb = self._checkpoint_gb_per_rank()
+
+        rank_string = "\n\t".join(
+            f"Rank {rank}: {rank_gb[rank]:.2f}GiB"
+            for rank in range(self.args.num_processes)
+        )
+        self.logger.result(f'Total GiB required per rank:\n\t{rank_string}')
+        self.logger.result(
+            f'Total GiB required for all ranks: {sum(rank_gb):.2f}GiB'
+        )
+
+

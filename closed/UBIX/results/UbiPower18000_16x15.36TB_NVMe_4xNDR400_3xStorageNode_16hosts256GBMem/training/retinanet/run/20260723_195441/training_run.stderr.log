@@ -1,0 +1,210 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/ubix/retinanet'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 68090280
+[OUTPUT]   record_length  = 322957
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 8
+[OUTPUT]   batch_size     = 24
+[OUTPUT] 2026-07-23T19:55:18.399441 Running DLIO [Training] with 688 process(es)
+[OUTPUT] 2026-07-23T19:55:18.594053 skip_listing [train]: validating 6,811 of 68,090,280 files (first, last, every 10,000) via HEAD requests ...
+[OUTPUT] 2026-07-23T19:55:18.613339 skip_listing [train]:   500/6,811 checked (7%)  —  26086 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.624767 skip_listing [train]:   1,000/6,811 checked (15%)  —  32681 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.635903 skip_listing [train]:   1,500/6,811 checked (22%)  —  35941 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.646891 skip_listing [train]:   2,000/6,811 checked (29%)  —  37933 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.657967 skip_listing [train]:   2,500/6,811 checked (37%)  —  39185 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.669156 skip_listing [train]:   3,000/6,811 checked (44%)  —  40006 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.680458 skip_listing [train]:   3,500/6,811 checked (51%)  —  40561 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.693226 skip_listing [train]:   4,000/6,811 checked (59%)  —  40381 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.703878 skip_listing [train]:   4,500/6,811 checked (66%)  —  41017 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.714493 skip_listing [train]:   5,000/6,811 checked (73%)  —  41554 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.725039 skip_listing [train]:   5,500/6,811 checked (81%)  —  42025 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.735381 skip_listing [train]:   6,000/6,811 checked (88%)  —  42489 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.745934 skip_listing [train]:   6,500/6,811 checked (95%)  —  42829 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T19:55:18.752528 skip_listing [train]: validation complete — all 6,811 samples exist (0.2s, 43009 checks/s); 98,969 URIs ready for rank 0 (68,090,280 total across all ranks)
+[OUTPUT] 2026-07-23T19:55:18.753875 File listing [train]: 68090280 files discovered, 98968 assigned to rank 0, completed in 0.34s
+[OUTPUT] 2026-07-23T19:55:18.753931 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-23T19:55:18.753955 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-23T19:55:18.753973 Streamed file sharding: 68090280 train files across 688 ranks via round-robin (rank 0 shard: 98968 files)
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=43 = 172 workers, estimated ~86 GB — exceeds 50% of available RAM on this node (170 GB). Consider reducing read_threads to avoid OOM.
+[OUTPUT] 2026-07-23T19:55:19.321635 Max steps per epoch per rank: 2837095 = 1 * 68090280 / 24 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-23T19:55:22.050023 Reshard for epoch 1: 98968 train files, 0 eval files redistributed via alltoall in 2.73s
+[OUTPUT] 2026-07-23T19:55:22.948276 Worker pre-warm complete (4 workers spawned)
+[OUTPUT] 2026-07-23T19:55:23.073956 Starting epoch 1: 4123 steps expected
+[OUTPUT] 2026-07-23T19:55:23.074209 Starting block 1
+[OUTPUT] 2026-07-23T19:59:14.097120 Ending block 1 - 4123 steps completed in 231.02 s
+[OUTPUT] 2026-07-23T19:59:14.100198 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.1444
+[OUTPUT] 2026-07-23T19:59:14.100245 Epoch 1 - Block 1 [Training] Throughput (samples/second): 295186.0264
+[OUTPUT] 2026-07-23T19:59:14.105412 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T19:59:14.153003 Ending epoch 1 - 4123 steps completed in 231.08 s
+[OUTPUT] 2026-07-23T19:59:14.576312 Reshard for epoch 2: 98968 train files, 0 eval files redistributed via alltoall in 0.42s
+[OUTPUT] 2026-07-23T19:59:16.026412 Worker pre-warm complete for epoch 2 (4 workers spawned)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 303, in _run_finalizers
+    finalizer()
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 227, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 136, in _remove_temp_dir
+    rmtree(tempdir, onerror=onerror)
+  File "/usr/lib/python3.12/shutil.py", line 796, in rmtree
+    onexc(os.rmdir, path, err)
+  File "/usr/lib/python3.12/shutil.py", line 764, in onexc
+    return onerror(func, path, exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/shutil.py", line 794, in rmtree
+    os.rmdir(path, dir_fd=dir_fd)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-wmu2b89e'
+[OUTPUT] 2026-07-23T19:59:38.298051 Starting epoch 2: 4123 steps expected
+[OUTPUT] 2026-07-23T19:59:38.298526 Starting block 1
+[OUTPUT] 2026-07-23T20:03:28.226079 Ending block 1 - 4123 steps completed in 229.93 s
+[OUTPUT] 2026-07-23T20:03:28.227665 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.5011
+[OUTPUT] 2026-07-23T20:03:28.227710 Epoch 2 - Block 1 [Training] Throughput (samples/second): 296442.3982
+[OUTPUT] 2026-07-23T20:03:28.228072 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:03:28.248959 Ending epoch 2 - 4123 steps completed in 229.95 s
+[OUTPUT] 2026-07-23T20:03:28.675068 Reshard for epoch 3: 98968 train files, 0 eval files redistributed via alltoall in 0.43s
+[OUTPUT] 2026-07-23T20:03:30.117493 Worker pre-warm complete for epoch 3 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:03:53.840168 Starting epoch 3: 4123 steps expected
+[OUTPUT] 2026-07-23T20:03:53.840509 Starting block 1
+[OUTPUT] 2026-07-23T20:07:43.494485 Ending block 1 - 4123 steps completed in 229.65 s
+[OUTPUT] 2026-07-23T20:07:43.496196 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.6360
+[OUTPUT] 2026-07-23T20:07:43.496245 Epoch 3 - Block 1 [Training] Throughput (samples/second): 296877.7924
+[OUTPUT] 2026-07-23T20:07:43.496657 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:07:43.569652 Ending epoch 3 - 4123 steps completed in 229.73 s
+[OUTPUT] 2026-07-23T20:07:44.221769 Reshard for epoch 4: 98968 train files, 0 eval files redistributed via alltoall in 0.65s
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 303, in _run_finalizers
+    finalizer()
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 227, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 136, in _remove_temp_dir
+    rmtree(tempdir, onerror=onerror)
+  File "/usr/lib/python3.12/shutil.py", line 796, in rmtree
+    onexc(os.rmdir, path, err)
+  File "/usr/lib/python3.12/shutil.py", line 764, in onexc
+    return onerror(func, path, exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/shutil.py", line 794, in rmtree
+    os.rmdir(path, dir_fd=dir_fd)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-dhvwedwn'
+[OUTPUT] 2026-07-23T20:07:45.696616 Worker pre-warm complete for epoch 4 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:08:06.221527 Starting epoch 4: 4123 steps expected
+[OUTPUT] 2026-07-23T20:08:06.221888 Starting block 1
+[OUTPUT] 2026-07-23T20:11:56.251334 Ending block 1 - 4123 steps completed in 230.03 s
+[OUTPUT] 2026-07-23T20:11:56.253285 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.5005
+[OUTPUT] 2026-07-23T20:11:56.266862 Epoch 4 - Block 1 [Training] Throughput (samples/second): 296422.8318
+[OUTPUT] 2026-07-23T20:11:56.267258 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:11:56.312160 Ending epoch 4 - 4123 steps completed in 230.09 s
+[OUTPUT] 2026-07-23T20:11:56.737666 Reshard for epoch 5: 98968 train files, 0 eval files redistributed via alltoall in 0.42s
+[OUTPUT] 2026-07-23T20:11:58.170877 Worker pre-warm complete for epoch 5 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:12:20.906894 Starting epoch 5: 4123 steps expected
+[OUTPUT] 2026-07-23T20:12:20.907294 Starting block 1
+[OUTPUT] 2026-07-23T20:16:10.405072 Ending block 1 - 4123 steps completed in 229.50 s
+[OUTPUT] 2026-07-23T20:16:10.406795 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.6702
+[OUTPUT] 2026-07-23T20:16:10.406849 Epoch 5 - Block 1 [Training] Throughput (samples/second): 296997.2967
+[OUTPUT] 2026-07-23T20:16:10.407234 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:16:10.430445 Ending epoch 5 - 4123 steps completed in 229.52 s
+[OUTPUT] 2026-07-23T20:16:10.855858 Reshard for epoch 6: 98968 train files, 0 eval files redistributed via alltoall in 0.42s
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 303, in _run_finalizers
+    finalizer()
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 227, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/multiprocessing/util.py", line 136, in _remove_temp_dir
+    rmtree(tempdir, onerror=onerror)
+  File "/usr/lib/python3.12/shutil.py", line 796, in rmtree
+    onexc(os.rmdir, path, err)
+  File "/usr/lib/python3.12/shutil.py", line 764, in onexc
+    return onerror(func, path, exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/shutil.py", line 794, in rmtree
+    os.rmdir(path, dir_fd=dir_fd)
+OSError: [Errno 39] Directory not empty: '/tmp/pymp-p9dl150x'
+[OUTPUT] 2026-07-23T20:16:12.361097 Worker pre-warm complete for epoch 6 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:16:35.504118 Starting epoch 6: 4123 steps expected
+[OUTPUT] 2026-07-23T20:16:35.504540 Starting block 1
+[OUTPUT] 2026-07-23T20:20:24.951337 Ending block 1 - 4123 steps completed in 229.45 s
+[OUTPUT] 2026-07-23T20:20:24.953092 Epoch 6 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.7515
+[OUTPUT] 2026-07-23T20:20:24.953146 Epoch 6 - Block 1 [Training] Throughput (samples/second): 297283.1458
+[OUTPUT] 2026-07-23T20:20:24.953565 Epoch 6 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:20:24.961052 Ending epoch 6 - 4123 steps completed in 229.46 s
+[OUTPUT] 2026-07-23T20:20:25.379555 Reshard for epoch 7: 98968 train files, 0 eval files redistributed via alltoall in 0.42s
+[OUTPUT] 2026-07-23T20:20:26.847237 Worker pre-warm complete for epoch 7 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:20:50.682677 Starting epoch 7: 4123 steps expected
+[OUTPUT] 2026-07-23T20:20:50.683084 Starting block 1
+[OUTPUT] 2026-07-23T20:24:40.123493 Ending block 1 - 4123 steps completed in 229.44 s
+[OUTPUT] 2026-07-23T20:24:40.125373 Epoch 7 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.7368
+[OUTPUT] 2026-07-23T20:24:40.125428 Epoch 7 - Block 1 [Training] Throughput (samples/second): 297229.1017
+[OUTPUT] 2026-07-23T20:24:40.125823 Epoch 7 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:24:40.145433 Ending epoch 7 - 4123 steps completed in 229.46 s
+[OUTPUT] 2026-07-23T20:24:40.578658 Reshard for epoch 8: 98968 train files, 0 eval files redistributed via alltoall in 0.43s
+[OUTPUT] 2026-07-23T20:24:41.984838 Worker pre-warm complete for epoch 8 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:25:05.357115 Starting epoch 8: 4123 steps expected
+[OUTPUT] 2026-07-23T20:25:05.357485 Starting block 1
+[OUTPUT] 2026-07-23T20:28:54.826113 Ending block 1 - 4123 steps completed in 229.47 s
+[OUTPUT] 2026-07-23T20:28:54.827849 Epoch 8 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.7094
+[OUTPUT] 2026-07-23T20:28:54.827898 Epoch 8 - Block 1 [Training] Throughput (samples/second): 297141.6740
+[OUTPUT] 2026-07-23T20:28:54.828278 Epoch 8 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-23T20:28:54.854386 Ending epoch 8 - 4123 steps completed in 229.50 s
+[OUTPUT] 2026-07-23T20:28:55.292939 Reshard for epoch 9: 98968 train files, 0 eval files redistributed via alltoall in 0.44s
+[OUTPUT] 2026-07-23T20:28:56.754119 Worker pre-warm complete for epoch 9 (4 workers spawned)
+[OUTPUT] 2026-07-23T20:28:56.920493 Saved outputs in /mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/run/20260723_195441
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 688 
+[METRIC] Training Accelerator Utilization [AU] (%): 85.5933 (0.2044)
+[METRIC] Training Throughput (samples/second): 296758.8985 (709.8317)
+[METRIC] Training I/O Throughput (MiB/second): 91400.4932 (218.6252)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-23T20:29:04.497318 outputs saved in RANKID_output.json

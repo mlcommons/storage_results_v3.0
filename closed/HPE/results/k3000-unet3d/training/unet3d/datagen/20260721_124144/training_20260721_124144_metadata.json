@@ -1,0 +1,113 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260721_124144",
+  "num_processes": 64,
+  "accelerator": null,
+  "result_dir": "/mnt/daos_results/closed/hpe/results/k3000/training/unet3d/datagen/20260721_124144",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/daos/mlps_unet3d/unet3d_data/unet3d",
+      "format": "npz",
+      "num_files_train": "448000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "44",
+      "skip_listing": "True",
+      "listing_validation_interval": "100"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "448000",
+    "dataset.num_subfolders_train": "44",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "100",
+    "dataset.data_folder": "/mnt/daos/mlps_unet3d/unet3d_data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 256.91224575042725,
+  "invocation_start_time": "2026-07-21T12:41:44.028104",
+  "invocation_end_time": "2026-07-21T12:46:21.536137",
+  "verification": null,
+  "executed_command": "/usr/mpi/gcc/openmpi-4.1.9a1/bin/mpirun -n 64 -host C-FTC63-R2-05:4,C-FTC63-R2-06:4,C-FTC63-R2-07:4,C-FTC63-R2-08:4,C-FTC63-R2-09:4,C-FTC63-R2-10:4,C-FTC63-R2-11:4,C-FTC63-R2-12:4,C-FTC63-R2-13:4,C-FTC63-R2-14:4,C-FTC63-R2-15:4,C-FTC63-R2-16:4,C-FTC63-R2-17:4,C-FTC63-R2-18:4,C-FTC63-R2-19:4,C-FTC63-R2-20:4 --bind-to none --map-by node --allow-run-as-root /root/ssamar/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/daos_results/closed/hpe/results/k3000/training/unet3d/datagen/20260721_124144 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=448000 ++workload.dataset.num_subfolders_train=44 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mnt/daos/mlps_unet3d/unet3d_data/unet3d --config-dir=/root/ssamar/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "/usr/mpi/gcc/openmpi-4.1.9a1/bin/mpirun -n 64 -host C-FTC63-R2-05:4,C-FTC63-R2-06:4,C-FTC63-R2-07:4,C-FTC63-R2-08:4,C-FTC63-R2-09:4,C-FTC63-R2-10:4,C-FTC63-R2-11:4,C-FTC63-R2-12:4,C-FTC63-R2-13:4,C-FTC63-R2-14:4,C-FTC63-R2-15:4,C-FTC63-R2-16:4,C-FTC63-R2-17:4,C-FTC63-R2-18:4,C-FTC63-R2-19:4,C-FTC63-R2-20:4 --bind-to none --map-by node --allow-run-as-root /root/ssamar/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/daos_results/closed/hpe/results/k3000/training/unet3d/datagen/20260721_124144 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=448000 ++workload.dataset.num_subfolders_train=44 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.data_folder=/mnt/daos/mlps_unet3d/unet3d_data/unet3d --config-dir=/root/ssamar/storage/configs/dlio",
+      "stdout": "/mnt/daos_results/closed/hpe/results/k3000/training/unet3d/datagen/20260721_124144/training_datagen.stdout.log",
+      "stderr": "/mnt/daos_results/closed/hpe/results/k3000/training/unet3d/datagen/20260721_124144/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "C-FTC63-R2-05",
+      "C-FTC63-R2-06",
+      "C-FTC63-R2-07",
+      "C-FTC63-R2-08",
+      "C-FTC63-R2-09",
+      "C-FTC63-R2-10",
+      "C-FTC63-R2-11",
+      "C-FTC63-R2-12",
+      "C-FTC63-R2-13",
+      "C-FTC63-R2-14",
+      "C-FTC63-R2-15",
+      "C-FTC63-R2-16",
+      "C-FTC63-R2-17",
+      "C-FTC63-R2-18",
+      "C-FTC63-R2-19",
+      "C-FTC63-R2-20"
+    ],
+    "num_processes": 64,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/daos/mlps_unet3d/unet3d_data",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=448000",
+      "dataset.num_subfolders_train=44"
+    ],
+    "results_dir": "/mnt/daos_results",
+    "systemname": "k3000",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "hpe",
+    "num_client_hosts": 16,
+    "_validated_orgname": "hpe",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "e5d01e30e87569c98abaa784bd40d01c"
+  }
+}

@@ -1,0 +1,28 @@
+# Filesystem separation evidence (Rules.md §3.4 / §3.4.2 trainingMlpstorageFilesystemCheck)
+# Captured post-run because mlpstorage v3.0.24 never emits a df block into *_run.stdout.log
+# (TODO-001 gap). data-dir and results-dir are on DIFFERENT filesystems, shown below.
+# captured: 2026-06-28T21:57:37Z  host: retina-net1.c.mayanas-testing.internal
+
+data-dir    : /mnt/mlperf-block/retinanet  ->  realpath /mnt/mlperf-block/retinanet
+results-dir : /home/mayascale/mlperf-runs/retinanet-1cluster  ->  realpath /home/mayascale/mlperf-runs/retinanet-1cluster
+
+## df -P "/mnt/mlperf-block/retinanet" "/home/mayascale/mlperf-runs/retinanet-1cluster"
+Filesystem     1024-blocks       Used  Available Capacity Mounted on
+/dev/md0        6286704640 1611467656 4675236984      26% /mnt/mlperf-block
+/dev/root         49691512   12811140   36863988      26% /
+
+## df -hT (full, with filesystem type)
+Filesystem      Type      Size  Used Avail Use% Mounted on
+/dev/root       ext4       48G   13G   36G  26% /
+tmpfs           tmpfs     142G     0  142G   0% /dev/shm
+tmpfs           tmpfs      57G  2.2M   57G   1% /run
+tmpfs           tmpfs     5.0M     0  5.0M   0% /run/lock
+efivarfs        efivarfs  256K   32K  220K  13% /sys/firmware/efi/efivars
+/dev/nvme0n1p16 ext4      881M   84M  736M  11% /boot
+/dev/nvme0n1p15 vfat      105M  6.2M   99M   6% /boot/efi
+tmpfs           tmpfs      29G   12K   29G   1% /run/user/1000
+/dev/md0        xfs       5.9T  1.6T  4.4T  26% /mnt/mlperf-block
+
+## mount lines for the two filesystems
+/dev/md0 /mnt/mlperf-block xfs
+/dev/nvme0n1p1 /      ext4

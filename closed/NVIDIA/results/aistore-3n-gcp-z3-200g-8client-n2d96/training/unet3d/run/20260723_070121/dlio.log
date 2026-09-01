@@ -1,0 +1,133 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.S3: 's3'>
+[OUTPUT]   storage_root   = 'mlp-unet3d-gcp-3n8c'
+[OUTPUT]   storage_options= {'storage_library': 's3dlio', 'uri_scheme': 's3', 'access_key_id': 'ais', 'secret_access_key': 'ais', 'endpoint_url': 'http://10.20.0.25:51080/s3/', 'region': 'us-east-1'}
+[OUTPUT]   data_folder    = 'data/gcp3n8c-unet/unet3d'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 112501
+[OUTPUT]   record_length  = 146600628
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 5
+[OUTPUT]   batch_size     = 7
+[OUTPUT] 2026-07-23T07:01:34.220937 Running DLIO [Training] with 8 process(es)
+[OUTPUT] 2026-07-23T07:01:34.268623 skip_listing [train]: validating 1,126 of 112,501 files (first, last, every 100) via HEAD requests ...
+[OUTPUT] 2026-07-23T07:01:34.439792 skip_listing [train]:   112/1,126 checked (10%)  —  655 checks/s  —  ETA 2s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:34.598808 skip_listing [train]:   224/1,126 checked (20%)  —  679 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:34.758070 skip_listing [train]:   336/1,126 checked (30%)  —  687 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:34.919814 skip_listing [train]:   448/1,126 checked (40%)  —  688 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.085639 skip_listing [train]:   560/1,126 checked (50%)  —  686 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.244241 skip_listing [train]:   672/1,126 checked (60%)  —  689 checks/s  —  ETA 1s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.402011 skip_listing [train]:   784/1,126 checked (70%)  —  692 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.561416 skip_listing [train]:   896/1,126 checked (80%)  —  693 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.721240 skip_listing [train]:   1,008/1,126 checked (90%)  —  694 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.877606 skip_listing [train]:   1,120/1,126 checked (99%)  —  696 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-23T07:01:35.885077 skip_listing [train]: validation complete — all 1,126 samples exist (1.6s, 697 checks/s); 14,063 URIs ready for rank 0 (112,501 total across all ranks)
+[OUTPUT] 2026-07-23T07:01:35.885484 File listing [train]: 112501 files discovered, 14062 assigned to rank 0, completed in 1.65s
+[OUTPUT] 2026-07-23T07:01:35.885557 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-23T07:01:35.885604 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-23T07:01:35.885643 Streamed file sharding: 112501 train files across 8 ranks via round-robin (rank 0 shard: 14062 files)
+[OUTPUT] 2026-07-23T07:01:36.257865 Max steps per epoch per rank: 16071 = 1 * 112501 / 7 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-23T07:01:36.272880 Reshard for epoch 1: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 369787 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 369787 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 369787 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 369787 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:01:49.202202 Worker pre-warm complete (4 workers spawned)
+[OUTPUT] 2026-07-23T07:01:49.784601 Starting epoch 1: 2008 steps expected
+[OUTPUT] 2026-07-23T07:01:49.785295 Starting block 1
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 344777 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 344777 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 344777 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 344690 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:07:25.245124 Ending block 1 - 2008 steps completed in 335.46 s
+[OUTPUT] 2026-07-23T07:07:25.259049 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 98.3472
+[OUTPUT] 2026-07-23T07:07:25.259111 Epoch 1 - Block 1 [Training] Throughput (samples/second): 339.6643
+[OUTPUT] 2026-07-23T07:07:25.260743 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T07:07:25.261352 Ending epoch 1 - 2008 steps completed in 335.48 s
+[OUTPUT] 2026-07-23T07:07:25.275032 Reshard for epoch 2: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329896 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329896 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329896 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329896 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:07:29.103611 Worker pre-warm complete for epoch 2 (4 workers spawned)
+[OUTPUT] 2026-07-23T07:07:29.178546 Starting epoch 2: 2008 steps expected
+[OUTPUT] 2026-07-23T07:07:29.179047 Starting block 1
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327672 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327672 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327672 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327672 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:13:05.298174 Ending block 1 - 2008 steps completed in 336.12 s
+[OUTPUT] 2026-07-23T07:13:05.300832 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 97.7772
+[OUTPUT] 2026-07-23T07:13:05.300981 Epoch 2 - Block 1 [Training] Throughput (samples/second): 337.6952
+[OUTPUT] 2026-07-23T07:13:05.301509 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T07:13:05.302590 Ending epoch 2 - 2008 steps completed in 336.12 s
+[OUTPUT] 2026-07-23T07:13:05.315401 Reshard for epoch 3: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329768 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329768 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329769 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 329769 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:13:09.011023 Worker pre-warm complete for epoch 3 (4 workers spawned)
+[OUTPUT] 2026-07-23T07:13:09.614866 Starting epoch 3: 2008 steps expected
+[OUTPUT] 2026-07-23T07:13:09.615492 Starting block 1
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 326450 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 326449 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 326449 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 326441 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:18:45.283232 Ending block 1 - 2008 steps completed in 335.67 s
+[OUTPUT] 2026-07-23T07:18:45.285882 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 97.9099
+[OUTPUT] 2026-07-23T07:18:45.285960 Epoch 3 - Block 1 [Training] Throughput (samples/second): 338.1569
+[OUTPUT] 2026-07-23T07:18:45.286490 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T07:18:45.287618 Ending epoch 3 - 2008 steps completed in 335.67 s
+[OUTPUT] 2026-07-23T07:18:45.300243 Reshard for epoch 4: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328730 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328730 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328730 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328730 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:18:48.747642 Worker pre-warm complete for epoch 4 (4 workers spawned)
+[OUTPUT] 2026-07-23T07:18:49.122332 Starting epoch 4: 2008 steps expected
+[OUTPUT] 2026-07-23T07:18:49.122807 Starting block 1
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 325493 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 325488 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 325486 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 325486 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:24:24.584995 Ending block 1 - 2008 steps completed in 335.46 s
+[OUTPUT] 2026-07-23T07:24:24.587692 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 98.1137
+[OUTPUT] 2026-07-23T07:24:24.587761 Epoch 4 - Block 1 [Training] Throughput (samples/second): 338.8629
+[OUTPUT] 2026-07-23T07:24:24.588136 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T07:24:24.588686 Ending epoch 4 - 2008 steps completed in 335.47 s
+[OUTPUT] 2026-07-23T07:24:24.601589 Reshard for epoch 5: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327923 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327923 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327923 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 327931 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:24:27.724241 Worker pre-warm complete for epoch 5 (4 workers spawned)
+[OUTPUT] 2026-07-23T07:24:28.684299 Starting epoch 5: 2008 steps expected
+[OUTPUT] 2026-07-23T07:24:28.684885 Starting block 1
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 324824 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 324824 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 324824 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 324824 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:30:04.082992 Ending block 1 - 2008 steps completed in 335.40 s
+[OUTPUT] 2026-07-23T07:30:04.084900 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 98.0860
+[OUTPUT] 2026-07-23T07:30:04.085965 Epoch 5 - Block 1 [Training] Throughput (samples/second): 338.7649
+[OUTPUT] 2026-07-23T07:30:04.086326 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.1621+/-0.0000 (set value: {'mean': 0.162})
+[OUTPUT] 2026-07-23T07:30:04.086853 Ending epoch 5 - 2008 steps completed in 335.40 s
+[OUTPUT] 2026-07-23T07:30:04.099419 Reshard for epoch 6: 14062 train files, 0 eval files redistributed via alltoall in 0.01s
+[WARNING] NPZReaderS3Iterable[thread=2] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328540 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=3] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328540 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=1] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328540 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[WARNING] NPZReaderS3Iterable[thread=0] [resource-probe] RAM projection: prefetch=64 x dataloader_workers=4 x ranks_per_node=8 x record_length=139 MiB = 286329 MiB of in-flight buffer memory, but only 328540 MiB (of 386919 MiB total) is currently available.  OOM / swap-thrash under load is likely.  Fix: reduce storage_options.prefetch_window, or reduce DataLoader worker count, or move the S3 target off-node.
+[OUTPUT] 2026-07-23T07:30:07.463579 Worker pre-warm complete for epoch 6 (4 workers spawned)
+[OUTPUT] 2026-07-23T07:30:08.483897 Saved outputs in /home/abhgaikwad/mlps-gcp-unet-submission/closed/nvidia/results/aistore-3n-gcp-z3-200g-8client-n2d96/training/unet3d/run/20260723_070121
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 8 
+[METRIC] Training Accelerator Utilization [AU] (%): 98.0488 (0.0741)
+[METRIC] Training Throughput (samples/second): 338.6242 (0.2579)
+[METRIC] Training I/O Throughput (MiB/second): 47342.8010 (36.0552)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-23T07:30:08.522185 outputs saved in RANKID_output.json

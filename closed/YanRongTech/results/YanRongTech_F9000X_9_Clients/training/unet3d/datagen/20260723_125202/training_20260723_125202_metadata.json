@@ -1,0 +1,126 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260723_125202",
+  "num_processes": 648,
+  "accelerator": null,
+  "result_dir": "/home/mlperf/results/YanRongTech/closed/YanRongTech/results/YanRongTech_F9000X_9_Clients/training/unet3d/datagen/20260723_125202",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "unet3d",
+      "format": "npz",
+      "num_files_train": "420000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "total_disk_bytes": "53875730790000",
+      "skip_listing": "True",
+      "listing_validation_interval": "100",
+      "num_subfolders_train": "100"
+    },
+    "storage": {
+      "storage_type": "direct_fs",
+      "storage_options": {
+        "storage_library": "s3dlio",
+        "uri_scheme": "direct"
+      },
+      "storage_root": "/mnt/pfs"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "420000",
+    "dataset.total_disk_bytes": "53875730790000",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "100",
+    "dataset.num_subfolders_train": "100",
+    "storage.storage_type": "direct_fs",
+    "storage.storage_options.storage_library": "s3dlio",
+    "storage.storage_options.uri_scheme": "direct",
+    "storage.storage_root": "/mnt/pfs",
+    "dataset.data_folder": "unet3d"
+  },
+  "system_info": null,
+  "runtime": 3747.5894589424133,
+  "invocation_start_time": "2026-07-23T12:52:02.025483",
+  "invocation_end_time": "2026-07-23T13:54:49.075490",
+  "verification": null,
+  "executed_command": "mpirun -n 648 -host 19.16.25.82:72,19.16.25.83:72,19.16.25.84:72,19.16.25.86:72,19.16.25.87:72,19.16.25.88:72,19.16.25.63:72,19.16.25.64:72,19.16.25.65:72 --bind-to none --map-by node --allow-run-as-root -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_MULTIPART_THRESHOLD_MB /home/mlperf/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/mlperf/results/YanRongTech/closed/YanRongTech/results/YanRongTech_F9000X_9_Clients/training/unet3d/datagen/20260723_125202 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=420000 ++workload.dataset.total_disk_bytes=53875730790000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.num_subfolders_train=100 ++workload.storage.storage_type=direct_fs ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=direct ++workload.storage.storage_root=/mnt/pfs ++workload.dataset.data_folder=unet3d --config-dir=/home/mlperf/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 648 -host 19.16.25.82:72,19.16.25.83:72,19.16.25.84:72,19.16.25.86:72,19.16.25.87:72,19.16.25.88:72,19.16.25.63:72,19.16.25.64:72,19.16.25.65:72 --bind-to none --map-by node --allow-run-as-root -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_MULTIPART_THRESHOLD_MB /home/mlperf/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/mlperf/results/YanRongTech/closed/YanRongTech/results/YanRongTech_F9000X_9_Clients/training/unet3d/datagen/20260723_125202 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=420000 ++workload.dataset.total_disk_bytes=53875730790000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.num_subfolders_train=100 ++workload.storage.storage_type=direct_fs ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=direct ++workload.storage.storage_root=/mnt/pfs ++workload.dataset.data_folder=unet3d --config-dir=/home/mlperf/storage/configs/dlio",
+      "stdout": "/home/mlperf/results/YanRongTech/closed/YanRongTech/results/YanRongTech_F9000X_9_Clients/training/unet3d/datagen/20260723_125202/training_datagen.stdout.log",
+      "stderr": "/home/mlperf/results/YanRongTech/closed/YanRongTech/results/YanRongTech_F9000X_9_Clients/training/unet3d/datagen/20260723_125202/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "19.16.25.82",
+      "19.16.25.83",
+      "19.16.25.84",
+      "19.16.25.86",
+      "19.16.25.87",
+      "19.16.25.88",
+      "19.16.25.63",
+      "19.16.25.64",
+      "19.16.25.65"
+    ],
+    "num_processes": 648,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": [
+      "-x",
+      "S3DLIO_MULTIPART_THRESHOLD_MB"
+    ],
+    "data_dir": "/mnt/pfs/",
+    "dlio_bin_path": null,
+    "o_direct": true,
+    "params": [
+      "dataset.num_files_train=420000",
+      "dataset.total_disk_bytes=53875730790000",
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=100",
+      "dataset.num_subfolders_train=100"
+    ],
+    "results_dir": "/home/mlperf/results/YanRongTech",
+    "systemname": "YanRongTech_F9000X_9_Clients",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "YanRongTech",
+    "num_client_hosts": 9,
+    "_validated_orgname": "YanRongTech",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "73ec291b9d2b8ca7fa98035166bb0607"
+  }
+}

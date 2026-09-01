@@ -1,0 +1,1053 @@
+system_under_test:
+  solution:
+    submission_name: hickory
+    friendly_description: FarmGPU 'hickory' WEKA parallel filesystem cluster - DPDK/RoCE clients on NVIDIA
+      ConnectX-8 dual-400G
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_footprint: closed_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 646.58
+    availability: preview
+  deployment: onprem
+  product_nodes:
+  - friendly_description: FarmGPU 'hickory' WEKA Data Platform 5.1.2.420-cx8 storage backend node (shared
+      parallel filesystem 'default', POSIX file API; DPDK/RoCEv2 client transport). AMD EPYC 9655 96c/1-socket,
+      1511 GiB, 20x Solidigm D7-PS1010 7.68TB TLC NVMe (SB5PH27X076T), 2x NVIDIA ConnectX-8 dual-400G RoCEv2. Two isolated 400G storage fabrics
+      (A and B, each on its own VLAN), plus a separate out-of-band management network. Aggregate line rate ~800 GB/s. PSU
+      nameplate is a representative value (2x2000W Titanium @240V) pending confirmation from the hickory
+      chassis datasheet.
+    quantity: 8
+    chassis:
+      model_name: WEKA hickory storage backend (AMD EPYC 9655, 2U)
+      rack_units: 2
+      cpu_model: AMD EPYC 9655
+      cpu_qty: 1
+      cpu_cores: 96
+      memory_capacity: 1511
+      power:
+        min_psus_active: 1
+        psus_configured:
+        - inlet_voltage: 240
+          nameplate_power_watts: 2000
+          efficiency: Titanium
+          unit_count: 2
+    networking:
+    - type: ethernet
+      state: up
+      speed: 400
+      unit_count: 2
+      traffic:
+      - data
+      - backend
+    - type: ethernet
+      state: up
+      speed: 1
+      unit_count: 1
+      traffic:
+      - management
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SB5PH27X076T
+      interface: nvme
+      media_type: TLC
+      capacity_in_GB: 7680
+      unit_count: 20
+    operating_system:
+      name: WEKA Data Platform
+      version: 5.1.2.420-cx8
+  total_rack_units: 16
+  clients:
+  - friendly_description: FarmGPU parsnip load client (Intel Xeon 6781P, 1007 GiB, 4x NVIDIA ConnectX-8
+      400G dual-rail RoCE) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client
+      run (8x parsnip + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 1007
+      rack_units: 2
+      power: &id001
+        min_psus_active: 1
+        psus_configured:
+        - inlet_voltage: 240
+          nameplate_power_watts: 2000
+          efficiency: Titanium
+          unit_count: 2
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 4
+      traffic:
+      - data
+    - type: ethernet
+      speed: 10
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '1048576'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '8249228'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26904'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SB5PH27X153T
+      interface: nvme
+      capacity_in_GB: 15360
+      unit_count: 16
+      media_type: TLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 5
+  - friendly_description: FarmGPU potato load client (Intel Xeon 6781P, 503 GiB, 2x 400G dual-rail RoCE
+      NIC) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client run (8x parsnip
+      + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 503
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 2
+      traffic:
+      - data
+    - type: ethernet
+      speed: 1
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '4121806'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26828'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SBFPF2BV0P12
+      interface: nvme
+      capacity_in_GB: 122903
+      unit_count: 24
+      media_type: QLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 5
+  - friendly_description: FarmGPU parsnip load client (Intel Xeon 6781P, 1007 GiB, 4x NVIDIA ConnectX-8
+      400G dual-rail RoCE) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client
+      run (8x parsnip + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 1007
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 4
+      traffic:
+      - data
+    - type: ethernet
+      speed: 10
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '8249228'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26904'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SB5PH27X153T
+      interface: nvme
+      capacity_in_GB: 15360
+      unit_count: 16
+      media_type: TLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1
+  - friendly_description: FarmGPU parsnip load client (Intel Xeon 6781P, 1007 GiB, 4x NVIDIA ConnectX-8
+      400G dual-rail RoCE) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client
+      run (8x parsnip + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 1007
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 4
+      traffic:
+      - data
+    - type: ethernet
+      speed: 10
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '8249228'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26904'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SB5PH27X153T
+      interface: nvme
+      capacity_in_GB: 15360
+      unit_count: 16
+      media_type: TLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1
+  - friendly_description: FarmGPU parsnip load client (Intel Xeon 6781P, 1007 GiB, 4x NVIDIA ConnectX-8
+      400G dual-rail RoCE) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client
+      run (8x parsnip + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 1007
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 4
+      traffic:
+      - data
+    - type: ethernet
+      speed: 10
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '8247932'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26904'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SB5PH27X153T
+      interface: nvme
+      capacity_in_GB: 15360
+      unit_count: 16
+      media_type: TLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1
+  - friendly_description: FarmGPU potato load client (Intel Xeon 6781P, 503 GiB, 2x 400G dual-rail RoCE
+      NIC) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client run (8x parsnip
+      + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 503
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 2
+      traffic:
+      - data
+    - type: ethernet
+      speed: 1
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '4121785'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26828'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SBFPF2BV0P12
+      interface: nvme
+      capacity_in_GB: 122903
+      unit_count: 24
+      media_type: QLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1
+  - friendly_description: FarmGPU potato load client (Intel Xeon 6781P, 503 GiB, 2x 400G dual-rail RoCE
+      NIC) - MLPerf Storage kvcache CLOSED, llama3.1-8b sanctioned 3-option sweep, 15-client run (8x parsnip
+      + 7x potato), np15; WEKA 'hickory' backend
+    chassis:
+      model_name: SYS-212H-TN
+      cpu_model: Intel(R) Xeon(R) 6781P
+      cpu_qty: 1
+      cpu_cores: 80
+      memory_capacity: 503
+      rack_units: 2
+      power: *id001
+    networking:
+    - type: ethernet
+      speed: 400
+      state: up
+      unit_count: 2
+      traffic:
+      - data
+    - type: ethernet
+      speed: 1
+      state: up
+      unit_count: 1
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '4121805'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '16777216'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '16777216'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t6291456"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '2147483648'
+    - name: vm.dirty_background_ratio
+      value: '0'
+    - name: vm.dirty_bytes
+      value: '4294967296'
+    - name: vm.dirty_expire_centisecs
+      value: '500'
+    - name: vm.dirty_ratio
+      value: '0'
+    - name: vm.dirty_writeback_centisecs
+      value: '100'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '4194304'
+    - name: vm.nr_hugepages
+      value: '26828'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '50'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    drives:
+    - vendor_name: Solidigm
+      model_name: SOLIDIGM SBFPF2BV0P12
+      interface: nvme
+      capacity_in_GB: 122903
+      unit_count: 24
+      media_type: QLC
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1

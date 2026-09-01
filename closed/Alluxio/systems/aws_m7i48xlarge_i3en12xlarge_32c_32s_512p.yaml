@@ -1,0 +1,80 @@
+system_under_test:
+  clients:
+  - friendly_description: AWS m7i.48xlarge checkpoint client (Alluxio FUSE, 32-client MPI, 16 ranks/client = 512 procs); 32x i3en.12xlarge Alluxio workers with NVMe RAID0 page store and a dedicated FoundationDB metadata tier, S3 UFS
+    chassis:
+      model_name: m7i.48xlarge
+      cpu_model: Intel(R) Xeon(R) Platinum 8488C (Sapphire Rapids)
+      cpu_qty: 2
+      cpu_cores: 96
+      memory_capacity: 768
+    networking:
+    - type: ethernet
+      state: up
+      unit_count: 1
+      speed: 50
+      traffic:
+      - data
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: net.core.rmem_max
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '212992'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t33554432"
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.swappiness
+      value: '60'
+    environment:
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '512'
+    - name: OMPI_MCA_btl
+      value: tcp,self
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_UNIVERSE_SIZE
+      value: '512'
+    - name: PMIX_MCA_gds
+      value: hash
+    drives:
+    - vendor_name: Amazon
+      model_name: Amazon Elastic Block Store
+      interface: nvme
+      capacity_in_GB: 150
+      unit_count: 1
+      media_type: other
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 32
+  deployment: cloud
+  solution:
+    submission_name: aws_m7i48xlarge_i3en12xlarge_32c_32s_512p
+    friendly_description: Alluxio Enterprise AI 3.9 (RC18) distributed caching over an S3 under-store via Alluxio FUSE (POSIX), with a dedicated process-class-separated FoundationDB metadata tier (3 log + 3 storage nodes, tlogs off the page store); 32 i3en.12xlarge storage workers + 32 m7i.48xlarge checkpoint clients (512 procs)
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_footprint: closed_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 816.0
+    availability: available

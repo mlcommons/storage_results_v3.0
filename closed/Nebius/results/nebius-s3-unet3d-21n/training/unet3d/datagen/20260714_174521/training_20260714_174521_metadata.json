@@ -1,0 +1,128 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260714_174521",
+  "num_processes": 16,
+  "accelerator": null,
+  "result_dir": "/data/results-submission-final/closed/Nebius/results/nebius-s3-unet3d-21n/training/unet3d/datagen/20260714_174521",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "s3://mlc-s3/unet3d/submission/data_21n/unet3d",
+      "format": "npz",
+      "num_files_train": "73500",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "294",
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    },
+    "storage": {
+      "storage_type": "s3",
+      "storage_root": "mlc-s3",
+      "storage_options": {
+        "storage_library": "s3dlio",
+        "uri_scheme": "s3"
+      },
+      "s3_force_path_style": "true"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "73500",
+    "dataset.num_subfolders_train": "294",
+    "dataset.skip_listing": "True",
+    "storage.storage_type": "s3",
+    "storage.storage_root": "mlc-s3",
+    "storage.storage_options.storage_library": "s3dlio",
+    "storage.storage_options.uri_scheme": "s3",
+    "storage.s3_force_path_style": "true",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "s3://mlc-s3/unet3d/submission/data_21n/unet3d"
+  },
+  "system_info": null,
+  "runtime": 263.9096837043762,
+  "invocation_start_time": "2026-07-14T17:45:21.772008",
+  "verification": null,
+  "executed_command": "mpirun -n 16 -host 214dkw-worker-1:2,214dkw-worker-2:2,214dkw-worker-3:2,214dkw-worker-4:2,214dkw-worker-5:2,214dkw-worker-6:2,214dkw-worker-7:2,214dkw-worker-8:2 --bind-to none --map-by node --allow-run-as-root -x TMPDIR=/tmp -x MLPSTORAGE_CHECKPOINT_URI_SCHEME=s3 -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_REGION -x AWS_SECRET_ACCESS_KEY -x BUCKET -x MLPSTORAGE_HISTFILE -x MLPS_ROOT -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x STORAGE_LIBRARY /mnt/opt/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/data/results-submission-final/closed/Nebius/results/nebius-s3-unet3d-21n/training/unet3d/datagen/20260714_174521 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=73500 ++workload.dataset.num_subfolders_train=294 ++workload.dataset.skip_listing=True ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlc-s3 ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=s3://mlc-s3/unet3d/submission/data_21n/unet3d --config-dir=/mnt/opt/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 16 -host 214dkw-worker-1:2,214dkw-worker-2:2,214dkw-worker-3:2,214dkw-worker-4:2,214dkw-worker-5:2,214dkw-worker-6:2,214dkw-worker-7:2,214dkw-worker-8:2 --bind-to none --map-by node --allow-run-as-root -x TMPDIR=/tmp -x MLPSTORAGE_CHECKPOINT_URI_SCHEME=s3 -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_REGION -x AWS_SECRET_ACCESS_KEY -x BUCKET -x MLPSTORAGE_HISTFILE -x MLPS_ROOT -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x STORAGE_LIBRARY /mnt/opt/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/data/results-submission-final/closed/Nebius/results/nebius-s3-unet3d-21n/training/unet3d/datagen/20260714_174521 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=73500 ++workload.dataset.num_subfolders_train=294 ++workload.dataset.skip_listing=True ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlc-s3 ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=s3://mlc-s3/unet3d/submission/data_21n/unet3d --config-dir=/mnt/opt/storage/configs/dlio",
+      "stdout": "/data/results-submission-final/closed/Nebius/results/nebius-s3-unet3d-21n/training/unet3d/datagen/20260714_174521/training_datagen.stdout.log",
+      "stderr": "/data/results-submission-final/closed/Nebius/results/nebius-s3-unet3d-21n/training/unet3d/datagen/20260714_174521/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "214dkw-worker-1",
+      "214dkw-worker-2",
+      "214dkw-worker-3",
+      "214dkw-worker-4",
+      "214dkw-worker-5",
+      "214dkw-worker-6",
+      "214dkw-worker-7",
+      "214dkw-worker-8"
+    ],
+    "num_processes": 16,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": [
+      "-x",
+      "TMPDIR=/tmp",
+      "-x",
+      "MLPSTORAGE_CHECKPOINT_URI_SCHEME=s3",
+      "-x",
+      "S3DLIO_OPERATION_TIMEOUT_SECS",
+      "-x",
+      "S3DLIO_POOL_MAX_IDLE_PER_HOST"
+    ],
+    "data_dir": "s3://mlc-s3/unet3d/submission/data_21n",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=73500",
+      "dataset.num_subfolders_train=294",
+      "dataset.skip_listing=True"
+    ],
+    "results_dir": "/data/results-submission-final",
+    "systemname": "nebius-s3-unet3d-21n",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "object",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Nebius",
+    "num_client_hosts": 8,
+    "_validated_orgname": "Nebius",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "d4484ca85bf44c8faadabf64b40de436"
+  }
+}

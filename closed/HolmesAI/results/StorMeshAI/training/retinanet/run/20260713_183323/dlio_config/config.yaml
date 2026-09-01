@@ -1,0 +1,30 @@
+workload:
+  model:
+    name: retinanet
+    type: cnn
+  framework: pytorch
+  workflow:
+    generate_data: false
+    train: true
+    checkpoint: false
+  dataset:
+    data_folder: /mnt/mlp/retinanet_data/retinanet
+    format: jpeg
+    num_files_train: 17023000
+    num_samples_per_file: 1
+    record_length_bytes: 322957
+    skip_listing: true
+    listing_validation_interval: 1000
+    num_subfolders_train: 1702
+  reader:
+    data_loader: pytorch
+    batch_size: 24
+    read_threads: 15
+    multiprocessing_context: fork
+    file_shuffle: seed
+    sample_shuffle: seed
+  train:
+    epochs: 8
+    computation_time: 0.04755
+  metric:
+    au: 0.85

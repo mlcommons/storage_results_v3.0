@@ -1,0 +1,455 @@
+# Supporting documentation:
+# - [AIStore Disclosure](./AIStore_Disclosure.pdf)
+# - [AIStore Scaling and Cloud Portability](./AIStore_Scaling.pdf)
+#
+system_under_test:
+  clients:
+  - friendly_description: AWS m8gn.24xlarge MLPerf Storage client
+    chassis:
+      model_name: m8gn.24xlarge
+      cpu_model: AWS Graviton4
+      cpu_qty: 1
+      cpu_cores: 96
+      memory_capacity: 384
+    networking:
+    - type: ethernet
+      state: up
+      unit_count: 1
+      speed: 300
+      traffic:
+      - data
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1073741816'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '3038706'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '20000'
+    - name: net.core.netdev_max_backlog
+      value: '250000'
+    - name: net.core.optmem_max
+      value: '33554432'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '134217728'
+    - name: net.core.somaxconn
+      value: '65535'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '134217728'
+    - name: net.ipv4.ip_local_port_range
+      value: "2048\t65535"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '2'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t262144\t134217728"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '0'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t134217728"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '10'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '20'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '65530'
+    - name: vm.min_free_kbytes
+      value: '78894'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '60'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '15'
+    environment:
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '4'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '4'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '4'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '4'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '4'
+    - name: S3_ENDPOINT_URIS
+      value: http://ip-100-64-131-148.ec2.internal:51080/s3/,http://ip-100-64-177-85.ec2.internal:51080/s3/,http://ip-100-64-187-74.ec2.internal:51080/s3/
+    - name: S3_LOAD_BALANCE_STRATEGY
+      value: round_robin
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_RETRY_MODE
+      value: standard
+    drives:
+    - vendor_name: AWS
+      model_name: Amazon Elastic Block Store
+      interface: nvme
+      capacity_in_GB: 214
+      unit_count: 1
+      media_type: other
+    operating_system:
+      name: Amazon Linux
+      version: '2023'
+    quantity: 3
+  - friendly_description: AWS m8gn.24xlarge MLPerf Storage client
+    chassis:
+      model_name: m8gn.24xlarge
+      cpu_model: AWS Graviton4
+      cpu_qty: 1
+      cpu_cores: 96
+      memory_capacity: 384
+    networking:
+    - type: ethernet
+      state: up
+      unit_count: 1
+      speed: 300
+      traffic:
+      - data
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1073741816'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.numa_balancing
+      value: '0'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '3038706'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '20000'
+    - name: net.core.netdev_max_backlog
+      value: '250000'
+    - name: net.core.optmem_max
+      value: '33554432'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '134217728'
+    - name: net.core.somaxconn
+      value: '65535'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '134217728'
+    - name: net.ipv4.ip_local_port_range
+      value: "2048\t65535"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '2'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t262144\t134217728"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '0'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t134217728"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '10'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '20'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '65530'
+    - name: vm.min_free_kbytes
+      value: '78894'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '60'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '15'
+    environment:
+    - name: AWS_ACCESS_KEY_ID
+      value: '****'
+    - name: AWS_ENDPOINT_URL
+      value: http://ip-100-64-177-85.ec2.internal:51080/s3/
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_REGION
+      value: us-east-1
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: AWS_SECRET_ACCESS_KEY
+      value: "[SET \u2014 7 chars]"
+    - name: BUCKET
+      value: mlp-unet3d-aws-5c
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '4'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '4'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '4'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '4'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '4'
+    - name: STORAGE_LIBRARY
+      value: s3dlio
+    - name: S3_ENDPOINT_URIS
+      value: http://ip-100-64-131-148.ec2.internal:51080/s3/,http://ip-100-64-177-85.ec2.internal:51080/s3/,http://ip-100-64-187-74.ec2.internal:51080/s3/
+    - name: S3_LOAD_BALANCE_STRATEGY
+      value: round_robin
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: AWS
+      model_name: Amazon Elastic Block Store
+      interface: nvme
+      capacity_in_GB: 214
+      unit_count: 1
+      media_type: other
+    operating_system:
+      name: Amazon Linux
+      version: '2023'
+    quantity: 1
+  solution:
+    submission_name: aistore-3n-aws-i8ge-150g-4client-m8gn24xl-unet3d
+    friendly_description: NVIDIA AIStore v4.8 shared object storage on three AWS i8ge.24xlarge
+      nodes, accessed by 4 m8gn.24xlarge ARM64 clients over S3
+    architecture:
+      storage_location: remote
+      benchmark_API: object
+      product_API: object
+      client_footprint: open_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 163.71
+    availability: available
+  deployment: cloud
+  product_nodes:
+  - friendly_description: AWS i8ge.24xlarge AIStore node
+    quantity: 3
+    chassis:
+      model_name: i8ge.24xlarge
+      cpu_model: AWS Graviton4
+      cpu_qty: 1
+      cpu_cores: 96
+      memory_capacity: 768
+    networking:
+    - type: ethernet
+      speed: 150
+      state: up
+      unit_count: 1
+      traffic:
+      - data
+    drives:
+    - vendor_name: AWS
+      model_name: i8ge local NVMe
+      interface: nvme
+      capacity_in_GB: 7500
+      unit_count: 8
+      media_type: TLC
+    operating_system:
+      name: Kubernetes
+      version: 1.34.2
+    environment:
+    - name: AIStore version
+      value: 4.8.42242b334fd57e993919f04acf3c2011cf2db675
+    - name: AIStore deployment
+      value: Kubernetes
+    - name: AIStore target CPU limit
+      value: 60 cores
+    - name: AIStore proxy CPU limit
+      value: 16 cores
+    - name: AIStore bucket provider
+      value: ais

@@ -1,0 +1,93 @@
+system_under_test:
+    solution:
+        submission_name: seahorse-storage
+        friendly_description: POSIX-based distributed storage utilizing InfiniBand (IB) and RDMA
+        architecture:
+            storage_location: remote
+            benchmark_API: file
+            product_API: file
+            client_footprint: open_source
+            client_installation: installable
+        capabilities:
+            multi_host: true
+            simultaneous_write: true
+            simultaneous_read: true
+            remap_time_in_seconds: 0
+        usable_capacity_tib: 168
+        availability: preview
+    deployment: "onprem"
+
+    product_nodes:
+        - friendly_description: Storage node
+          quantity: 3
+          chassis:
+              model_name: Dell PowerEdge R7615
+              rack_units: 2
+              cpu_model: AMD EPYC 9754
+              cpu_qty: 1
+              cpu_cores: 128
+              memory_capacity: 256
+              power:
+                  min_psus_active: 1
+                  psus_configured:
+                      - inlet_voltage: 240
+                        nameplate_power_watts: 1400
+                        efficiency: Platinum
+                        unit_count: 2
+          networking:
+              - type: infiniband
+                state: up
+                speed: 400
+                traffic:
+                    - management
+                    - data
+                    - metadata
+                unit_count: 1
+          drives:
+              - vendor_name: SK hynix
+                model_name: PS1010
+                interface: nvme
+                media_type: TLC
+                capacity_in_GB: 3840
+                unit_count: 16
+                performance:
+                    seq_read_MBps: 14500
+                    seq_write_MBps: 8200
+                    random_read_IOPS: 3100000
+                    random_write_IOPS: 315000
+                    form_factor: E3.S
+                    interface_speed: PCIe Gen5 x4
+          operating_system:
+              name: Ubuntu
+              version: "24.04.3"
+    total_rack_units: 6
+
+    clients:
+        - friendly_description: Client node
+          quantity: 4
+          chassis:
+              model_name: Dell PowerEdge R770
+              rack_units: 2
+              cpu_model: Intel Xeon 6745P
+              cpu_qty: 2
+              cpu_cores: 64
+              memory_capacity: 1024
+              power:
+                  min_psus_active: 1
+                  psus_configured:
+                      - inlet_voltage: 240
+                        nameplate_power_watts: 2400
+                        efficiency: Titanium
+                        unit_count: 2
+          networking:
+              - type: infiniband
+                state: up
+                speed: 400
+                traffic:
+                    - data
+                unit_count: 1
+          operating_system:
+              name: Ubuntu
+              version: "24.04.3"
+          sysctl: []
+

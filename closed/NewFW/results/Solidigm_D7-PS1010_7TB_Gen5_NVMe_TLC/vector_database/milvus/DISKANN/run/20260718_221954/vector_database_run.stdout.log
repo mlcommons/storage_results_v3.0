@@ -1,0 +1,492 @@
+Loaded vdbbench configuration from /root/raysmond/workspace/mlperf_v3/storage/configs/vectordbbench/default.yaml
+WARNING - configuration key 'batch_size' appears in multiple sections; keeping value 10 from the earlier section and ignoring 1 from section 'benchmark'.
+
+==================================================
+OUTPUT CONFIGURATION
+==================================================
+Results will be saved to: /etc/cwp/log/workload/5965/2026-07-18-18-24-50-ca86764e-bcb8-4a7b-b4df-32a5f6d077db/results/closed/Solidigm/results/Solidigm_D7-PS1010_7TB_Gen5_NVMe_TLC/vector_database/milvus/DISKANN/run/20260718_221954
+
+==================================================
+Database Verification and Loading
+==================================================
+Verifying database connection and loading collection
+Connecting to Milvus server at 127.0.0.1:19530...
+Collection mlps_1m_1shards_1536dim_uniform already loaded.
+Getting collection statistics...
+
+Tabulating information...
++---------------------------------+----------------+-------------+---------------+----------------+--------------+
+| Collection Name                 |   Vector Count |   Dimension | Index Types   | Metric Types   |   Partitions |
++=================================+================+=============+===============+================+==============+
+| mlps_1m_1shards_1536dim_uniform |       10000000 |        1536 | DISKANN       | COSINE         |            1 |
++---------------------------------+----------------+-------------+---------------+----------------+--------------+
+
+COLLECTION INFORMATION: {'name': 'mlps_1m_1shards_1536dim_uniform', 'row_count': 10000000, 'dimension': 1536, 'schema': "{'auto_id': False, 'description': 'Benchmark Collection', 'fields': [{'name': 'id', 'description': '', 'type': <DataType.INT64: 5>, 'is_primary': True, 'auto_id': False}, {'name': 'vector', 'description': '', 'type': <DataType.FLOAT_VECTOR: 101>, 'params': {'dim': 1536}}], 'enable_dynamic_field': False, 'enable_namespace': False}", 'index_info': [{'field_name': 'vector', 'index_type': 'DISKANN', 'metric_type': 'COSINE', 'params': {'max_degree': 64, 'search_list_size': 200}}], 'partitions': [{'name': '_default', 'description': ''}]}
+Writing configuration to /etc/cwp/log/workload/5965/2026-07-18-18-24-50-ca86764e-bcb8-4a7b-b4df-32a5f6d077db/results/closed/Solidigm/results/Solidigm_D7-PS1010_7TB_Gen5_NVMe_TLC/vector_database/milvus/DISKANN/run/20260718_221954/config.json
+
+==================================================
+RECALL SETUP (outside benchmark timing)
+==================================================
+Ground truth is pre-computed using a FLAT/brute-force index.
+This does NOT affect performance measurements.
+
+Using metric type: COSINE
+Using index type: DISKANN
+Using search params: {'metric_type': 'COSINE', 'params': {'search_list': 200}}
+Detected source vector field: 'vector'
+
+Generating 1000 query vectors (dim=1536, seed=42, mode=independent)...
+Generated 1000 query vectors.
+
+Setting up FLAT collection: mlps_1m_1shards_1536dim_uniform_flat_gt
+FLAT collection 'mlps_1m_1shards_1536dim_uniform_flat_gt' already exists with 10000000 vectors and passed the content check (8 sampled vectors match the source), reusing it.
+Pre-computing ground truth for 1000 queries using FLAT index (top_k=10)...
+Ground truth pre-computation complete: 1000 queries in 407.30s
+Ground truth ready: 1000 queries pre-computed.
+
+Collecting initial disk statistics...
+
+==================================================
+Benchmark Execution
+==================================================
+Starting benchmark with 1 processes and runtime=300 seconds
+Recall measurement: using 1000 pre-generated queries, recall@10
+NOTE: batch_end timing is placed BEFORE recall capture; performance is unaffected.
+Running single process benchmark...
+Process 0 initialized
+Process 0: loading collection
+Process 0: writing results to /etc/cwp/log/workload/5965/2026-07-18-18-24-50-ca86764e-bcb8-4a7b-b4df-32a5f6d077db/results/closed/Solidigm/results/Solidigm_D7-PS1010_7TB_Gen5_NVMe_TLC/vector_database/milvus/DISKANN/run/20260718_221954/milvus_benchmark_p0.csv
+Process 0: starting benchmark
+Process 0: completed 100 queries in 0.71 seconds.
+Process 0: completed 200 queries in 1.47 seconds.
+Process 0: completed 300 queries in 2.19 seconds.
+Process 0: completed 400 queries in 2.89 seconds.
+Process 0: completed 500 queries in 3.60 seconds.
+Process 0: completed 600 queries in 4.31 seconds.
+Process 0: completed 700 queries in 5.02 seconds.
+Process 0: completed 800 queries in 5.72 seconds.
+Process 0: completed 900 queries in 6.41 seconds.
+Process 0: completed 1000 queries in 7.11 seconds.
+Process 0: completed 1100 queries in 7.87 seconds.
+Process 0: completed 1200 queries in 8.61 seconds.
+Process 0: completed 1300 queries in 9.32 seconds.
+Process 0: completed 1400 queries in 10.02 seconds.
+Process 0: completed 1500 queries in 10.71 seconds.
+Process 0: completed 1600 queries in 11.40 seconds.
+Process 0: completed 1700 queries in 12.08 seconds.
+Process 0: completed 1800 queries in 12.76 seconds.
+Process 0: completed 1900 queries in 13.43 seconds.
+Process 0: completed 2000 queries in 14.19 seconds.
+Process 0: completed 2100 queries in 14.89 seconds.
+Process 0: completed 2200 queries in 15.59 seconds.
+Process 0: completed 2300 queries in 16.28 seconds.
+Process 0: completed 2400 queries in 16.98 seconds.
+Process 0: completed 2500 queries in 17.68 seconds.
+Process 0: completed 2600 queries in 18.37 seconds.
+Process 0: completed 2700 queries in 19.07 seconds.
+Process 0: completed 2800 queries in 19.76 seconds.
+Process 0: completed 2900 queries in 20.53 seconds.
+Process 0: completed 3000 queries in 21.24 seconds.
+Process 0: completed 3100 queries in 21.93 seconds.
+Process 0: completed 3200 queries in 22.63 seconds.
+Process 0: completed 3300 queries in 23.32 seconds.
+Process 0: completed 3400 queries in 24.01 seconds.
+Process 0: completed 3500 queries in 24.70 seconds.
+Process 0: completed 3600 queries in 25.40 seconds.
+Process 0: completed 3700 queries in 26.13 seconds.
+Process 0: completed 3800 queries in 26.83 seconds.
+Process 0: completed 3900 queries in 27.55 seconds.
+Process 0: completed 4000 queries in 28.26 seconds.
+Process 0: completed 4100 queries in 28.96 seconds.
+Process 0: completed 4200 queries in 29.66 seconds.
+Process 0: completed 4300 queries in 30.36 seconds.
+Process 0: completed 4400 queries in 31.05 seconds.
+Process 0: completed 4500 queries in 31.77 seconds.
+Process 0: completed 4600 queries in 32.58 seconds.
+Process 0: completed 4700 queries in 33.30 seconds.
+Process 0: completed 4800 queries in 34.00 seconds.
+Process 0: completed 4900 queries in 34.70 seconds.
+Process 0: completed 5000 queries in 35.41 seconds.
+Process 0: completed 5100 queries in 36.12 seconds.
+Process 0: completed 5200 queries in 36.82 seconds.
+Process 0: completed 5300 queries in 37.53 seconds.
+Process 0: completed 5400 queries in 38.30 seconds.
+Process 0: completed 5500 queries in 39.02 seconds.
+Process 0: completed 5600 queries in 39.72 seconds.
+Process 0: completed 5700 queries in 40.44 seconds.
+Process 0: completed 5800 queries in 41.13 seconds.
+Process 0: completed 5900 queries in 41.83 seconds.
+Process 0: completed 6000 queries in 42.54 seconds.
+Process 0: completed 6100 queries in 43.23 seconds.
+Process 0: completed 6200 queries in 43.94 seconds.
+Process 0: completed 6300 queries in 44.75 seconds.
+Process 0: completed 6400 queries in 45.48 seconds.
+Process 0: completed 6500 queries in 46.19 seconds.
+Process 0: completed 6600 queries in 46.90 seconds.
+Process 0: completed 6700 queries in 47.61 seconds.
+Process 0: completed 6800 queries in 48.31 seconds.
+Process 0: completed 6900 queries in 49.01 seconds.
+Process 0: completed 7000 queries in 49.70 seconds.
+Process 0: completed 7100 queries in 50.39 seconds.
+Process 0: completed 7200 queries in 51.16 seconds.
+Process 0: completed 7300 queries in 51.86 seconds.
+Process 0: completed 7400 queries in 52.54 seconds.
+Process 0: completed 7500 queries in 53.21 seconds.
+Process 0: completed 7600 queries in 53.89 seconds.
+Process 0: completed 7700 queries in 54.56 seconds.
+Process 0: completed 7800 queries in 55.25 seconds.
+Process 0: completed 7900 queries in 55.92 seconds.
+Process 0: completed 8000 queries in 56.66 seconds.
+Process 0: completed 8100 queries in 57.37 seconds.
+Process 0: completed 8200 queries in 58.07 seconds.
+Process 0: completed 8300 queries in 58.75 seconds.
+Process 0: completed 8400 queries in 59.43 seconds.
+Process 0: completed 8500 queries in 60.13 seconds.
+Process 0: completed 8600 queries in 60.83 seconds.
+Process 0: completed 8700 queries in 61.52 seconds.
+Process 0: completed 8800 queries in 62.23 seconds.
+Process 0: completed 8900 queries in 62.96 seconds.
+Process 0: completed 9000 queries in 63.66 seconds.
+Process 0: completed 9100 queries in 64.35 seconds.
+Process 0: completed 9200 queries in 65.06 seconds.
+Process 0: completed 9300 queries in 65.75 seconds.
+Process 0: completed 9400 queries in 66.44 seconds.
+Process 0: completed 9500 queries in 67.16 seconds.
+Process 0: completed 9600 queries in 67.84 seconds.
+Process 0: completed 9700 queries in 68.53 seconds.
+Process 0: completed 9800 queries in 69.30 seconds.
+Process 0: completed 9900 queries in 70.00 seconds.
+Process 0: completed 10000 queries in 70.70 seconds.
+Process 0: completed 10100 queries in 71.39 seconds.
+Process 0: completed 10200 queries in 72.09 seconds.
+Process 0: completed 10300 queries in 72.80 seconds.
+Process 0: completed 10400 queries in 73.52 seconds.
+Process 0: completed 10500 queries in 74.23 seconds.
+Process 0: completed 10600 queries in 74.98 seconds.
+Process 0: completed 10700 queries in 75.70 seconds.
+Process 0: completed 10800 queries in 76.40 seconds.
+Process 0: completed 10900 queries in 77.10 seconds.
+Process 0: completed 11000 queries in 77.81 seconds.
+Process 0: completed 11100 queries in 78.52 seconds.
+Process 0: completed 11200 queries in 79.23 seconds.
+Process 0: completed 11300 queries in 79.95 seconds.
+Process 0: completed 11400 queries in 80.65 seconds.
+Process 0: completed 11500 queries in 81.40 seconds.
+Process 0: completed 11600 queries in 82.10 seconds.
+Process 0: completed 11700 queries in 82.80 seconds.
+Process 0: completed 11800 queries in 83.51 seconds.
+Process 0: completed 11900 queries in 84.22 seconds.
+Process 0: completed 12000 queries in 84.92 seconds.
+Process 0: completed 12100 queries in 85.61 seconds.
+Process 0: completed 12200 queries in 86.31 seconds.
+Process 0: completed 12300 queries in 87.00 seconds.
+Process 0: completed 12400 queries in 87.78 seconds.
+Process 0: completed 12500 queries in 88.50 seconds.
+Process 0: completed 12600 queries in 89.21 seconds.
+Process 0: completed 12700 queries in 89.92 seconds.
+Process 0: completed 12800 queries in 90.63 seconds.
+Process 0: completed 12900 queries in 91.33 seconds.
+Process 0: completed 13000 queries in 92.04 seconds.
+Process 0: completed 13100 queries in 92.74 seconds.
+Process 0: completed 13200 queries in 93.44 seconds.
+Process 0: completed 13300 queries in 94.20 seconds.
+Process 0: completed 13400 queries in 94.91 seconds.
+Process 0: completed 13500 queries in 95.62 seconds.
+Process 0: completed 13600 queries in 96.33 seconds.
+Process 0: completed 13700 queries in 97.03 seconds.
+Process 0: completed 13800 queries in 97.74 seconds.
+Process 0: completed 13900 queries in 98.44 seconds.
+Process 0: completed 14000 queries in 99.15 seconds.
+Process 0: completed 14100 queries in 99.88 seconds.
+Process 0: completed 14200 queries in 100.58 seconds.
+Process 0: completed 14300 queries in 101.29 seconds.
+Process 0: completed 14400 queries in 101.99 seconds.
+Process 0: completed 14500 queries in 102.69 seconds.
+Process 0: completed 14600 queries in 103.39 seconds.
+Process 0: completed 14700 queries in 104.08 seconds.
+Process 0: completed 14800 queries in 104.77 seconds.
+Process 0: completed 14900 queries in 105.46 seconds.
+Process 0: completed 15000 queries in 106.20 seconds.
+Process 0: completed 15100 queries in 106.91 seconds.
+Process 0: completed 15200 queries in 107.60 seconds.
+Process 0: completed 15300 queries in 108.30 seconds.
+Process 0: completed 15400 queries in 109.01 seconds.
+Process 0: completed 15500 queries in 109.70 seconds.
+Process 0: completed 15600 queries in 110.38 seconds.
+Process 0: completed 15700 queries in 111.08 seconds.
+Process 0: completed 15800 queries in 111.77 seconds.
+Process 0: completed 15900 queries in 112.51 seconds.
+Process 0: completed 16000 queries in 113.22 seconds.
+Process 0: completed 16100 queries in 113.90 seconds.
+Process 0: completed 16200 queries in 114.58 seconds.
+Process 0: completed 16300 queries in 115.27 seconds.
+Process 0: completed 16400 queries in 115.95 seconds.
+Process 0: completed 16500 queries in 116.65 seconds.
+Process 0: completed 16600 queries in 117.34 seconds.
+Process 0: completed 16700 queries in 118.08 seconds.
+Process 0: completed 16800 queries in 118.82 seconds.
+Process 0: completed 16900 queries in 119.54 seconds.
+Process 0: completed 17000 queries in 120.25 seconds.
+Process 0: completed 17100 queries in 120.95 seconds.
+Process 0: completed 17200 queries in 121.65 seconds.
+Process 0: completed 17300 queries in 122.35 seconds.
+Process 0: completed 17400 queries in 123.04 seconds.
+Process 0: completed 17500 queries in 123.73 seconds.
+Process 0: completed 17600 queries in 124.47 seconds.
+Process 0: completed 17700 queries in 125.19 seconds.
+Process 0: completed 17800 queries in 125.89 seconds.
+Process 0: completed 17900 queries in 126.59 seconds.
+Process 0: completed 18000 queries in 127.30 seconds.
+Process 0: completed 18100 queries in 128.01 seconds.
+Process 0: completed 18200 queries in 128.72 seconds.
+Process 0: completed 18300 queries in 129.44 seconds.
+Process 0: completed 18400 queries in 130.14 seconds.
+Process 0: completed 18500 queries in 130.90 seconds.
+Process 0: completed 18600 queries in 131.62 seconds.
+Process 0: completed 18700 queries in 132.32 seconds.
+Process 0: completed 18800 queries in 133.02 seconds.
+Process 0: completed 18900 queries in 133.72 seconds.
+Process 0: completed 19000 queries in 134.41 seconds.
+Process 0: completed 19100 queries in 135.11 seconds.
+Process 0: completed 19200 queries in 135.81 seconds.
+Process 0: completed 19300 queries in 136.57 seconds.
+Process 0: completed 19400 queries in 137.28 seconds.
+Process 0: completed 19500 queries in 138.01 seconds.
+Process 0: completed 19600 queries in 138.71 seconds.
+Process 0: completed 19700 queries in 139.44 seconds.
+Process 0: completed 19800 queries in 140.13 seconds.
+Process 0: completed 19900 queries in 140.83 seconds.
+Process 0: completed 20000 queries in 141.53 seconds.
+Process 0: completed 20100 queries in 142.22 seconds.
+Process 0: completed 20200 queries in 142.98 seconds.
+Process 0: completed 20300 queries in 143.72 seconds.
+Process 0: completed 20400 queries in 144.41 seconds.
+Process 0: completed 20500 queries in 145.11 seconds.
+Process 0: completed 20600 queries in 145.81 seconds.
+Process 0: completed 20700 queries in 146.50 seconds.
+Process 0: completed 20800 queries in 147.23 seconds.
+Process 0: completed 20900 queries in 147.93 seconds.
+Process 0: completed 21000 queries in 148.64 seconds.
+Process 0: completed 21100 queries in 149.37 seconds.
+Process 0: completed 21200 queries in 150.07 seconds.
+Process 0: completed 21300 queries in 150.79 seconds.
+Process 0: completed 21400 queries in 151.47 seconds.
+Process 0: completed 21500 queries in 152.16 seconds.
+Process 0: completed 21600 queries in 152.87 seconds.
+Process 0: completed 21700 queries in 153.56 seconds.
+Process 0: completed 21800 queries in 154.26 seconds.
+Process 0: completed 21900 queries in 155.00 seconds.
+Process 0: completed 22000 queries in 155.73 seconds.
+Process 0: completed 22100 queries in 156.43 seconds.
+Process 0: completed 22200 queries in 157.12 seconds.
+Process 0: completed 22300 queries in 157.84 seconds.
+Process 0: completed 22400 queries in 158.52 seconds.
+Process 0: completed 22500 queries in 159.20 seconds.
+Process 0: completed 22600 queries in 159.89 seconds.
+Process 0: completed 22700 queries in 160.58 seconds.
+Process 0: completed 22800 queries in 161.31 seconds.
+Process 0: completed 22900 queries in 162.02 seconds.
+Process 0: completed 23000 queries in 162.70 seconds.
+Process 0: completed 23100 queries in 163.39 seconds.
+Process 0: completed 23200 queries in 164.07 seconds.
+Process 0: completed 23300 queries in 164.76 seconds.
+Process 0: completed 23400 queries in 165.44 seconds.
+Process 0: completed 23500 queries in 166.13 seconds.
+Process 0: completed 23600 queries in 166.82 seconds.
+Process 0: completed 23700 queries in 167.63 seconds.
+Process 0: completed 23800 queries in 168.41 seconds.
+Process 0: completed 23900 queries in 169.15 seconds.
+Process 0: completed 24000 queries in 169.88 seconds.
+Process 0: completed 24100 queries in 170.59 seconds.
+Process 0: completed 24200 queries in 171.30 seconds.
+Process 0: completed 24300 queries in 172.02 seconds.
+Process 0: completed 24400 queries in 172.74 seconds.
+Process 0: completed 24500 queries in 173.51 seconds.
+Process 0: completed 24600 queries in 174.22 seconds.
+Process 0: completed 24700 queries in 174.92 seconds.
+Process 0: completed 24800 queries in 175.61 seconds.
+Process 0: completed 24900 queries in 176.30 seconds.
+Process 0: completed 25000 queries in 177.01 seconds.
+Process 0: completed 25100 queries in 177.71 seconds.
+Process 0: completed 25200 queries in 178.42 seconds.
+Process 0: completed 25300 queries in 179.11 seconds.
+Process 0: completed 25400 queries in 179.90 seconds.
+Process 0: completed 25500 queries in 180.59 seconds.
+Process 0: completed 25600 queries in 181.28 seconds.
+Process 0: completed 25700 queries in 181.96 seconds.
+Process 0: completed 25800 queries in 182.64 seconds.
+Process 0: completed 25900 queries in 183.34 seconds.
+Process 0: completed 26000 queries in 184.03 seconds.
+Process 0: completed 26100 queries in 184.72 seconds.
+Process 0: completed 26200 queries in 185.41 seconds.
+Process 0: completed 26300 queries in 186.17 seconds.
+Process 0: completed 26400 queries in 186.88 seconds.
+Process 0: completed 26500 queries in 187.57 seconds.
+Process 0: completed 26600 queries in 188.25 seconds.
+Process 0: completed 26700 queries in 188.93 seconds.
+Process 0: completed 26800 queries in 189.60 seconds.
+Process 0: completed 26900 queries in 190.28 seconds.
+Process 0: completed 27000 queries in 190.96 seconds.
+Process 0: completed 27100 queries in 191.64 seconds.
+Process 0: completed 27200 queries in 192.38 seconds.
+Process 0: completed 27300 queries in 193.08 seconds.
+Process 0: completed 27400 queries in 193.78 seconds.
+Process 0: completed 27500 queries in 194.48 seconds.
+Process 0: completed 27600 queries in 195.18 seconds.
+Process 0: completed 27700 queries in 195.87 seconds.
+Process 0: completed 27800 queries in 196.56 seconds.
+Process 0: completed 27900 queries in 197.25 seconds.
+Process 0: completed 28000 queries in 197.99 seconds.
+Process 0: completed 28100 queries in 198.71 seconds.
+Process 0: completed 28200 queries in 199.42 seconds.
+Process 0: completed 28300 queries in 200.13 seconds.
+Process 0: completed 28400 queries in 200.83 seconds.
+Process 0: completed 28500 queries in 201.53 seconds.
+Process 0: completed 28600 queries in 202.23 seconds.
+Process 0: completed 28700 queries in 202.92 seconds.
+Process 0: completed 28800 queries in 203.62 seconds.
+Process 0: completed 28900 queries in 204.35 seconds.
+Process 0: completed 29000 queries in 205.05 seconds.
+Process 0: completed 29100 queries in 205.74 seconds.
+Process 0: completed 29200 queries in 206.43 seconds.
+Process 0: completed 29300 queries in 207.11 seconds.
+Process 0: completed 29400 queries in 207.80 seconds.
+Process 0: completed 29500 queries in 208.55 seconds.
+Process 0: completed 29600 queries in 209.26 seconds.
+Process 0: completed 29700 queries in 209.99 seconds.
+Process 0: completed 29800 queries in 210.70 seconds.
+Process 0: completed 29900 queries in 211.40 seconds.
+Process 0: completed 30000 queries in 212.12 seconds.
+Process 0: completed 30100 queries in 212.82 seconds.
+Process 0: completed 30200 queries in 213.52 seconds.
+Process 0: completed 30300 queries in 214.22 seconds.
+Process 0: completed 30400 queries in 214.93 seconds.
+Process 0: completed 30500 queries in 215.63 seconds.
+Process 0: completed 30600 queries in 216.42 seconds.
+Process 0: completed 30700 queries in 217.12 seconds.
+Process 0: completed 30800 queries in 217.82 seconds.
+Process 0: completed 30900 queries in 218.51 seconds.
+Process 0: completed 31000 queries in 219.20 seconds.
+Process 0: completed 31100 queries in 219.90 seconds.
+Process 0: completed 31200 queries in 220.60 seconds.
+Process 0: completed 31300 queries in 221.30 seconds.
+Process 0: completed 31400 queries in 222.04 seconds.
+Process 0: completed 31500 queries in 222.79 seconds.
+Process 0: completed 31600 queries in 223.51 seconds.
+Process 0: completed 31700 queries in 224.21 seconds.
+Process 0: completed 31800 queries in 224.92 seconds.
+Process 0: completed 31900 queries in 225.61 seconds.
+Process 0: completed 32000 queries in 226.31 seconds.
+Process 0: completed 32100 queries in 227.01 seconds.
+Process 0: completed 32200 queries in 227.71 seconds.
+Process 0: completed 32300 queries in 228.46 seconds.
+Process 0: completed 32400 queries in 229.20 seconds.
+Process 0: completed 32500 queries in 229.90 seconds.
+Process 0: completed 32600 queries in 230.60 seconds.
+Process 0: completed 32700 queries in 231.29 seconds.
+Process 0: completed 32800 queries in 231.98 seconds.
+Process 0: completed 32900 queries in 232.67 seconds.
+Process 0: completed 33000 queries in 233.37 seconds.
+Process 0: completed 33100 queries in 234.07 seconds.
+Process 0: completed 33200 queries in 234.82 seconds.
+Process 0: completed 33300 queries in 235.53 seconds.
+Process 0: completed 33400 queries in 236.22 seconds.
+Process 0: completed 33500 queries in 236.91 seconds.
+Process 0: completed 33600 queries in 237.61 seconds.
+Process 0: completed 33700 queries in 238.30 seconds.
+Process 0: completed 33800 queries in 239.01 seconds.
+Process 0: completed 33900 queries in 239.69 seconds.
+Process 0: completed 34000 queries in 240.39 seconds.
+Process 0: completed 34100 queries in 241.18 seconds.
+Process 0: completed 34200 queries in 241.89 seconds.
+Process 0: completed 34300 queries in 242.60 seconds.
+Process 0: completed 34400 queries in 243.31 seconds.
+Process 0: completed 34500 queries in 244.00 seconds.
+Process 0: completed 34600 queries in 244.70 seconds.
+Process 0: completed 34700 queries in 245.40 seconds.
+Process 0: completed 34800 queries in 246.11 seconds.
+Process 0: completed 34900 queries in 246.85 seconds.
+Process 0: completed 35000 queries in 247.58 seconds.
+Process 0: completed 35100 queries in 248.30 seconds.
+Process 0: completed 35200 queries in 249.00 seconds.
+Process 0: completed 35300 queries in 249.71 seconds.
+Process 0: completed 35400 queries in 250.41 seconds.
+Process 0: completed 35500 queries in 251.11 seconds.
+Process 0: completed 35600 queries in 251.80 seconds.
+Process 0: completed 35700 queries in 252.49 seconds.
+Process 0: completed 35800 queries in 253.28 seconds.
+Process 0: completed 35900 queries in 253.98 seconds.
+Process 0: completed 36000 queries in 254.68 seconds.
+Process 0: completed 36100 queries in 255.38 seconds.
+Process 0: completed 36200 queries in 256.07 seconds.
+Process 0: completed 36300 queries in 256.78 seconds.
+Process 0: completed 36400 queries in 257.49 seconds.
+Process 0: completed 36500 queries in 258.18 seconds.
+Process 0: completed 36600 queries in 258.93 seconds.
+Process 0: completed 36700 queries in 259.64 seconds.
+Process 0: completed 36800 queries in 260.34 seconds.
+Process 0: completed 36900 queries in 261.05 seconds.
+Process 0: completed 37000 queries in 261.75 seconds.
+Process 0: completed 37100 queries in 262.45 seconds.
+Process 0: completed 37200 queries in 263.15 seconds.
+Process 0: completed 37300 queries in 263.85 seconds.
+Process 0: completed 37400 queries in 264.54 seconds.
+Process 0: completed 37500 queries in 265.28 seconds.
+Process 0: completed 37600 queries in 265.97 seconds.
+Process 0: completed 37700 queries in 266.65 seconds.
+Process 0: completed 37800 queries in 267.33 seconds.
+Process 0: completed 37900 queries in 268.01 seconds.
+Process 0: completed 38000 queries in 268.70 seconds.
+Process 0: completed 38100 queries in 269.38 seconds.
+Process 0: completed 38200 queries in 270.08 seconds.
+Process 0: completed 38300 queries in 270.84 seconds.
+Process 0: completed 38400 queries in 271.58 seconds.
+Process 0: completed 38500 queries in 272.29 seconds.
+Process 0: completed 38600 queries in 272.98 seconds.
+Process 0: completed 38700 queries in 273.68 seconds.
+Process 0: completed 38800 queries in 274.38 seconds.
+Process 0: completed 38900 queries in 275.07 seconds.
+Process 0: completed 39000 queries in 275.76 seconds.
+Process 0: completed 39100 queries in 276.51 seconds.
+Process 0: completed 39200 queries in 277.21 seconds.
+Process 0: completed 39300 queries in 277.92 seconds.
+Process 0: completed 39400 queries in 278.61 seconds.
+Process 0: completed 39500 queries in 279.30 seconds.
+Process 0: completed 39600 queries in 279.99 seconds.
+Process 0: completed 39700 queries in 280.67 seconds.
+Process 0: completed 39800 queries in 281.37 seconds.
+Process 0: completed 39900 queries in 282.09 seconds.
+Process 0: completed 40000 queries in 282.82 seconds.
+Process 0: completed 40100 queries in 283.52 seconds.
+Process 0: completed 40200 queries in 284.22 seconds.
+Process 0: completed 40300 queries in 284.90 seconds.
+Process 0: completed 40400 queries in 285.57 seconds.
+Process 0: completed 40500 queries in 286.25 seconds.
+Process 0: completed 40600 queries in 286.93 seconds.
+Process 0: completed 40700 queries in 287.61 seconds.
+Process 0: completed 40800 queries in 288.30 seconds.
+Process 0: completed 40900 queries in 289.05 seconds.
+Process 0: completed 41000 queries in 289.76 seconds.
+Process 0: completed 41100 queries in 290.45 seconds.
+Process 0: completed 41200 queries in 291.16 seconds.
+Process 0: completed 41300 queries in 291.86 seconds.
+Process 0: completed 41400 queries in 292.55 seconds.
+Process 0: completed 41500 queries in 293.24 seconds.
+Process 0: completed 41600 queries in 293.92 seconds.
+Process 0: completed 41700 queries in 294.66 seconds.
+Process 0: completed 41800 queries in 295.38 seconds.
+Process 0: completed 41900 queries in 296.08 seconds.
+Process 0: completed 42000 queries in 296.83 seconds.
+Process 0: completed 42100 queries in 297.53 seconds.
+Process 0: completed 42200 queries in 298.23 seconds.
+Process 0: completed 42300 queries in 298.91 seconds.
+Process 0: completed 42400 queries in 299.62 seconds.
+Process 0: finished. Executed 42453 queries in 300.00 seconds.
+Reading final disk statistics...
+
+Calculating recall from captured ANN results...
+RESULT: valid
+Calculating benchmark statistics...
+
+Benchmark statistics as JSON:
+{"total_queries": 42453, "total_time_seconds": 300.0000910758972, "min_latency_ms": 5.8283805847167, "max_latency_ms": 42.595386505126896, "mean_latency_ms": 6.993752841384662, "median_latency_ms": 6.9174766540527, "p95_latency_ms": 7.6954364776611, "p99_latency_ms": 8.727302551269437, "p999_latency_ms": 21.844408988952694, "p9999_latency_ms": 41.0985363960252, "throughput_qps": 141.50995703951233, "batch_count": 42453, "successful_batches": 42453, "failed_batches": 0, "min_batch_time_ms": 5.8283805847167, "max_batch_time_ms": 42.595386505126896, "mean_batch_time_ms": 6.993752841384662, "median_batch_time_ms": 6.9174766540527, "p95_batch_time_ms": 7.6954364776611, "p99_batch_time_ms": 8.727302551269437, "p999_batch_time_ms": 21.844408988952694, "p9999_batch_time_ms": 41.0985363960252, "recall": {"recall_at_k": 0.5652, "recall_at_k_exact": 0.5652, "recall_epsilon": 0.0, "num_queries_evaluated": 1000, "k": 10, "min_recall": 0.1, "max_recall": 1.0, "mean_recall": 0.5652, "median_recall": 0.6, "p5_recall": 0.3, "p95_recall": 0.8, "p99_recall": 0.9, "per_query_recall": [0.5, 0.8, 0.4, 0.8, 0.6, 0.7, 0.7, 0.7, 0.6, 0.6, 0.3, 0.8, 0.5, 0.5, 0.5, 0.5, 0.6, 0.8, 0.5, 0.6, 0.5, 0.4, 0.4, 0.6, 0.6, 0.7, 0.8, 0.5, 0.6, 0.6, 0.7, 0.4, 0.7, 0.5, 0.7, 0.6, 0.6, 0.6, 0.5, 0.7, 0.7, 0.8, 0.6, 0.5, 0.5, 0.5, 0.7, 0.5, 0.4, 0.6, 0.5, 0.5, 0.9, 0.8, 0.4, 0.6, 0.5, 0.4, 0.6, 0.6, 0.7, 0.7, 0.7, 0.6, 0.6, 0.2, 0.6, 0.6, 0.7, 0.5, 0.6, 0.4, 0.7, 0.8, 0.4, 0.7, 0.4, 0.5, 0.8, 0.6, 0.6, 0.5, 0.3, 0.6, 0.6, 0.4, 0.8, 0.4, 0.4, 0.7, 0.6, 0.5, 0.5, 0.4, 0.5, 0.3, 0.4, 0.5, 0.5, 0.7, 0.5, 0.4, 0.6, 0.6, 0.7, 0.5, 0.6, 0.5, 0.6, 0.6, 0.8, 0.4, 0.8, 0.6, 0.7, 0.7, 0.7, 0.5, 0.7, 0.6, 0.6, 0.4, 0.8, 0.5, 0.6, 0.6, 0.5, 0.3, 0.7, 0.5, 0.7, 0.7, 0.7, 0.3, 0.3, 0.5, 0.6, 0.6, 0.6, 0.5, 0.6, 0.3, 0.5, 0.8, 0.4, 0.6, 0.6, 0.7, 0.5, 0.5, 0.3, 0.6, 0.5, 0.1, 0.6, 0.6, 0.6, 0.3, 0.6, 0.6, 0.5, 0.6, 0.5, 0.7, 0.9, 0.8, 0.4, 0.6, 0.6, 0.7, 0.4, 0.3, 0.5, 0.4, 0.8, 0.8, 0.8, 0.3, 0.8, 0.3, 0.5, 0.3, 0.5, 0.7, 0.4, 0.9, 0.4, 0.5, 0.7, 0.2, 0.6, 0.4, 0.7, 0.6, 0.5, 0.6, 0.4, 0.5, 0.6, 0.6, 0.3, 0.5, 0.5, 0.7, 0.4, 0.8, 0.6, 0.6, 0.8, 0.7, 0.7, 0.5, 0.4, 0.6, 0.6, 0.2, 0.7, 0.6, 0.7, 0.3, 0.4, 0.8, 0.5, 1.0, 0.4, 0.4, 0.8, 0.3, 0.7, 0.7, 0.4, 0.5, 0.4, 0.5, 0.5, 0.6, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.4, 0.6, 0.4, 0.4, 0.7, 0.5, 0.7, 0.4, 0.7, 0.4, 0.7, 0.7, 0.6, 0.7, 0.5, 0.7, 0.6, 0.9, 0.8, 0.5, 0.6, 0.4, 0.5, 0.4, 0.6, 0.6, 0.1, 0.5, 0.6, 0.5, 0.6, 0.8, 0.6, 0.7, 0.8, 0.7, 0.6, 0.7, 0.8, 0.3, 0.7, 0.6, 0.8, 0.9, 0.4, 0.7, 0.7, 0.5, 0.6, 0.4, 0.7, 0.6, 0.2, 0.7, 0.8, 0.6, 0.7, 0.6, 0.5, 0.5, 0.6, 0.7, 0.7, 0.5, 0.5, 0.6, 0.5, 0.6, 0.5, 0.4, 0.6, 0.7, 0.7, 0.6, 0.5, 0.6, 0.4, 0.4, 0.7, 0.3, 0.6, 0.6, 0.5, 0.5, 0.6, 0.4, 0.6, 0.6, 0.8, 0.3, 0.6, 0.5, 0.6, 0.8, 0.7, 0.6, 0.5, 0.5, 0.5, 0.6, 0.4, 0.5, 0.8, 0.9, 0.5, 0.7, 0.7, 0.5, 0.4, 0.4, 0.3, 0.6, 0.6, 0.5, 0.5, 0.6, 0.6, 0.4, 0.4, 0.4, 0.9, 0.5, 0.7, 0.5, 0.8, 0.6, 0.6, 0.5, 0.5, 0.4, 0.5, 0.3, 0.5, 0.3, 0.4, 0.4, 0.7, 0.4, 0.3, 0.6, 0.6, 0.5, 0.6, 0.6, 0.4, 0.6, 0.8, 0.5, 0.6, 0.6, 0.7, 0.4, 0.5, 0.6, 0.6, 0.7, 0.7, 0.5, 0.8, 0.5, 0.7, 0.6, 0.6, 0.7, 0.7, 0.7, 0.8, 0.9, 0.5, 0.5, 0.8, 0.7, 0.6, 0.7, 0.2, 0.6, 0.5, 0.7, 0.5, 0.7, 0.6, 0.6, 0.6, 0.7, 0.5, 0.7, 0.7, 0.8, 0.3, 0.8, 0.4, 0.7, 0.8, 0.4, 0.7, 0.4, 0.5, 0.7, 0.5, 0.4, 0.3, 0.3, 0.5, 0.8, 0.4, 0.6, 0.7, 0.5, 0.3, 0.6, 0.7, 0.7, 0.6, 0.4, 0.8, 0.6, 0.6, 0.9, 0.7, 0.8, 0.7, 0.3, 0.6, 0.5, 0.6, 0.5, 0.5, 0.4, 0.6, 0.6, 0.9, 0.4, 0.6, 0.3, 0.9, 0.5, 0.4, 0.2, 0.6, 0.6, 0.7, 0.3, 0.7, 0.7, 0.9, 0.3, 0.7, 0.6, 0.3, 0.7, 0.7, 0.4, 0.6, 0.6, 0.7, 0.8, 0.3, 0.5, 0.6, 0.4, 0.6, 0.6, 0.7, 0.7, 0.6, 0.5, 0.6, 0.5, 0.8, 0.5, 0.5, 0.8, 0.9, 0.8, 0.7, 0.7, 0.5, 0.5, 0.6, 0.4, 0.5, 0.5, 0.7, 0.3, 0.4, 0.4, 0.4, 0.7, 0.5, 0.4, 0.8, 0.3, 0.4, 0.3, 0.6, 0.5, 0.6, 0.4, 0.5, 0.8, 0.7, 0.2, 0.4, 0.5, 0.6, 0.4, 0.6, 0.8, 0.6, 0.6, 0.5, 0.4, 0.6, 0.2, 0.5, 0.4, 0.7, 0.5, 0.8, 0.5, 0.6, 0.5, 0.8, 0.6, 0.7, 0.3, 0.8, 0.5, 0.5, 0.3, 0.6, 0.5, 0.1, 0.6, 0.6, 0.4, 0.6, 0.6, 0.4, 0.6, 0.6, 0.6, 0.6, 0.5, 0.8, 0.6, 0.7, 0.5, 0.3, 0.5, 0.5, 0.7, 0.4, 0.3, 0.3, 0.9, 0.6, 0.5, 0.4, 0.4, 0.4, 0.7, 0.4, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.4, 0.7, 0.6, 0.3, 0.3, 0.5, 0.8, 0.5, 0.8, 0.8, 0.6, 0.5, 0.3, 0.7, 0.7, 0.5, 0.3, 0.7, 0.8, 0.8, 0.4, 0.7, 0.4, 0.6, 0.6, 0.6, 0.6, 0.7, 0.6, 0.5, 0.5, 0.5, 0.8, 0.3, 0.7, 0.5, 0.7, 0.7, 0.6, 0.5, 0.5, 0.7, 0.7, 0.7, 0.5, 0.4, 0.7, 0.5, 0.7, 0.5, 0.9, 0.2, 0.6, 0.9, 0.5, 0.6, 0.7, 0.5, 0.9, 0.5, 0.5, 0.4, 0.7, 0.6, 0.5, 0.6, 0.4, 0.4, 0.7, 0.5, 0.3, 0.7, 0.5, 0.8, 0.8, 0.8, 0.7, 0.6, 0.5, 0.8, 0.8, 0.9, 0.7, 0.5, 0.4, 0.5, 0.4, 0.3, 0.6, 0.7, 0.8, 0.4, 0.5, 0.5, 0.5, 0.7, 0.5, 0.7, 0.7, 0.5, 0.7, 0.6, 0.7, 0.5, 0.5, 0.7, 0.4, 0.7, 0.3, 0.8, 0.7, 0.8, 0.6, 0.3, 0.7, 0.7, 0.7, 0.5, 0.5, 0.5, 0.6, 0.8, 0.6, 0.5, 0.8, 0.3, 0.7, 0.5, 0.6, 0.4, 0.4, 0.7, 0.3, 0.5, 0.7, 0.9, 0.3, 0.7, 0.4, 0.7, 0.4, 0.5, 0.7, 0.3, 0.5, 0.3, 0.4, 0.5, 0.6, 0.4, 0.6, 0.4, 0.4, 0.6, 0.5, 0.6, 0.6, 0.5, 0.6, 0.4, 0.7, 0.7, 0.6, 0.5, 0.4, 0.7, 0.5, 0.4, 0.5, 0.4, 0.5, 0.5, 0.4, 0.7, 0.7, 0.6, 0.6, 0.5, 0.7, 0.4, 0.5, 0.6, 0.3, 0.5, 0.5, 0.7, 0.5, 0.5, 0.6, 0.5, 0.4, 0.6, 0.5, 0.6, 0.3, 0.8, 0.6, 0.5, 0.4, 0.6, 0.7, 0.6, 0.9, 0.5, 0.5, 0.6, 0.4, 0.6, 0.7, 0.9, 0.6, 0.5, 0.5, 0.6, 0.6, 0.8, 0.3, 0.7, 0.5, 0.6, 0.5, 0.4, 0.3, 0.4, 0.4, 0.5, 0.6, 0.3, 0.7, 0.9, 0.7, 0.4, 0.8, 0.5, 0.6, 0.5, 0.8, 0.3, 0.2, 0.8, 0.6, 0.4, 0.4, 0.6, 0.8, 0.7, 0.4, 0.7, 0.6, 0.5, 0.7, 0.9, 0.6, 0.7, 0.4, 0.3, 0.7, 0.7, 0.3, 0.6, 0.3, 0.6, 0.6, 0.6, 0.4, 0.4, 0.3, 0.4, 0.7, 0.5, 0.5, 0.6, 0.4, 0.4, 0.5, 0.7, 0.8, 0.7, 0.7, 0.6, 0.5, 0.7, 0.4, 0.5, 0.9, 0.4, 0.9, 0.6, 0.5, 0.4, 0.7, 0.4, 0.6, 0.7, 0.8, 0.7, 0.4, 0.7, 0.6, 0.8, 0.5, 0.5, 0.4, 0.6, 0.8, 0.6, 0.5, 0.8, 0.6, 0.6, 0.4, 0.6, 0.6, 0.7, 0.5, 0.6, 0.6, 0.8, 0.7, 0.6, 0.2, 0.8, 0.8, 0.4, 0.8, 0.4, 0.5, 0.4, 0.5, 0.6, 0.8, 0.5, 0.4, 0.5, 0.5, 0.8, 0.6, 0.4, 0.4, 0.6, 0.6, 0.6, 0.6, 0.4, 0.5, 0.4, 0.5, 0.5, 0.8, 0.6, 0.3, 0.5, 0.7, 0.4, 0.2, 0.6, 0.5, 0.5, 0.5, 0.6, 0.5, 0.6, 0.5, 0.7, 0.5, 0.7, 0.6, 0.6, 0.5, 0.2, 0.7, 0.7, 0.2, 0.8, 0.8, 0.8, 0.5, 0.4, 0.6, 0.6, 0.7, 0.6, 0.5, 0.6, 0.2, 0.3], "recall_by_query": {"0": 0.5, "1": 0.8, "2": 0.4, "3": 0.8, "4": 0.6, "5": 0.7, "6": 0.7, "7": 0.7, "8": 0.6, "9": 0.6, "10": 0.3, "11": 0.8, "12": 0.5, "13": 0.5, "14": 0.5, "15": 0.5, "16": 0.6, "17": 0.8, "18": 0.5, "19": 0.6, "20": 0.5, "21": 0.4, "22": 0.4, "23": 0.6, "24": 0.6, "25": 0.7, "26": 0.8, "27": 0.5, "28": 0.6, "29": 0.6, "30": 0.7, "31": 0.4, "32": 0.7, "33": 0.5, "34": 0.7, "35": 0.6, "36": 0.6, "37": 0.6, "38": 0.5, "39": 0.7, "40": 0.7, "41": 0.8, "42": 0.6, "43": 0.5, "44": 0.5, "45": 0.5, "46": 0.7, "47": 0.5, "48": 0.4, "49": 0.6, "50": 0.5, "51": 0.5, "52": 0.9, "53": 0.8, "54": 0.4, "55": 0.6, "56": 0.5, "57": 0.4, "58": 0.6, "59": 0.6, "60": 0.7, "61": 0.7, "62": 0.7, "63": 0.6, "64": 0.6, "65": 0.2, "66": 0.6, "67": 0.6, "68": 0.7, "69": 0.5, "70": 0.6, "71": 0.4, "72": 0.7, "73": 0.8, "74": 0.4, "75": 0.7, "76": 0.4, "77": 0.5, "78": 0.8, "79": 0.6, "80": 0.6, "81": 0.5, "82": 0.3, "83": 0.6, "84": 0.6, "85": 0.4, "86": 0.8, "87": 0.4, "88": 0.4, "89": 0.7, "90": 0.6, "91": 0.5, "92": 0.5, "93": 0.4, "94": 0.5, "95": 0.3, "96": 0.4, "97": 0.5, "98": 0.5, "99": 0.7, "100": 0.5, "101": 0.4, "102": 0.6, "103": 0.6, "104": 0.7, "105": 0.5, "106": 0.6, "107": 0.5, "108": 0.6, "109": 0.6, "110": 0.8, "111": 0.4, "112": 0.8, "113": 0.6, "114": 0.7, "115": 0.7, "116": 0.7, "117": 0.5, "118": 0.7, "119": 0.6, "120": 0.6, "121": 0.4, "122": 0.8, "123": 0.5, "124": 0.6, "125": 0.6, "126": 0.5, "127": 0.3, "128": 0.7, "129": 0.5, "130": 0.7, "131": 0.7, "132": 0.7, "133": 0.3, "134": 0.3, "135": 0.5, "136": 0.6, "137": 0.6, "138": 0.6, "139": 0.5, "140": 0.6, "141": 0.3, "142": 0.5, "143": 0.8, "144": 0.4, "145": 0.6, "146": 0.6, "147": 0.7, "148": 0.5, "149": 0.5, "150": 0.3, "151": 0.6, "152": 0.5, "153": 0.1, "154": 0.6, "155": 0.6, "156": 0.6, "157": 0.3, "158": 0.6, "159": 0.6, "160": 0.5, "161": 0.6, "162": 0.5, "163": 0.7, "164": 0.9, "165": 0.8, "166": 0.4, "167": 0.6, "168": 0.6, "169": 0.7, "170": 0.4, "171": 0.3, "172": 0.5, "173": 0.4, "174": 0.8, "175": 0.8, "176": 0.8, "177": 0.3, "178": 0.8, "179": 0.3, "180": 0.5, "181": 0.3, "182": 0.5, "183": 0.7, "184": 0.4, "185": 0.9, "186": 0.4, "187": 0.5, "188": 0.7, "189": 0.2, "190": 0.6, "191": 0.4, "192": 0.7, "193": 0.6, "194": 0.5, "195": 0.6, "196": 0.4, "197": 0.5, "198": 0.6, "199": 0.6, "200": 0.3, "201": 0.5, "202": 0.5, "203": 0.7, "204": 0.4, "205": 0.8, "206": 0.6, "207": 0.6, "208": 0.8, "209": 0.7, "210": 0.7, "211": 0.5, "212": 0.4, "213": 0.6, "214": 0.6, "215": 0.2, "216": 0.7, "217": 0.6, "218": 0.7, "219": 0.3, "220": 0.4, "221": 0.8, "222": 0.5, "223": 1.0, "224": 0.4, "225": 0.4, "226": 0.8, "227": 0.3, "228": 0.7, "229": 0.7, "230": 0.4, "231": 0.5, "232": 0.4, "233": 0.5, "234": 0.5, "235": 0.6, "236": 0.7, "237": 0.7, "238": 0.6, "239": 0.6, "240": 0.6, "241": 0.6, "242": 0.4, "243": 0.6, "244": 0.4, "245": 0.4, "246": 0.7, "247": 0.5, "248": 0.7, "249": 0.4, "250": 0.7, "251": 0.4, "252": 0.7, "253": 0.7, "254": 0.6, "255": 0.7, "256": 0.5, "257": 0.7, "258": 0.6, "259": 0.9, "260": 0.8, "261": 0.5, "262": 0.6, "263": 0.4, "264": 0.5, "265": 0.4, "266": 0.6, "267": 0.6, "268": 0.1, "269": 0.5, "270": 0.6, "271": 0.5, "272": 0.6, "273": 0.8, "274": 0.6, "275": 0.7, "276": 0.8, "277": 0.7, "278": 0.6, "279": 0.7, "280": 0.8, "281": 0.3, "282": 0.7, "283": 0.6, "284": 0.8, "285": 0.9, "286": 0.4, "287": 0.7, "288": 0.7, "289": 0.5, "290": 0.6, "291": 0.4, "292": 0.7, "293": 0.6, "294": 0.2, "295": 0.7, "296": 0.8, "297": 0.6, "298": 0.7, "299": 0.6, "300": 0.5, "301": 0.5, "302": 0.6, "303": 0.7, "304": 0.7, "305": 0.5, "306": 0.5, "307": 0.6, "308": 0.5, "309": 0.6, "310": 0.5, "311": 0.4, "312": 0.6, "313": 0.7, "314": 0.7, "315": 0.6, "316": 0.5, "317": 0.6, "318": 0.4, "319": 0.4, "320": 0.7, "321": 0.3, "322": 0.6, "323": 0.6, "324": 0.5, "325": 0.5, "326": 0.6, "327": 0.4, "328": 0.6, "329": 0.6, "330": 0.8, "331": 0.3, "332": 0.6, "333": 0.5, "334": 0.6, "335": 0.8, "336": 0.7, "337": 0.6, "338": 0.5, "339": 0.5, "340": 0.5, "341": 0.6, "342": 0.4, "343": 0.5, "344": 0.8, "345": 0.9, "346": 0.5, "347": 0.7, "348": 0.7, "349": 0.5, "350": 0.4, "351": 0.4, "352": 0.3, "353": 0.6, "354": 0.6, "355": 0.5, "356": 0.5, "357": 0.6, "358": 0.6, "359": 0.4, "360": 0.4, "361": 0.4, "362": 0.9, "363": 0.5, "364": 0.7, "365": 0.5, "366": 0.8, "367": 0.6, "368": 0.6, "369": 0.5, "370": 0.5, "371": 0.4, "372": 0.5, "373": 0.3, "374": 0.5, "375": 0.3, "376": 0.4, "377": 0.4, "378": 0.7, "379": 0.4, "380": 0.3, "381": 0.6, "382": 0.6, "383": 0.5, "384": 0.6, "385": 0.6, "386": 0.4, "387": 0.6, "388": 0.8, "389": 0.5, "390": 0.6, "391": 0.6, "392": 0.7, "393": 0.4, "394": 0.5, "395": 0.6, "396": 0.6, "397": 0.7, "398": 0.7, "399": 0.5, "400": 0.8, "401": 0.5, "402": 0.7, "403": 0.6, "404": 0.6, "405": 0.7, "406": 0.7, "407": 0.7, "408": 0.8, "409": 0.9, "410": 0.5, "411": 0.5, "412": 0.8, "413": 0.7, "414": 0.6, "415": 0.7, "416": 0.2, "417": 0.6, "418": 0.5, "419": 0.7, "420": 0.5, "421": 0.7, "422": 0.6, "423": 0.6, "424": 0.6, "425": 0.7, "426": 0.5, "427": 0.7, "428": 0.7, "429": 0.8, "430": 0.3, "431": 0.8, "432": 0.4, "433": 0.7, "434": 0.8, "435": 0.4, "436": 0.7, "437": 0.4, "438": 0.5, "439": 0.7, "440": 0.5, "441": 0.4, "442": 0.3, "443": 0.3, "444": 0.5, "445": 0.8, "446": 0.4, "447": 0.6, "448": 0.7, "449": 0.5, "450": 0.3, "451": 0.6, "452": 0.7, "453": 0.7, "454": 0.6, "455": 0.4, "456": 0.8, "457": 0.6, "458": 0.6, "459": 0.9, "460": 0.7, "461": 0.8, "462": 0.7, "463": 0.3, "464": 0.6, "465": 0.5, "466": 0.6, "467": 0.5, "468": 0.5, "469": 0.4, "470": 0.6, "471": 0.6, "472": 0.9, "473": 0.4, "474": 0.6, "475": 0.3, "476": 0.9, "477": 0.5, "478": 0.4, "479": 0.2, "480": 0.6, "481": 0.6, "482": 0.7, "483": 0.3, "484": 0.7, "485": 0.7, "486": 0.9, "487": 0.3, "488": 0.7, "489": 0.6, "490": 0.3, "491": 0.7, "492": 0.7, "493": 0.4, "494": 0.6, "495": 0.6, "496": 0.7, "497": 0.8, "498": 0.3, "499": 0.5, "500": 0.6, "501": 0.4, "502": 0.6, "503": 0.6, "504": 0.7, "505": 0.7, "506": 0.6, "507": 0.5, "508": 0.6, "509": 0.5, "510": 0.8, "511": 0.5, "512": 0.5, "513": 0.8, "514": 0.9, "515": 0.8, "516": 0.7, "517": 0.7, "518": 0.5, "519": 0.5, "520": 0.6, "521": 0.4, "522": 0.5, "523": 0.5, "524": 0.7, "525": 0.3, "526": 0.4, "527": 0.4, "528": 0.4, "529": 0.7, "530": 0.5, "531": 0.4, "532": 0.8, "533": 0.3, "534": 0.4, "535": 0.3, "536": 0.6, "537": 0.5, "538": 0.6, "539": 0.4, "540": 0.5, "541": 0.8, "542": 0.7, "543": 0.2, "544": 0.4, "545": 0.5, "546": 0.6, "547": 0.4, "548": 0.6, "549": 0.8, "550": 0.6, "551": 0.6, "552": 0.5, "553": 0.4, "554": 0.6, "555": 0.2, "556": 0.5, "557": 0.4, "558": 0.7, "559": 0.5, "560": 0.8, "561": 0.5, "562": 0.6, "563": 0.5, "564": 0.8, "565": 0.6, "566": 0.7, "567": 0.3, "568": 0.8, "569": 0.5, "570": 0.5, "571": 0.3, "572": 0.6, "573": 0.5, "574": 0.1, "575": 0.6, "576": 0.6, "577": 0.4, "578": 0.6, "579": 0.6, "580": 0.4, "581": 0.6, "582": 0.6, "583": 0.6, "584": 0.6, "585": 0.5, "586": 0.8, "587": 0.6, "588": 0.7, "589": 0.5, "590": 0.3, "591": 0.5, "592": 0.5, "593": 0.7, "594": 0.4, "595": 0.3, "596": 0.3, "597": 0.9, "598": 0.6, "599": 0.5, "600": 0.4, "601": 0.4, "602": 0.4, "603": 0.7, "604": 0.4, "605": 0.5, "606": 0.5, "607": 0.5, "608": 0.5, "609": 0.6, "610": 0.6, "611": 0.6, "612": 0.6, "613": 0.6, "614": 0.4, "615": 0.7, "616": 0.6, "617": 0.3, "618": 0.3, "619": 0.5, "620": 0.8, "621": 0.5, "622": 0.8, "623": 0.8, "624": 0.6, "625": 0.5, "626": 0.3, "627": 0.7, "628": 0.7, "629": 0.5, "630": 0.3, "631": 0.7, "632": 0.8, "633": 0.8, "634": 0.4, "635": 0.7, "636": 0.4, "637": 0.6, "638": 0.6, "639": 0.6, "640": 0.6, "641": 0.7, "642": 0.6, "643": 0.5, "644": 0.5, "645": 0.5, "646": 0.8, "647": 0.3, "648": 0.7, "649": 0.5, "650": 0.7, "651": 0.7, "652": 0.6, "653": 0.5, "654": 0.5, "655": 0.7, "656": 0.7, "657": 0.7, "658": 0.5, "659": 0.4, "660": 0.7, "661": 0.5, "662": 0.7, "663": 0.5, "664": 0.9, "665": 0.2, "666": 0.6, "667": 0.9, "668": 0.5, "669": 0.6, "670": 0.7, "671": 0.5, "672": 0.9, "673": 0.5, "674": 0.5, "675": 0.4, "676": 0.7, "677": 0.6, "678": 0.5, "679": 0.6, "680": 0.4, "681": 0.4, "682": 0.7, "683": 0.5, "684": 0.3, "685": 0.7, "686": 0.5, "687": 0.8, "688": 0.8, "689": 0.8, "690": 0.7, "691": 0.6, "692": 0.5, "693": 0.8, "694": 0.8, "695": 0.9, "696": 0.7, "697": 0.5, "698": 0.4, "699": 0.5, "700": 0.4, "701": 0.3, "702": 0.6, "703": 0.7, "704": 0.8, "705": 0.4, "706": 0.5, "707": 0.5, "708": 0.5, "709": 0.7, "710": 0.5, "711": 0.7, "712": 0.7, "713": 0.5, "714": 0.7, "715": 0.6, "716": 0.7, "717": 0.5, "718": 0.5, "719": 0.7, "720": 0.4, "721": 0.7, "722": 0.3, "723": 0.8, "724": 0.7, "725": 0.8, "726": 0.6, "727": 0.3, "728": 0.7, "729": 0.7, "730": 0.7, "731": 0.5, "732": 0.5, "733": 0.5, "734": 0.6, "735": 0.8, "736": 0.6, "737": 0.5, "738": 0.8, "739": 0.3, "740": 0.7, "741": 0.5, "742": 0.6, "743": 0.4, "744": 0.4, "745": 0.7, "746": 0.3, "747": 0.5, "748": 0.7, "749": 0.9, "750": 0.3, "751": 0.7, "752": 0.4, "753": 0.7, "754": 0.4, "755": 0.5, "756": 0.7, "757": 0.3, "758": 0.5, "759": 0.3, "760": 0.4, "761": 0.5, "762": 0.6, "763": 0.4, "764": 0.6, "765": 0.4, "766": 0.4, "767": 0.6, "768": 0.5, "769": 0.6, "770": 0.6, "771": 0.5, "772": 0.6, "773": 0.4, "774": 0.7, "775": 0.7, "776": 0.6, "777": 0.5, "778": 0.4, "779": 0.7, "780": 0.5, "781": 0.4, "782": 0.5, "783": 0.4, "784": 0.5, "785": 0.5, "786": 0.4, "787": 0.7, "788": 0.7, "789": 0.6, "790": 0.6, "791": 0.5, "792": 0.7, "793": 0.4, "794": 0.5, "795": 0.6, "796": 0.3, "797": 0.5, "798": 0.5, "799": 0.7, "800": 0.5, "801": 0.5, "802": 0.6, "803": 0.5, "804": 0.4, "805": 0.6, "806": 0.5, "807": 0.6, "808": 0.3, "809": 0.8, "810": 0.6, "811": 0.5, "812": 0.4, "813": 0.6, "814": 0.7, "815": 0.6, "816": 0.9, "817": 0.5, "818": 0.5, "819": 0.6, "820": 0.4, "821": 0.6, "822": 0.7, "823": 0.9, "824": 0.6, "825": 0.5, "826": 0.5, "827": 0.6, "828": 0.6, "829": 0.8, "830": 0.3, "831": 0.7, "832": 0.5, "833": 0.6, "834": 0.5, "835": 0.4, "836": 0.3, "837": 0.4, "838": 0.4, "839": 0.5, "840": 0.6, "841": 0.3, "842": 0.7, "843": 0.9, "844": 0.7, "845": 0.4, "846": 0.8, "847": 0.5, "848": 0.6, "849": 0.5, "850": 0.8, "851": 0.3, "852": 0.2, "853": 0.8, "854": 0.6, "855": 0.4, "856": 0.4, "857": 0.6, "858": 0.8, "859": 0.7, "860": 0.4, "861": 0.7, "862": 0.6, "863": 0.5, "864": 0.7, "865": 0.9, "866": 0.6, "867": 0.7, "868": 0.4, "869": 0.3, "870": 0.7, "871": 0.7, "872": 0.3, "873": 0.6, "874": 0.3, "875": 0.6, "876": 0.6, "877": 0.6, "878": 0.4, "879": 0.4, "880": 0.3, "881": 0.4, "882": 0.7, "883": 0.5, "884": 0.5, "885": 0.6, "886": 0.4, "887": 0.4, "888": 0.5, "889": 0.7, "890": 0.8, "891": 0.7, "892": 0.7, "893": 0.6, "894": 0.5, "895": 0.7, "896": 0.4, "897": 0.5, "898": 0.9, "899": 0.4, "900": 0.9, "901": 0.6, "902": 0.5, "903": 0.4, "904": 0.7, "905": 0.4, "906": 0.6, "907": 0.7, "908": 0.8, "909": 0.7, "910": 0.4, "911": 0.7, "912": 0.6, "913": 0.8, "914": 0.5, "915": 0.5, "916": 0.4, "917": 0.6, "918": 0.8, "919": 0.6, "920": 0.5, "921": 0.8, "922": 0.6, "923": 0.6, "924": 0.4, "925": 0.6, "926": 0.6, "927": 0.7, "928": 0.5, "929": 0.6, "930": 0.6, "931": 0.8, "932": 0.7, "933": 0.6, "934": 0.2, "935": 0.8, "936": 0.8, "937": 0.4, "938": 0.8, "939": 0.4, "940": 0.5, "941": 0.4, "942": 0.5, "943": 0.6, "944": 0.8, "945": 0.5, "946": 0.4, "947": 0.5, "948": 0.5, "949": 0.8, "950": 0.6, "951": 0.4, "952": 0.4, "953": 0.6, "954": 0.6, "955": 0.6, "956": 0.6, "957": 0.4, "958": 0.5, "959": 0.4, "960": 0.5, "961": 0.5, "962": 0.8, "963": 0.6, "964": 0.3, "965": 0.5, "966": 0.7, "967": 0.4, "968": 0.2, "969": 0.6, "970": 0.5, "971": 0.5, "972": 0.5, "973": 0.6, "974": 0.5, "975": 0.6, "976": 0.5, "977": 0.7, "978": 0.5, "979": 0.7, "980": 0.6, "981": 0.6, "982": 0.5, "983": 0.2, "984": 0.7, "985": 0.7, "986": 0.2, "987": 0.8, "988": 0.8, "989": 0.8, "990": 0.5, "991": 0.4, "992": 0.6, "993": 0.6, "994": 0.7, "995": 0.6, "996": 0.5, "997": 0.6, "998": 0.2, "999": 0.3}}, "disk_io": {"applicable": true, "status": "OK", "scope": "Derived from /proc/diskstats on the benchmark client node; covers local block devices only. Not meaningful for network-attached storage targets.", "storage_target": {"applicable": true, "confidence": "heuristic", "data_path": null, "fstype": null, "mountpoint": null, "source": null, "network_mounts_detected": [], "reason": "no network/remote mounts detected on this node; disk_io reflects client-local block devices."}, "total_bytes_read": 486308413440, "total_bytes_read_per_sec": 1621027552.678204, "total_bytes_written": 35553280, "total_bytes_written_per_sec": 118510.89735504564, "total_read_formatted": "452.91 GB", "total_write_formatted": "33.91 MB", "devices": {"nvme2n1": {"bytes_read": 1515520, "bytes_written": 21917696, "read_formatted": "1.45 MB", "write_formatted": "20.90 MB"}, "nvme0n1": {"bytes_read": 486306897920, "bytes_written": 13635584, "read_formatted": "452.91 GB", "write_formatted": "13.00 MB"}}}}

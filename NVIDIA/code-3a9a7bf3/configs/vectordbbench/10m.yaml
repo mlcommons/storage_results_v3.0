@@ -1,0 +1,34 @@
+database:
+  host: 127.0.0.1
+  port: 19530
+  database: milvus
+  max_receive_message_length: 514_983_574
+  max_send_message_length: 514_983_574
+
+dataset:
+  collection_name: mlps_10m_10shards_1536dim_uniform
+  num_vectors: 10_000_000
+  dimension: 1536
+  distribution: uniform
+  batch_size: 10
+  chunk_size: 1_000_000
+  num_shards: 10
+  vector_dtype: FLOAT_VECTOR
+
+index:
+  index_type: DISKANN
+  metric_type: COSINE
+  index_params:
+    max_degree: 64
+    search_list_size: 200
+
+workflow:
+  compact: True
+
+storage:
+  # Path where the vector database engine stores its data (server-side). Set
+  # this here or pass --storage-root so the run is recorded for Rules.md 5.4.1;
+  # it must differ from --results-dir. Left unset by default.
+  storage_root:
+  storage_type: local_fs
+

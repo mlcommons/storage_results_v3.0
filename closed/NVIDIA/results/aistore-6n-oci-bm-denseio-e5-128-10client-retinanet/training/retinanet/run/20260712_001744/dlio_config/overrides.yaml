@@ -1,0 +1,12 @@
+- workload=retinanet_b200
+- ++workload.dataset.num_files_train=252000000
+- ++workload.dataset.num_subfolders_train=25200
+- ++workload.reader.read_threads=0
+- ++workload.storage.storage_type=s3
+- ++workload.storage.storage_root=mlp-retinanet
+- ++workload.storage.storage_options.storage_library=s3dlio
+- ++workload.storage.storage_options.uri_scheme=s3
+- ++workload.storage.s3_force_path_style=true
+- ++workload.dataset.skip_listing=True
+- ++workload.dataset.listing_validation_interval=10000
+- ++workload.dataset.data_folder=data/r10-6n/retinanet

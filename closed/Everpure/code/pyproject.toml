@@ -1,0 +1,153 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlpstorage"
+version = "3.0.27"
+description = "MLPerf Storage Benchmark Suite"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "MLCommons Storage Working Group"}
+]
+requires-python = ">=3.12, <3.13"
+dependencies = [
+    "psutil>=5.9",
+    "pyarrow",
+    "pyyaml>=6.0",
+    "packaging>=21.0",
+    "rich>=13.0",
+    "dlio-benchmark", # Required dependency
+    "pydantic>=2.13.4",
+    "minio>=7.2.20",
+    "s3torchconnector>=1.5.0",
+    "python-dotenv>=1.0.0",
+    "s3dlio>=0.9.102",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-mock>=3.0",
+]
+full = [
+    "dlio-benchmark",
+]
+vectordb = [
+  "pymilvus>=2.4.0",
+  "psycopg2-binary>=2.9",
+  "pgvector>=0.2",
+  "elasticsearch>=8.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+  "tabulate>=0.9",
+]
+
+vectordb-milvus = [
+  "pymilvus>=2.4.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+  "tabulate>=0.9",
+]
+
+vectordb-pgvector = [
+  "psycopg2-binary>=2.9",
+  "pgvector>=0.2",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+  "tabulate>=0.9",
+]
+
+vectordb-elasticsearch = [
+  "elasticsearch>=8.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+  "tabulate>=0.9",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mlcommons/storage"
+"Bug Tracker" = "https://github.com/mlcommons/storage/issues"
+
+[tool.setuptools]
+packages = {find = {include = ["mlpstorage_py*", "vdbbench*"]}}
+
+[tool.setuptools.package-data]
+"mlpstorage_py" = ["../configs/dlio/workload/*.yaml"]
+
+[project.scripts]
+mlpstorage = 'mlpstorage_py.main:main'
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --setup-show -m 'not slow'"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+markers = [
+    "slow: tests that invoke the real mlpstorage CLI / MPI and take >10s. Excluded from the default suite; opt in with `pytest -m slow` (or `pytest -m ''` to run everything).",
+    "integration: subprocess + end-to-end tests (Phase 3 DoD per CONTEXT.md D-E1)",
+]
+
+[tool.coverage.run]
+source = ["mlpstorage_py"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+# =============================================================================
+# UV Configuration
+# =============================================================================
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv]
+# s3dlio only ships Linux wheels — restrict resolution to Linux.
+environments = ["sys_platform == 'linux'"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]
+torchvision = [{ index = "pytorch-cpu" }]
+torchaudio = [{ index = "pytorch-cpu" }]
+# Pinned to a specific commit for reproducibility; bump by updating `rev` and
+# re-running `uv lock --upgrade-package dlio-benchmark`.
+# Commit history (most recent first):
+#   - DLIO PR #39 fix for storage #567: O_DIRECT path triggers on
+#     uri_scheme=direct so direct_fs (--o-direct) reaches s3dlio instead of
+#     crashing buffered open() with a direct:// URI
+#   - DLIO PR #38 fix for storage #538: wire DIRECT_FS for --o-direct local
+#     O_DIRECT I/O (merged form supersedes the pre-merge pin from 3.0.23)
+#   - DLIO PR #37: restrict default `pytest` to checkin suite; full suite must
+#     be invoked explicitly with `pytest tests/ -m full_suite`
+#   - DLIO PR #28 fix for storage #487: expose DLIO_DROP_CACHES_TIMEOUT,
+#     distinguish slow flush from sudo refusal
+#   - DLIO PR #27 fix for storage #466 #472: skip_listing, S3 object storage,
+#     epoch-2+ AU, TFRecord via s3dlio, large-scale listing OOM prevention
+#   - DLIO PR #25 fix for storage #455 (sampler floor division — equal per-rank shards)
+#   - DLIO PR #24 fix for storage #448 (per-node worker-memory budget)
+#   - DLIO PR #23 fix for storage #391 part 2 (sudo -n + warn-once for drop_caches)
+#   - DLIO PR #22 fix for storage #415 (mpi4py auto-init in spawn workers)
+#   - DLIO PR #21 fix for storage #391 part 1 (TorchIterableDatasetSimple gating)
+dlio-benchmark = { git = "https://github.com/mlcommons/DLIO_local_changes.git", rev = "f16fe43f657360e80f56fd3e9826b167620866e7" }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]

@@ -1,0 +1,148 @@
+system_under_test:
+  solution:
+    submission_name: openlake-hbv4-1c1s-final
+    friendly_description: OpenLake object storage on three Azure HBv4 nodes with distributed local NVMe RAID0
+    architecture:
+      storage_location: remote_and_local
+      benchmark_API: object
+      product_API: object
+      client_footprint: open_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 10.48
+    availability: available
+  deployment: cloud
+  product_nodes:
+    - friendly_description: OpenLake S3 gateway and RAID0 storage node
+      quantity: 1
+      chassis:
+        model_name: Azure Standard_HB176rs_v4
+        cpu_model: AMD EPYC 9V33X 96-Core Processor
+        cpu_qty: 2
+        cpu_cores: 176
+        memory_capacity: 756
+      networking:
+        - type: ethernet
+          speed: 100
+          state: up
+          unit_count: 2
+          traffic:
+            - management
+        - type: infiniband
+          speed: 400
+          state: up
+          unit_count: 1
+          traffic:
+            - data
+            - backend
+      drives:
+        - vendor_name: Microsoft
+          model_name: Azure NVMe Direct Disk
+          interface: nvme
+          media_type: other
+          capacity_in_GB: 1920
+          unit_count: 2
+      operating_system:
+        name: Ubuntu
+        version: "22.04"
+      environment:
+        - name: OPENLAKE_DATA_FSYNC
+          value: "0"
+        - name: OPENLAKE_MULTIPART_SIDECAR_FSYNC
+          value: "0"
+        - name: OPENLAKE_PARALLEL_WRITE_CHUNK_BYTES
+          value: "1048576"
+        - name: OPENLAKE_DIRECT_DATA_WRITES
+          value: "0"
+        - name: OPENLAKE_SINGLE_SHARD_STREAMING
+          value: "0"
+        - name: OPENLAKE_VERIFY_PAYLOAD_SHA256
+          value: "0"
+        - name: OPENLAKE_MULTIPART_CONTENT_ETAG
+          value: "0"
+      sysctl:
+        - name: fs.nr_open
+          value: "1048576"
+        - name: vm.dirty_background_ratio
+          value: "5"
+        - name: vm.dirty_ratio
+          value: "80"
+    - friendly_description: NBD backend nodes exporting local NVMe segments to the OpenLake RAID0 node
+      quantity: 2
+      chassis:
+        model_name: Azure Standard_HB176rs_v4
+        cpu_model: AMD EPYC 9V33X 96-Core Processor
+        cpu_qty: 2
+        cpu_cores: 176
+        memory_capacity: 756
+      networking:
+        - type: ethernet
+          speed: 100
+          state: up
+          unit_count: 2
+          traffic:
+            - management
+        - type: infiniband
+          speed: 400
+          state: up
+          unit_count: 1
+          traffic:
+            - backend
+      drives:
+        - vendor_name: Microsoft
+          model_name: Azure NVMe Direct Disk
+          interface: nvme
+          media_type: other
+          capacity_in_GB: 1920
+          unit_count: 2
+      operating_system:
+        name: Ubuntu
+        version: "22.04"
+  clients:
+    - friendly_description: MLPerf Storage checkpointing load generator, collocated with the OpenLake gateway
+      quantity: 1
+      chassis:
+        model_name: Azure Standard_HB176rs_v4
+        cpu_model: AMD EPYC 9V33X 96-Core Processor
+        cpu_qty: 2
+        cpu_cores: 176
+        memory_capacity: 756
+      networking:
+        - type: ethernet
+          speed: 100
+          state: up
+          unit_count: 2
+          traffic:
+            - management
+        - type: infiniband
+          speed: 400
+          state: up
+          unit_count: 1
+          traffic:
+            - data
+            - backend
+      operating_system:
+        name: Ubuntu
+        version: "22.04"
+      environment:
+        - name: S3DLIO_UNSIGNED_PAYLOAD
+          value: "1"
+        - name: S3DLIO_MULTIPART_MAX_IN_FLIGHT
+          value: "8"
+        - name: S3DLIO_MULTIPART_PART_SIZE_MB
+          value: "32"
+        - name: S3DLIO_ENABLE_RANGE_OPTIMIZATION
+          value: "1"
+        - name: S3DLIO_RANGE_THRESHOLD_MB
+          value: "1"
+        - name: S3DLIO_CHUNK_SIZE
+          value: "33554432"
+        - name: S3DLIO_RANGE_CONCURRENCY
+          value: "8"
+      sysctl:
+        - name: fs.nr_open
+          value: "1048576"

@@ -1,0 +1,1130 @@
+# Supporting documentation:
+# - [AIStore Disclosure](./AIStore_Disclosure.pdf)
+# - [AIStore Scaling and Cloud Portability](./AIStore_Scaling.pdf)
+#
+system_under_test:
+  clients:
+  - friendly_description: Oracle Cloud BM.DenseIO.E5.128 MLPerf Storage client
+    chassis:
+      model_name: ORACLE SERVER E5-2c
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 3
+      traffic:
+      - data
+    - type: infiniband
+      speed: 100
+      state: up
+      unit_count: 2
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '2097152'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '12377462'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '65536'
+    - name: net.core.optmem_max
+      value: '25165824'
+    - name: net.core.rmem_default
+      value: '12582912'
+    - name: net.core.rmem_max
+      value: '31457280'
+    - name: net.core.somaxconn
+      value: '16384'
+    - name: net.core.wmem_default
+      value: '12582912'
+    - name: net.core.wmem_max
+      value: '31457280'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "8192\t87380\t16777216"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "8192\t65536\t16777216"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '20'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '60'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '262144'
+    - name: vm.min_free_kbytes
+      value: '159213'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '1'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '8'
+    environment:
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '8'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '8'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self,vader
+    - name: OMPI_MCA_btl_base_warn_component_unused
+      value: '0'
+    - name: OMPI_MCA_btl_openib_warn_no_device_params_found
+      value: '0'
+    - name: OMPI_MCA_btl_tcp_if_include
+      value: ens300np0
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_mpi_warn_on_fork
+      value: '0'
+    - name: OMPI_MCA_mtl
+      value: ^ofi
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '8'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '8'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_pml
+      value: ob1
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '8'
+    - name: AWS_ENDPOINT_URL
+      value: http://10.49.42.215:51080/s3/
+    - name: S3_ENDPOINT_URIS
+      value: http://10.49.42.215:51080/s3/
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: Samsung
+      model_name: SAMSUNG MZWLR7T6HBLA-00AU3
+      interface: nvme
+      capacity_in_GB: 6801
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    quantity: 3
+  - friendly_description: Oracle Cloud BM.DenseIO.E5.128 MLPerf Storage client
+    chassis:
+      model_name: ORACLE SERVER E5-2c
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 3
+      traffic:
+      - data
+    - type: infiniband
+      speed: 100
+      state: up
+      unit_count: 2
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '2097152'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '12377462'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '65536'
+    - name: net.core.optmem_max
+      value: '25165824'
+    - name: net.core.rmem_default
+      value: '12582912'
+    - name: net.core.rmem_max
+      value: '31457280'
+    - name: net.core.somaxconn
+      value: '16384'
+    - name: net.core.wmem_default
+      value: '12582912'
+    - name: net.core.wmem_max
+      value: '31457280'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "8192\t87380\t16777216"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "8192\t65536\t16777216"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '20'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '60'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '262144'
+    - name: vm.min_free_kbytes
+      value: '159213'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '1'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '8'
+    environment:
+    - name: AWS_ACCESS_KEY_ID
+      value: '****'
+    - name: AWS_ENDPOINT_URL
+      value: http://10.49.42.215:51080/s3/
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_REGION
+      value: us-east-1
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: AWS_SECRET_ACCESS_KEY
+      value: "[SET \u2014 3 chars]"
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '8'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '8'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self,vader
+    - name: OMPI_MCA_btl_base_warn_component_unused
+      value: '0'
+    - name: OMPI_MCA_btl_openib_warn_no_device_params_found
+      value: '0'
+    - name: OMPI_MCA_btl_tcp_if_include
+      value: ens300np0
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_mpi_warn_on_fork
+      value: '0'
+    - name: OMPI_MCA_mtl
+      value: ^ofi
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '8'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '8'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_pml
+      value: ob1
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '8'
+    - name: S3_ENDPOINT_URIS
+      value: http://10.49.42.215:51080/s3/
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: Samsung
+      model_name: SAMSUNG MZWLR7T6HBLA-00AU3
+      interface: nvme
+      capacity_in_GB: 6801
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    quantity: 2
+  - friendly_description: Oracle Cloud BM.DenseIO.E5.128 MLPerf Storage client
+    chassis:
+      model_name: ORACLE SERVER E5-2c
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 3
+      traffic:
+      - data
+    - type: infiniband
+      speed: 100
+      state: up
+      unit_count: 2
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '2097152'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '12377462'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '65536'
+    - name: net.core.optmem_max
+      value: '25165824'
+    - name: net.core.rmem_default
+      value: '12582912'
+    - name: net.core.rmem_max
+      value: '31457280'
+    - name: net.core.somaxconn
+      value: '16384'
+    - name: net.core.wmem_default
+      value: '12582912'
+    - name: net.core.wmem_max
+      value: '31457280'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "8192\t87380\t16777216"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "8192\t65536\t16777216"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '20'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '60'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '262144'
+    - name: vm.min_free_kbytes
+      value: '159213'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '1'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '8'
+    environment:
+    - name: AWS_ACCESS_KEY_ID
+      value: '****'
+    - name: AWS_ENDPOINT_URL
+      value: http://10.49.42.215:51080/s3/
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_REGION
+      value: us-east-1
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: AWS_SECRET_ACCESS_KEY
+      value: "[SET \u2014 3 chars]"
+    - name: BUCKET
+      value: mlp-ckpt-12n
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '8'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '8'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self,vader
+    - name: OMPI_MCA_btl_base_warn_component_unused
+      value: '0'
+    - name: OMPI_MCA_btl_openib_warn_no_device_params_found
+      value: '0'
+    - name: OMPI_MCA_btl_tcp_if_include
+      value: ens300np0
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_mpi_warn_on_fork
+      value: '0'
+    - name: OMPI_MCA_mtl
+      value: ^ofi
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '8'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '8'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_pml
+      value: ob1
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '8'
+    - name: STORAGE_LIBRARY
+      value: s3dlio
+    - name: S3_ENDPOINT_URIS
+      value: http://10.49.42.215:51080/s3/
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: Samsung
+      model_name: SAMSUNG MZWLR7T6HBLA-00AU3
+      interface: nvme
+      capacity_in_GB: 6801
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    quantity: 1
+  - friendly_description: Oracle Cloud BM.DenseIO.E5.128 MLPerf Storage client
+    chassis:
+      model_name: ORACLE SERVER E5-2c
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 3
+      traffic:
+      - data
+    - type: infiniband
+      speed: 100
+      state: up
+      unit_count: 2
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '2097152'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '12377477'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '65536'
+    - name: net.core.optmem_max
+      value: '25165824'
+    - name: net.core.rmem_default
+      value: '12582912'
+    - name: net.core.rmem_max
+      value: '31457280'
+    - name: net.core.somaxconn
+      value: '16384'
+    - name: net.core.wmem_default
+      value: '12582912'
+    - name: net.core.wmem_max
+      value: '31457280'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "8192\t87380\t16777216"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "8192\t65536\t16777216"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '20'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '60'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '262144'
+    - name: vm.min_free_kbytes
+      value: '159213'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '1'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '8'
+    environment:
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '8'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '8'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self,vader
+    - name: OMPI_MCA_btl_base_warn_component_unused
+      value: '0'
+    - name: OMPI_MCA_btl_openib_warn_no_device_params_found
+      value: '0'
+    - name: OMPI_MCA_btl_tcp_if_include
+      value: ens300np0
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_mpi_warn_on_fork
+      value: '0'
+    - name: OMPI_MCA_mtl
+      value: ^ofi
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '8'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '8'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_pml
+      value: ob1
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '8'
+    - name: AWS_ENDPOINT_URL
+      value: http://10.49.42.215:51080/s3/
+    - name: S3_ENDPOINT_URIS
+      value: http://10.49.42.215:51080/s3/
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: Intel
+      model_name: INTEL SSDPF2KX076T1S
+      interface: nvme
+      capacity_in_GB: 6801
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    quantity: 1
+  - friendly_description: Oracle Cloud BM.DenseIO.E5.128 MLPerf Storage client
+    chassis:
+      model_name: ORACLE SERVER E5-2c
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 3
+      traffic:
+      - data
+    - type: infiniband
+      speed: 100
+      state: up
+      unit_count: 2
+      traffic:
+      - management
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '2097152'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '12377462'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '65536'
+    - name: net.core.optmem_max
+      value: '25165824'
+    - name: net.core.rmem_default
+      value: '12582912'
+    - name: net.core.rmem_max
+      value: '31457280'
+    - name: net.core.somaxconn
+      value: '16384'
+    - name: net.core.wmem_default
+      value: '12582912'
+    - name: net.core.wmem_max
+      value: '31457280'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "8192\t87380\t16777216"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "8192\t65536\t16777216"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '20'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '60'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '262144'
+    - name: vm.min_free_kbytes
+      value: '159213'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '1'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '0'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    - name: net.ipv4.tcp_tw_reuse
+      value: '1'
+    - name: net.ipv4.tcp_retries2
+      value: '8'
+    environment:
+    - name: AWS_MAX_ATTEMPTS
+      value: '10'
+    - name: AWS_RETRY_MODE
+      value: standard
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '8'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '8'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self,vader
+    - name: OMPI_MCA_btl_base_warn_component_unused
+      value: '0'
+    - name: OMPI_MCA_btl_openib_warn_no_device_params_found
+      value: '0'
+    - name: OMPI_MCA_btl_tcp_if_include
+      value: ens300np0
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_mpi_warn_on_fork
+      value: '0'
+    - name: OMPI_MCA_mtl
+      value: ^ofi
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '8'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '8'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_pml
+      value: ob1
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '8'
+    - name: AWS_ENDPOINT_URL
+      value: http://10.49.42.215:51080/s3/
+    - name: S3_ENDPOINT_URIS
+      value: http://10.49.42.215:51080/s3/
+    - name: S3DLIO_FOLLOW_REDIRECTS
+      value: '1'
+    - name: S3DLIO_RANGE_THRESHOLD_MB
+      value: '1024'
+    - name: S3DLIO_OPERATION_TIMEOUT_SECS
+      value: '300'
+    - name: S3DLIO_CONNECT_TIMEOUT_SECS
+      value: '60'
+    - name: S3DLIO_MAX_RETRY_ATTEMPTS
+      value: '10'
+    - name: S3DLIO_POOL_MAX_IDLE_PER_HOST
+      value: '64'
+    - name: S3DLIO_MULTIPART_THRESHOLD_MB
+      value: '4096'
+    drives:
+    - vendor_name: Intel
+      model_name: INTEL SSDPF2KX076T1S
+      interface: nvme
+      capacity_in_GB: 6801
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    quantity: 1
+  solution:
+    submission_name: aistore-12n-oci-bm-denseio-e5-128-8client
+    friendly_description: NVIDIA AIStore v4.8 shared object storage on twelve Oracle
+      Cloud BM.DenseIO.E5.128 nodes, accessed by 8 identical clients over S3
+    architecture:
+      storage_location: remote
+      benchmark_API: object
+      product_API: object
+      client_footprint: open_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 1005.83
+    availability: available
+  deployment: cloud
+  product_nodes:
+  - friendly_description: Oracle Cloud AIStore target node
+    quantity: 12
+    chassis:
+      model_name: Oracle Cloud BM.DenseIO.E5.128
+      cpu_model: AMD EPYC 9J14 96-Core Processor
+      cpu_qty: 2
+      cpu_cores: 128
+      memory_capacity: 1511
+    networking:
+    - type: ethernet
+      speed: 100
+      state: up
+      unit_count: 1
+      traffic:
+      - data
+    drives:
+    - vendor_name: Samsung
+      model_name: MZWLR7T6HBLA-00AU3
+      interface: nvme
+      capacity_in_GB: 7680
+      unit_count: 12
+      media_type: TLC
+    operating_system:
+      name: Oracle Linux Server
+      version: '8.10'
+    environment:
+    - name: AIStore version
+      value: 4.8.42242b334fd57e993919f04acf3c2011cf2db675
+    - name: AIStore deployment
+      value: Kubernetes
+    - name: AIStore target CPU limit
+      value: 224 cores
+    - name: AIStore bucket provider
+      value: ais

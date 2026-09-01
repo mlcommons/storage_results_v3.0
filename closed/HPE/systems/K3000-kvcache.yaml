@@ -1,0 +1,81 @@
+system_under_test:
+  solution:
+    submission_name: K3000-kvcache
+    friendly_description: HPE Cray Supercomputing Storage Systems K3000
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_footprint: open_source
+      client_installation: installable
+    capabilities:
+      multi_host: true
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 447.5
+    availability: preview
+  deployment: onprem
+  product_nodes:
+  - friendly_description: HPE Proliant DL360 DAOS Server
+    quantity: 4
+    chassis:
+      model_name: HPE ProLiant Compute DL360 Gen12
+      rack_units: 1
+      cpu_model: Intel Xeon 6740P
+      cpu_qty: 2
+      cpu_cores: 96
+      memory_capacity: 2015
+      power:
+        min_psus_active: 1
+        psus_configured:
+        - unit_count: 2
+          inlet_voltage: 240
+          nameplate_power_watts: 2200
+          efficiency: Titanium
+    networking:
+    - type: infiniband
+      speed: 400
+      unit_count: 2
+      traffic:
+      - data
+      - management
+      state: up
+    drives:
+    - vendor_name: Samsung
+      model_name: PM1743
+      interface: nvme
+      media_type: TLC
+      capacity_in_GB: 15360
+      unit_count: 16
+    operating_system:
+      name: Rocky Linux
+      version: '9.5'
+  total_rack_units: 4
+  clients:
+  - friendly_description: HPE Proliant DL325 Client
+    chassis:
+      model_name: ProLiant DL325 Gen11
+      cpu_model: AMD EPYC 9355P 32-Core Processor
+      cpu_qty: 1
+      cpu_cores: 32
+      memory_capacity: 377
+      power:
+        min_psus_active: 1
+        psus_configured:
+        - unit_count: 2
+          inlet_voltage: 240
+          nameplate_power_watts: 2200
+          efficiency: Titanium
+      rack_units: 1
+    networking:
+    - type: infiniband
+      speed: 400
+      state: up
+      unit_count: 1
+      traffic:
+      - data
+    operating_system:
+      name: Rocky Linux
+      version: '9.7'
+    quantity: 16

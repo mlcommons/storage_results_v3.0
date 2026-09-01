@@ -1,0 +1,151 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260717_064655",
+  "num_processes": 80,
+  "accelerator": null,
+  "result_dir": "/home/ec2-user/mlps-aws-m8gn-unet-4c-final/closed/nvidia/results/aistore-3n-aws-i8ge-150g-4client-m8gn24xl/training/unet3d/datagen/20260717_064655",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "data/final/unet-n8-rt2-exact-v1/unet3d",
+      "format": "npz",
+      "num_files_train": "56250",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "0",
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    },
+    "storage": {
+      "storage_type": "s3",
+      "storage_root": "mlp-unet3d-aws-5c",
+      "storage_options": {
+        "storage_library": "s3dlio",
+        "uri_scheme": "s3"
+      },
+      "s3_force_path_style": "true"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "56250",
+    "dataset.num_subfolders_train": "0",
+    "storage.storage_type": "s3",
+    "storage.storage_root": "mlp-unet3d-aws-5c",
+    "storage.storage_options.storage_library": "s3dlio",
+    "storage.storage_options.uri_scheme": "s3",
+    "storage.s3_force_path_style": "true",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "data/final/unet-n8-rt2-exact-v1/unet3d"
+  },
+  "system_info": null,
+  "runtime": 232.9616720676422,
+  "invocation_start_time": "2026-07-17T06:46:55.243408",
+  "verification": null,
+  "executed_command": "mpirun -n 80 -host 100.64.246.215:20,100.64.232.112:20,100.64.249.70:20,100.64.186.148:20 --bind-to none --map-by node --prefix /usr/lib64/openmpi -x AWS_ENDPOINT_URL -x AWS_ACCESS_KEY_ID -x AWS_SECRET_ACCESS_KEY -x AWS_REGION -x BUCKET -x STORAGE_LIBRARY -x S3_ENDPOINT_URIS -x S3_LOAD_BALANCE_STRATEGY -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_RANGE_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_MULTIPART_THRESHOLD_MB -x AWS_MAX_ATTEMPTS -x AWS_RETRY_MODE -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_MAX_ATTEMPTS -x AWS_REGION -x AWS_RETRY_MODE -x AWS_SECRET_ACCESS_KEY -x BUCKET -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_RANGE_THRESHOLD_MB -x STORAGE_LIBRARY /home/ec2-user/mlps-aws/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/ec2-user/mlps-aws-m8gn-unet-4c-final/closed/nvidia/results/aistore-3n-aws-i8ge-150g-4client-m8gn24xl/training/unet3d/datagen/20260717_064655 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=56250 ++workload.dataset.num_subfolders_train=0 ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlp-unet3d-aws-5c ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=data/final/unet-n8-rt2-exact-v1/unet3d --config-dir=/home/ec2-user/mlps-aws/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 80 -host 100.64.246.215:20,100.64.232.112:20,100.64.249.70:20,100.64.186.148:20 --bind-to none --map-by node --prefix /usr/lib64/openmpi -x AWS_ENDPOINT_URL -x AWS_ACCESS_KEY_ID -x AWS_SECRET_ACCESS_KEY -x AWS_REGION -x BUCKET -x STORAGE_LIBRARY -x S3_ENDPOINT_URIS -x S3_LOAD_BALANCE_STRATEGY -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_RANGE_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_MULTIPART_THRESHOLD_MB -x AWS_MAX_ATTEMPTS -x AWS_RETRY_MODE -x AWS_ACCESS_KEY_ID -x AWS_ENDPOINT_URL -x AWS_MAX_ATTEMPTS -x AWS_REGION -x AWS_RETRY_MODE -x AWS_SECRET_ACCESS_KEY -x BUCKET -x S3DLIO_CONNECT_TIMEOUT_SECS -x S3DLIO_FOLLOW_REDIRECTS -x S3DLIO_MAX_RETRY_ATTEMPTS -x S3DLIO_MULTIPART_THRESHOLD_MB -x S3DLIO_OPERATION_TIMEOUT_SECS -x S3DLIO_POOL_MAX_IDLE_PER_HOST -x S3DLIO_RANGE_THRESHOLD_MB -x STORAGE_LIBRARY /home/ec2-user/mlps-aws/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/ec2-user/mlps-aws-m8gn-unet-4c-final/closed/nvidia/results/aistore-3n-aws-i8ge-150g-4client-m8gn24xl/training/unet3d/datagen/20260717_064655 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=56250 ++workload.dataset.num_subfolders_train=0 ++workload.storage.storage_type=s3 ++workload.storage.storage_root=mlp-unet3d-aws-5c ++workload.storage.storage_options.storage_library=s3dlio ++workload.storage.storage_options.uri_scheme=s3 ++workload.storage.s3_force_path_style=true ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=data/final/unet-n8-rt2-exact-v1/unet3d --config-dir=/home/ec2-user/mlps-aws/configs/dlio",
+      "stdout": "/home/ec2-user/mlps-aws-m8gn-unet-4c-final/closed/nvidia/results/aistore-3n-aws-i8ge-150g-4client-m8gn24xl/training/unet3d/datagen/20260717_064655/training_datagen.stdout.log",
+      "stderr": "/home/ec2-user/mlps-aws-m8gn-unet-4c-final/closed/nvidia/results/aistore-3n-aws-i8ge-150g-4client-m8gn24xl/training/unet3d/datagen/20260717_064655/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "100.64.246.215",
+      "100.64.232.112",
+      "100.64.249.70",
+      "100.64.186.148"
+    ],
+    "num_processes": 80,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": [
+      "--prefix",
+      "/usr/lib64/openmpi",
+      "-x",
+      "AWS_ENDPOINT_URL",
+      "-x",
+      "AWS_ACCESS_KEY_ID",
+      "-x",
+      "AWS_SECRET_ACCESS_KEY",
+      "-x",
+      "AWS_REGION",
+      "-x",
+      "BUCKET",
+      "-x",
+      "STORAGE_LIBRARY",
+      "-x",
+      "S3_ENDPOINT_URIS",
+      "-x",
+      "S3_LOAD_BALANCE_STRATEGY",
+      "-x",
+      "S3DLIO_FOLLOW_REDIRECTS",
+      "-x",
+      "S3DLIO_RANGE_THRESHOLD_MB",
+      "-x",
+      "S3DLIO_OPERATION_TIMEOUT_SECS",
+      "-x",
+      "S3DLIO_CONNECT_TIMEOUT_SECS",
+      "-x",
+      "S3DLIO_MAX_RETRY_ATTEMPTS",
+      "-x",
+      "S3DLIO_POOL_MAX_IDLE_PER_HOST",
+      "-x",
+      "S3DLIO_MULTIPART_THRESHOLD_MB",
+      "-x",
+      "AWS_MAX_ATTEMPTS",
+      "-x",
+      "AWS_RETRY_MODE"
+    ],
+    "data_dir": "data/final/unet-n8-rt2-exact-v1",
+    "dlio_bin_path": "/home/ec2-user/mlps-aws/.venv/bin",
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=56250",
+      "dataset.num_subfolders_train=0"
+    ],
+    "results_dir": "/home/ec2-user/mlps-aws-m8gn-unet-4c-final",
+    "systemname": "aistore-3n-aws-i8ge-150g-4client-m8gn24xl",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": "/home/ec2-user/mlps-aws/uv.lock",
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "object",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "nvidia",
+    "num_client_hosts": 4,
+    "_validated_orgname": "nvidia",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "666dead1c8e560c9b5468b17ea026a61"
+  }
+}

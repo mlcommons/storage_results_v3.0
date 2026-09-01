@@ -1,0 +1,44 @@
+workload:
+  model:
+    name: unet3d
+    type: cnn
+    model_size: 499153191
+  framework: pytorch
+  workflow:
+    generate_data: false
+    train: true
+    checkpoint: false
+  dataset:
+    data_folder: data/final/unet-n8-rt2-exact-v1/unet3d
+    format: npz
+    num_files_train: 56250
+    num_samples_per_file: 1
+    record_length_bytes: 146600628
+    record_length_bytes_stdev: 68341808
+    record_length_bytes_resize: 2097152
+    num_subfolders_train: 0
+    skip_listing: true
+    listing_validation_interval: 1000
+  reader:
+    data_loader: pytorch
+    batch_size: 7
+    read_threads: 2
+    multiprocessing_context: fork
+    file_shuffle: seed
+    sample_shuffle: seed
+  train:
+    epochs: 5
+    computation_time: 0.162
+  checkpoint:
+    checkpoint_folder: checkpoints/unet3d
+    checkpoint_after_epoch: 5
+    epochs_between_checkpoints: 2
+  metric:
+    au: 0.9
+  storage:
+    storage_type: s3
+    storage_root: mlp-unet3d-aws-5c
+    storage_options:
+      storage_library: s3dlio
+      uri_scheme: s3
+    s3_force_path_style: true

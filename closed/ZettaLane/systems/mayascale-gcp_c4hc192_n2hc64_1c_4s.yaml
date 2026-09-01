@@ -1,0 +1,72 @@
+system_under_test:
+  solution:
+    submission_name: mayascale-gcp_c4hc192_n2hc64_1c_4s
+    friendly_description: >-
+      MayaScale NVMe-oF block storage on GCP: two active-active HA pairs
+      (4 storage nodes, 32 cross-node RAID-1 mirrored NVMe-oF volumes) aggregated by the client into a single RAID0 stripe over the mirrored volumes (RAID10 end-to-end), formatted XFS for the MLPerf Storage UNet3D workload.
+      It is deployable from the Google Cloud Marketplace portal or as Terraform
+      modules (github.com/zettalane-systems/zettalane-terraform); contact
+      info@zettalane.com.
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: block
+      client_footprint: open_source
+      client_installation: in_box
+    capabilities:
+      multi_host: true
+      simultaneous_write: false
+      simultaneous_read: true
+      remap_time_in_seconds: 30
+    usable_capacity_tib: 11.72
+    availability: available
+  deployment: cloud
+  product_nodes:
+    - friendly_description: >-
+        MayaScale storage node (n2-highcpu-64), NVMe-oF target; deployed as two
+        active-active HA pairs, 16 cross-node RAID-1 mirrored (nvmetmirror) NVMe-oF volumes exported per pair.
+      quantity: 4
+      chassis:
+        model_name: Google Compute Engine n2-highcpu-64
+        cpu_model: Intel(R) Xeon(R) CPU @ 2.60GHz
+        cpu_qty: 2
+        cpu_cores: 16
+        memory_capacity: 62
+      operating_system:
+        name: Rocky Linux
+        version: "9.7"
+      networking:
+        - unit_count: 1
+          type: ethernet
+          state: up
+          speed: 75
+          traffic:
+            - data
+            - backend
+      drives:
+        - unit_count: 16
+          vendor_name: Google
+          model_name: GCP Local SSD (NVMe)
+          interface: nvme
+          media_type: TLC
+          capacity_in_GB: 375
+  clients:
+    - friendly_description: >-
+        GCP c4-highcpu-192 MLPerf Storage benchmark client (UNet3D, 4 simulated B200 accelerators, na=4), NVMe-oF initiator + mdadm RAID0 over the mirrored volumes (RAID10) + XFS.
+      quantity: 1
+      chassis:
+        model_name: Google Compute Engine c4-highcpu-192
+        cpu_model: INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.30GHz
+        cpu_qty: 2
+        cpu_cores: 48
+        memory_capacity: 378
+      operating_system:
+        name: Ubuntu
+        version: "24.04"
+      networking:
+        - unit_count: 1
+          type: ethernet
+          state: up
+          speed: 200
+          traffic:
+            - data

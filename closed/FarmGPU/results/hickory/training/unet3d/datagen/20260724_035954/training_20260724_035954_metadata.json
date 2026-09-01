@@ -1,0 +1,128 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260724_035954",
+  "num_processes": 75,
+  "accelerator": null,
+  "result_dir": "/mnt/mlperf_results/closed/farmgpu/results/hickory/training/unet3d/datagen/20260724_035954",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/wk0/train/unet3d",
+      "format": "npz",
+      "num_files_train": "553166",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "total_disk_bytes": "81094482988248",
+      "skip_listing": "True",
+      "listing_validation_interval": "100",
+      "num_subfolders_train": "55"
+    },
+    "reader": {
+      "read_threads": "16",
+      "odirect": "True",
+      "prefetch_size": "0"
+    }
+  },
+  "override_parameters": {
+    "reader.read_threads": "16",
+    "reader.odirect": "True",
+    "reader.prefetch_size": "0",
+    "dataset.num_files_train": "553166",
+    "dataset.total_disk_bytes": "81094482988248",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "100",
+    "dataset.num_subfolders_train": "55",
+    "dataset.data_folder": "/mnt/wk0/train/unet3d"
+  },
+  "system_info": null,
+  "runtime": 703.0971279144287,
+  "invocation_start_time": "2026-07-24T03:59:54.035548",
+  "invocation_end_time": "2026-07-24T04:11:58.627732",
+  "verification": null,
+  "executed_command": "mpirun -n 75 -host 10.100.200.46:5,10.100.200.47:5,10.100.200.48:5,10.100.200.49:5,10.100.200.50:5,10.100.200.51:5,10.100.200.52:5,10.100.200.53:5,10.100.200.26:5,10.100.200.27:5,10.100.200.28:5,10.100.200.29:5,10.100.200.30:5,10.100.200.31:5,10.100.200.32:5 --bind-to none --map-by node --allow-run-as-root /root/mlperf_storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/mlperf_results/closed/farmgpu/results/hickory/training/unet3d/datagen/20260724_035954 ++hydra.output_subdir=dlio_config ++workload.reader.read_threads=16 ++workload.reader.odirect=True ++workload.reader.prefetch_size=0 ++workload.dataset.num_files_train=553166 ++workload.dataset.total_disk_bytes=81094482988248 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.num_subfolders_train=55 ++workload.dataset.data_folder=/mnt/wk0/train/unet3d --config-dir=/root/mlperf_storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 75 -host 10.100.200.46:5,10.100.200.47:5,10.100.200.48:5,10.100.200.49:5,10.100.200.50:5,10.100.200.51:5,10.100.200.52:5,10.100.200.53:5,10.100.200.26:5,10.100.200.27:5,10.100.200.28:5,10.100.200.29:5,10.100.200.30:5,10.100.200.31:5,10.100.200.32:5 --bind-to none --map-by node --allow-run-as-root /root/mlperf_storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/mnt/mlperf_results/closed/farmgpu/results/hickory/training/unet3d/datagen/20260724_035954 ++hydra.output_subdir=dlio_config ++workload.reader.read_threads=16 ++workload.reader.odirect=True ++workload.reader.prefetch_size=0 ++workload.dataset.num_files_train=553166 ++workload.dataset.total_disk_bytes=81094482988248 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=100 ++workload.dataset.num_subfolders_train=55 ++workload.dataset.data_folder=/mnt/wk0/train/unet3d --config-dir=/root/mlperf_storage/configs/dlio",
+      "stdout": "/mnt/mlperf_results/closed/farmgpu/results/hickory/training/unet3d/datagen/20260724_035954/training_datagen.stdout.log",
+      "stderr": "/mnt/mlperf_results/closed/farmgpu/results/hickory/training/unet3d/datagen/20260724_035954/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "10.100.200.46",
+      "10.100.200.47",
+      "10.100.200.48",
+      "10.100.200.49",
+      "10.100.200.50",
+      "10.100.200.51",
+      "10.100.200.52",
+      "10.100.200.53",
+      "10.100.200.26",
+      "10.100.200.27",
+      "10.100.200.28",
+      "10.100.200.29",
+      "10.100.200.30",
+      "10.100.200.31",
+      "10.100.200.32"
+    ],
+    "num_processes": 75,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/wk0/train/unet3d",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "reader.read_threads=16",
+      "reader.odirect=True",
+      "reader.prefetch_size=0",
+      "dataset.num_files_train=553166",
+      "dataset.total_disk_bytes=81094482988248",
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=100",
+      "dataset.num_subfolders_train=55"
+    ],
+    "results_dir": "/mnt/mlperf_results/",
+    "systemname": "hickory",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "farmgpu",
+    "num_client_hosts": 15,
+    "_validated_orgname": "farmgpu",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "37ce6a8bc55de1e4b9ad25ea6a377b69"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260720_152253",
+  "num_processes": 8,
+  "accelerator": null,
+  "result_dir": "/tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/unet3d/datagen/20260720_152253",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/mlps_nvme/training/unet3d",
+      "format": "npz",
+      "num_files_train": "28000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "num_subfolders_train": "2",
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "28000",
+    "dataset.num_subfolders_train": "2",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "/mnt/mlps_nvme/training/unet3d"
+  },
+  "system_info": null,
+  "runtime": 207.45362830162048,
+  "invocation_start_time": "2026-07-20T15:22:53.106318",
+  "invocation_end_time": "2026-07-20T15:26:21.631621",
+  "verification": null,
+  "executed_command": "mpirun -n 8 -host 127.0.0.1:8 --bind-to none --map-by socket --allow-run-as-root /home/alto/Desktop/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/unet3d/datagen/20260720_152253 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=28000 ++workload.dataset.num_subfolders_train=2 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/mlps_nvme/training/unet3d --config-dir=/home/alto/Desktop/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 8 -host 127.0.0.1:8 --bind-to none --map-by socket --allow-run-as-root /home/alto/Desktop/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/unet3d/datagen/20260720_152253 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=28000 ++workload.dataset.num_subfolders_train=2 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/mlps_nvme/training/unet3d --config-dir=/home/alto/Desktop/storage/configs/dlio",
+      "stdout": "/tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/unet3d/datagen/20260720_152253/training_datagen.stdout.log",
+      "stderr": "/tmp/mlperf_storage_results/closed/SAMSUNG/results/MEMORY_AE/training/unet3d/datagen/20260720_152253/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 8,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/mlps_nvme/training/unet3d",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=28000",
+      "dataset.num_subfolders_train=2"
+    ],
+    "results_dir": "/tmp/mlperf_storage_results",
+    "systemname": "MEMORY_AE",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "SAMSUNG",
+    "num_client_hosts": 1,
+    "_validated_orgname": "SAMSUNG",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "08dbf816d96e7df3be4065d77820ff3c"
+  }
+}

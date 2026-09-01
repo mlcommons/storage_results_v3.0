@@ -1,0 +1,855 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/ubix/retinanet'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 68090280
+[OUTPUT]   record_length  = 322957
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 8
+[OUTPUT]   batch_size     = 36
+[OUTPUT] 2026-07-24T13:32:49.056023 Running DLIO [Training] with 736 process(es)
+[OUTPUT] 2026-07-24T13:32:49.241016 skip_listing [train]: validating 6,811 of 68,090,280 files (first, last, every 10,000) via HEAD requests ...
+[OUTPUT] 2026-07-24T13:32:49.260457 skip_listing [train]:   500/6,811 checked (7%)  —  25896 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.272346 skip_listing [train]:   1,000/6,811 checked (15%)  —  32052 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.283971 skip_listing [train]:   1,500/6,811 checked (22%)  —  35025 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.295687 skip_listing [train]:   2,000/6,811 checked (29%)  —  36675 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.307333 skip_listing [train]:   2,500/6,811 checked (37%)  —  37771 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.318954 skip_listing [train]:   3,000/6,811 checked (44%)  —  38557 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.330472 skip_listing [train]:   3,500/6,811 checked (51%)  —  39182 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.342031 skip_listing [train]:   4,000/6,811 checked (59%)  —  39649 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.353429 skip_listing [train]:   4,500/6,811 checked (66%)  —  40077 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.364798 skip_listing [train]:   5,000/6,811 checked (73%)  —  40436 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.376258 skip_listing [train]:   5,500/6,811 checked (81%)  —  40707 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.387836 skip_listing [train]:   6,000/6,811 checked (88%)  —  40902 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.399251 skip_listing [train]:   6,500/6,811 checked (95%)  —  41111 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-24T13:32:49.406374 skip_listing [train]: validation complete — all 6,811 samples exist (0.2s, 41222 checks/s); 92,514 URIs ready for rank 0 (68,090,280 total across all ranks)
+[OUTPUT] 2026-07-24T13:32:49.407847 File listing [train]: 68090280 files discovered, 92513 assigned to rank 0, completed in 0.34s
+[OUTPUT] 2026-07-24T13:32:49.407922 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-24T13:32:49.407949 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-24T13:32:49.407969 Streamed file sharding: 68090280 train files across 736 ranks via round-robin (rank 0 shard: 92513 files)
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn017: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (162 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn020: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn028: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn018: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn030: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn027: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn031: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn029: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn025: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn032: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn026: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn021: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn019: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn024: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[OUTPUT] 2026-07-24T13:32:49.934158 Max steps per epoch per rank: 1891396 = 1 * 68090280 / 36 (samples per file * local files / batch size)
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn023: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (174 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host cn022: reader.read_threads=4 x local_ranks=46 = 184 workers, estimated ~92 GB — exceeds 50% of available RAM on this node (163 GB). Consider reducing read_threads to avoid OOM.
+[OUTPUT] 2026-07-24T13:32:53.170805 Reshard for epoch 1: 92513 train files, 0 eval files redistributed via alltoall in 3.24s
+[OUTPUT] 2026-07-24T13:32:54.234049 Worker pre-warm complete (4 workers spawned)
+[OUTPUT] 2026-07-24T13:32:54.476352 Starting epoch 1: 2569 steps expected
+[OUTPUT] 2026-07-24T13:32:54.476633 Starting block 1
+[OUTPUT] 2026-07-24T13:36:28.908268 Ending block 1 - 2569 steps completed in 214.43 s
+[OUTPUT] 2026-07-24T13:36:28.911943 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.7628
+[OUTPUT] 2026-07-24T13:36:28.912006 Epoch 1 - Block 1 [Training] Throughput (samples/second): 318195.2760
+[OUTPUT] 2026-07-24T13:36:28.913267 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:36:28.976466 Ending epoch 1 - 2569 steps completed in 214.50 s
+[OUTPUT] 2026-07-24T13:36:29.441600 Reshard for epoch 2: 92513 train files, 0 eval files redistributed via alltoall in 0.46s
+[OUTPUT] 2026-07-24T13:36:30.919222 Worker pre-warm complete for epoch 2 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:36:54.538632 Starting epoch 2: 2569 steps expected
+[OUTPUT] 2026-07-24T13:36:54.539431 Starting block 1
+[OUTPUT] 2026-07-24T13:40:28.070611 Ending block 1 - 2569 steps completed in 213.53 s
+[OUTPUT] 2026-07-24T13:40:28.072450 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.1141
+[OUTPUT] 2026-07-24T13:40:28.072503 Epoch 2 - Block 1 [Training] Throughput (samples/second): 319495.1454
+[OUTPUT] 2026-07-24T13:40:28.072825 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:40:28.106574 Ending epoch 2 - 2569 steps completed in 213.57 s
+[OUTPUT] 2026-07-24T13:40:28.571894 Reshard for epoch 3: 92513 train files, 0 eval files redistributed via alltoall in 0.46s
+[OUTPUT] 2026-07-24T13:40:30.077874 Worker pre-warm complete for epoch 3 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:40:52.836583 Starting epoch 3: 2569 steps expected
+[OUTPUT] 2026-07-24T13:40:52.836926 Starting block 1
+[OUTPUT] 2026-07-24T13:44:26.568508 Ending block 1 - 2569 steps completed in 213.73 s
+[OUTPUT] 2026-07-24T13:44:26.572573 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.0214
+[OUTPUT] 2026-07-24T13:44:26.572624 Epoch 3 - Block 1 [Training] Throughput (samples/second): 319172.2105
+[OUTPUT] 2026-07-24T13:44:26.572910 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:44:26.586924 Ending epoch 3 - 2569 steps completed in 213.75 s
+[OUTPUT] 2026-07-24T13:44:27.056103 Reshard for epoch 4: 92513 train files, 0 eval files redistributed via alltoall in 0.47s
+[OUTPUT] 2026-07-24T13:44:28.587786 Worker pre-warm complete for epoch 4 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:44:51.996659 Starting epoch 4: 2569 steps expected
+[OUTPUT] 2026-07-24T13:44:51.997073 Starting block 1
+[OUTPUT] 2026-07-24T13:48:26.155119 Ending block 1 - 2569 steps completed in 214.16 s
+[OUTPUT] 2026-07-24T13:48:26.156878 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.8520
+[OUTPUT] 2026-07-24T13:48:26.156930 Epoch 4 - Block 1 [Training] Throughput (samples/second): 318547.8152
+[OUTPUT] 2026-07-24T13:48:26.157253 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:48:26.188979 Ending epoch 4 - 2569 steps completed in 214.19 s
+[OUTPUT] 2026-07-24T13:48:26.667446 Reshard for epoch 5: 92513 train files, 0 eval files redistributed via alltoall in 0.48s
+[OUTPUT] 2026-07-24T13:48:28.365697 Worker pre-warm complete for epoch 5 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:48:52.042575 Starting epoch 5: 2569 steps expected
+[OUTPUT] 2026-07-24T13:48:52.042956 Starting block 1
+[OUTPUT] 2026-07-24T13:52:26.035132 Ending block 1 - 2569 steps completed in 213.99 s
+[OUTPUT] 2026-07-24T13:52:26.037317 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.9557
+[OUTPUT] 2026-07-24T13:52:26.037387 Epoch 5 - Block 1 [Training] Throughput (samples/second): 318910.6829
+[OUTPUT] 2026-07-24T13:52:26.037714 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:52:26.046662 Ending epoch 5 - 2569 steps completed in 214.00 s
+[OUTPUT] 2026-07-24T13:52:26.510553 Reshard for epoch 6: 92513 train files, 0 eval files redistributed via alltoall in 0.46s
+[OUTPUT] 2026-07-24T13:52:28.256001 Worker pre-warm complete for epoch 6 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:52:52.012633 Starting epoch 6: 2569 steps expected
+[OUTPUT] 2026-07-24T13:52:52.013010 Starting block 1
+[OUTPUT] 2026-07-24T13:56:25.619189 Ending block 1 - 2569 steps completed in 213.61 s
+[OUTPUT] 2026-07-24T13:56:25.621055 Epoch 6 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.0908
+[OUTPUT] 2026-07-24T13:56:25.621109 Epoch 6 - Block 1 [Training] Throughput (samples/second): 319412.7295
+[OUTPUT] 2026-07-24T13:56:25.621398 Epoch 6 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T13:56:25.672738 Ending epoch 6 - 2569 steps completed in 213.66 s
+[OUTPUT] 2026-07-24T13:56:26.132292 Reshard for epoch 7: 92513 train files, 0 eval files redistributed via alltoall in 0.46s
+[OUTPUT] 2026-07-24T13:56:27.886311 Worker pre-warm complete for epoch 7 (4 workers spawned)
+[OUTPUT] 2026-07-24T13:56:51.468685 Starting epoch 7: 2569 steps expected
+[OUTPUT] 2026-07-24T13:56:51.469038 Starting block 1
+[OUTPUT] 2026-07-24T14:00:24.605796 Ending block 1 - 2569 steps completed in 213.14 s
+[OUTPUT] 2026-07-24T14:00:24.607596 Epoch 7 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.2763
+[OUTPUT] 2026-07-24T14:00:24.607647 Epoch 7 - Block 1 [Training] Throughput (samples/second): 320086.6758
+[OUTPUT] 2026-07-24T14:00:24.607974 Epoch 7 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T14:00:24.636763 Ending epoch 7 - 2569 steps completed in 213.17 s
+[OUTPUT] 2026-07-24T14:00:25.115203 Reshard for epoch 8: 92513 train files, 0 eval files redistributed via alltoall in 0.48s
+[OUTPUT] 2026-07-24T14:00:26.589592 Worker pre-warm complete for epoch 8 (4 workers spawned)
+[OUTPUT] 2026-07-24T14:00:50.317150 Starting epoch 8: 2569 steps expected
+[OUTPUT] 2026-07-24T14:00:50.317600 Starting block 1
+[OUTPUT] 2026-07-24T14:04:23.850207 Ending block 1 - 2569 steps completed in 213.53 s
+[OUTPUT] 2026-07-24T14:04:23.851950 Epoch 8 - Block 1 [Training] Accelerator Utilization [AU] (%): 86.1201
+[OUTPUT] 2026-07-24T14:04:23.852006 Epoch 8 - Block 1 [Training] Throughput (samples/second): 319518.8287
+[OUTPUT] 2026-07-24T14:04:23.852341 Epoch 8 - Block 1 [Training] Computation time per step (second): 0.0714+/-0.0000 (set value: {'mean': 0.071325})
+[OUTPUT] 2026-07-24T14:04:23.877585 Ending epoch 8 - 2569 steps completed in 213.56 s
+[OUTPUT] 2026-07-24T14:04:24.346621 Reshard for epoch 9: 92513 train files, 0 eval files redistributed via alltoall in 0.47s
+[OUTPUT] 2026-07-24T14:04:25.778275 Worker pre-warm complete for epoch 9 (4 workers spawned)
+[OUTPUT] 2026-07-24T14:04:25.987541 Saved outputs in /mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem_MI355/training/retinanet/run/20260724_133208
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 736 
+[METRIC] Training Accelerator Utilization [AU] (%): 86.0158 (0.1671)
+[METRIC] Training Throughput (samples/second): 319155.8978 (621.6774)
+[METRIC] Training I/O Throughput (MiB/second): 98298.6749 (191.4740)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-24T14:04:32.897992 outputs saved in RANKID_output.json

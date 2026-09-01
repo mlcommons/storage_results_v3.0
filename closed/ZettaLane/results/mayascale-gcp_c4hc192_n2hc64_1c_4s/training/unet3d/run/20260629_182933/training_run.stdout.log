@@ -1,0 +1,70 @@
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 16 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 16 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 16 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 16 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+================================================================================
+STREAMING CHECKPOINT - Producer-Consumer Pattern
+================================================================================
+Output:      /mnt/mlperf-block/unet3d/checkpoints/global_epoch5_step501/model_states-0.pt
+Backend:     file
+Total size:  0.00 GB
+Buffer size: 32 MB
+Buffer pool: 4 × 32 MB = 0.12 GB
+Direct I/O:  False
+Use dgen-py: True
+================================================================================
+
+[Main] Creating 4 buffers...
+[Main] Buffer pool ready: 0.12 GB
+[Main] Initializing dgen-py (MPI world_size=4, threads=48/192 CPUs)...
+[Main] Generator ready
+
+[Main] Writer process started (PID=76905)
+[Main] Starting producer at 13889.874s
+[Main] Starting producer (buffer pool reuse pattern)...
+[Main] Generation complete: 0.00s, 0.02 GB/s
+[Main] Producer finished at 13889.874s
+[Main] Signaling writer to stop at 13889.874s
+[Main] Waiting for writer to join at 13889.874s
+[Writer] Starting (PID=76905)
+[Writer] DEBUG: AWS_ACCESS_KEY_ID = NOT SET***
+[Writer] DEBUG: AWS_ENDPOINT_URL = NOT SET
+[Writer] Attached to 4 buffers (32 MB each)
+[Writer] Using file backend
+[Writer] Closed: {'backend': 'file', 'total_bytes': 10240, 'filepath': '/mnt/mlperf-block/unet3d/checkpoints/global_epoch5_step501/model_states-0.pt', 'direct_io': False, 'fadvise': 'dontneed'} (close time: 0.0065s)
+[Writer] Deleted writer object
+[Writer] Flushing stats queue...
+[Writer] Finished (exit_code=0)
+[Writer] Exiting (PID=76905)
+[Main] Writer joined at 13889.894s
+
+================================================================================
+RESULTS
+================================================================================
+Generation:  0.0004s @ 0.02 GB/s
+I/O:         0.0066s @ 0.00 GB/s
+  - write:   0.0001s
+  - close:   0.0065s (fsync/finalize)
+Total:       0.0469s
+
+Throughput ratio: 15.1x (gen/io)
+Pipeline overhead: 86.0%
+Bottleneck: I/O
+Chunks: 1
+================================================================================
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0         12T  2.1T  9.7T  18% /mnt/mlperf-block
+/dev/root        48G   11G   38G  22% /

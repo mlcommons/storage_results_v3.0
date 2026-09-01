@@ -1,0 +1,35 @@
+workload:
+  model:
+    name: llama_1t
+    type: transformer
+    num_layers: 128
+    model_datatype: fp16
+    optimizer_datatype: fp32
+    parallelism:
+      tensor: 8
+      pipeline: 64
+      zero_stage: 1
+    transformer:
+      vocab_size: 128256
+      hidden_size: 25872
+      ffn_hidden_size: 98304
+      num_attention_heads: 192
+      num_kv_heads: 32
+  framework: pytorch
+  workflow:
+    generate_data: false
+    train: false
+    checkpoint: true
+  checkpoint:
+    checkpoint_folder: mlp-ckpt-12n/llama3-1t/llama3-1t
+    time_between_checkpoints: 5
+    num_checkpoints_write: 0
+    num_checkpoints_read: 10
+    fsync: true
+  storage:
+    storage_type: s3
+    storage_root: mlp-ckpt-12n
+    storage_options:
+      storage_library: s3dlio
+      uri_scheme: s3
+    s3_force_path_style: true

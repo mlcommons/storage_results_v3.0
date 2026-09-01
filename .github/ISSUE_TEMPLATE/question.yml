@@ -1,0 +1,97 @@
+name: Question about a submission
+description: Ask another submitter a question about their v3.0 submission
+title: "[Question] "
+labels: ["Question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to ask a question about another organization's submission,
+        or to ask the review chairs. Review staff will apply the matching
+        `From <org>` and `To <org>` labels from your answers below, so both
+        parties can filter their issues.
+
+        Besides the submitting organizations, you can address **ReviewChairs**
+        (the v3.0 review chairs as a group: @FileSystemGuy, @bbelgodere,
+        @russfellows, @idevasena, @dslik), **ANL**, or **OpenLake**.
+  - type: dropdown
+    id: from-org
+    attributes:
+      label: Your organization / role (From)
+      description: >-
+        The organization filing this question — or ReviewChairs if you are
+        filing it on behalf of the review chairs.
+      options:
+        - ReviewChairs
+        - ANL
+        - OpenLake
+        - Nutanix
+        - Alluxio
+        - Everpure
+        - InspurData
+        - Azure
+        - Nebius
+        - NewFW
+        - SAMSUNG
+        - Suzhou_Zishan_Longlin
+        - TTA
+        - TuringData
+        - UBIX
+        - XSKY
+        - YanRongTech
+        - ZettaLane
+        - FarmGPU
+        - HolmesAI
+        - HPE
+        - NVIDIA
+    validations:
+      required: true
+  - type: dropdown
+    id: to-org
+    attributes:
+      label: Organization / role asked to respond (To)
+      description: >-
+        The organization whose submission this question concerns — or
+        ReviewChairs to direct the question to the review chairs.
+      options:
+        - ReviewChairs
+        - ANL
+        - OpenLake
+        - Nutanix
+        - Alluxio
+        - Everpure
+        - InspurData
+        - Azure
+        - Nebius
+        - NewFW
+        - SAMSUNG
+        - Suzhou_Zishan_Longlin
+        - TTA
+        - TuringData
+        - UBIX
+        - XSKY
+        - YanRongTech
+        - ZettaLane
+        - FarmGPU
+        - HolmesAI
+        - HPE
+        - NVIDIA
+    validations:
+      required: true
+  - type: input
+    id: submission
+    attributes:
+      label: Submission / system concerned
+      description: >-
+        Path or system name, e.g.
+        closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a
+      placeholder: closed/<org>/results/<system>/...
+    validations:
+      required: false
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like the other organization to clarify?
+    validations:
+      required: true

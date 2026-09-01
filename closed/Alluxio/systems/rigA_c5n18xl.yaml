@@ -1,0 +1,188 @@
+system_under_test:
+  clients:
+  - friendly_description: AWS c5n.18xlarge unet3d training client (Alluxio FUSE, na=1); 1x i3en.12xlarge Alluxio worker, NVMe page store, S3 UFS
+    chassis:
+      model_name: c5n.18xlarge
+      cpu_model: Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
+      cpu_qty: 2
+      cpu_cores: 36
+      memory_capacity: 185
+    networking:
+    - type: ethernet
+      state: up
+      unit_count: 1
+      speed: 100
+      traffic:
+      - data
+    sysctl:
+    - name: fs.aio-max-nr
+      value: '65536'
+    - name: fs.file-max
+      value: '9223372036854775807'
+    - name: fs.nr_open
+      value: '1048576'
+    - name: fs.inotify.max_user_watches
+      value: '1048576'
+    - name: kernel.io_uring_disabled
+      value: '0'
+    - name: kernel.numa_balancing
+      value: '1'
+    - name: kernel.pid_max
+      value: '4194304'
+    - name: kernel.sched_autogroup_enabled
+      value: '1'
+    - name: kernel.shmall
+      value: '18446744073692774399'
+    - name: kernel.shmmax
+      value: '18446744073692774399'
+    - name: kernel.threads-max
+      value: '1513753'
+    - name: net.core.busy_poll
+      value: '0'
+    - name: net.core.busy_read
+      value: '0'
+    - name: net.core.default_qdisc
+      value: fq_codel
+    - name: net.core.netdev_budget
+      value: '300'
+    - name: net.core.netdev_budget_usecs
+      value: '2000'
+    - name: net.core.netdev_max_backlog
+      value: '1000'
+    - name: net.core.optmem_max
+      value: '131072'
+    - name: net.core.rmem_default
+      value: '212992'
+    - name: net.core.rmem_max
+      value: '212992'
+    - name: net.core.somaxconn
+      value: '4096'
+    - name: net.core.wmem_default
+      value: '212992'
+    - name: net.core.wmem_max
+      value: '212992'
+    - name: net.ipv4.ip_local_port_range
+      value: "32768\t60999"
+    - name: net.ipv4.tcp_congestion_control
+      value: cubic
+    - name: net.ipv4.tcp_low_latency
+      value: '0'
+    - name: net.ipv4.tcp_mtu_probing
+      value: '0'
+    - name: net.ipv4.tcp_no_metrics_save
+      value: '0'
+    - name: net.ipv4.tcp_notsent_lowat
+      value: '4294967295'
+    - name: net.ipv4.tcp_rmem
+      value: "4096\t131072\t33554432"
+    - name: net.ipv4.tcp_sack
+      value: '1'
+    - name: net.ipv4.tcp_slow_start_after_idle
+      value: '1'
+    - name: net.ipv4.tcp_timestamps
+      value: '1'
+    - name: net.ipv4.tcp_window_scaling
+      value: '1'
+    - name: net.ipv4.tcp_wmem
+      value: "4096\t16384\t4194304"
+    - name: vm.dirty_background_bytes
+      value: '0'
+    - name: vm.dirty_background_ratio
+      value: '10'
+    - name: vm.dirty_bytes
+      value: '0'
+    - name: vm.dirty_expire_centisecs
+      value: '3000'
+    - name: vm.dirty_ratio
+      value: '20'
+    - name: vm.dirty_writeback_centisecs
+      value: '500'
+    - name: vm.max_map_count
+      value: '1048576'
+    - name: vm.min_free_kbytes
+      value: '90112'
+    - name: vm.nr_hugepages
+      value: '0'
+    - name: vm.nr_overcommit_hugepages
+      value: '0'
+    - name: vm.overcommit_memory
+      value: '0'
+    - name: vm.overcommit_ratio
+      value: '50'
+    - name: vm.page-cluster
+      value: '3'
+    - name: vm.swappiness
+      value: '60'
+    - name: vm.vfs_cache_pressure
+      value: '100'
+    - name: vm.watermark_scale_factor
+      value: '10'
+    - name: vm.zone_reclaim_mode
+      value: '0'
+    environment:
+    - name: OMPI_APP_CTX_NUM_PROCS
+      value: '1'
+    - name: OMPI_COMMAND
+      value: python
+    - name: OMPI_COMM_WORLD_LOCAL_SIZE
+      value: '1'
+    - name: OMPI_COMM_WORLD_SIZE
+      value: '1'
+    - name: OMPI_FIRST_RANKS
+      value: '0'
+    - name: OMPI_MCA_btl
+      value: tcp,self
+    - name: OMPI_MCA_ess
+      value: ^singleton
+    - name: OMPI_MCA_hwloc_base_binding_policy
+      value: none
+    - name: OMPI_MCA_mpi_oversubscribe
+      value: '0'
+    - name: OMPI_MCA_orte_app_num
+      value: '0'
+    - name: OMPI_MCA_orte_ess_num_procs
+      value: '1'
+    - name: OMPI_MCA_orte_launch
+      value: '1'
+    - name: OMPI_MCA_orte_num_nodes
+      value: '1'
+    - name: OMPI_MCA_orte_tmpdir_base
+      value: /tmp
+    - name: OMPI_MCA_pmix
+      value: ^s1,s2,cray,isolated
+    - name: OMPI_MCA_rmaps_base_mapping_policy
+      value: node
+    - name: OMPI_MCA_shmem_RUNTIME_QUERY_hint
+      value: mmap
+    - name: OMPI_NUM_APP_CTX
+      value: '1'
+    - name: OMPI_UNIVERSE_SIZE
+      value: '1'
+    drives:
+    - vendor_name: Amazon
+      model_name: Amazon Elastic Block Store
+      interface: nvme
+      capacity_in_GB: 161
+      unit_count: 1
+      media_type: other
+    operating_system:
+      name: Ubuntu
+      version: '24.04'
+    quantity: 1
+  deployment: cloud
+  solution:
+    submission_name: rigA_c5n18xl
+    friendly_description: Alluxio Enterprise AI 3.9 (RC18) distributed caching over an S3 under-store via Alluxio FUSE (POSIX); 1x c5n.18xlarge unet3d training client + 1x i3en.12xlarge Alluxio worker (NVMe page store); training unet3d na=1.
+    architecture:
+      storage_location: remote
+      benchmark_API: file
+      product_API: file
+      client_footprint: closed_source
+      client_installation: installable
+    capabilities:
+      multi_host: false
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 25.5
+    availability: available

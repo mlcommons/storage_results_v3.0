@@ -1,0 +1,28 @@
+workload:
+  model:
+    name: unet3d
+    type: cnn
+    model_size: 499153191
+  framework: pytorch
+  workflow:
+    generate_data: true
+    train: false
+    checkpoint: false
+  dataset:
+    data_folder: unet3d
+    format: npz
+    num_files_train: 420000
+    num_samples_per_file: 1
+    record_length_bytes: 146600628
+    record_length_bytes_stdev: 68341808
+    record_length_bytes_resize: 2097152
+    total_disk_bytes: 53875730790000
+    skip_listing: true
+    listing_validation_interval: 100
+    num_subfolders_train: 100
+  storage:
+    storage_type: direct_fs
+    storage_options:
+      storage_library: s3dlio
+      uri_scheme: direct
+    storage_root: /mnt/pfs

@@ -1,0 +1,97 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260709_023420",
+  "num_processes": 4,
+  "accelerator": null,
+  "result_dir": "/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new/closed/holmesai_limited/results/StorMeshAI/training/unet3d/datagen/20260709_023420",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/mlp/unet3d_data/unet3d",
+      "format": "npz",
+      "num_files_train": "37500",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "1",
+      "num_subfolders_train": "0"
+    }
+  },
+  "override_parameters": {
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1",
+    "dataset.num_files_train": "37500",
+    "dataset.num_subfolders_train": "0",
+    "dataset.data_folder": "/mnt/mlp/unet3d_data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 483.49342823028564,
+  "invocation_start_time": "2026-07-09T02:34:20.862332",
+  "verification": null,
+  "executed_command": "mpirun -n 4 -host 127.0.0.1:4 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT /root/mlp/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new/closed/holmesai_limited/results/StorMeshAI/training/unet3d/datagen/20260709_023420 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=37500 ++workload.dataset.num_subfolders_train=0 ++workload.dataset.data_folder=/mnt/mlp/unet3d_data/unet3d --config-dir=/root/mlp/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 4 -host 127.0.0.1:4 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT /root/mlp/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new/closed/holmesai_limited/results/StorMeshAI/training/unet3d/datagen/20260709_023420 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1 ++workload.dataset.num_files_train=37500 ++workload.dataset.num_subfolders_train=0 ++workload.dataset.data_folder=/mnt/mlp/unet3d_data/unet3d --config-dir=/root/mlp/storage/configs/dlio",
+      "stdout": "/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new/closed/holmesai_limited/results/StorMeshAI/training/unet3d/datagen/20260709_023420/training_datagen.stdout.log",
+      "stderr": "/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new/closed/holmesai_limited/results/StorMeshAI/training/unet3d/datagen/20260709_023420/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 4,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/mlp/unet3d_data",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=1",
+      "dataset.num_files_train=37500",
+      "dataset.num_subfolders_train=0"
+    ],
+    "results_dir": "/tmp/mlperf_storage_results_1t_4acc_100reader_37500_new",
+    "systemname": "StorMeshAI",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "holmesai_limited",
+    "num_client_hosts": 1,
+    "_validated_orgname": "holmesai_limited",
+    "_validated_systemname": null
+  }
+}

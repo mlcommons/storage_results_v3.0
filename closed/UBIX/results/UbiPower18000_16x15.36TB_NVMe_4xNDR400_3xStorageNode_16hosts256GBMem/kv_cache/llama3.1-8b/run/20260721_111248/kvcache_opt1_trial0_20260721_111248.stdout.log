@@ -1,0 +1,5248 @@
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Start delay for 90 seconds
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+KV Cache Wrapper - Starting benchmark pass...
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 58
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 513 tokens (64.12MiB)
+  Max: 24790 tokens (3098.75MiB)
+  Mean: 9045 tokens (1130.62MiB)
+
+QoS Distribution:
+  interactive: 26 users
+  responsive: 61 users
+  batch: 113 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 232.1GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (232.1GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 42
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 598 tokens (74.75MiB)
+  Max: 24836 tokens (3104.50MiB)
+  Mean: 9330 tokens (1166.27MiB)
+
+QoS Distribution:
+  interactive: 25 users
+  responsive: 78 users
+  batch: 97 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 229.7GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~116  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (229.7GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 116 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 45
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 552 tokens (69.00MiB)
+  Max: 24599 tokens (3074.88MiB)
+  Mean: 8830 tokens (1103.78MiB)
+
+QoS Distribution:
+  interactive: 33 users
+  responsive: 56 users
+  batch: 111 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 73
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+Users: 200
+Duration: 300s
+Seed: 46
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 664 tokens (83.00MiB)
+
+User Context Length Distribution:
+  Max: 24710 tokens (3088.75MiB)
+  Min: 522 tokens (65.25MiB)
+  Max: 24486 tokens (3060.75MiB)
+  Mean: 8822 tokens (1102.72MiB)
+
+QoS Distribution:
+  interactive: 21 users
+  responsive: 72 users
+  batch: 107 users
+  Mean: 9536 tokens (1192.03MiB)
+
+QoS Distribution:
+  interactive: 34 users
+  responsive: 66 users
+  batch: 100 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 60
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 549 tokens (68.62MiB)
+  Max: 24937 tokens (3117.12MiB)
+  Mean: 9373 tokens (1171.61MiB)
+
+QoS Distribution:
+  interactive: 28 users
+  responsive: 64 users
+  batch: 108 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.1GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.1GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.4GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.4GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.6GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.6GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.6GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.6GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 66
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 43
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 578 tokens (72.25MiB)
+  Max: 24808 tokens (3101.00MiB)
+  Mean: 9566 tokens (1195.75MiB)
+
+QoS Distribution:
+  interactive: 24 users
+  responsive: 76 users
+  batch: 100 users
+
+User Context Length Distribution:
+  Min: 554 tokens (69.25MiB)
+  Max: 24695 tokens (3086.88MiB)
+  Mean: 8592 tokens (1074.05MiB)
+
+QoS Distribution:
+  interactive: 38 users
+  responsive: 72 users
+  batch: 90 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 63
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 524 tokens (65.50MiB)
+  Max: 24679 tokens (3084.88MiB)
+  Mean: 9088 tokens (1136.02MiB)
+
+QoS Distribution:
+  interactive: 24 users
+  responsive: 72 users
+  batch: 104 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 72
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 517 tokens (64.62MiB)
+  Max: 24700 tokens (3087.50MiB)
+  Mean: 10009 tokens (1251.09MiB)
+
+QoS Distribution:
+  interactive: 32 users
+  responsive: 70 users
+  batch: 98 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 232.7GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (232.7GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.5GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.5GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 68
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.7GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.7GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+User Context Length Distribution:
+  Min: 539 tokens (67.38MiB)
+  Max: 24518 tokens (3064.75MiB)
+  Mean: 8429 tokens (1053.57MiB)
+
+QoS Distribution:
+  interactive: 28 users
+  responsive: 79 users
+  batch: 93 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 65
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 582 tokens (72.75MiB)
+  Max: 24738 tokens (3092.25MiB)
+  Mean: 9060 tokens (1132.48MiB)
+
+QoS Distribution:
+  interactive: 25 users
+  responsive: 65 users
+  batch: 110 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 53
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.2GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.2GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 48
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 519 tokens (64.88MiB)
+  Max: 24991 tokens (3123.88MiB)
+  Mean: 9008 tokens (1126.02MiB)
+
+QoS Distribution:
+  interactive: 30 users
+  responsive: 67 users
+  batch: 103 users
+
+User Context Length Distribution:
+  Min: 530 tokens (66.25MiB)
+  Max: 24816 tokens (3102.00MiB)
+  Mean: 8671 tokens (1083.83MiB)
+
+QoS Distribution:
+  interactive: 35 users
+  responsive: 69 users
+  batch: 96 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 44
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 520 tokens (65.00MiB)
+  Max: 24951 tokens (3118.88MiB)
+  Mean: 8806 tokens (1100.75MiB)
+
+QoS Distribution:
+  interactive: 35 users
+  responsive: 66 users
+  batch: 99 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.1GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.1GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.5GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.5GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.0GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.0GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.6GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.6GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+Duration: 300s
+Seed: 59
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 50
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.1GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  Min: 557 tokens (69.62MiB)
+  Max: 24962 tokens (3120.25MiB)
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.1GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+  Mean: 9942 tokens (1242.77MiB)
+
+QoS Distribution:
+  interactive: 27 users
+  responsive: 88 users
+  batch: 85 users
+
+User Context Length Distribution:
+  Min: 515 tokens (64.38MiB)
+  Max: 24947 tokens (3118.38MiB)
+  Mean: 8612 tokens (1076.51MiB)
+
+QoS Distribution:
+  interactive: 20 users
+  responsive: 75 users
+  batch: 105 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 61
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 541 tokens (67.62MiB)
+  Max: 24932 tokens (3116.50MiB)
+  Mean: 8771 tokens (1096.35MiB)
+
+QoS Distribution:
+  interactive: 27 users
+  responsive: 75 users
+  batch: 98 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 55
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 543 tokens (67.88MiB)
+  Max: 24793 tokens (3099.12MiB)
+  Mean: 9482 tokens (1185.25MiB)
+
+QoS Distribution:
+  interactive: 29 users
+  responsive: 61 users
+  batch: 110 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.6GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.6GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.5GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.5GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.9GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.9GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 70
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 598 tokens (74.75MiB)
+  Max: 24881 tokens (3110.12MiB)
+  Mean: 8497 tokens (1062.07MiB)
+
+QoS Distribution:
+  interactive: 34 users
+  responsive: 72 users
+  batch: 94 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.3GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.3GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 49
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 534 tokens (66.75MiB)
+  Max: 23495 tokens (2936.88MiB)
+  Mean: 8505 tokens (1063.15MiB)
+
+QoS Distribution:
+  interactive: 39 users
+  responsive: 59 users
+  batch: 102 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 69
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 829 tokens (103.62MiB)
+  Max: 24982 tokens (3122.75MiB)
+  Mean: 9167 tokens (1145.82MiB)
+
+QoS Distribution:
+  interactive: 26 users
+  responsive: 73 users
+  batch: 101 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.0GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.0GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 56
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 529 tokens (66.12MiB)
+  Max: 24955 tokens (3119.38MiB)
+  Mean: 8938 tokens (1117.31MiB)
+
+QoS Distribution:
+  interactive: 22 users
+  responsive: 68 users
+  batch: 110 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.6GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.6GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.5GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.5GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.1GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.1GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 64
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 529 tokens (66.12MiB)
+  Max: 24945 tokens (3118.12MiB)
+  Mean: 9353 tokens (1169.12MiB)
+
+QoS Distribution:
+  interactive: 34 users
+  responsive: 68 users
+  batch: 98 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 62
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.8GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.8GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+User Context Length Distribution:
+  Min: 572 tokens (71.50MiB)
+  Max: 24553 tokens (3069.12MiB)
+  Mean: 9706 tokens (1213.20MiB)
+
+QoS Distribution:
+  interactive: 31 users
+  responsive: 79 users
+  batch: 90 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 232.4GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (232.4GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 52
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 523 tokens (65.38MiB)
+  Max: 24261 tokens (3032.62MiB)
+  Mean: 7921 tokens (990.08MiB)
+
+QoS Distribution:
+  interactive: 32 users
+  responsive: 75 users
+  batch: 93 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 232.8GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (232.8GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 71
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 549 tokens (68.62MiB)
+  Max: 24630 tokens (3078.75MiB)
+  Mean: 8864 tokens (1108.06MiB)
+
+QoS Distribution:
+  interactive: 31 users
+  responsive: 70 users
+  batch: 99 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 231.9GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (231.9GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 47
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 620 tokens (77.50MiB)
+  Max: 24732 tokens (3091.50MiB)
+  Mean: 9464 tokens (1183.03MiB)
+
+QoS Distribution:
+  interactive: 31 users
+  responsive: 62 users
+  batch: 107 users
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 54
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 538 tokens (67.25MiB)
+  Max: 24796 tokens (3099.50MiB)
+  Mean: 9614 tokens (1201.74MiB)
+
+QoS Distribution:
+  interactive: 32 users
+  responsive: 71 users
+  batch: 97 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 230.8GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~116  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (230.8GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 116 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 231.7GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~117  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (231.7GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 117 or --max-concurrent-allocs 58
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 67
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 518 tokens (64.75MiB)
+  Max: 24954 tokens (3119.25MiB)
+  Mean: 8903 tokens (1112.82MiB)
+
+QoS Distribution:
+  interactive: 30 users
+  responsive: 70 users
+  batch: 100 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 233.2GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (233.2GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 51
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 628 tokens (78.50MiB)
+  Max: 24634 tokens (3079.25MiB)
+  Mean: 9506 tokens (1188.23MiB)
+
+QoS Distribution:
+  interactive: 34 users
+  responsive: 63 users
+  batch: 103 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 234.2GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~118  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (234.2GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 118 or --max-concurrent-allocs 59
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+Integrated Multi-User KV Cache Benchmark - MLPerf Edition
+Model: Llama 3.1 8B
+GPU Memory: 0 GB
+Users: 200
+Duration: 300s
+Seed: 57
+Generation Mode: none (0.0ms/token)
+Features:
+  - Phase-Aware Processing: Enabled
+  - Multi-turn Conversations: Enabled
+  - Prefix Caching: Enabled
+  - RAG Workload: Disabled
+  - Autoscaling: Disabled
+  - QoS Support: Enabled (Interactive/Responsive/Batch)
+  - Trace-Driven (BurstGPT): Disabled
+  - ShareGPT Dataset: Disabled
+  - Max Concurrent Allocations: 16 (bounds RAM usage)
+================================================================================
+
+User Context Length Distribution:
+  Min: 564 tokens (70.50MiB)
+  Max: 24106 tokens (3013.25MiB)
+  Mean: 8706 tokens (1088.21MiB)
+
+QoS Distribution:
+  interactive: 31 users
+  responsive: 73 users
+  batch: 96 users
+
+### MEMORY SAFETY CHECK ###
+  Formula: peak = (workers x 2 x mean_entry_bytes) + baseline
+         = (200 x 2 x 1000MiB) + 2.5GiB
+         = 393.1GiB
+  Available RAM: 226.9GiB
+  Mean entry size: 1000MiB  (8000 tok x 131,072 B/tok)
+  Peak per thread: 2000MiB  (np.load + np.array copy)
+  Worker threads: 200
+  Safe concurrent readers: ~114  = (available - baseline) / peak_per_thread
+  WARNING: Estimated peak memory (393.1GiB) exceeds 85% of
+  available RAM (226.9GiB). Risk of OOM with 200 workers.
+  Consider: --num-users 114 or --max-concurrent-allocs 57
+
+Starting benchmark... Mode: standard (prefill+decode)
+--------------------------------------------------------------------------------
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 2072
+  Block size min:   18.0MiB
+  Block size mean:  440.9MiB
+  Block size P95:   1612.6MiB
+  Block size max:   2830.1MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 2069
+Total Tokens Generated: 248075
+Throughput (wall-clock): 826.83 tokens/sec
+Throughput (storage I/O): 16.02 tokens/sec
+Requests/sec: 6.90
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 146730.50 ms
+  P50:  146494.87 ms
+  P95:  279528.12 ms
+  P99:  292961.42 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 7485.02 ms
+  P50:  4811.03 ms
+  P95:  23874.71 ms
+  P99:  40148.90 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.4%
+  Total Read: 3780.42GiB
+  Total Write: 892.12GiB
+  Read/Write Ratio: 4.24
+  Storage KV Read Operations/sec: 30.40
+  Storage KV Write Operations/sec: 6.91
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 2072
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 892.12GiB
+  Storage KV Bytes Read: 3780.42GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 12.60GiB/s
+  Storage KV Write Bandwidth: 2.97GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2803.98 ms
+  Storage Write P95 (Total): 1314.90 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1592.96 ms
+    - Host P95 (Serialization): 1443.02 ms
+    - Total P95: 2803.98 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 302.02 ms
+    - Host P95 (Serialization): 1176.81 ms
+    - Total P95: 1314.90 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1766
+  Common Phrase Hits: 0
+  User Cache Hits: 7303
+  Multi-turn Hits: 52
+
+### PREFIX CACHING ###
+  Prefix Hits: 404
+  Prefix Misses: 1668
+  System Prompt Reuse: 404
+  Bytes Saved: 0.32GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 52
+  Multi-turn Cache Misses: 565
+  Multi-turn Hit Rate: 8.4%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1913
+    Latency P95: 280942.77 ms
+    Latency P99: 293762.93 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 66
+    Latency P95: 37379.03 ms
+    Latency P99: 43810.57 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 90
+    Latency P95: 40972.58 ms
+    Latency P99: 58900.53 ms
+    SLA Met: [X] (compliance: 1.1%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1772
+  Block size min:   33.4MiB
+  Block size mean:  480.0MiB
+  Block size P95:   1578.9MiB
+  Block size max:   2803.9MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1769
+Total Tokens Generated: 262106
+Throughput (wall-clock): 873.31 tokens/sec
+Throughput (storage I/O): 15.51 tokens/sec
+Requests/sec: 5.89
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 142093.41 ms
+  P50:  138905.67 ms
+  P95:  271697.71 ms
+  P99:  288192.43 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 9555.55 ms
+  P50:  6686.01 ms
+  P95:  27622.98 ms
+  P99:  41039.16 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.7%
+  Total Read: 4141.87GiB
+  Total Write: 830.61GiB
+  Read/Write Ratio: 4.99
+  Storage KV Read Operations/sec: 30.77
+  Storage KV Write Operations/sec: 5.91
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1772
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 830.61GiB
+  Storage KV Bytes Read: 4141.87GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.80GiB/s
+  Storage KV Write Bandwidth: 2.77GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2973.00 ms
+  Storage Write P95 (Total): 1483.67 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1726.65 ms
+    - Host P95 (Serialization): 1516.72 ms
+    - Total P95: 2973.00 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 330.18 ms
+    - Host P95 (Serialization): 1331.29 ms
+    - Total P95: 1483.67 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1776
+  Common Phrase Hits: 0
+  User Cache Hits: 7345
+  Multi-turn Hits: 111
+
+### PREFIX CACHING ###
+  Prefix Hits: 348
+  Prefix Misses: 1424
+  System Prompt Reuse: 348
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 111
+  Multi-turn Cache Misses: 599
+  Multi-turn Hit Rate: 15.6%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1599
+    Latency P95: 273379.82 ms
+    Latency P99: 288268.45 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 94
+    Latency P95: 58395.85 ms
+    Latency P99: 70158.07 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 76
+    Latency P95: 52045.70 ms
+    Latency P99: 66442.18 ms
+    SLA Met: [X] (compliance: 1.3%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1744
+  Block size min:   26.0MiB
+  Block size mean:  552.0MiB
+  Block size P95:   1870.0MiB
+  Block size max:   2914.2MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1744
+Total Tokens Generated: 235826
+Throughput (wall-clock): 785.21 tokens/sec
+Throughput (storage I/O): 15.26 tokens/sec
+Requests/sec: 5.81
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 140400.31 ms
+  P50:  147960.31 ms
+  P95:  252654.94 ms
+  P99:  263643.15 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 8858.85 ms
+  P50:  6635.99 ms
+  P95:  27820.65 ms
+  P99:  43823.50 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.4%
+  Total Read: 3366.97GiB
+  Total Write: 940.21GiB
+  Read/Write Ratio: 3.58
+  Storage KV Read Operations/sec: 27.04
+  Storage KV Write Operations/sec: 5.81
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1744
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 940.21GiB
+  Storage KV Bytes Read: 3366.97GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 11.21GiB/s
+  Storage KV Write Bandwidth: 3.13GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3099.99 ms
+  Storage Write P95 (Total): 1474.29 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1746.04 ms
+    - Host P95 (Serialization): 1600.40 ms
+    - Total P95: 3099.99 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 352.81 ms
+    - Host P95 (Serialization): 1318.37 ms
+    - Total P95: 1474.29 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1521
+  Common Phrase Hits: 0
+  User Cache Hits: 6534
+  Multi-turn Hits: 58
+
+### PREFIX CACHING ###
+  Prefix Hits: 327
+  Prefix Misses: 1417
+  System Prompt Reuse: 327
+  Bytes Saved: 0.27GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 58
+  Multi-turn Cache Misses: 433
+  Multi-turn Hit Rate: 11.8%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1565
+    Latency P95: 253859.52 ms
+    Latency P99: 264297.26 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 83
+    Latency P95: 46540.02 ms
+    Latency P99: 55376.75 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 96
+    Latency P95: 49984.14 ms
+    Latency P99: 57661.42 ms
+    SLA Met: [X] (compliance: 4.2%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1924
+  Block size min:   23.0MiB
+  Block size mean:  651.9MiB
+  Block size P95:   2163.1MiB
+  Block size max:   3029.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1922
+Total Tokens Generated: 235472
+Throughput (wall-clock): 784.49 tokens/sec
+Throughput (storage I/O): 20.85 tokens/sec
+Requests/sec: 6.40
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 144012.55 ms
+  P50:  146131.09 ms
+  P95:  267628.41 ms
+  P99:  279745.30 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 5877.28 ms
+  P50:  3113.42 ms
+  P95:  20371.41 ms
+  P99:  33720.83 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 87.6%
+  Total Read: 3470.82GiB
+  Total Write: 1224.83GiB
+  Read/Write Ratio: 2.83
+  Storage KV Read Operations/sec: 25.94
+  Storage KV Write Operations/sec: 6.41
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1924
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1224.83GiB
+  Storage KV Bytes Read: 3470.82GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 11.56GiB/s
+  Storage KV Write Bandwidth: 4.08GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3102.68 ms
+  Storage Write P95 (Total): 757.60 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1030.52 ms
+    - Host P95 (Serialization): 2261.94 ms
+    - Total P95: 3102.68 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 131.80 ms
+    - Host P95 (Serialization): 692.46 ms
+    - Total P95: 757.60 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1520
+  Common Phrase Hits: 0
+  User Cache Hits: 6190
+  Multi-turn Hits: 72
+
+### PREFIX CACHING ###
+  Prefix Hits: 373
+  Prefix Misses: 1551
+  System Prompt Reuse: 373
+  Bytes Saved: 0.30GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 72
+  Multi-turn Cache Misses: 729
+  Multi-turn Hit Rate: 9.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1747
+    Latency P95: 269839.57 ms
+    Latency P99: 280046.92 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 69
+    Latency P95: 50553.98 ms
+    Latency P99: 55300.13 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 106
+    Latency P95: 57394.50 ms
+    Latency P99: 73393.76 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1790
+  Block size min:   16.4MiB
+  Block size mean:  714.9MiB
+  Block size P95:   2124.6MiB
+  Block size max:   2961.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1788
+Total Tokens Generated: 224454
+Throughput (wall-clock): 748.12 tokens/sec
+Throughput (storage I/O): 23.01 tokens/sec
+Requests/sec: 5.96
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 146360.83 ms
+  P50:  144951.98 ms
+  P95:  290848.16 ms
+  P99:  303584.99 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 5456.08 ms
+  P50:  2355.38 ms
+  P95:  22854.28 ms
+  P99:  39306.48 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 88.5%
+  Total Read: 3210.41GiB
+  Total Write: 1249.75GiB
+  Read/Write Ratio: 2.57
+  Storage KV Read Operations/sec: 22.56
+  Storage KV Write Operations/sec: 5.97
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1790
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1249.75GiB
+  Storage KV Bytes Read: 3210.41GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 10.70GiB/s
+  Storage KV Write Bandwidth: 4.17GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3440.84 ms
+  Storage Write P95 (Total): 589.62 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 960.83 ms
+    - Host P95 (Serialization): 2655.79 ms
+    - Total P95: 3440.84 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 91.26 ms
+    - Host P95 (Serialization): 533.48 ms
+    - Total P95: 589.62 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1279
+  Common Phrase Hits: 0
+  User Cache Hits: 5455
+  Multi-turn Hits: 33
+
+### PREFIX CACHING ###
+  Prefix Hits: 345
+  Prefix Misses: 1445
+  System Prompt Reuse: 345
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 33
+  Multi-turn Cache Misses: 532
+  Multi-turn Hit Rate: 5.8%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1609
+    Latency P95: 292154.29 ms
+    Latency P99: 304104.60 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 72
+    Latency P95: 62219.38 ms
+    Latency P99: 114247.22 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 107
+    Latency P95: 64758.57 ms
+    Latency P99: 88594.39 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1191
+  Block size min:   18.2MiB
+  Block size mean:  535.5MiB
+  Block size P95:   1607.4MiB
+  Block size max:   2828.8MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1191
+Total Tokens Generated: 217210
+Throughput (wall-clock): 723.81 tokens/sec
+Throughput (storage I/O): 11.27 tokens/sec
+Requests/sec: 3.97
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 151908.85 ms
+  P50:  146959.09 ms
+  P95:  309336.56 ms
+  P99:  319720.13 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 16179.09 ms
+  P50:  11782.91 ms
+  P95:  46057.11 ms
+  P99:  62140.18 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.2%
+  Total Read: 3767.41GiB
+  Total Write: 622.82GiB
+  Read/Write Ratio: 6.05
+  Storage KV Read Operations/sec: 25.50
+  Storage KV Write Operations/sec: 3.97
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1191
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 622.82GiB
+  Storage KV Bytes Read: 3767.41GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 12.55GiB/s
+  Storage KV Write Bandwidth: 2.08GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 4480.94 ms
+  Storage Write P95 (Total): 2221.25 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2431.41 ms
+    - Host P95 (Serialization): 2530.66 ms
+    - Total P95: 4480.94 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 473.87 ms
+    - Host P95 (Serialization): 2010.23 ms
+    - Total P95: 2221.25 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1405
+  Common Phrase Hits: 0
+  User Cache Hits: 6192
+  Multi-turn Hits: 54
+
+### PREFIX CACHING ###
+  Prefix Hits: 219
+  Prefix Misses: 972
+  System Prompt Reuse: 219
+  Bytes Saved: 0.18GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 54
+  Multi-turn Cache Misses: 432
+  Multi-turn Hit Rate: 11.1%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1019
+    Latency P95: 310520.53 ms
+    Latency P99: 319888.72 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 64
+    Latency P95: 67062.87 ms
+    Latency P99: 100041.26 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 108
+    Latency P95: 74251.09 ms
+    Latency P99: 112434.73 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1822
+  Block size min:   21.8MiB
+  Block size mean:  466.5MiB
+  Block size P95:   1360.9MiB
+  Block size max:   2855.1MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1821
+Total Tokens Generated: 244518
+Throughput (wall-clock): 814.33 tokens/sec
+Throughput (storage I/O): 15.25 tokens/sec
+Requests/sec: 6.06
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 149177.46 ms
+  P50:  144618.56 ms
+  P95:  294236.62 ms
+  P99:  307524.08 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 8804.62 ms
+  P50:  6366.27 ms
+  P95:  25959.52 ms
+  P99:  37363.12 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.0%
+  Total Read: 4072.43GiB
+  Total Write: 830.02GiB
+  Read/Write Ratio: 4.91
+  Storage KV Read Operations/sec: 31.24
+  Storage KV Write Operations/sec: 6.07
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1822
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 830.02GiB
+  Storage KV Bytes Read: 4072.43GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.56GiB/s
+  Storage KV Write Bandwidth: 2.76GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2989.97 ms
+  Storage Write P95 (Total): 1341.71 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1576.36 ms
+    - Host P95 (Serialization): 1719.12 ms
+    - Total P95: 2989.97 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 291.17 ms
+    - Host P95 (Serialization): 1232.66 ms
+    - Total P95: 1341.71 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1792
+  Common Phrase Hits: 0
+  User Cache Hits: 7508
+  Multi-turn Hits: 73
+
+### PREFIX CACHING ###
+  Prefix Hits: 358
+  Prefix Misses: 1464
+  System Prompt Reuse: 358
+  Bytes Saved: 0.30GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 73
+  Multi-turn Cache Misses: 565
+  Multi-turn Hit Rate: 11.4%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1651
+    Latency P95: 296397.97 ms
+    Latency P99: 307795.79 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 72
+    Latency P95: 69280.76 ms
+    Latency P99: 94666.38 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 98
+    Latency P95: 63368.01 ms
+    Latency P99: 70632.04 ms
+    SLA Met: [X] (compliance: 1.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1683
+  Block size min:   17.1MiB
+  Block size mean:  626.6MiB
+  Block size P95:   1790.7MiB
+  Block size max:   2865.9MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1680
+Total Tokens Generated: 248935
+Throughput (wall-clock): 829.71 tokens/sec
+Throughput (storage I/O): 16.30 tokens/sec
+Requests/sec: 5.60
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 153813.11 ms
+  P50:  152393.59 ms
+  P95:  299633.33 ms
+  P99:  311825.67 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 9091.26 ms
+  P50:  5923.22 ms
+  P95:  28384.34 ms
+  P99:  37547.78 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.3%
+  Total Read: 4050.01GiB
+  Total Write: 1029.89GiB
+  Read/Write Ratio: 3.93
+  Storage KV Read Operations/sec: 27.42
+  Storage KV Write Operations/sec: 5.61
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1683
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1029.89GiB
+  Storage KV Bytes Read: 4050.01GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.50GiB/s
+  Storage KV Write Bandwidth: 3.43GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3123.43 ms
+  Storage Write P95 (Total): 1348.97 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1649.16 ms
+    - Host P95 (Serialization): 1778.12 ms
+    - Total P95: 3123.43 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 307.03 ms
+    - Host P95 (Serialization): 1212.15 ms
+    - Total P95: 1348.97 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1678
+  Common Phrase Hits: 0
+  User Cache Hits: 6482
+  Multi-turn Hits: 66
+
+### PREFIX CACHING ###
+  Prefix Hits: 335
+  Prefix Misses: 1348
+  System Prompt Reuse: 335
+  Bytes Saved: 0.27GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 66
+  Multi-turn Cache Misses: 548
+  Multi-turn Hit Rate: 10.7%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1507
+    Latency P95: 300757.55 ms
+    Latency P99: 313119.79 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 80
+    Latency P95: 70995.68 ms
+    Latency P99: 87981.56 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 93
+    Latency P95: 75325.20 ms
+    Latency P99: 114967.71 ms
+    SLA Met: [X] (compliance: 3.2%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1804
+  Block size min:   15.5MiB
+  Block size mean:  683.5MiB
+  Block size P95:   2274.5MiB
+  Block size max:   3012.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1802
+Total Tokens Generated: 269741
+Throughput (wall-clock): 898.82 tokens/sec
+Throughput (storage I/O): 19.91 tokens/sec
+Requests/sec: 6.00
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 150160.24 ms
+  P50:  145681.58 ms
+  P95:  299076.66 ms
+  P99:  311080.60 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 7516.71 ms
+  P50:  4522.64 ms
+  P95:  26958.39 ms
+  P99:  41062.59 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.7%
+  Total Read: 3664.86GiB
+  Total Write: 1204.07GiB
+  Read/Write Ratio: 3.04
+  Storage KV Read Operations/sec: 27.20
+  Storage KV Write Operations/sec: 6.01
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1804
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1204.07GiB
+  Storage KV Bytes Read: 3664.86GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 12.21GiB/s
+  Storage KV Write Bandwidth: 4.01GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2875.96 ms
+  Storage Write P95 (Total): 1182.01 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1424.99 ms
+    - Host P95 (Serialization): 1697.64 ms
+    - Total P95: 2875.96 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 252.70 ms
+    - Host P95 (Serialization): 1049.96 ms
+    - Total P95: 1182.01 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1425
+  Common Phrase Hits: 0
+  User Cache Hits: 6675
+  Multi-turn Hits: 61
+
+### PREFIX CACHING ###
+  Prefix Hits: 339
+  Prefix Misses: 1465
+  System Prompt Reuse: 339
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 61
+  Multi-turn Cache Misses: 499
+  Multi-turn Hit Rate: 10.9%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1628
+    Latency P95: 300198.14 ms
+    Latency P99: 311562.60 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 70
+    Latency P95: 48387.23 ms
+    Latency P99: 74390.65 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 104
+    Latency P95: 48744.75 ms
+    Latency P99: 63406.36 ms
+    SLA Met: [X] (compliance: 2.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1807
+  Block size min:   22.8MiB
+  Block size mean:  544.0MiB
+  Block size P95:   1769.1MiB
+  Block size max:   2941.9MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1805
+Total Tokens Generated: 255055
+Throughput (wall-clock): 850.12 tokens/sec
+Throughput (storage I/O): 16.93 tokens/sec
+Requests/sec: 6.02
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 154851.21 ms
+  P50:  157329.12 ms
+  P95:  300656.66 ms
+  P99:  311747.55 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 8346.09 ms
+  P50:  5041.65 ms
+  P95:  26481.02 ms
+  P99:  41289.67 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.0%
+  Total Read: 4055.05GiB
+  Total Write: 959.95GiB
+  Read/Write Ratio: 4.22
+  Storage KV Read Operations/sec: 29.29
+  Storage KV Write Operations/sec: 6.02
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1807
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 959.95GiB
+  Storage KV Bytes Read: 4055.05GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.52GiB/s
+  Storage KV Write Bandwidth: 3.20GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2895.18 ms
+  Storage Write P95 (Total): 1270.94 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1504.93 ms
+    - Host P95 (Serialization): 1619.93 ms
+    - Total P95: 2895.18 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 297.01 ms
+    - Host P95 (Serialization): 1156.80 ms
+    - Total P95: 1270.94 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1662
+  Common Phrase Hits: 0
+  User Cache Hits: 7076
+  Multi-turn Hits: 48
+
+### PREFIX CACHING ###
+  Prefix Hits: 348
+  Prefix Misses: 1459
+  System Prompt Reuse: 348
+  Bytes Saved: 0.29GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 48
+  Multi-turn Cache Misses: 421
+  Multi-turn Hit Rate: 10.2%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1635
+    Latency P95: 301748.44 ms
+    Latency P99: 312261.35 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 97
+    Latency P95: 49348.81 ms
+    Latency P99: 60192.74 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 73
+    Latency P95: 54432.10 ms
+    Latency P99: 66188.42 ms
+    SLA Met: [X] (compliance: 1.4%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1895
+  Block size min:   23.1MiB
+  Block size mean:  542.1MiB
+  Block size P95:   1948.2MiB
+  Block size max:   2972.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1892
+Total Tokens Generated: 308701
+Throughput (wall-clock): 1028.68 tokens/sec
+Throughput (storage I/O): 20.83 tokens/sec
+Requests/sec: 6.30
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 154933.89 ms
+  P50:  154086.06 ms
+  P95:  289885.97 ms
+  P99:  302032.74 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 7834.77 ms
+  P50:  4880.47 ms
+  P95:  27161.04 ms
+  P99:  41316.67 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.3%
+  Total Read: 4485.49GiB
+  Total Write: 1003.26GiB
+  Read/Write Ratio: 4.47
+  Storage KV Read Operations/sec: 35.44
+  Storage KV Write Operations/sec: 6.32
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1895
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1003.26GiB
+  Storage KV Bytes Read: 4485.49GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.95GiB/s
+  Storage KV Write Bandwidth: 3.34GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2935.40 ms
+  Storage Write P95 (Total): 831.63 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1084.30 ms
+    - Host P95 (Serialization): 2092.35 ms
+    - Total P95: 2935.40 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 158.25 ms
+    - Host P95 (Serialization): 749.07 ms
+    - Total P95: 831.63 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 2090
+  Common Phrase Hits: 0
+  User Cache Hits: 8497
+  Multi-turn Hits: 46
+
+### PREFIX CACHING ###
+  Prefix Hits: 370
+  Prefix Misses: 1525
+  System Prompt Reuse: 370
+  Bytes Saved: 0.31GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 46
+  Multi-turn Cache Misses: 515
+  Multi-turn Hit Rate: 8.2%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1723
+    Latency P95: 290870.34 ms
+    Latency P99: 302873.17 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 59
+    Latency P95: 67481.43 ms
+    Latency P99: 85753.59 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 110
+    Latency P95: 67483.64 ms
+    Latency P99: 88896.56 ms
+    SLA Met: [X] (compliance: 2.7%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1594
+  Block size min:   18.2MiB
+  Block size mean:  562.4MiB
+  Block size P95:   1801.0MiB
+  Block size max:   2726.1MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1594
+Total Tokens Generated: 265094
+Throughput (wall-clock): 883.50 tokens/sec
+Throughput (storage I/O): 14.36 tokens/sec
+Requests/sec: 5.31
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 154979.40 ms
+  P50:  156595.64 ms
+  P95:  299268.25 ms
+  P99:  313076.15 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 11582.73 ms
+  P50:  8083.56 ms
+  P95:  33722.93 ms
+  P99:  47677.06 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.7%
+  Total Read: 4212.68GiB
+  Total Write: 875.48GiB
+  Read/Write Ratio: 4.81
+  Storage KV Read Operations/sec: 29.53
+  Storage KV Write Operations/sec: 5.31
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1594
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 875.48GiB
+  Storage KV Bytes Read: 4212.68GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.04GiB/s
+  Storage KV Write Bandwidth: 2.92GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3443.29 ms
+  Storage Write P95 (Total): 1840.67 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2037.38 ms
+    - Host P95 (Serialization): 1786.03 ms
+    - Total P95: 3443.29 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 409.39 ms
+    - Host P95 (Serialization): 1664.98 ms
+    - Total P95: 1840.67 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 2008
+  Common Phrase Hits: 0
+  User Cache Hits: 6788
+  Multi-turn Hits: 62
+
+### PREFIX CACHING ###
+  Prefix Hits: 349
+  Prefix Misses: 1245
+  System Prompt Reuse: 349
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 62
+  Multi-turn Cache Misses: 348
+  Multi-turn Hit Rate: 15.1%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1417
+    Latency P95: 300211.23 ms
+    Latency P99: 313156.42 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 62
+    Latency P95: 60756.92 ms
+    Latency P99: 85450.27 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 115
+    Latency P95: 74325.64 ms
+    Latency P99: 101702.41 ms
+    SLA Met: [X] (compliance: 5.2%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1640
+  Block size min:   19.0MiB
+  Block size mean:  585.2MiB
+  Block size P95:   1915.0MiB
+  Block size max:   3038.2MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1639
+Total Tokens Generated: 248158
+Throughput (wall-clock): 827.10 tokens/sec
+Throughput (storage I/O): 15.10 tokens/sec
+Requests/sec: 5.46
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 154244.61 ms
+  P50:  153835.82 ms
+  P95:  296794.48 ms
+  P99:  309099.51 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 10025.77 ms
+  P50:  7013.77 ms
+  P95:  31229.50 ms
+  P99:  42775.26 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.0%
+  Total Read: 3905.72GiB
+  Total Write: 937.20GiB
+  Read/Write Ratio: 4.17
+  Storage KV Read Operations/sec: 27.69
+  Storage KV Write Operations/sec: 5.47
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1640
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 937.20GiB
+  Storage KV Bytes Read: 3905.72GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.02GiB/s
+  Storage KV Write Bandwidth: 3.12GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3315.67 ms
+  Storage Write P95 (Total): 1624.10 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1901.14 ms
+    - Host P95 (Serialization): 1780.15 ms
+    - Total P95: 3315.67 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 398.63 ms
+    - Host P95 (Serialization): 1496.04 ms
+    - Total P95: 1624.10 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1700
+  Common Phrase Hits: 0
+  User Cache Hits: 6573
+  Multi-turn Hits: 34
+
+### PREFIX CACHING ###
+  Prefix Hits: 337
+  Prefix Misses: 1303
+  System Prompt Reuse: 337
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 34
+  Multi-turn Cache Misses: 483
+  Multi-turn Hit Rate: 6.6%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1464
+    Latency P95: 298017.55 ms
+    Latency P99: 310034.39 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 83
+    Latency P95: 66390.55 ms
+    Latency P99: 80216.56 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 92
+    Latency P95: 80477.08 ms
+    Latency P99: 112596.44 ms
+    SLA Met: [X] (compliance: 2.2%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1988
+  Block size min:   16.9MiB
+  Block size mean:  545.0MiB
+  Block size P95:   1643.0MiB
+  Block size max:   2915.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1986
+Total Tokens Generated: 272055
+Throughput (wall-clock): 906.76 tokens/sec
+Throughput (storage I/O): 15.85 tokens/sec
+Requests/sec: 6.62
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 150437.71 ms
+  P50:  148362.99 ms
+  P95:  292289.14 ms
+  P99:  308176.08 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 8644.48 ms
+  P50:  6429.93 ms
+  P95:  24404.33 ms
+  P99:  36496.78 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.5%
+  Total Read: 4459.59GiB
+  Total Write: 1058.13GiB
+  Read/Write Ratio: 4.21
+  Storage KV Read Operations/sec: 31.66
+  Storage KV Write Operations/sec: 6.63
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1988
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1058.13GiB
+  Storage KV Bytes Read: 4459.59GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.86GiB/s
+  Storage KV Write Bandwidth: 3.53GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2908.21 ms
+  Storage Write P95 (Total): 1402.05 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1680.48 ms
+    - Host P95 (Serialization): 1493.66 ms
+    - Total P95: 2908.21 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 323.63 ms
+    - Host P95 (Serialization): 1257.11 ms
+    - Total P95: 1402.05 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1888
+  Common Phrase Hits: 0
+  User Cache Hits: 7561
+  Multi-turn Hits: 48
+
+### PREFIX CACHING ###
+  Prefix Hits: 368
+  Prefix Misses: 1620
+  System Prompt Reuse: 368
+  Bytes Saved: 0.30GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 48
+  Multi-turn Cache Misses: 407
+  Multi-turn Hit Rate: 10.5%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1820
+    Latency P95: 293326.24 ms
+    Latency P99: 308727.52 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 64
+    Latency P95: 62633.11 ms
+    Latency P99: 92881.43 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 102
+    Latency P95: 58102.81 ms
+    Latency P99: 72613.51 ms
+    SLA Met: [X] (compliance: 2.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1729
+  Block size min:   23.8MiB
+  Block size mean:  716.0MiB
+  Block size P95:   2069.9MiB
+  Block size max:   3082.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1729
+Total Tokens Generated: 264517
+Throughput (wall-clock): 881.19 tokens/sec
+Throughput (storage I/O): 17.52 tokens/sec
+Requests/sec: 5.76
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 157702.06 ms
+  P50:  159515.88 ms
+  P95:  299249.72 ms
+  P99:  310239.84 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 8730.34 ms
+  P50:  5544.57 ms
+  P95:  28901.12 ms
+  P99:  38753.41 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.2%
+  Total Read: 4305.09GiB
+  Total Write: 1209.00GiB
+  Read/Write Ratio: 3.56
+  Storage KV Read Operations/sec: 26.70
+  Storage KV Write Operations/sec: 5.76
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1729
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1209.00GiB
+  Storage KV Bytes Read: 4305.09GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.34GiB/s
+  Storage KV Write Bandwidth: 4.03GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3096.09 ms
+  Storage Write P95 (Total): 1442.30 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1653.45 ms
+    - Host P95 (Serialization): 1693.18 ms
+    - Total P95: 3096.09 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 325.17 ms
+    - Host P95 (Serialization): 1275.20 ms
+    - Total P95: 1442.30 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1531
+  Common Phrase Hits: 0
+  User Cache Hits: 6421
+  Multi-turn Hits: 58
+
+### PREFIX CACHING ###
+  Prefix Hits: 338
+  Prefix Misses: 1391
+  System Prompt Reuse: 338
+  Bytes Saved: 0.28GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 58
+  Multi-turn Cache Misses: 534
+  Multi-turn Hit Rate: 9.8%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1559
+    Latency P95: 300223.50 ms
+    Latency P99: 310503.26 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 60
+    Latency P95: 100691.83 ms
+    Latency P99: 125255.60 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 110
+    Latency P95: 70815.84 ms
+    Latency P99: 103672.13 ms
+    SLA Met: [X] (compliance: 2.7%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1837
+  Block size min:   17.2MiB
+  Block size mean:  728.4MiB
+  Block size P95:   1994.8MiB
+  Block size max:   3021.6MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1835
+Total Tokens Generated: 271597
+Throughput (wall-clock): 905.28 tokens/sec
+Throughput (storage I/O): 20.20 tokens/sec
+Requests/sec: 6.12
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 149764.31 ms
+  P50:  150983.87 ms
+  P95:  287899.33 ms
+  P99:  301482.39 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 7327.17 ms
+  P50:  4430.84 ms
+  P95:  24790.33 ms
+  P99:  38150.92 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.3%
+  Total Read: 3990.76GiB
+  Total Write: 1306.62GiB
+  Read/Write Ratio: 3.05
+  Storage KV Read Operations/sec: 27.18
+  Storage KV Write Operations/sec: 6.12
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1837
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1306.62GiB
+  Storage KV Bytes Read: 3990.76GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.30GiB/s
+  Storage KV Write Bandwidth: 4.36GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 2808.59 ms
+  Storage Write P95 (Total): 1141.13 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1418.27 ms
+    - Host P95 (Serialization): 1607.48 ms
+    - Total P95: 2808.59 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 223.33 ms
+    - Host P95 (Serialization): 1037.67 ms
+    - Total P95: 1141.13 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1659
+  Common Phrase Hits: 0
+  User Cache Hits: 6466
+  Multi-turn Hits: 30
+
+### PREFIX CACHING ###
+  Prefix Hits: 357
+  Prefix Misses: 1480
+  System Prompt Reuse: 357
+  Bytes Saved: 0.29GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 30
+  Multi-turn Cache Misses: 518
+  Multi-turn Hit Rate: 5.5%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1656
+    Latency P95: 289787.86 ms
+    Latency P99: 301944.79 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 72
+    Latency P95: 47511.13 ms
+    Latency P99: 102124.28 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 107
+    Latency P95: 74666.39 ms
+    Latency P99: 97068.77 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1426
+  Block size min:   19.9MiB
+  Block size mean:  529.0MiB
+  Block size P95:   1495.4MiB
+  Block size max:   2886.6MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1424
+Total Tokens Generated: 234910
+Throughput (wall-clock): 783.03 tokens/sec
+Throughput (storage I/O): 13.41 tokens/sec
+Requests/sec: 4.75
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 158112.25 ms
+  P50:  156105.94 ms
+  P95:  310864.78 ms
+  P99:  321853.51 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 12298.93 ms
+  P50:  9158.63 ms
+  P95:  33903.40 ms
+  P99:  47065.28 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.0%
+  Total Read: 3891.23GiB
+  Total Write: 736.67GiB
+  Read/Write Ratio: 5.28
+  Storage KV Read Operations/sec: 27.47
+  Storage KV Write Operations/sec: 4.75
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1426
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 736.67GiB
+  Storage KV Bytes Read: 3891.23GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 12.97GiB/s
+  Storage KV Write Bandwidth: 2.46GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3856.82 ms
+  Storage Write P95 (Total): 1919.09 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2098.43 ms
+    - Host P95 (Serialization): 2180.97 ms
+    - Total P95: 3856.82 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 407.19 ms
+    - Host P95 (Serialization): 1736.39 ms
+    - Total P95: 1919.09 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1658
+  Common Phrase Hits: 0
+  User Cache Hits: 6513
+  Multi-turn Hits: 70
+
+### PREFIX CACHING ###
+  Prefix Hits: 285
+  Prefix Misses: 1141
+  System Prompt Reuse: 285
+  Bytes Saved: 0.22GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 70
+  Multi-turn Cache Misses: 631
+  Multi-turn Hit Rate: 10.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1257
+    Latency P95: 314103.16 ms
+    Latency P99: 322494.66 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 66
+    Latency P95: 55630.51 ms
+    Latency P99: 111820.45 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 101
+    Latency P95: 70571.34 ms
+    Latency P99: 105635.11 ms
+    SLA Met: [X] (compliance: 2.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1663
+  Block size min:   21.8MiB
+  Block size mean:  743.8MiB
+  Block size P95:   2186.1MiB
+  Block size max:   3093.8MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1661
+Total Tokens Generated: 266958
+Throughput (wall-clock): 889.10 tokens/sec
+Throughput (storage I/O): 16.80 tokens/sec
+Requests/sec: 5.53
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 151916.38 ms
+  P50:  156846.84 ms
+  P95:  284028.33 ms
+  P99:  308266.99 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 9564.10 ms
+  P50:  6289.08 ms
+  P95:  30404.59 ms
+  P99:  40536.25 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 88.8%
+  Total Read: 4284.05GiB
+  Total Write: 1207.89GiB
+  Read/Write Ratio: 3.55
+  Storage KV Read Operations/sec: 28.31
+  Storage KV Write Operations/sec: 5.54
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1663
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1207.89GiB
+  Storage KV Bytes Read: 4284.05GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.27GiB/s
+  Storage KV Write Bandwidth: 4.02GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3132.78 ms
+  Storage Write P95 (Total): 1415.25 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1624.98 ms
+    - Host P95 (Serialization): 1795.92 ms
+    - Total P95: 3132.78 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 303.90 ms
+    - Host P95 (Serialization): 1259.70 ms
+    - Total P95: 1415.25 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1657
+  Common Phrase Hits: 0
+  User Cache Hits: 6755
+  Multi-turn Hits: 80
+
+### PREFIX CACHING ###
+  Prefix Hits: 332
+  Prefix Misses: 1331
+  System Prompt Reuse: 332
+  Bytes Saved: 0.27GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 80
+  Multi-turn Cache Misses: 742
+  Multi-turn Hit Rate: 9.7%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1494
+    Latency P95: 287100.62 ms
+    Latency P99: 308784.79 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 72
+    Latency P95: 79793.87 ms
+    Latency P99: 118391.64 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 95
+    Latency P95: 53949.88 ms
+    Latency P99: 64377.54 ms
+    SLA Met: [X] (compliance: 2.1%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1362
+  Block size min:   21.5MiB
+  Block size mean:  856.4MiB
+  Block size P95:   2030.0MiB
+  Block size max:   3032.6MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1359
+Total Tokens Generated: 297563
+Throughput (wall-clock): 991.83 tokens/sec
+Throughput (storage I/O): 17.38 tokens/sec
+Requests/sec: 4.53
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 153471.50 ms
+  P50:  152254.19 ms
+  P95:  299076.49 ms
+  P99:  308427.27 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 12597.39 ms
+  P50:  7603.93 ms
+  P95:  40798.17 ms
+  P99:  54035.09 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.6%
+  Total Read: 4709.28GiB
+  Total Write: 1139.10GiB
+  Read/Write Ratio: 4.13
+  Storage KV Read Operations/sec: 27.44
+  Storage KV Write Operations/sec: 4.54
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1362
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 1139.10GiB
+  Storage KV Bytes Read: 4709.28GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 15.70GiB/s
+  Storage KV Write Bandwidth: 3.80GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3380.29 ms
+  Storage Write P95 (Total): 1740.85 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1922.93 ms
+    - Host P95 (Serialization): 1737.19 ms
+    - Total P95: 3380.29 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 382.80 ms
+    - Host P95 (Serialization): 1529.64 ms
+    - Total P95: 1740.85 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1672
+  Common Phrase Hits: 0
+  User Cache Hits: 6513
+  Multi-turn Hits: 48
+
+### PREFIX CACHING ###
+  Prefix Hits: 272
+  Prefix Misses: 1090
+  System Prompt Reuse: 272
+  Bytes Saved: 0.22GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 48
+  Multi-turn Cache Misses: 386
+  Multi-turn Hit Rate: 11.1%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1171
+    Latency P95: 300239.00 ms
+    Latency P99: 309157.25 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 73
+    Latency P95: 63192.58 ms
+    Latency P99: 75318.32 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 115
+    Latency P95: 97337.25 ms
+    Latency P99: 108822.29 ms
+    SLA Met: [X] (compliance: 1.7%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1757
+  Block size min:   16.1MiB
+  Block size mean:  502.3MiB
+  Block size P95:   1599.8MiB
+  Block size max:   2830.8MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1756
+Total Tokens Generated: 280705
+Throughput (wall-clock): 934.30 tokens/sec
+Throughput (storage I/O): 17.21 tokens/sec
+Requests/sec: 5.84
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 154421.22 ms
+  P50:  151950.89 ms
+  P95:  303828.57 ms
+  P99:  315204.00 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 9288.64 ms
+  P50:  5281.96 ms
+  P95:  32076.91 ms
+  P99:  53277.57 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 89.9%
+  Total Read: 4425.22GiB
+  Total Write: 861.81GiB
+  Read/Write Ratio: 5.13
+  Storage KV Read Operations/sec: 32.31
+  Storage KV Write Operations/sec: 5.86
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1757
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 861.81GiB
+  Storage KV Bytes Read: 4425.22GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.73GiB/s
+  Storage KV Write Bandwidth: 2.87GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3603.48 ms
+  Storage Write P95 (Total): 1037.44 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1274.85 ms
+    - Host P95 (Serialization): 2671.85 ms
+    - Total P95: 3603.48 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 207.83 ms
+    - Host P95 (Serialization): 954.39 ms
+    - Total P95: 1037.44 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1977
+  Common Phrase Hits: 0
+  User Cache Hits: 7623
+  Multi-turn Hits: 94
+
+### PREFIX CACHING ###
+  Prefix Hits: 358
+  Prefix Misses: 1399
+  System Prompt Reuse: 358
+  Bytes Saved: 0.30GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 94
+  Multi-turn Cache Misses: 730
+  Multi-turn Hit Rate: 11.4%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1590
+    Latency P95: 304817.03 ms
+    Latency P99: 315371.96 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 62
+    Latency P95: 45872.90 ms
+    Latency P99: 50906.29 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 104
+    Latency P95: 62337.44 ms
+    Latency P99: 74739.25 ms
+    SLA Met: [X] (compliance: 1.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1528
+  Block size min:   25.0MiB
+  Block size mean:  541.0MiB
+  Block size P95:   1705.6MiB
+  Block size max:   3042.9MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1525
+Total Tokens Generated: 253688
+Throughput (wall-clock): 845.54 tokens/sec
+Throughput (storage I/O): 14.97 tokens/sec
+Requests/sec: 5.08
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 160356.27 ms
+  P50:  161524.78 ms
+  P95:  304277.16 ms
+  P99:  315831.98 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 11111.62 ms
+  P50:  7860.70 ms
+  P95:  32579.60 ms
+  P99:  43466.39 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.5%
+  Total Read: 4251.78GiB
+  Total Write: 807.33GiB
+  Read/Write Ratio: 5.27
+  Storage KV Read Operations/sec: 29.46
+  Storage KV Write Operations/sec: 5.09
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1528
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 807.33GiB
+  Storage KV Bytes Read: 4251.78GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.17GiB/s
+  Storage KV Write Bandwidth: 2.69GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3339.11 ms
+  Storage Write P95 (Total): 1567.11 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1770.82 ms
+    - Host P95 (Serialization): 1824.87 ms
+    - Total P95: 3339.11 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 342.07 ms
+    - Host P95 (Serialization): 1398.99 ms
+    - Total P95: 1567.11 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1793
+  Common Phrase Hits: 0
+  User Cache Hits: 7018
+  Multi-turn Hits: 27
+
+### PREFIX CACHING ###
+  Prefix Hits: 318
+  Prefix Misses: 1210
+  System Prompt Reuse: 318
+  Bytes Saved: 0.26GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 27
+  Multi-turn Cache Misses: 402
+  Multi-turn Hit Rate: 6.3%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1359
+    Latency P95: 306651.98 ms
+    Latency P99: 316025.02 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 57
+    Latency P95: 100078.18 ms
+    Latency P99: 117190.56 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 109
+    Latency P95: 65187.34 ms
+    Latency P99: 108418.71 ms
+    SLA Met: [X] (compliance: 1.8%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1470
+  Block size min:   22.6MiB
+  Block size mean:  601.5MiB
+  Block size P95:   1979.9MiB
+  Block size max:   2783.1MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1467
+Total Tokens Generated: 244629
+Throughput (wall-clock): 815.40 tokens/sec
+Throughput (storage I/O): 15.85 tokens/sec
+Requests/sec: 4.89
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 156847.58 ms
+  P50:  158627.63 ms
+  P95:  306382.58 ms
+  P99:  322182.47 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 10517.84 ms
+  P50:  7217.54 ms
+  P95:  34098.02 ms
+  P99:  49331.66 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.5%
+  Total Read: 3522.66GiB
+  Total Write: 863.54GiB
+  Read/Write Ratio: 4.08
+  Storage KV Read Operations/sec: 25.37
+  Storage KV Write Operations/sec: 4.90
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1470
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 863.54GiB
+  Storage KV Bytes Read: 3522.66GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 11.74GiB/s
+  Storage KV Write Bandwidth: 2.88GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3636.82 ms
+  Storage Write P95 (Total): 1808.77 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1986.08 ms
+    - Host P95 (Serialization): 2103.79 ms
+    - Total P95: 3636.82 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 398.36 ms
+    - Host P95 (Serialization): 1597.36 ms
+    - Total P95: 1808.77 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1534
+  Common Phrase Hits: 0
+  User Cache Hits: 6057
+  Multi-turn Hits: 21
+
+### PREFIX CACHING ###
+  Prefix Hits: 310
+  Prefix Misses: 1160
+  System Prompt Reuse: 310
+  Bytes Saved: 0.26GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 21
+  Multi-turn Cache Misses: 397
+  Multi-turn Hit Rate: 5.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1295
+    Latency P95: 308326.70 ms
+    Latency P99: 322917.48 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 69
+    Latency P95: 51343.43 ms
+    Latency P99: 83483.41 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 103
+    Latency P95: 61051.14 ms
+    Latency P99: 93129.51 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1669
+  Block size min:   28.8MiB
+  Block size mean:  516.6MiB
+  Block size P95:   1724.3MiB
+  Block size max:   2787.2MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1668
+Total Tokens Generated: 271616
+Throughput (wall-clock): 905.20 tokens/sec
+Throughput (storage I/O): 15.58 tokens/sec
+Requests/sec: 5.56
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 151762.45 ms
+  P50:  153841.58 ms
+  P95:  302002.13 ms
+  P99:  313574.64 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 10455.12 ms
+  P50:  6621.12 ms
+  P95:  32618.62 ms
+  P99:  53532.42 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.4%
+  Total Read: 4037.24GiB
+  Total Write: 842.06GiB
+  Read/Write Ratio: 4.79
+  Storage KV Read Operations/sec: 30.28
+  Storage KV Write Operations/sec: 5.56
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1669
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 842.06GiB
+  Storage KV Bytes Read: 4037.24GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.45GiB/s
+  Storage KV Write Bandwidth: 2.81GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3399.50 ms
+  Storage Write P95 (Total): 1476.20 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1707.17 ms
+    - Host P95 (Serialization): 2019.39 ms
+    - Total P95: 3399.50 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 330.08 ms
+    - Host P95 (Serialization): 1330.48 ms
+    - Total P95: 1476.20 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 2004
+  Common Phrase Hits: 0
+  User Cache Hits: 7029
+  Multi-turn Hits: 50
+
+### PREFIX CACHING ###
+  Prefix Hits: 356
+  Prefix Misses: 1313
+  System Prompt Reuse: 356
+  Bytes Saved: 0.29GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 50
+  Multi-turn Cache Misses: 609
+  Multi-turn Hit Rate: 7.6%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1497
+    Latency P95: 303379.88 ms
+    Latency P99: 314157.04 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 73
+    Latency P95: 55886.83 ms
+    Latency P99: 102064.36 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 98
+    Latency P95: 59221.63 ms
+    Latency P99: 67486.40 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1394
+  Block size min:   17.2MiB
+  Block size mean:  484.0MiB
+  Block size P95:   1676.7MiB
+  Block size max:   2678.6MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1393
+Total Tokens Generated: 206640
+Throughput (wall-clock): 688.79 tokens/sec
+Throughput (storage I/O): 10.44 tokens/sec
+Requests/sec: 4.64
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 137798.73 ms
+  P50:  151268.42 ms
+  P95:  263857.85 ms
+  P99:  290938.22 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 14211.65 ms
+  P50:  10141.75 ms
+  P95:  39656.31 ms
+  P99:  53855.99 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 75.9%
+  Total Read: 3890.66GiB
+  Total Write: 658.87GiB
+  Read/Write Ratio: 5.91
+  Storage KV Read Operations/sec: 30.16
+  Storage KV Write Operations/sec: 4.65
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1394
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 658.87GiB
+  Storage KV Bytes Read: 3890.66GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 12.97GiB/s
+  Storage KV Write Bandwidth: 2.20GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3916.78 ms
+  Storage Write P95 (Total): 1998.11 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2269.41 ms
+    - Host P95 (Serialization): 2009.42 ms
+    - Total P95: 3916.78 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 455.67 ms
+    - Host P95 (Serialization): 1784.87 ms
+    - Total P95: 1998.11 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1484
+  Common Phrase Hits: 0
+  User Cache Hits: 5683
+  Multi-turn Hits: 1881
+
+### PREFIX CACHING ###
+  Prefix Hits: 282
+  Prefix Misses: 1112
+  System Prompt Reuse: 282
+  Bytes Saved: 0.23GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 1881
+  Multi-turn Cache Misses: 2594
+  Multi-turn Hit Rate: 42.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1222
+    Latency P95: 265815.07 ms
+    Latency P99: 296194.18 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 76
+    Latency P95: 51907.90 ms
+    Latency P99: 60848.03 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 95
+    Latency P95: 42567.61 ms
+    Latency P99: 58629.20 ms
+    SLA Met: [X] (compliance: 1.1%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1471
+  Block size min:   17.0MiB
+  Block size mean:  561.2MiB
+  Block size P95:   1646.7MiB
+  Block size max:   2850.6MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1470
+Total Tokens Generated: 257650
+Throughput (wall-clock): 858.77 tokens/sec
+Throughput (storage I/O): 13.41 tokens/sec
+Requests/sec: 4.90
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 157589.93 ms
+  P50:  156294.08 ms
+  P95:  308966.79 ms
+  P99:  323624.04 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 13065.79 ms
+  P50:  9481.92 ms
+  P95:  37829.67 ms
+  P99:  48817.85 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 92.5%
+  Total Read: 4522.67GiB
+  Total Write: 806.19GiB
+  Read/Write Ratio: 5.61
+  Storage KV Read Operations/sec: 29.95
+  Storage KV Write Operations/sec: 4.90
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1471
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 806.19GiB
+  Storage KV Bytes Read: 4522.67GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 15.07GiB/s
+  Storage KV Write Bandwidth: 2.69GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3543.10 ms
+  Storage Write P95 (Total): 1695.86 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1984.33 ms
+    - Host P95 (Serialization): 1942.56 ms
+    - Total P95: 3543.10 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 378.22 ms
+    - Host P95 (Serialization): 1516.20 ms
+    - Total P95: 1695.86 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1729
+  Common Phrase Hits: 0
+  User Cache Hits: 7179
+  Multi-turn Hits: 76
+
+### PREFIX CACHING ###
+  Prefix Hits: 281
+  Prefix Misses: 1190
+  System Prompt Reuse: 281
+  Bytes Saved: 0.23GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 76
+  Multi-turn Cache Misses: 451
+  Multi-turn Hit Rate: 14.4%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1299
+    Latency P95: 312415.50 ms
+    Latency P99: 324381.64 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 43
+    Latency P95: 68733.05 ms
+    Latency P99: 85728.55 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 128
+    Latency P95: 65428.73 ms
+    Latency P99: 76612.93 ms
+    SLA Met: [X] (compliance: 3.1%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1431
+  Block size min:   17.4MiB
+  Block size mean:  524.8MiB
+  Block size P95:   1582.4MiB
+  Block size max:   2761.4MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1430
+Total Tokens Generated: 223941
+Throughput (wall-clock): 746.40 tokens/sec
+Throughput (storage I/O): 11.75 tokens/sec
+Requests/sec: 4.77
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 125819.54 ms
+  P50:  118615.36 ms
+  P95:  271526.37 ms
+  P99:  302522.37 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 13328.78 ms
+  P50:  8638.31 ms
+  P95:  40742.19 ms
+  P99:  56423.18 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 73.4%
+  Total Read: 5021.09GiB
+  Total Write: 733.40GiB
+  Read/Write Ratio: 6.85
+  Storage KV Read Operations/sec: 31.58
+  Storage KV Write Operations/sec: 4.77
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1431
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 733.40GiB
+  Storage KV Bytes Read: 5021.09GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 16.74GiB/s
+  Storage KV Write Bandwidth: 2.44GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3773.79 ms
+  Storage Write P95 (Total): 1862.10 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2200.01 ms
+    - Host P95 (Serialization): 1913.23 ms
+    - Total P95: 3773.79 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 383.20 ms
+    - Host P95 (Serialization): 1630.11 ms
+    - Total P95: 1862.10 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1488
+  Common Phrase Hits: 0
+  User Cache Hits: 6128
+  Multi-turn Hits: 1858
+
+### PREFIX CACHING ###
+  Prefix Hits: 277
+  Prefix Misses: 1154
+  System Prompt Reuse: 277
+  Bytes Saved: 0.23GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 1858
+  Multi-turn Cache Misses: 3150
+  Multi-turn Hit Rate: 37.1%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1259
+    Latency P95: 275538.51 ms
+    Latency P99: 304456.35 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 65
+    Latency P95: 51604.74 ms
+    Latency P99: 66984.28 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 106
+    Latency P95: 44245.87 ms
+    Latency P99: 75647.07 ms
+    SLA Met: [X] (compliance: 2.8%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1417
+  Block size min:   19.8MiB
+  Block size mean:  630.6MiB
+  Block size P95:   1812.6MiB
+  Block size max:   2899.1MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1414
+Total Tokens Generated: 238322
+Throughput (wall-clock): 794.09 tokens/sec
+Throughput (storage I/O): 12.92 tokens/sec
+Requests/sec: 4.71
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 153794.62 ms
+  P50:  148126.39 ms
+  P95:  304119.25 ms
+  P99:  316155.37 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 13041.28 ms
+  P50:  9886.58 ms
+  P95:  37824.72 ms
+  P99:  55978.77 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.8%
+  Total Read: 4152.33GiB
+  Total Write: 872.66GiB
+  Read/Write Ratio: 4.76
+  Storage KV Read Operations/sec: 27.26
+  Storage KV Write Operations/sec: 4.72
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1417
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 872.66GiB
+  Storage KV Bytes Read: 4152.33GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.84GiB/s
+  Storage KV Write Bandwidth: 2.91GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3843.66 ms
+  Storage Write P95 (Total): 1918.11 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2057.85 ms
+    - Host P95 (Serialization): 2195.98 ms
+    - Total P95: 3843.66 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 406.02 ms
+    - Host P95 (Serialization): 1737.42 ms
+    - Total P95: 1918.11 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1470
+  Common Phrase Hits: 0
+  User Cache Hits: 6629
+  Multi-turn Hits: 78
+
+### PREFIX CACHING ###
+  Prefix Hits: 265
+  Prefix Misses: 1152
+  System Prompt Reuse: 265
+  Bytes Saved: 0.21GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 78
+  Multi-turn Cache Misses: 466
+  Multi-turn Hit Rate: 14.3%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1233
+    Latency P95: 305290.43 ms
+    Latency P99: 317954.92 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 77
+    Latency P95: 68482.02 ms
+    Latency P99: 87125.78 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 104
+    Latency P95: 76081.35 ms
+    Latency P99: 109279.43 ms
+    SLA Met: [X] (compliance: 3.8%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1558
+  Block size min:   18.0MiB
+  Block size mean:  523.8MiB
+  Block size P95:   1499.3MiB
+  Block size max:   2922.4MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1554
+Total Tokens Generated: 208674
+Throughput (wall-clock): 695.48 tokens/sec
+Throughput (storage I/O): 12.91 tokens/sec
+Requests/sec: 5.18
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 158642.92 ms
+  P50:  156588.25 ms
+  P95:  303837.06 ms
+  P99:  317420.11 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 10398.81 ms
+  P50:  7412.44 ms
+  P95:  29760.65 ms
+  P99:  41888.21 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 91.1%
+  Total Read: 4011.80GiB
+  Total Write: 796.88GiB
+  Read/Write Ratio: 5.03
+  Storage KV Read Operations/sec: 26.41
+  Storage KV Write Operations/sec: 5.19
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1558
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 796.88GiB
+  Storage KV Bytes Read: 4011.80GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 13.37GiB/s
+  Storage KV Write Bandwidth: 2.66GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3526.02 ms
+  Storage Write P95 (Total): 1510.09 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 1744.12 ms
+    - Host P95 (Serialization): 2121.40 ms
+    - Total P95: 3526.02 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 365.51 ms
+    - Host P95 (Serialization): 1357.13 ms
+    - Total P95: 1510.09 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1743
+  Common Phrase Hits: 0
+  User Cache Hits: 6145
+  Multi-turn Hits: 34
+
+### PREFIX CACHING ###
+  Prefix Hits: 317
+  Prefix Misses: 1241
+  System Prompt Reuse: 317
+  Bytes Saved: 0.26GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 34
+  Multi-turn Cache Misses: 455
+  Multi-turn Hit Rate: 7.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1381
+    Latency P95: 306403.84 ms
+    Latency P99: 317518.74 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 80
+    Latency P95: 64690.97 ms
+    Latency P99: 97674.36 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 93
+    Latency P95: 98101.88 ms
+    Latency P99: 119143.53 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1307
+  Block size min:   21.6MiB
+  Block size mean:  699.3MiB
+  Block size P95:   1938.0MiB
+  Block size max:   3035.0MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1303
+Total Tokens Generated: 247019
+Throughput (wall-clock): 823.18 tokens/sec
+Throughput (storage I/O): 13.72 tokens/sec
+Requests/sec: 4.34
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 160449.30 ms
+  P50:  155353.21 ms
+  P95:  315891.50 ms
+  P99:  333622.36 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 13819.65 ms
+  P50:  8210.44 ms
+  P95:  45084.51 ms
+  P99:  63476.39 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 90.1%
+  Total Read: 4433.66GiB
+  Total Write: 892.57GiB
+  Read/Write Ratio: 4.97
+  Storage KV Read Operations/sec: 25.81
+  Storage KV Write Operations/sec: 4.36
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1307
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 892.57GiB
+  Storage KV Bytes Read: 4433.66GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 14.77GiB/s
+  Storage KV Write Bandwidth: 2.97GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 3879.27 ms
+  Storage Write P95 (Total): 1753.63 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2014.32 ms
+    - Host P95 (Serialization): 2245.12 ms
+    - Total P95: 3879.27 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 400.81 ms
+    - Host P95 (Serialization): 1547.12 ms
+    - Total P95: 1753.63 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1630
+  Common Phrase Hits: 0
+  User Cache Hits: 6051
+  Multi-turn Hits: 63
+
+### PREFIX CACHING ###
+  Prefix Hits: 285
+  Prefix Misses: 1022
+  System Prompt Reuse: 285
+  Bytes Saved: 0.23GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 63
+  Multi-turn Cache Misses: 567
+  Multi-turn Hit Rate: 10.0%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1130
+    Latency P95: 319261.99 ms
+    Latency P99: 334030.65 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 69
+    Latency P95: 76473.59 ms
+    Latency P99: 86163.66 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 104
+    Latency P95: 71621.38 ms
+    Latency P99: 93684.50 ms
+    SLA Met: [X] (compliance: 2.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1134
+  Block size min:   24.6MiB
+  Block size mean:  646.9MiB
+  Block size P95:   1972.2MiB
+  Block size max:   2982.9MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1133
+Total Tokens Generated: 175754
+Throughput (wall-clock): 585.81 tokens/sec
+Throughput (storage I/O): 9.07 tokens/sec
+Requests/sec: 3.78
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 131302.42 ms
+  P50:  137426.47 ms
+  P95:  253094.77 ms
+  P99:  287894.56 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 17102.44 ms
+  P50:  12096.70 ms
+  P95:  48925.16 ms
+  P99:  68997.01 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 66.4%
+  Total Read: 4711.64GiB
+  Total Write: 716.37GiB
+  Read/Write Ratio: 6.58
+  Storage KV Read Operations/sec: 26.88
+  Storage KV Write Operations/sec: 3.78
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1134
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 716.37GiB
+  Storage KV Bytes Read: 4711.64GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 15.70GiB/s
+  Storage KV Write Bandwidth: 2.39GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 4796.54 ms
+  Storage Write P95 (Total): 1961.92 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2377.40 ms
+    - Host P95 (Serialization): 2920.75 ms
+    - Total P95: 4796.54 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 462.62 ms
+    - Host P95 (Serialization): 1739.97 ms
+    - Total P95: 1961.92 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1086
+  Common Phrase Hits: 0
+  User Cache Hits: 4795
+  Multi-turn Hits: 2184
+
+### PREFIX CACHING ###
+  Prefix Hits: 230
+  Prefix Misses: 904
+  System Prompt Reuse: 230
+  Bytes Saved: 0.19GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 2184
+  Multi-turn Cache Misses: 3847
+  Multi-turn Hit Rate: 36.2%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 958
+    Latency P95: 255529.58 ms
+    Latency P99: 289509.94 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 62
+    Latency P95: 39643.86 ms
+    Latency P99: 52632.00 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 113
+    Latency P95: 57380.03 ms
+    Latency P99: 62522.91 ms
+    SLA Met: [X] (compliance: 1.8%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1240
+  Block size min:   21.4MiB
+  Block size mean:  521.7MiB
+  Block size P95:   1452.9MiB
+  Block size max:   2229.8MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1238
+Total Tokens Generated: 225343
+Throughput (wall-clock): 750.95 tokens/sec
+Throughput (storage I/O): 11.08 tokens/sec
+Requests/sec: 4.13
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 147912.90 ms
+  P50:  135640.15 ms
+  P95:  322256.23 ms
+  P99:  331612.84 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 16435.01 ms
+  P50:  10659.60 ms
+  P95:  47924.74 ms
+  P99:  58755.82 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 74.8%
+  Total Read: 4907.40GiB
+  Total Write: 631.74GiB
+  Read/Write Ratio: 7.77
+  Storage KV Read Operations/sec: 30.49
+  Storage KV Write Operations/sec: 4.13
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1240
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 631.74GiB
+  Storage KV Bytes Read: 4907.40GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 16.35GiB/s
+  Storage KV Write Bandwidth: 2.11GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 4202.70 ms
+  Storage Write P95 (Total): 1976.13 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2213.57 ms
+    - Host P95 (Serialization): 2381.86 ms
+    - Total P95: 4202.70 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 457.83 ms
+    - Host P95 (Serialization): 1729.51 ms
+    - Total P95: 1976.13 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1653
+  Common Phrase Hits: 0
+  User Cache Hits: 5993
+  Multi-turn Hits: 1500
+
+### PREFIX CACHING ###
+  Prefix Hits: 266
+  Prefix Misses: 974
+  System Prompt Reuse: 266
+  Bytes Saved: 0.22GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 1500
+  Multi-turn Cache Misses: 2821
+  Multi-turn Hit Rate: 34.7%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 1055
+    Latency P95: 323604.35 ms
+    Latency P99: 332019.78 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 75
+    Latency P95: 53099.38 ms
+    Latency P99: 66525.65 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 108
+    Latency P95: 53228.80 ms
+    Latency P99: 72793.89 ms
+    SLA Met: [X] (compliance: 1.9%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+
+================================================================================
+BENCHMARK RESULTS - MLPerf KV Cache Storage Benchmark
+Generation Mode: none (0.0ms/token)
+================================================================================
+
+IMPORTANT: All storage latencies below are measured per KV cache BLOCK,
+not per token or per disk page.  Each block holds the full KV state for
+one request (all layers, all heads, full sequence length).
+  Model KV bytes/token: 131,072 bytes (128.0KiB)
+  Entries in cache: 1039
+  Block size min:   20.8MiB
+  Block size mean:  674.7MiB
+  Block size P95:   1763.8MiB
+  Block size max:   2749.8MiB
+  A 200MiB block at 1GiB/s NVMe read = ~200 ms device latency.
+  Compare latencies against block sizes, not against 4KiB page I/O.
+
+
+### OVERALL PERFORMANCE ###
+Requests Completed: 1037
+Total Tokens Generated: 201660
+Throughput (wall-clock): 672.08 tokens/sec
+Throughput (storage I/O): 9.16 tokens/sec
+Requests/sec: 3.46
+
+### END-TO-END LATENCY (Queue Wait + Storage I/O + Generation) ###
+  Mean: 119352.55 ms
+  P50:  124113.21 ms
+  P95:  236681.56 ms
+  P99:  287533.23 ms
+
+### PER-REQUEST STORAGE LATENCY (All I/O ops for one request) ###
+  Mean: 21231.36 ms
+  P50:  15971.55 ms
+  P95:  59798.05 ms
+  P99:  78494.99 ms
+  (= 1 prefill write + N decode reads per request)
+
+### STORAGE PERFORMANCE ###
+  Cache Hit Rate: 75.9%
+  Total Read: 4576.17GiB
+  Total Write: 684.54GiB
+  Read/Write Ratio: 6.69
+  Storage KV Read Operations/sec: 25.95
+  Storage KV Write Operations/sec: 3.46
+
+### CACHE TIER DISTRIBUTION ###
+  GPU Entries: 0 (0.00GiB)
+  CPU Entries: 0 (0.00GiB)
+  Storage Entries: 1039
+
+### TIER-SPECIFIC KV BYTES ###
+  Storage KV Bytes Written: 684.54GiB
+  Storage KV Bytes Read: 4576.17GiB
+
+### STORAGE KV BANDWIDTH ###
+  Storage KV Read Bandwidth: 15.25GiB/s
+  Storage KV Write Bandwidth: 2.28GiB/s
+
+### TIER-SPECIFIC LATENCIES (Total = Host + Device) ###
+  Storage Read P95 (Total): 5153.17 ms
+  Storage Write P95 (Total): 2403.11 ms
+
+### STORAGE TIER LATENCY BREAKDOWN (Device = Disk I/O, Host = Serialization) ###
+  Storage Read:
+    - Device P95 (Disk I/O): 2706.20 ms
+    - Host P95 (Serialization): 2971.57 ms
+    - Total P95: 5153.17 ms
+  Storage Write:
+    - Device P95 (Disk I/O): 583.61 ms
+    - Host P95 (Serialization): 2174.39 ms
+    - Total P95: 2403.11 ms
+
+### CACHE TYPE BREAKDOWNS ###
+  System Prompt Hits: 1410
+  Common Phrase Hits: 0
+  User Cache Hits: 5240
+  Multi-turn Hits: 1135
+
+### PREFIX CACHING ###
+  Prefix Hits: 219
+  Prefix Misses: 820
+  System Prompt Reuse: 219
+  Bytes Saved: 0.17GiB
+
+### MULTI-TURN CONVERSATIONS ###
+  Multi-turn Cache Hits: 1135
+  Multi-turn Cache Misses: 2253
+  Multi-turn Hit Rate: 33.5%
+
+### QOS LATENCY METRICS (Informational - includes simulated generation) ###
+
+  INTERACTIVE:
+    Requests: 855
+    Latency P95: 244275.93 ms
+    Latency P99: 289089.66 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  RESPONSIVE:
+    Requests: 73
+    Latency P95: 54954.97 ms
+    Latency P99: 121849.81 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+  BATCH:
+    Requests: 109
+    Latency P95: 67908.36 ms
+    Latency P99: 115477.63 ms
+    SLA Met: [X] (compliance: 0.0%)
+
+================================================================================
+NOTES:
+  - Pure storage I/O benchmark (no generation simulation)
+================================================================================
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - End delay for 90 seconds
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass
+KV Cache Wrapper - Finished benchmark pass

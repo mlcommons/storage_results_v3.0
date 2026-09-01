@@ -1,0 +1,174 @@
+[OUTPUT] [DEBUG DLIOBenchmark.__init__] After LoadConfig:
+[OUTPUT]   storage_type   = <StorageType.LOCAL_FS: 'local_fs'>
+[OUTPUT]   storage_root   = './'
+[OUTPUT]   storage_options= None
+[OUTPUT]   data_folder    = '/mnt/glfs/GalaxSphere-1Tier0/training/retinanet'
+[OUTPUT]   framework      = <FrameworkType.PYTORCH: 'pytorch'>
+[OUTPUT]   num_files_train= 5319553
+[OUTPUT]   record_length  = 322957
+[OUTPUT]   generate_data  = False
+[OUTPUT]   do_train       = True
+[OUTPUT]   do_checkpoint  = False
+[OUTPUT]   epochs         = 8
+[OUTPUT]   batch_size     = 24
+[OUTPUT] 2026-07-15T09:42:04.650816 Running DLIO [Training] with 58 process(es)
+[OUTPUT] 2026-07-15T09:42:04.877743 skip_listing [train]: validating 5,321 of 5,319,553 files (first, last, every 1,000) via HEAD requests ...
+[OUTPUT] 2026-07-15T09:42:04.887632 skip_listing [train]:   500/5,321 checked (9%)  —  51408 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.890210 skip_listing [train]:   1,000/5,321 checked (19%)  —  81260 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.892659 skip_listing [train]:   1,500/5,321 checked (28%)  —  101652 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.895085 skip_listing [train]:   2,000/5,321 checked (38%)  —  116399 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.897482 skip_listing [train]:   2,500/5,321 checked (47%)  —  127684 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.899873 skip_listing [train]:   3,000/5,321 checked (56%)  —  136548 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.902232 skip_listing [train]:   3,500/5,321 checked (66%)  —  143860 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.904574 skip_listing [train]:   4,000/5,321 checked (75%)  —  149975 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.906902 skip_listing [train]:   4,500/5,321 checked (85%)  —  155172 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.909200 skip_listing [train]:   5,000/5,321 checked (94%)  —  159756 checks/s  —  ETA 0s  —  0 failed so far
+[OUTPUT] 2026-07-15T09:42:04.910670 skip_listing [train]: validation complete — all 5,321 samples exist (0.0s, 162389 checks/s); 91,717 URIs ready for rank 0 (5,319,553 total across all ranks)
+[OUTPUT] 2026-07-15T09:42:04.911433 File listing [train]: 5319553 files discovered, 91716 assigned to rank 0, completed in 0.25s
+[OUTPUT] 2026-07-15T09:42:04.911460 skip_listing [valid]: generated 0 file URIs deterministically (0 total — validation disabled)
+[OUTPUT] 2026-07-15T09:42:04.911478 File listing [valid]: 0 files discovered, 0 assigned to rank 0, completed in 0.00s
+[OUTPUT] 2026-07-15T09:42:04.911498 Streamed file sharding: 5319553 train files across 58 ranks via round-robin (rank 0 shard: 91716 files)
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[WARNING] On host node27: reader.read_threads=5 x local_ranks=58 = 290 workers, estimated ~145 GB — exceeds 50% of available RAM on this node (222 GB). Consider reducing read_threads to avoid OOM.
+[OUTPUT] 2026-07-15T09:42:12.657842 Max steps per epoch per rank: 221648 = 1 * 5319553 / 24 (samples per file * local files / batch size)
+[OUTPUT] 2026-07-15T09:42:12.760686 Reshard for epoch 1: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T09:42:14.528639 Worker pre-warm complete (5 workers spawned)
+[OUTPUT] 2026-07-15T09:42:20.211532 Starting epoch 1: 3821 steps expected
+[OUTPUT] 2026-07-15T09:42:20.211971 Starting block 1
+[OUTPUT] 2026-07-15T09:45:54.586591 Ending block 1 - 3821 steps completed in 214.37 s
+[OUTPUT] 2026-07-15T09:45:54.588684 Epoch 1 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2051
+[OUTPUT] 2026-07-15T09:45:54.588729 Epoch 1 - Block 1 [Training] Throughput (samples/second): 24905.9751
+[OUTPUT] 2026-07-15T09:45:54.590487 Epoch 1 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T09:45:54.628044 Ending epoch 1 - 3821 steps completed in 214.42 s
+[OUTPUT] 2026-07-15T09:45:54.734265 Reshard for epoch 2: 91716 train files, 0 eval files redistributed via alltoall in 0.11s
+[OUTPUT] 2026-07-15T09:45:56.457620 Worker pre-warm complete for epoch 2 (5 workers spawned)
+[OUTPUT] 2026-07-15T09:46:04.077926 Starting epoch 2: 3821 steps expected
+[OUTPUT] 2026-07-15T09:46:04.078403 Starting block 1
+[OUTPUT] 2026-07-15T09:49:38.462714 Ending block 1 - 3821 steps completed in 214.38 s
+[OUTPUT] 2026-07-15T09:49:38.463979 Epoch 2 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2212
+[OUTPUT] 2026-07-15T09:49:38.464039 Epoch 2 - Block 1 [Training] Throughput (samples/second): 24910.7551
+[OUTPUT] 2026-07-15T09:49:38.464374 Epoch 2 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T09:49:38.469563 Ending epoch 2 - 3821 steps completed in 214.39 s
+[OUTPUT] 2026-07-15T09:49:38.572540 Reshard for epoch 3: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T09:49:40.272088 Worker pre-warm complete for epoch 3 (5 workers spawned)
+[OUTPUT] 2026-07-15T09:49:47.860162 Starting epoch 3: 3821 steps expected
+[OUTPUT] 2026-07-15T09:49:47.860642 Starting block 1
+[OUTPUT] 2026-07-15T09:53:22.313819 Ending block 1 - 3821 steps completed in 214.45 s
+[OUTPUT] 2026-07-15T09:53:22.317790 Epoch 3 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2347
+[OUTPUT] 2026-07-15T09:53:22.317897 Epoch 3 - Block 1 [Training] Throughput (samples/second): 24914.0059
+[OUTPUT] 2026-07-15T09:53:22.318263 Epoch 3 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T09:53:22.373276 Ending epoch 3 - 3821 steps completed in 214.51 s
+[OUTPUT] 2026-07-15T09:53:22.478355 Reshard for epoch 4: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T09:53:24.198814 Worker pre-warm complete for epoch 4 (5 workers spawned)
+[OUTPUT] 2026-07-15T09:53:31.708041 Starting epoch 4: 3821 steps expected
+[OUTPUT] 2026-07-15T09:53:31.708522 Starting block 1
+[OUTPUT] 2026-07-15T09:57:06.153885 Ending block 1 - 3821 steps completed in 214.45 s
+[OUTPUT] 2026-07-15T09:57:06.157698 Epoch 4 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2060
+[OUTPUT] 2026-07-15T09:57:06.157766 Epoch 4 - Block 1 [Training] Throughput (samples/second): 24906.3072
+[OUTPUT] 2026-07-15T09:57:06.158062 Epoch 4 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T09:57:06.272985 Ending epoch 4 - 3821 steps completed in 214.56 s
+[OUTPUT] 2026-07-15T09:57:06.372367 Reshard for epoch 5: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T09:57:08.030187 Worker pre-warm complete for epoch 5 (5 workers spawned)
+[OUTPUT] 2026-07-15T09:57:15.821715 Starting epoch 5: 3821 steps expected
+[OUTPUT] 2026-07-15T09:57:15.822238 Starting block 1
+[OUTPUT] 2026-07-15T10:00:50.231112 Ending block 1 - 3821 steps completed in 214.41 s
+[OUTPUT] 2026-07-15T10:00:50.232246 Epoch 5 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2029
+[OUTPUT] 2026-07-15T10:00:50.232289 Epoch 5 - Block 1 [Training] Throughput (samples/second): 24905.8378
+[OUTPUT] 2026-07-15T10:00:50.232582 Epoch 5 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T10:00:50.300719 Ending epoch 5 - 3821 steps completed in 214.48 s
+[OUTPUT] 2026-07-15T10:00:50.395510 Reshard for epoch 6: 91716 train files, 0 eval files redistributed via alltoall in 0.09s
+[OUTPUT] 2026-07-15T10:00:52.180833 Worker pre-warm complete for epoch 6 (5 workers spawned)
+[OUTPUT] 2026-07-15T10:00:59.792920 Starting epoch 6: 3821 steps expected
+[OUTPUT] 2026-07-15T10:00:59.793441 Starting block 1
+[OUTPUT] 2026-07-15T10:04:34.158675 Ending block 1 - 3821 steps completed in 214.37 s
+[OUTPUT] 2026-07-15T10:04:34.159778 Epoch 6 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.2550
+[OUTPUT] 2026-07-15T10:04:34.159815 Epoch 6 - Block 1 [Training] Throughput (samples/second): 24920.2311
+[OUTPUT] 2026-07-15T10:04:34.160095 Epoch 6 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T10:04:34.259584 Ending epoch 6 - 3821 steps completed in 214.47 s
+[OUTPUT] 2026-07-15T10:04:34.350749 Reshard for epoch 7: 91716 train files, 0 eval files redistributed via alltoall in 0.09s
+[OUTPUT] 2026-07-15T10:04:36.145747 Worker pre-warm complete for epoch 7 (5 workers spawned)
+[OUTPUT] 2026-07-15T10:04:43.480221 Starting epoch 7: 3821 steps expected
+[OUTPUT] 2026-07-15T10:04:43.480695 Starting block 1
+[OUTPUT] 2026-07-15T10:08:18.046604 Ending block 1 - 3821 steps completed in 214.57 s
+[OUTPUT] 2026-07-15T10:08:18.051437 Epoch 7 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.1196
+[OUTPUT] 2026-07-15T10:08:18.055921 Epoch 7 - Block 1 [Training] Throughput (samples/second): 24880.4893
+[OUTPUT] 2026-07-15T10:08:18.063719 Epoch 7 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0001 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T10:08:18.083035 Ending epoch 7 - 3821 steps completed in 214.60 s
+[OUTPUT] 2026-07-15T10:08:18.181102 Reshard for epoch 8: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T10:08:19.970168 Worker pre-warm complete for epoch 8 (5 workers spawned)
+[OUTPUT] 2026-07-15T10:08:27.647049 Starting epoch 8: 3821 steps expected
+[OUTPUT] 2026-07-15T10:08:27.647413 Starting block 1
+[OUTPUT] 2026-07-15T10:12:02.109345 Ending block 1 - 3821 steps completed in 214.46 s
+[OUTPUT] 2026-07-15T10:12:02.114667 Epoch 8 - Block 1 [Training] Accelerator Utilization [AU] (%): 85.1573
+[OUTPUT] 2026-07-15T10:12:02.120702 Epoch 8 - Block 1 [Training] Throughput (samples/second): 24892.2531
+[OUTPUT] 2026-07-15T10:12:02.121129 Epoch 8 - Block 1 [Training] Computation time per step (second): 0.0476+/-0.0000 (set value: {'mean': 0.04755})
+[OUTPUT] 2026-07-15T10:12:02.175148 Ending epoch 8 - 3821 steps completed in 214.53 s
+[OUTPUT] 2026-07-15T10:12:02.276808 Reshard for epoch 9: 91716 train files, 0 eval files redistributed via alltoall in 0.10s
+[OUTPUT] 2026-07-15T10:12:03.954698 Worker pre-warm complete for epoch 9 (5 workers spawned)
+[OUTPUT] 2026-07-15T10:12:04.103606 Saved outputs in /root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/run/20260715_094158
+[OUTPUT] Averaged metric over all steps/epochs
+[METRIC] ==========================================================
+[METRIC] Number of Simulated Accelerators: 58 
+[METRIC] Training Accelerator Utilization [AU] (%): 85.2040 (0.0281)
+[METRIC] Training Throughput (samples/second): 24905.6532 (8.2690)
+[METRIC] Training I/O Throughput (MiB/second): 7670.8365 (2.5468)
+[METRIC] train_au_meet_expectation: success
+[METRIC] ==========================================================
+
+[OUTPUT] 2026-07-15T10:12:04.442892 outputs saved in RANKID_output.json

@@ -1,0 +1,107 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260722_191426",
+  "num_processes": 192,
+  "accelerator": null,
+  "result_dir": "/mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/datagen/20260722_191426",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/ubix/retinanet",
+      "format": "jpeg",
+      "num_files_train": "68090280",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "skip_listing": "True",
+      "listing_validation_interval": "10000"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "68090280",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10000",
+    "dataset.data_folder": "/mnt/ubix/retinanet"
+  },
+  "system_info": null,
+  "runtime": 2555.9312510490417,
+  "invocation_start_time": "2026-07-22T19:14:26.854277",
+  "invocation_end_time": "2026-07-22T19:57:20.023083",
+  "verification": null,
+  "executed_command": "mpirun -n 192 -host 10.130.8.117:12,10.130.8.118:12,10.130.8.119:12,10.130.8.120:12,10.130.8.121:12,10.130.8.122:12,10.130.8.123:12,10.130.8.124:12,10.130.8.125:12,10.130.8.126:12,10.130.8.127:12,10.130.8.128:12,10.130.8.129:12,10.130.8.130:12,10.130.8.131:12,10.130.8.132:12 --bind-to none --map-by node --oversubscribe --allow-run-as-root /root/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/datagen/20260722_191426 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=68090280 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=/mnt/ubix/retinanet --config-dir=/root/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 192 -host 10.130.8.117:12,10.130.8.118:12,10.130.8.119:12,10.130.8.120:12,10.130.8.121:12,10.130.8.122:12,10.130.8.123:12,10.130.8.124:12,10.130.8.125:12,10.130.8.126:12,10.130.8.127:12,10.130.8.128:12,10.130.8.129:12,10.130.8.130:12,10.130.8.131:12,10.130.8.132:12 --bind-to none --map-by node --oversubscribe --allow-run-as-root /root/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/datagen/20260722_191426 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=68090280 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=/mnt/ubix/retinanet --config-dir=/root/storage/configs/dlio",
+      "stdout": "/mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/datagen/20260722_191426/training_datagen.stdout.log",
+      "stderr": "/mnt/share/storage_results_v3/closed/UBIX/results/UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem/training/retinanet/datagen/20260722_191426/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "10.130.8.117",
+      "10.130.8.118",
+      "10.130.8.119",
+      "10.130.8.120",
+      "10.130.8.121",
+      "10.130.8.122",
+      "10.130.8.123",
+      "10.130.8.124",
+      "10.130.8.125",
+      "10.130.8.126",
+      "10.130.8.127",
+      "10.130.8.128",
+      "10.130.8.129",
+      "10.130.8.130",
+      "10.130.8.131",
+      "10.130.8.132"
+    ],
+    "num_processes": 192,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": true,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/ubix",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=68090280"
+    ],
+    "results_dir": "/mnt/share/storage_results_v3",
+    "systemname": "UbiPower18000_16x15.36TB_NVMe_4xNDR400_3xStorageNode_16hosts256GBMem",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "UBIX",
+    "num_client_hosts": 16,
+    "_validated_orgname": "UBIX",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "fe4d097aa228da2fbe49e6300a5f3016"
+  }
+}

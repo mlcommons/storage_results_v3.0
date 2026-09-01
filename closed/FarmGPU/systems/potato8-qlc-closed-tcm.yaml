@@ -1,0 +1,75 @@
+system_under_test:
+  solution:
+    submission_name: potato8-qlc-closed-tcm
+    friendly_description: >-
+      FarmGPU potato cluster: 8 identical bare-metal client nodes, each
+      benchmarking its own local 24-drive Solidigm D5-P5336 QLC array
+      (md RAID-0, 512K chunk, XFS). No external storage system under
+      test -- storage is client-local NVMe, one independent array per
+      client, no data sharing between clients. CLOSED category, 8
+      clients x 1 MPI rank each; tcmalloc (libtcmalloc_minimal.so.4) as
+      the client-side allocator via LD_PRELOAD, the only client tuning
+      applied.
+    architecture:
+      storage_location: local
+      benchmark_API: file
+      product_API: file
+      client_footprint: n/a
+      client_installation: n/a
+    capabilities:
+      multi_host: false
+      simultaneous_write: true
+      simultaneous_read: true
+      remap_time_in_seconds: 0
+    usable_capacity_tib: 21461.7986
+    availability: available
+  deployment: onprem
+  total_rack_units: 0
+  clients:
+    - friendly_description: >-
+        Supermicro SYS-212H-TN 2U node: 1x Intel Xeon 6781P (80 cores /
+        160 threads), 503 GiB DDR5, 24x Solidigm D5-P5336 122.88TB QLC
+        NVMe as one md RAID-0 (512K chunk) + XFS array at /mnt/qlc --
+        the storage under test. Dual ConnectX-7 400G Ethernet (RoCE
+        capable), used only for MPI rank coordination and shared
+        results-dir metadata; no storage traffic crosses the network in
+        this local-storage configuration.
+      quantity: 8
+      chassis:
+        model_name: SYS-212H-TN
+        rack_units: 2
+        cpu_model: Intel Xeon 6781P
+        cpu_qty: 1
+        cpu_cores: 80
+        memory_capacity: 503
+        power:
+          min_psus_active: 1
+          psus_configured:
+            - unit_count: 2
+              inlet_voltage: 208
+              nameplate_power_watts: 1600
+              efficiency: Titanium
+      networking:
+        - type: ethernet
+          state: up
+          speed: 400
+          unit_count: 2
+          traffic:
+            - data
+            - metadata
+        - type: ethernet
+          state: up
+          speed: 1
+          unit_count: 1
+          traffic:
+            - management
+      drives:
+        - vendor_name: Solidigm
+          model_name: D5-P5336 (SBFPF2BV0P12)
+          interface: nvme
+          media_type: QLC
+          capacity_in_GB: 122903
+          unit_count: 24
+      operating_system:
+        name: Ubuntu
+        version: "24.04"

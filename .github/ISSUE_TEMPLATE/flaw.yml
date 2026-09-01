@@ -1,0 +1,107 @@
+name: Potential flaw in a submission
+description: Report a potential flaw in another submitter's v3.0 submission
+title: "[Flaw] "
+labels: ["Flaw"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report a **potential** flaw in another organization's
+        submission. Review staff will apply the matching `From <org>` and
+        `To <org>` labels from your answers below, so both parties can filter
+        their issues.
+
+        Besides the submitting organizations, you can address **ReviewChairs**
+        (the v3.0 review chairs as a group: @FileSystemGuy, @bbelgodere,
+        @russfellows, @idevasena, @dslik), **ANL**, or **OpenLake**.
+  - type: dropdown
+    id: from-org
+    attributes:
+      label: Your organization / role (From)
+      description: >-
+        The organization filing this report — or ReviewChairs if you are
+        filing it on behalf of the review chairs.
+      options:
+        - ReviewChairs
+        - ANL
+        - OpenLake
+        - Nutanix
+        - Alluxio
+        - Everpure
+        - InspurData
+        - Azure
+        - Nebius
+        - NewFW
+        - SAMSUNG
+        - Suzhou_Zishan_Longlin
+        - TTA
+        - TuringData
+        - UBIX
+        - XSKY
+        - YanRongTech
+        - ZettaLane
+        - FarmGPU
+        - HolmesAI
+        - HPE
+        - NVIDIA
+    validations:
+      required: true
+  - type: dropdown
+    id: to-org
+    attributes:
+      label: Organization / role asked to respond (To)
+      description: >-
+        The organization whose submission this report concerns — or
+        ReviewChairs to direct the report to the review chairs.
+      options:
+        - ReviewChairs
+        - ANL
+        - OpenLake
+        - Nutanix
+        - Alluxio
+        - Everpure
+        - InspurData
+        - Azure
+        - Nebius
+        - NewFW
+        - SAMSUNG
+        - Suzhou_Zishan_Longlin
+        - TTA
+        - TuringData
+        - UBIX
+        - XSKY
+        - YanRongTech
+        - ZettaLane
+        - FarmGPU
+        - HolmesAI
+        - HPE
+        - NVIDIA
+    validations:
+      required: true
+  - type: input
+    id: submission
+    attributes:
+      label: Submission / system affected
+      description: >-
+        Path or system name, e.g.
+        closed/Alluxio/results/aws_c5n18xlarge_i3en24xlarge_8c_10s_8a
+      placeholder: closed/<org>/results/<system>/...
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the potential flaw
+      description: >-
+        What appears to be wrong, and where (files, runs, metrics)? Include
+        the evidence that led you to this conclusion.
+    validations:
+      required: true
+  - type: input
+    id: rule
+    attributes:
+      label: Rules.md reference
+      description: The rule or section you believe is implicated, if known.
+      placeholder: "e.g. §4.7.1"
+    validations:
+      required: false

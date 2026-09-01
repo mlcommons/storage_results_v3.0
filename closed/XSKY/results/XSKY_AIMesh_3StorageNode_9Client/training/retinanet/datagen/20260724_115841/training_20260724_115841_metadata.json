@@ -1,0 +1,103 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260724_115841",
+  "num_processes": 90,
+  "accelerator": null,
+  "result_dir": "/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805/closed/XSKY/results/XSKY_AIMesh_3StorageNode_9Client/training/retinanet/datagen/20260724_115841",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/xpc/mlperf/data/formal/retinanet_closed_a675_20260724_115805/retinanet",
+      "format": "jpeg",
+      "num_files_train": "75404925",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "num_subfolders_train": "7541",
+      "skip_listing": "True",
+      "listing_validation_interval": "10000"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "75404925",
+    "dataset.num_subfolders_train": "7541",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10000",
+    "dataset.data_folder": "/mnt/xpc/mlperf/data/formal/retinanet_closed_a675_20260724_115805/retinanet"
+  },
+  "system_info": null,
+  "runtime": 651.2285447120667,
+  "invocation_start_time": "2026-07-24T11:58:41.863022",
+  "invocation_end_time": "2026-07-24T12:09:48.812312",
+  "verification": null,
+  "executed_command": "mpirun -n 90 -host 192.168.2.21:10,192.168.2.22:10,192.168.2.23:10,192.168.2.24:10,192.168.2.25:10,192.168.2.26:10,192.168.2.27:10,192.168.2.28:10,192.168.2.30:10 --bind-to none --map-by node --oversubscribe --allow-run-as-root -x MLPSTORAGE_HOME -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_RESULTS_DIR /root/mlperf-storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805/closed/XSKY/results/XSKY_AIMesh_3StorageNode_9Client/training/retinanet/datagen/20260724_115841 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=75404925 ++workload.dataset.num_subfolders_train=7541 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=/mnt/xpc/mlperf/data/formal/retinanet_closed_a675_20260724_115805/retinanet --config-dir=/root/mlperf-storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 90 -host 192.168.2.21:10,192.168.2.22:10,192.168.2.23:10,192.168.2.24:10,192.168.2.25:10,192.168.2.26:10,192.168.2.27:10,192.168.2.28:10,192.168.2.30:10 --bind-to none --map-by node --oversubscribe --allow-run-as-root -x MLPSTORAGE_HOME -x MLPSTORAGE_ORGNAME -x MLPSTORAGE_RESULTS_DIR /root/mlperf-storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805/closed/XSKY/results/XSKY_AIMesh_3StorageNode_9Client/training/retinanet/datagen/20260724_115841 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=75404925 ++workload.dataset.num_subfolders_train=7541 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10000 ++workload.dataset.data_folder=/mnt/xpc/mlperf/data/formal/retinanet_closed_a675_20260724_115805/retinanet --config-dir=/root/mlperf-storage/configs/dlio",
+      "stdout": "/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805/closed/XSKY/results/XSKY_AIMesh_3StorageNode_9Client/training/retinanet/datagen/20260724_115841/training_datagen.stdout.log",
+      "stderr": "/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805/closed/XSKY/results/XSKY_AIMesh_3StorageNode_9Client/training/retinanet/datagen/20260724_115841/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "192.168.2.21",
+      "192.168.2.22",
+      "192.168.2.23",
+      "192.168.2.24",
+      "192.168.2.25",
+      "192.168.2.26",
+      "192.168.2.27",
+      "192.168.2.28",
+      "192.168.2.30"
+    ],
+    "num_processes": 90,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": true,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/xpc/mlperf/data/formal/retinanet_closed_a675_20260724_115805",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=75404925",
+      "dataset.num_subfolders_train=7541"
+    ],
+    "results_dir": "/mnt/mlperf-results-nfs/mlps-results-retinanet_closed_a675_20260724_115805",
+    "systemname": "XSKY_AIMesh_3StorageNode_9Client",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "XSKY",
+    "num_client_hosts": 9,
+    "_validated_orgname": "XSKY",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "fc90a5926bf167ef6f726cbe5f8cdae0"
+  }
+}

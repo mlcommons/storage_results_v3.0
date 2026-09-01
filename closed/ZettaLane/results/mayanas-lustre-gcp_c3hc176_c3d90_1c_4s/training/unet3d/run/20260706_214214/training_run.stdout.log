@@ -1,0 +1,66 @@
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 128 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 128 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+[DATALOADER] format=npz storage=local_fs library=none
+[DATALOADER]   torch_dataset=TorchDataset(map-style, 128 workers)
+[DATALOADER]   reader=unknown
+[DATALOADER]   sample_access=read_index (on-demand)
+================================================================================
+STREAMING CHECKPOINT - Producer-Consumer Pattern
+================================================================================
+Output:      /mnt/lustre/mlperf3/unet3d/checkpoints/global_epoch5_step604/model_states-0.pt
+Backend:     file
+Total size:  0.00 GB
+Buffer size: 32 MB
+Buffer pool: 4 × 32 MB = 0.12 GB
+Direct I/O:  False
+Use dgen-py: True
+================================================================================
+
+[Main] Creating 4 buffers...
+[Main] Buffer pool ready: 0.12 GB
+[Main] Initializing dgen-py (MPI world_size=3, threads=58/176 CPUs)...
+[Main] Generator ready
+
+[Main] Writer process started (PID=225475)
+[Main] Starting producer at 10175.689s
+[Main] Starting producer (buffer pool reuse pattern)...
+[Main] Generation complete: 0.00s, 0.04 GB/s
+[Main] Producer finished at 10175.689s
+[Main] Signaling writer to stop at 10175.689s
+[Main] Waiting for writer to join at 10175.689s
+[Writer] Starting (PID=225475)
+[Writer] DEBUG: AWS_ACCESS_KEY_ID = NOT SET***
+[Writer] DEBUG: AWS_ENDPOINT_URL = NOT SET
+[Writer] Attached to 4 buffers (32 MB each)
+[Writer] Using file backend
+[Writer] Closed: {'backend': 'file', 'total_bytes': 10240, 'filepath': '/mnt/lustre/mlperf3/unet3d/checkpoints/global_epoch5_step604/model_states-0.pt', 'direct_io': False, 'fadvise': 'dontneed'} (close time: 0.0018s)
+[Writer] Deleted writer object
+[Writer] Flushing stats queue...
+[Writer] Finished (exit_code=0)
+[Writer] Exiting (PID=225475)
+[Main] Writer joined at 10181.101s
+
+================================================================================
+RESULTS
+================================================================================
+Generation:  0.0002s @ 0.04 GB/s
+I/O:         0.0019s @ 0.01 GB/s
+  - write:   0.0001s
+  - close:   0.0018s (fsync/finalize)
+Total:       5.4786s
+
+Throughput ratio: 7.7x (gen/io)
+Pipeline overhead: 100.0%
+Bottleneck: I/O
+Chunks: 1
+================================================================================
+
+Filesystem                  Size  Used Avail Use% Mounted on
+10.100.198.29@tcp:/zettafs   46T  1.8T   45T   4% /mnt/lustre/mlperf3
+/dev/root                    48G   11G   37G  24% /

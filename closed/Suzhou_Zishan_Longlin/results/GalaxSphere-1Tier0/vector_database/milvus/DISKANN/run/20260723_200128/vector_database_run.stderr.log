@@ -1,0 +1,269 @@
+Failed to import backend package 'vdbbench.benchmark.backends.pgvector'; skipping.
+Traceback (most recent call last):
+  File "/root/storage/vdb_benchmark/vdbbench/benchmark/backends/__init__.py", line 151, in _discover_backends
+    mod = importlib.import_module(fqn)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/storage/vdb_benchmark/vdbbench/benchmark/backends/pgvector/__init__.py", line 8, in <module>
+    from .backend import PGVectorBackend
+  File "/root/storage/vdb_benchmark/vdbbench/benchmark/backends/pgvector/backend.py", line 22, in <module>
+    from psycopg2 import sql
+ModuleNotFoundError: No module named 'psycopg2'
+/root/storage/vdb_benchmark/vdbbench/connection.py:63: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.connect(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1704: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1713: PyMilvusDeprecationWarning: `utility.load_state` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  state = utility.load_state(collection_name)
+/root/storage/vdb_benchmark/vdbbench/list_collections.py:78: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/list_collections.py:82: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  row_count = collection.num_entities
+/root/storage/vdb_benchmark/vdbbench/list_collections.py:95: PyMilvusDeprecationWarning: `Collection.has_index` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  if collection.has_index():
+/root/storage/vdb_benchmark/vdbbench/list_collections.py:96: PyMilvusDeprecationWarning: `Collection.index` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  index = collection.index()
+/root/storage/vdb_benchmark/vdbbench/list_collections.py:105: PyMilvusDeprecationWarning: `Collection.partitions` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  partitions = collection.partitions
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:2045: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:2115: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  src_coll = Collection(args.collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:2117: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:629: PyMilvusDeprecationWarning: `utility.has_collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  if utility.has_collection(flat_collection_name, using=conn_alias):
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:630: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_coll = Collection(flat_collection_name, using=conn_alias)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:631: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  source_coll = Collection(source_collection_name, using=conn_alias)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:633: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  if flat_coll.num_entities > 0 and (
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:634: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_coll.num_entities == source_coll.num_entities
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:641: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_coll.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:642: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  source_coll.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:460: PyMilvusDeprecationWarning: `Collection.query` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_rows = flat_coll.query(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:480: PyMilvusDeprecationWarning: `Collection.query` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  src_rows = source_coll.query(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:649: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  f"exists with {flat_coll.num_entities} vectors and "
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:655: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  total_vectors=source_coll.num_entities,
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:656: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  copied_vectors=flat_coll.num_entities,
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:998: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect(conn_alias)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1033: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_coll = Collection(flat_collection_name, using=conn_alias)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1034: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  flat_coll.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1036: PyMilvusDeprecationWarning: `Collection.num_entities` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  entity_count = flat_coll.num_entities
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1061: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = flat_coll.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1107: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect(conn_alias)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1409: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection = Collection(collection_name)
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1411: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  collection.load()
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1469: PyMilvusDeprecationWarning: `Collection.search` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = collection.search(
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")
+/root/storage/vdb_benchmark/vdbbench/simple_bench.py:1527: PyMilvusDeprecationWarning: `connections.disconnect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.disconnect("default")

@@ -1,0 +1,264 @@
+{
+  "aggregation": "mpi_gather_rank_local_outputs_no_shared_filesystem",
+  "batch_count": 36072,
+  "benchmark_phase": "simple_bench",
+  "disk_io": {
+    "aggregation": "mpi_gather_one_sample_per_hostname_local_rank_0",
+    "applicable": true,
+    "duration_seconds": 62.60348439216614,
+    "host_count": 4,
+    "hosts_not_applicable": [],
+    "total_bytes_read": 0,
+    "total_bytes_read_per_sec": 0.0,
+    "total_bytes_written": 160686080,
+    "total_bytes_written_per_sec": 2566727.4203687515,
+    "total_read_formatted": "0.00 B",
+    "total_write_formatted": "153.24 MB"
+  },
+  "failed_batches": 0,
+  "max_batch_time_ms": 17126.797914505005,
+  "max_latency_ms": 171.26797914505,
+  "mean_batch_time_ms": 629.362376698847,
+  "mean_latency_ms": 6.29362376698842,
+  "median_batch_time_ms": 161.68415546417236,
+  "median_latency_ms": 1.6168415546417,
+  "min_batch_time_ms": 19.672632217407198,
+  "min_latency_ms": 0.196726322174,
+  "mpi": {
+    "expected_ranks": 4,
+    "failed_ranks": [],
+    "malformed_payload_count": 0,
+    "missing_ranks": [],
+    "partial_failure": false,
+    "rank_count": 4,
+    "ranks_seen": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "p95_batch_time_ms": 1962.0202541351314,
+  "p95_latency_ms": 19.620900154113702,
+  "p9999_batch_time_ms": 17026.01217615603,
+  "p9999_latency_ms": 170.3424882888794,
+  "p999_batch_time_ms": 16005.068039417369,
+  "p999_latency_ms": 160.07010698318481,
+  "p99_batch_time_ms": 10734.63555812836,
+  "p99_latency_ms": 107.3797607421875,
+  "rank_summaries": [
+    {
+      "csv_file_count": 128,
+      "disk_io": {
+        "applicable": true,
+        "devices": {
+          "nvme0c0n1": {
+            "bytes_read": 0,
+            "bytes_written": 30654464,
+            "read_formatted": "0.00 B",
+            "write_formatted": "29.23 MB"
+          },
+          "nvme0n1": {
+            "bytes_read": 0,
+            "bytes_written": 30654464,
+            "read_formatted": "0.00 B",
+            "write_formatted": "29.23 MB"
+          }
+        },
+        "scope": "Derived from /proc/diskstats on the benchmark client node; covers local block devices only. Not meaningful for network-attached storage targets.",
+        "status": "OK",
+        "storage_target": {
+          "applicable": true,
+          "confidence": "heuristic",
+          "data_path": null,
+          "fstype": null,
+          "mountpoint": null,
+          "network_mounts_detected": [
+            "ceph:/mnt/seahorse"
+          ],
+          "reason": "no --data-path was supplied and network/remote mounts are present on this node; disk_io reflects client-local block devices only and may not describe the storage under test. Pass --data-path to classify the target exactly.",
+          "source": null
+        },
+        "total_bytes_read": 0,
+        "total_bytes_read_per_sec": 0.0,
+        "total_bytes_written": 61308928,
+        "total_bytes_written_per_sec": 979710.533420887,
+        "total_read_formatted": "0.00 B",
+        "total_write_formatted": "58.47 MB"
+      },
+      "end_time": 1784884042.3235648,
+      "failed_batches": 0,
+      "rank_output_dir": "/tmp/mlps_vdb/vectordb_mpi/20260724_090536/simple/rank_0",
+      "start_time": 1784883979.74495,
+      "successful_batches": 8947,
+      "throughput_qps": 14297.21645519014,
+      "total_queries": 894700,
+      "total_time_seconds": 62.578614711761475
+    },
+    {
+      "csv_file_count": 128,
+      "disk_io": {
+        "applicable": true,
+        "devices": {
+          "nvme0c0n1": {
+            "bytes_read": 0,
+            "bytes_written": 18792448,
+            "read_formatted": "0.00 B",
+            "write_formatted": "17.92 MB"
+          },
+          "nvme0n1": {
+            "bytes_read": 0,
+            "bytes_written": 18792448,
+            "read_formatted": "0.00 B",
+            "write_formatted": "17.92 MB"
+          }
+        },
+        "scope": "Derived from /proc/diskstats on the benchmark client node; covers local block devices only. Not meaningful for network-attached storage targets.",
+        "status": "OK",
+        "storage_target": {
+          "applicable": true,
+          "confidence": "heuristic",
+          "data_path": null,
+          "fstype": null,
+          "mountpoint": null,
+          "network_mounts_detected": [
+            "ceph:/mnt/seahorse",
+            "nfs4:/root/results-unet-sub",
+            "nfs4:/root/results-unet-screen"
+          ],
+          "reason": "no --data-path was supplied and network/remote mounts are present on this node; disk_io reflects client-local block devices only and may not describe the storage under test. Pass --data-path to classify the target exactly.",
+          "source": null
+        },
+        "total_bytes_read": 0,
+        "total_bytes_read_per_sec": 0.0,
+        "total_bytes_written": 37584896,
+        "total_bytes_written_per_sec": 600566.6352026258,
+        "total_read_formatted": "0.00 B",
+        "total_write_formatted": "35.84 MB"
+      },
+      "end_time": 1784884042.3305712,
+      "failed_batches": 0,
+      "rank_output_dir": "/tmp/mlps_vdb/vectordb_mpi/20260724_090536/simple/rank_1",
+      "start_time": 1784883979.7481802,
+      "successful_batches": 9110,
+      "throughput_qps": 14556.81039185507,
+      "total_queries": 911000,
+      "total_time_seconds": 62.582391023635864
+    },
+    {
+      "csv_file_count": 128,
+      "disk_io": {
+        "applicable": true,
+        "devices": {
+          "nvme0c0n1": {
+            "bytes_read": 0,
+            "bytes_written": 13893632,
+            "read_formatted": "0.00 B",
+            "write_formatted": "13.25 MB"
+          },
+          "nvme0n1": {
+            "bytes_read": 0,
+            "bytes_written": 13893632,
+            "read_formatted": "0.00 B",
+            "write_formatted": "13.25 MB"
+          }
+        },
+        "scope": "Derived from /proc/diskstats on the benchmark client node; covers local block devices only. Not meaningful for network-attached storage targets.",
+        "status": "OK",
+        "storage_target": {
+          "applicable": true,
+          "confidence": "heuristic",
+          "data_path": null,
+          "fstype": null,
+          "mountpoint": null,
+          "network_mounts_detected": [
+            "ceph:/mnt/seahorse",
+            "nfs4:/root/results-unet-sub",
+            "nfs4:/root/results-unet-screen"
+          ],
+          "reason": "no --data-path was supplied and network/remote mounts are present on this node; disk_io reflects client-local block devices only and may not describe the storage under test. Pass --data-path to classify the target exactly.",
+          "source": null
+        },
+        "total_bytes_read": 0,
+        "total_bytes_read_per_sec": 0.0,
+        "total_bytes_written": 27787264,
+        "total_bytes_written_per_sec": 444235.0119132868,
+        "total_read_formatted": "0.00 B",
+        "total_write_formatted": "26.50 MB"
+      },
+      "end_time": 1784884042.2888439,
+      "failed_batches": 0,
+      "rank_output_dir": "/tmp/mlps_vdb/vectordb_mpi/20260724_090536/simple/rank_2",
+      "start_time": 1784883979.7380245,
+      "successful_batches": 9203,
+      "throughput_qps": 14712.836840064494,
+      "total_queries": 920300,
+      "total_time_seconds": 62.550819396972656
+    },
+    {
+      "csv_file_count": 128,
+      "disk_io": {
+        "applicable": true,
+        "devices": {
+          "nvme0c0n1": {
+            "bytes_read": 0,
+            "bytes_written": 17002496,
+            "read_formatted": "0.00 B",
+            "write_formatted": "16.21 MB"
+          },
+          "nvme0n1": {
+            "bytes_read": 0,
+            "bytes_written": 17002496,
+            "read_formatted": "0.00 B",
+            "write_formatted": "16.21 MB"
+          }
+        },
+        "scope": "Derived from /proc/diskstats on the benchmark client node; covers local block devices only. Not meaningful for network-attached storage targets.",
+        "status": "OK",
+        "storage_target": {
+          "applicable": true,
+          "confidence": "heuristic",
+          "data_path": null,
+          "fstype": null,
+          "mountpoint": null,
+          "network_mounts_detected": [
+            "ceph:/mnt/seahorse",
+            "nfs4:/root/results-unet-sub",
+            "nfs4:/root/results-unet-screen"
+          ],
+          "reason": "no --data-path was supplied and network/remote mounts are present on this node; disk_io reflects client-local block devices only and may not describe the storage under test. Pass --data-path to classify the target exactly.",
+          "source": null
+        },
+        "total_bytes_read": 0,
+        "total_bytes_read_per_sec": 0.0,
+        "total_bytes_written": 34004992,
+        "total_bytes_written_per_sec": 543287.0195522576,
+        "total_read_formatted": "0.00 B",
+        "total_write_formatted": "32.43 MB"
+      },
+      "end_time": 1784884042.3415089,
+      "failed_batches": 0,
+      "rank_output_dir": "/tmp/mlps_vdb/vectordb_mpi/20260724_090536/simple/rank_3",
+      "start_time": 1784883979.7502987,
+      "successful_batches": 8812,
+      "throughput_qps": 14078.654146704384,
+      "total_queries": 881200,
+      "total_time_seconds": 62.59121012687683
+    }
+  ],
+  "recall": {
+    "aggregation": "mpi_gather_per_query_recall_exact",
+    "max_recall": 0.8,
+    "mean_recall": 0.209675,
+    "median_recall": 0.2,
+    "min_recall": 0.0,
+    "num_queries_evaluated": 4000,
+    "p5_recall": 0.0,
+    "p95_recall": 0.4,
+    "p99_recall": 0.5
+  },
+  "successful_batches": 36072,
+  "throughput_qps": 57619.796006935765,
+  "total_queries": 3607200,
+  "total_time_seconds": 62.60348439216614
+}

@@ -1,0 +1,94 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260712_133654",
+  "num_processes": 8,
+  "accelerator": null,
+  "result_dir": "/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results/closed/Solidigm/results/Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC/training/unet3d/datagen/20260712_133654",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/5336_61t/unet3d",
+      "format": "npz",
+      "num_files_train": "14000",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "14000",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "/mnt/5336_61t/unet3d"
+  },
+  "system_info": null,
+  "runtime": 614.6663076877594,
+  "invocation_start_time": "2026-07-12T13:36:54.153833",
+  "verification": null,
+  "executed_command": "mpirun -n 8 -host 127.0.0.1:8 --bind-to none --map-by socket --allow-run-as-root /root/raysmond/workspace/mlperf_v3/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results/closed/Solidigm/results/Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC/training/unet3d/datagen/20260712_133654 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=14000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/5336_61t/unet3d --config-dir=/root/raysmond/workspace/mlperf_v3/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 8 -host 127.0.0.1:8 --bind-to none --map-by socket --allow-run-as-root /root/raysmond/workspace/mlperf_v3/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results/closed/Solidigm/results/Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC/training/unet3d/datagen/20260712_133654 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=14000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/5336_61t/unet3d --config-dir=/root/raysmond/workspace/mlperf_v3/storage/configs/dlio",
+      "stdout": "/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results/closed/Solidigm/results/Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC/training/unet3d/datagen/20260712_133654/training_datagen.stdout.log",
+      "stderr": "/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results/closed/Solidigm/results/Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC/training/unet3d/datagen/20260712_133654/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 8,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/5336_61t",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=14000"
+    ],
+    "results_dir": "/etc/cwp/log/workload/5961/2026-07-12-13-36-45-da71b3c3-55fe-47b6-874c-ff506bba6875/results",
+    "systemname": "Solidigm_D5-P5336_61TB_Gen4_NVMe_QLC",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Solidigm",
+    "num_client_hosts": 1,
+    "_validated_orgname": "Solidigm",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "196131280f0ba0643ddfbe089362e567"
+  }
+}

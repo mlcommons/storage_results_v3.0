@@ -1,0 +1,96 @@
+{
+  "benchmark_type": "training",
+  "model": "retinanet",
+  "command": "datagen",
+  "run_datetime": "20260715_082426",
+  "num_processes": 60,
+  "accelerator": null,
+  "result_dir": "/root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/datagen/20260715_082426",
+  "parameters": {
+    "model": {
+      "name": "retinanet",
+      "type": "cnn"
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/glfs/GalaxSphere-1Tier0/training/retinanet",
+      "format": "jpeg",
+      "num_files_train": "5319553",
+      "num_samples_per_file": 1,
+      "record_length_bytes": 322957,
+      "skip_listing": "True",
+      "listing_validation_interval": "1000",
+      "num_subfolders_train": "532"
+    }
+  },
+  "override_parameters": {
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "1000",
+    "dataset.num_files_train": "5319553",
+    "dataset.num_subfolders_train": "532",
+    "dataset.data_folder": "/mnt/glfs/GalaxSphere-1Tier0/training/retinanet"
+  },
+  "system_info": null,
+  "runtime": 369.38852071762085,
+  "invocation_start_time": "2026-07-15T08:24:26.295354",
+  "verification": null,
+  "executed_command": "mpirun -n 60 -host 172.16.1.27:60 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_CAP02_TIMEOUT_SECONDS -x MLPS_CHECKPOINT_MP_START_METHOD /root/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/datagen/20260715_082426 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.num_files_train=5319553 ++workload.dataset.num_subfolders_train=532 ++workload.dataset.data_folder=/mnt/glfs/GalaxSphere-1Tier0/training/retinanet --config-dir=/root/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 60 -host 172.16.1.27:60 --bind-to none --map-by socket --allow-run-as-root -x DLIO_DROP_CACHES_TIMEOUT -x MLPS_CAP02_TIMEOUT_SECONDS -x MLPS_CHECKPOINT_MP_START_METHOD /root/storage/.venv/bin/dlio_benchmark workload=retinanet_datagen ++hydra.run.dir=/root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/datagen/20260715_082426 ++hydra.output_subdir=dlio_config ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=1000 ++workload.dataset.num_files_train=5319553 ++workload.dataset.num_subfolders_train=532 ++workload.dataset.data_folder=/mnt/glfs/GalaxSphere-1Tier0/training/retinanet --config-dir=/root/storage/configs/dlio",
+      "stdout": "/root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/datagen/20260715_082426/training_datagen.stdout.log",
+      "stderr": "/root/Suzhou_Zishan_Longlin/closed/Suzhou_Zishan_Longlin/results/GalaxSphere-1Tier0/training/retinanet/datagen/20260715_082426/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "retinanet",
+    "command": "datagen",
+    "hosts": [
+      "172.16.1.27"
+    ],
+    "num_processes": 60,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": true,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/glfs/GalaxSphere-1Tier0/training/retinanet",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.skip_listing=True",
+      "dataset.listing_validation_interval=1000",
+      "dataset.num_files_train=5319553",
+      "dataset.num_subfolders_train=532"
+    ],
+    "results_dir": "/root/Suzhou_Zishan_Longlin",
+    "systemname": "GalaxSphere-1Tier0",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "skip_ssh_check": false,
+    "skip_fs_separation_gate": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "Suzhou_Zishan_Longlin",
+    "num_client_hosts": 1,
+    "_validated_orgname": "Suzhou_Zishan_Longlin",
+    "_validated_systemname": null,
+    "_validated_pool_hash": "d2006d806382ae65b81e3eee4548cb1a"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "benchmark_type": "training",
+  "model": "unet3d",
+  "command": "datagen",
+  "run_datetime": "20260629_160435",
+  "num_processes": 32,
+  "accelerator": null,
+  "result_dir": "/home/mayascale/mlperf-runs/unet3d/closed/ZettaLane/results/unet3d_b200/training/unet3d/datagen/20260629_160435",
+  "parameters": {
+    "model": {
+      "name": "unet3d",
+      "type": "cnn",
+      "model_size": 499153191
+    },
+    "framework": "pytorch",
+    "workflow": {
+      "generate_data": true,
+      "train": false,
+      "checkpoint": false
+    },
+    "dataset": {
+      "data_folder": "/mnt/mlperf-block/unet3d/data/unet3d",
+      "format": "npz",
+      "num_files_train": 14000,
+      "num_samples_per_file": 1,
+      "record_length_bytes": 146600628,
+      "record_length_bytes_stdev": 68341808,
+      "record_length_bytes_resize": 2097152,
+      "skip_listing": "True",
+      "listing_validation_interval": "10"
+    }
+  },
+  "override_parameters": {
+    "dataset.num_files_train": "14000",
+    "dataset.skip_listing": "True",
+    "dataset.listing_validation_interval": "10",
+    "dataset.data_folder": "/mnt/mlperf-block/unet3d/data/unet3d"
+  },
+  "system_info": null,
+  "runtime": 281.9330916404724,
+  "verification": null,
+  "executed_command": "mpirun -n 32 -host 127.0.0.1:32 --bind-to none --map-by socket /home/mayascale/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/mayascale/mlperf-runs/unet3d/closed/ZettaLane/results/unet3d_b200/training/unet3d/datagen/20260629_160435 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=14000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/mlperf-block/unet3d/data/unet3d --config-dir=/home/mayascale/storage/configs/dlio",
+  "command_output_files": [
+    {
+      "command": "mpirun -n 32 -host 127.0.0.1:32 --bind-to none --map-by socket /home/mayascale/storage/.venv/bin/dlio_benchmark workload=unet3d_datagen ++hydra.run.dir=/home/mayascale/mlperf-runs/unet3d/closed/ZettaLane/results/unet3d_b200/training/unet3d/datagen/20260629_160435 ++hydra.output_subdir=dlio_config ++workload.dataset.num_files_train=14000 ++workload.dataset.skip_listing=True ++workload.dataset.listing_validation_interval=10 ++workload.dataset.data_folder=/mnt/mlperf-block/unet3d/data/unet3d --config-dir=/home/mayascale/storage/configs/dlio",
+      "stdout": "/home/mayascale/mlperf-runs/unet3d/closed/ZettaLane/results/unet3d_b200/training/unet3d/datagen/20260629_160435/training_datagen.stdout.log",
+      "stderr": "/home/mayascale/mlperf-runs/unet3d/closed/ZettaLane/results/unet3d_b200/training/unet3d/datagen/20260629_160435/training_datagen.stderr.log"
+    }
+  ],
+  "args": {
+    "mode": "closed",
+    "benchmark": "training",
+    "model": "unet3d",
+    "command": "datagen",
+    "hosts": [
+      "127.0.0.1"
+    ],
+    "num_processes": 32,
+    "exec_type": "mpi",
+    "mpi_bin": "mpirun",
+    "oversubscribe": false,
+    "allow_run_as_root": false,
+    "mpi_btl": "auto",
+    "mpi_params": null,
+    "data_dir": "/mnt/mlperf-block/unet3d/data",
+    "dlio_bin_path": null,
+    "o_direct": false,
+    "params": [
+      "dataset.num_files_train=14000"
+    ],
+    "results_dir": "/home/mayascale/mlperf-runs/unet3d",
+    "systemname": "unet3d_b200",
+    "config_file": null,
+    "debug": false,
+    "verbose": false,
+    "stream_log_level": "INFO",
+    "quiet": false,
+    "dry_run": false,
+    "verify_lockfile": null,
+    "skip_validation": false,
+    "data_access_protocol": "file",
+    "loops": 1,
+    "allow_invalid_params": false,
+    "_mlps_req_systemname": true,
+    "orgname": "ZettaLane",
+    "num_client_hosts": 1,
+    "_validated_orgname": "ZettaLane",
+    "_validated_systemname": null
+  }
+}
